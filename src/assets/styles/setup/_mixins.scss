@@ -55,4 +55,40 @@
 //             @content;
 //         }
 //     }
+// }
+
+@mixin btns-header-ops{
+    border: none;
+    margin: 0 4px;
+    padding: 6px 10px 6px 12px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $headerBtnClr;
+        border-radius: 3px;
+    }
+}
+
+@mixin btns-header-user{
+    border: none;
+    margin: 0 4px;
+    padding: 6px 10px 6px 12px;
+    background-color: transparent;
+
+        &:hover {
+        background-color: $headerBtnClr;
+        border-radius: 100px;
+    }
+}
+
+
+
+
+//   @mixin hover-supported {    
+//     @media not all and (pointer: coarse) {
+//         &:hover {
+//             @content;
+//         }
+//     }
 //   }
