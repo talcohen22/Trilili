@@ -1,6 +1,7 @@
 * {
     font-family: roboto;
     box-sizing: border-box;
+    font-size: rem(16px);
 }
 
 html {
@@ -14,4 +15,8 @@ img {
 
 a {
     text-decoration: none;
+}
+
+li{
+    list-style-type: none;
 }
