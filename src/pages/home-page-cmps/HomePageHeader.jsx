@@ -8,8 +8,8 @@ export function HomePageHeader() {
             <nav className='flex justify-space-b align-center'>
                 <div className='btns-header-ops flex'>
                     <div>
-                    <LogoApp/>
-                    <button className="btn-logo">Trilili</button>
+                    <LogoApp color={"#227ffa"}/>
+                    <button className="btn-logo"><Link>Trilili</Link></button>
                     </div>
                     <button className="btn-link">Features</button>
                     <button className="btn-link">Solutions</button>
@@ -19,6 +19,7 @@ export function HomePageHeader() {
                 </div>
                 <div>
                     <button className="header-btn-start"><Link>Start Managing</Link></button>
+                    
                 </div>
             </nav>
         </header>
