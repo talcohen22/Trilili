@@ -10,11 +10,11 @@ import { Menu } from '../cmps/Menu.jsx'
 
 export function BoardIndex() {
 
-    // const boards = useSelector(storeState => storeState.boardModule.boards)
+    const boards = useSelector(storeState => storeState.boardModule.boards)
 
-    // useEffect(() => {
-    //     loadBoards()
-    // }, [])
+    useEffect(() => {
+        loadBoards()
+    }, [])
 
     // async function onRemoveBoard(boardId) {
     //     try {
@@ -57,8 +57,7 @@ export function BoardIndex() {
     //     return board.owner?._id === user._id
     // }
 
-    const boards = [{_id: 1, title: "board1"},{_id: 2, title: "board2"},{_id: 3, title: "board3"},{_id: 4, title: "board4"}]
-
+    
     return (
         <div>
             <main className='main-container'>

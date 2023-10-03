@@ -1,4 +1,4 @@
-import { UserSvg } from "../svg/UserSvg";
+import { UserSvg } from "../svg/ImgSvg";
 import { BoardPreview } from "./BoardPreview";
 
 export function BoardList({ boards }) {
@@ -12,9 +12,7 @@ export function BoardList({ boards }) {
             <ul className="board-list">
                 {boards.map(board =>
                     <li className="board-item" key={board._id}>
-                        <span className="board-item-content">
                             <BoardPreview board={board} />
-                        </span>
                     </li>
                 )}
             </ul>
