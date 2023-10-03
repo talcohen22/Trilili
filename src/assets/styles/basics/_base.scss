@@ -26,6 +26,10 @@ button{
     background-color: transparent;
     display: inline-block;
     cursor: pointer;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 li{
