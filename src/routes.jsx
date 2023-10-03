@@ -5,6 +5,7 @@ import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 import { AdminApp } from './pages/AdminIndex.jsx'
 import { SurveyIndex } from './pages/SurveyIndex.jsx'
+import { BoardDetails } from './pages/BoardDetails.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -21,9 +22,14 @@ const routes = [
     {
         path: '/workspace',
         component: <BoardIndex />,
-        label: 'workspace 🏠',
+        label: 'Workspace 🏠',
     },
-    
+    {
+        path: '/board/:id',
+        component: <BoardDetails />,
+        label: 'Board',
+    },
+
 
     // {
     //     path: 'survey',
