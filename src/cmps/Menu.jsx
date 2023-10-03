@@ -1,9 +1,20 @@
 
-export function Menu(){
+export function Menu() {
     return (
         <div className="menu-container">
-            <p>aaa</p>
-            <p>bbb</p>
+            <div>
+                <p>Boards</p>
+            </div>
+            <div>
+                <p>Highlight</p>
+            </div>
+            <div>
+                <p>Views</p>
+            </div>
+            <div>
+                <p>Members</p>
+            </div>
+            
         </div>
     )
 }
