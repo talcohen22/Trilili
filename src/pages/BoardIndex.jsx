@@ -6,6 +6,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { boardService } from '../services/board.service.local.js'
 import { BoardList } from '../cmps/board/BoardList.jsx'
+import { Menu } from '../cmps/Menu.jsx'
 
 export function BoardIndex() {
 
@@ -56,12 +57,14 @@ export function BoardIndex() {
     //     return board.owner?._id === user._id
     // }
 
+    const boards = [{_id: 1, title: "board1"},{_id: 2, title: "board2"},{_id: 3, title: "board3"},{_id: 4, title: "board4"}]
+
     return (
         <div>
-            <h3>Board App</h3>
-            <main>
+            <main className='main-container'>
                 {/* <button onClick={onAddBoard}>Add Board ⛐</button> */}
-                <BoardList/>
+                <Menu/>
+                <BoardList boards={boards}/>
             </main>
         </div>
     )
