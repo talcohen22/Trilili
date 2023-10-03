@@ -1,3 +1,49 @@
-.homepage {
-    
+.homepage {}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: rem(300px) 1fr rem(300px);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    .homepage-container {
+        display: grid;
+        grid-template-columns: rem(300px) 1fr rem(300px);
+        grid-column: 1/-1;
+        // grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        background: url('src//assets//img//white-wave-bg.svg') center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box,
+            linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+        .homepage-header{
+            grid-column: 1/-1;
+            background-color: #ffffff;
+            
+        }
+    }
+
+    .homepage-left {
+        grid-area: 1 / 1 / 6 / 2;
+    }
+
+    .homepage-content {
+        grid-column: 2/3;
+        color: #ffffff;
+
+    }
+
+    .homepage-right {
+        grid-area: 1 / 3 / 6 / 4;
+        ;
+    }
+
+    .homepage-hero {
+        grid-column: 2;
+    }
+
+    .homepage-logo{
+        color: blue;
+    }
+
 }
