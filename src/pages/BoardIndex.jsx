@@ -5,7 +5,7 @@ import { loadBoards, addBoard, updateBoard, removeBoard } from '../store/board.a
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { boardService } from '../services/board.service.local.js'
-import { BoardList } from '../cmps/BoardList.jsx'
+import { BoardList } from '../cmps/board/BoardList.jsx'
 
 export function BoardIndex() {
 
