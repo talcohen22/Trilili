@@ -37,16 +37,16 @@ export function AppHeader() {
         <header className="app-header " >
             <nav className='flex justify-space-b align-center'>
                 <div className='btns-header-ops'>
-                    <button className="btn-logo">Trilili</button>
-                    <button className="btn-workspaces">Workspaces</button>
-                    <button className="btn-more">More</button>
-                    <button className="btn-plus-options">More</button>
+                    <button className="btn-ops btn-logo">Trilili</button>
+                    <button className="btn-ops btn-workspaces">Workspaces</button>
+                    <button className="btn-ops btn-more">More</button>
+                    <button className="btn-ops btn-plus-options">More</button>
                 </div>
 
-                <div>
+                <div className='btns-header-user'>
                     <input type="text" name="search-bar" id="search-bar" />
-                    <button className="btn-notifications">notifications</button>
-                    <button className="btn-user">user img</button>
+                    <button className="btn-user btn-notifications">notifications</button>
+                    <button className="btn-user btn-img-user">user img</button>
                 </div>
 
                 {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}

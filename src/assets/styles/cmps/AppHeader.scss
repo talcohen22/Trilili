@@ -1,10 +1,13 @@
 .app-header {
-    background-color: $clr4;
     padding: 9px;
     height: 48px;
+    border-bottom: 0.5px solid $wsEmptyBoard;
 
-    .btns-header-ops >*{
+    .btn-ops{
         @include btns-header-ops;
     }
 
+    .btn-user{
+         @include btns-header-user;
+    }
 }
