@@ -693,7 +693,6 @@ async function query(filterBy = {}) {
 }
 
 function getById(boardId) {
-    console.log('getById')
     return storageService.get(STORAGE_KEY, boardId)
 }
 

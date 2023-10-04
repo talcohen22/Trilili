@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router";
 import { UserSvg } from "../svg/ImgSvg";
 import { BoardPreview } from "./BoardPreview";
+import { useState } from "react";
+import { NewBoardModal } from "./NewBoardModal";
 
 export function BoardList({ boards }) {
-
+    
     const navigate = useNavigate()
+    const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false)
 
     function onGetDetails(boardId) {
         navigate(`/board/${boardId}`)
@@ -20,10 +23,17 @@ export function BoardList({ boards }) {
             <ul className="board-list">
                 {boards.map(board =>
                     <li className="board-item" onClick={() => onGetDetails(board._id)} key={board._id}>
-                        <BoardPreview board={board} />
+                        <span className="board-fade">
+                            <BoardPreview board={board} />
+                        </span>
                     </li>
+
                 )}
+                <li onClick={() => setIsNewBoardModalOpen(!isNewBoardModalOpen)}>
+                    Create new board
+                </li>
             </ul>
+            {isNewBoardModalOpen && <NewBoardModal />}
         </section >
     )
 }
