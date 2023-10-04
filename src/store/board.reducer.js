@@ -35,6 +35,7 @@ export function boardReducer(state = initialState, action) {
                 newState = { ...state, boards: [...state.boards, state.lastRemovedBoard], lastRemovedBoard: null }
             }
             break
+
         default:
     }
     return newState

@@ -35,7 +35,6 @@ export async function loadBoards() {
         console.log('Cannot load boards', err)
         throw err
     }
-
 }
 
 export async function removeBoard(boardId) {
