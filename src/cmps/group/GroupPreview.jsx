@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg"
 
 export function GroupPreview({ group }) {
     const [inputValue, setInputValue] = useState(group.title)
@@ -25,7 +24,7 @@ export function GroupPreview({ group }) {
             </div>
 
             <div className="group-tasks">
-            
+                <TaskList/>
                 <div>dddd</div>
                 <div>dddd</div>
                 <div>dddd</div>

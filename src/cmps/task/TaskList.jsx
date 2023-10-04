@@ -54,12 +54,14 @@ export function TaskList(){
         }
     ]
     return(
+        <section className="task-list-container">
         <ul className="task-list flex column">
             {tasks.map((task)=>(
-                <li key={task.id}>
+                <li className="list-item" key={task.id}>
                     <TaskPreview task={task}/>
                 </li>
             ))}
         </ul>
+        </section>
     )
 }
