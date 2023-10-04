@@ -3,7 +3,7 @@
 
     li{
         display: inline-block;
-        width: rem(272px);
+        width: rem($card-width);
         white-space: nowrap
     }
     
@@ -13,6 +13,7 @@
         margin: 8px;
         display: flex;
         flex-direction: column;
+        
     }
 
     // .group-title{
