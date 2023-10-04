@@ -1,7 +1,7 @@
 import { AddGroupBtn } from "./AddGroupBtn";
 import { GroupPreview } from "./GroupPreview";
 
-export function GroupList({ board }) {
+export function GroupList({ board, onAddNewGroup }) {
     const { groups } = board
     console.log(groups)
 
@@ -14,7 +14,7 @@ export function GroupList({ board }) {
                     </li>
                 ))}
             </ul>
-            <AddGroupBtn />
+            <AddGroupBtn onAddNewGroup={onAddNewGroup} />
         </section>
     )
 }
