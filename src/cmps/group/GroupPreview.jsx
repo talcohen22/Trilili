@@ -1,11 +1,27 @@
+import { useState } from "react";
+import { DotsSvg } from "../svg/ImgSvg"
 
 export function GroupPreview({ group }) {
-    console.log(group)
+    const [inputValue, setInputValue] = useState(group.title)
+
+    function handleInputChange(ev) {
+        setInputValue(ev.target.value)
+    }
+
     return (
         <section className="group-card">
 
-            <div className="group-header">
-                <h1 className="group-title">{group.title}</h1>
+            <div className="group-header flex justify-space-b align-center ">
+                <input
+                    className="group-title"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onFocus={(ev) => ev.target.classList.add("focused")}
+                    onBlur={(ev) => ev.target.classList.remove("focused")}
+                    autoFocus />
+                <button className="group-btn">
+                    <DotsSvg />
+                </button>
             </div>
 
             <div className="group-tasks">
@@ -23,6 +39,17 @@ export function GroupPreview({ group }) {
                 <div>dddd</div>
                 <div>dddd</div>
             </div>
+
+            <div className="group-footer flex justify-space-b align-center ">
+                <button className="group-btn add-task-btn">
+                    Add a card
+                </button>
+                <button className="group-btn">
+                    <DotsSvg />
+                </button>
+            </div>
+
         </section>
     )
 }
+
