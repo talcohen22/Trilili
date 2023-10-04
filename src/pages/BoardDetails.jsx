@@ -2,8 +2,13 @@ import { useParams } from "react-router";
 import { GroupList } from "../cmps/group/GroupList";
 import { boardService } from "../services/board.service.local";
 import { useEffect, useState } from "react";
+
 import { useSelector } from "react-redux";
 import { updateBoard } from "../store/board.actions";
+
+import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
+import { StarSvg } from "../cmps/svg/ImgSvg";
+
 
 export function BoardDetails() {
     const { boardId } = useParams()
@@ -40,6 +45,14 @@ export function BoardDetails() {
     }
 
     return (
+
         board && <GroupList board={board} onAddNewGroup={onAddNewGroup} />
+
+        <section>
+            <BoardFilter/>
+            {board && <GroupList board={board} />}
+            
+        </section>
+
     )
 }

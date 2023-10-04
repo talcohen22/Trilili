@@ -22,9 +22,12 @@
 // Components
 @import "./cmps/board/BoardList";
 @import "./cmps/board/BoardPreview.scss";
+@import "./cmps/board/BoardFilter";
 @import "./cmps/group/GroupList";
 @import "./cmps/group/GroupPreview";
 @import "./cmps/group/AddGroupBtn";
+@import "./cmps/task/TaskPreview";
+@import "./cmps/task/TaskList";
 @import "./cmps/Menu";
 @import "./cmps/BoardIndex";
 @import "cmps/AppHeader";
