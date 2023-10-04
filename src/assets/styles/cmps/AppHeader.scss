@@ -1,7 +1,7 @@
 .app-header {
     padding: 9px;
     height: 48px;
-    border-bottom: 0.5px solid $wsEmptyBoard;
+    border-bottom: 0.5px solid $wsEmptyBoardBgc;
 
     .btn-ops{
         @include btns-header-ops;

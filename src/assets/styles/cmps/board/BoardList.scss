@@ -23,25 +23,51 @@
             flex-grow: 1;
         }
 
+        li{
+            transition: all 0.1s;
+        }
+
         cursor: pointer;
 
         .board-item {
-            // margin: 0 2% 2% 0;
+            position: relative;
+
             height: 96px;
-            background-color: rgba(255, 159, 75, 0.568);
             max-width: 190px;
             min-width: 145px;
             border-radius: 3px;
 
-            // .board-item-content {
-            //     display: block;
-            //     height: 96px;
-            //     background-color: rgba(255, 159, 75, 0.568);
-            //     max-width: 190px;
-            //     min-width: 145px;
-            //     border-radius: 3px;
-            // }
+            color: white;
+            background-image: url("https://images.unsplash.com/photo-1495127280742-47f59274e2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODU3NTUyNDZ8&ixlib=rb-4.0.3&q=80&w=400&quot");
+            background-size: cover;
+            background-position: center;
+
+            .board-fade {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: $wsFadeColor;
+
+            }
+
+            .board-fade:hover {
+                background-color: $wsFadeColorHover;
+            }
         }
 
+        li:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $wsTxtColor ;
+            font-size: rem(14px);
+            background-color: $wsEmptyBoardBgc;
+            border-radius: 3px;
+        }
+
+        li:last-child:hover {
+            background-color: $wsEmptyBoardBgcHover;
+        }
     }
+
 }
