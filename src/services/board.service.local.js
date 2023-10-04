@@ -688,7 +688,7 @@ window.bs = boardService
 _createBoards()
 
 async function query(filterBy = {}) {
-    var boards = await storageService.get(STORAGE_KEY)
+    var boards = await storageService.query(STORAGE_KEY)
     return boards
 }
 
