@@ -10,7 +10,7 @@ export function HomePage() {
                 <div className="homepage-header">
                     <HomePageHeader />
                 </div>
-                <div class="homepage-content">
+                <div className="homepage-content">
                     <div className="homepage-hero flex">
                         <div>
                             <h1>Trilili brings all your tasks, teammates, and tools together</h1>
