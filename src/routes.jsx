@@ -25,7 +25,7 @@ const routes = [
         label: 'Workspace 🏠',
     },
     {
-        path: '/board/:id',
+        path: '/board/:boardId',
         component: <BoardDetails />,
         label: 'Board',
     },

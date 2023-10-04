@@ -687,19 +687,13 @@ window.bs = boardService
 
 _createBoards()
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    var boards = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        boards = boards.filter(board => regex.test(board.title) || regex.test(board.description))
-    }
-    if (filterBy.price) {
-        boards = boards.filter(board => board.price <= filterBy.price)
-    }
+async function query(filterBy = {}) {
+    var boards = await storageService.get(STORAGE_KEY)
     return boards
 }
 
 function getById(boardId) {
+    console.log('getById')
     return storageService.get(STORAGE_KEY, boardId)
 }
 

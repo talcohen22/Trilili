@@ -6,8 +6,8 @@ export function BoardList({ boards }) {
 
     const navigate = useNavigate()
 
-    function onGetDetails(boardId){
-        navigate(`board/${boardId}`)
+    function onGetDetails(boardId) {
+        navigate(`/board/${boardId}`)
     }
 
     return (

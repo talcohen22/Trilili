@@ -1,0 +1,21 @@
+.groups-list{
+    display: flex;
+
+    li{
+        display: inline-block;
+        width: rem(272px);
+        white-space: nowrap
+    }
+    
+    .group-card{
+        background-color: $groupBgc;
+        border-radius: 12px;
+        margin: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    // .group-title{
+        
+    // }
+}
