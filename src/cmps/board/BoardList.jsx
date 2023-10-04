@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NewBoardModal } from "./NewBoardModal";
 
 export function BoardList({ boards }) {
-
+    
     const navigate = useNavigate()
     const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false)
 

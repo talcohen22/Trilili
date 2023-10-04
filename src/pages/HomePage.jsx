@@ -8,13 +8,13 @@ import { HomePageProductivity } from './home-page-cmps/HomePageProductivity.jsx'
 export function HomePage() {
     return (
         <section className="homepage">
-            <HomePageHeader/>
-        <section className="homepage-container">
-            <HomePageHero/>
+            <HomePageHeader />
+            <section className="homepage-container">
+                <HomePageHero />
+            </section>
+            <section className="homepage-productivity">
+                <HomePageProductivity />
+            </section>
         </section>
-        <section className="homepage-productivity">
-          <HomePageProductivity/>
-        </section>
-      </section>
     )
 }
