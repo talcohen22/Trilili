@@ -3,6 +3,7 @@
 //header
 $headerBtnClr: rgba(220, 223, 228, 1);
 $headerLogoClr:#227ffa;
+$LogoHoverClr:rgb(7, 71, 166);
 //group
 $groupHeader: #172B4D;
 $groupMoreActions: #44546F; //add a cart, 3 dots (...), create from template 
@@ -21,8 +22,10 @@ $wsFadeColor: #00000033;
 $wsFadeColorHover: #00000045;
 
 
-
+//text
+$txtClr:#091e42;
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+
