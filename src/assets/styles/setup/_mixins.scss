@@ -83,3 +83,11 @@
 //         }
 //     }
 //   }
+
+
+@mixin btns-group{
+    font-size: rem(16px);
+    height: 32px;
+    background-color:#d0d4db;
+    border-radius: 8px;
+}
