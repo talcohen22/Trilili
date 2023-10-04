@@ -1,3 +1,4 @@
+
 export function GroupPreview({ group }) {
     console.log(group)
     return (
@@ -8,6 +9,7 @@ export function GroupPreview({ group }) {
             </div>
 
             <div className="group-tasks">
+            
                 <div>dddd</div>
                 <div>dddd</div>
                 <div>dddd</div>

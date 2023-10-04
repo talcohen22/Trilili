@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 import { GroupList } from "../cmps/group/GroupList";
 import { boardService } from "../services/board.service.local";
 import { useEffect, useState } from "react";
+import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
+import { StarSvg } from "../cmps/svg/ImgSvg";
 
 export function BoardDetails() {
     const [board, setBoard] = useState(null)
@@ -22,6 +24,10 @@ export function BoardDetails() {
     }, [])
 
     return (
-        board && <GroupList board={board} />
+        <section>
+            <BoardFilter/>
+            {board && <GroupList board={board} />}
+            
+        </section>
     )
 }
