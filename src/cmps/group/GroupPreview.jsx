@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { DotsSvg } from "../svg/ImgSvg"
-import { TaskList } from "../task/TaskList";
 
 export function GroupPreview({ group }) {
     const [inputValue, setInputValue] = useState(group.title)
@@ -20,7 +18,7 @@ export function GroupPreview({ group }) {
                     onFocus={(ev) => ev.target.classList.add("focused")}
                     onBlur={(ev) => ev.target.classList.remove("focused")}
                     autoFocus />
-                <button className="group-btn">
+                <button className="group-btn flex justify-center align-center">
                     <DotsSvg />
                 </button>
             </div>
@@ -41,12 +39,12 @@ export function GroupPreview({ group }) {
                 <div>dddd</div>
             </div>
 
-            <div className="group-footer flex justify-space-b align-center ">
-                <button className="group-btn add-task-btn">
+            <div className="group-footer flex justify-center align-center">
+                <button className="group-btn add-task-btn flex align-center">
                     Add a card
                 </button>
-                <button className="group-btn">
-                    <DotsSvg />
+                <button className="group-btn flex justify-center align-center">
+                    <GenerateTemplateBtnSvg />
                 </button>
             </div>
 
