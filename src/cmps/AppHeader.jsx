@@ -7,6 +7,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { ArrowDown, LogoApp, NotificationsSvg, SearchSvg } from './svg/ImgSvg'
 import { useState } from 'react'
 import { utilService } from '../services/util.service'
+// import stav from '../assets/img/stav-black.jpg'
 
 export function AppHeader() {
 
@@ -64,7 +65,7 @@ export function AppHeader() {
 
                     <button className="btn-user btn-img-user">
                         <div className="center-svg">
-                            <img src={utilService.getAssetSrc('stav-black.png')} alt="user" />
+                            <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" />
                         </div>
                     </button>
                 </div>

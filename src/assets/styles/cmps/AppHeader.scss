@@ -11,16 +11,21 @@
 
     .btns-header-user{
         .btn-user{
-            margin: 0 4px;
+            margin-inline-start: 4px;
             @include btns-header-user;
-
             .center-svg {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 height: 100%;
-                margin:  6px;
+                padding:  4px;
             }
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
         }
         
         .search-bar{
