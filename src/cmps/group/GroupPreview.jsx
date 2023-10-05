@@ -1,11 +1,32 @@
 
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 export function GroupPreview({ group, onAddTask }) {
     const [isOnAddTask, setIsOnAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
+
+    // const [isCuttingScreen, setIsCuttingScreen] = useState(false);
+
+
+    // useLayoutEffect(() => {
+    //     // Check if any of the group-cards are taller than the viewport.
+    //     const groupCards = document.querySelectorAll(".group-card");
+
+    //     for (const groupCard of groupCards) {
+    //         const viewportHeight = window.innerHeight;
+    //         const groupCardHeight = groupCard.offsetHeight;
+    //         if (groupCardHeight > viewportHeight) {
+    //             setIsCuttingScreen(true);
+    //             console.log(true)
+    //             return; // If at least one is cutting the screen, set the state and exit the loop.
+    //         }
+    //     }
+
+    //     // If none of the group-cards are cutting the screen.
+    //     setIsCuttingScreen(false);
+    // }, []);
 
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
@@ -19,7 +40,7 @@ export function GroupPreview({ group, onAddTask }) {
     }
 
     return (
-        <section className="group-card">
+        <section className='group-card'>
 
             <div className="group-header flex justify-space-b align-center ">
                 <input
@@ -53,7 +74,14 @@ export function GroupPreview({ group, onAddTask }) {
                     </button>
                 </div>
             }
-            {isOnAddTask && <AddTaskModal group={group} onAddTask={onAddTask} onCloseAddTaskModal={onCloseAddTaskModal} />}
+            {isOnAddTask &&
+                <AddTaskModal
+                    group={group}
+                    onAddTask={onAddTask}
+                    onCloseAddTaskModal={onCloseAddTaskModal}
+                />}
+
+
         </section>
     )
 }
