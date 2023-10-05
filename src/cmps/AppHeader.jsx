@@ -68,6 +68,7 @@ export function AppHeader() {
                             <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" />
                         </div>
                     </button>
+
                 </div>
             </nav>
         </header>

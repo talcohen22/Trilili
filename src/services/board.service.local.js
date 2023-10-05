@@ -711,7 +711,7 @@ async function save(board) {
     } else {
         // Later, owner is set by the backend
         // board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, {...getEmptyGroup(), title: board.title, bgc: board.bgc})
+        savedBoard = await storageService.post(STORAGE_KEY, { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
     }
     return savedBoard
 }
@@ -732,12 +732,12 @@ async function addBoardMsg(boardId, txt) {
     return msg
 }
 
-function getEmptyBoard() {
-    return {
-        title: '',
-        bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
-    }
-}
+// function getEmptyBoard() {
+//     return {
+//         title: '',
+//         bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
+//     }
+// }
 
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
@@ -766,7 +766,7 @@ async function createTask(boardId, groupId, taskToAdd) {
 
 
 
-function getEmptyGroup() {
+function getEmptyBoard() {
     return {
         title: "",
         isStarred: false,
@@ -785,6 +785,16 @@ function getEmptyGroup() {
         // style: {},
     }
 }
+
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        title: '',
+        tasks: [],
+        style: {},
+    }
+}
+
 function getEmptyTask() {
     return {
         id: utilService.makeId(),
@@ -793,7 +803,7 @@ function getEmptyTask() {
         priority: null,
         description: null,
         comments: [],
-        checklists:[],
+        checklists: [],
         memberIds: null,
         labelIds: null,
         dueDate: null,
