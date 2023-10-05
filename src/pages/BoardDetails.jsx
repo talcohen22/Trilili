@@ -58,7 +58,8 @@ export function BoardDetails() {
 
     return (
         <section
-        style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
+        // style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
+        >
             <BoardFilter />
 
             {board &&
