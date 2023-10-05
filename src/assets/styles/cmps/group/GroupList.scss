@@ -1,21 +1,25 @@
 .groups-list{
     display: flex;
-
+    margin: 12px;
     li{
+        width: rem($card-width);
         display: inline-block;
-        width: rem(272px);
         white-space: nowrap
+    }
+
+    ul{
+        display: flex;
+        gap: 12px;
     }
     
     .group-card{
         background-color: $groupBgc;
         border-radius: 12px;
-        margin: 8px;
+        // margin: 6px;
         display: flex;
         flex-direction: column;
-    }
+        box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
 
-    // .group-title{
         
-    // }
+    }
 }

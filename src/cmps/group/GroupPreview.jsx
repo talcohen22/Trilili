@@ -1,26 +1,52 @@
+import { useState } from "react";
+import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg";
+import { TaskList } from "../task/TaskList";
+import { AddTaskModal } from "../task/AddTaskModal";
 export function GroupPreview({ group }) {
-    console.log(group)
+    const [inputValue, setInputValue] = useState(group.title)
+    const [isOnAddTask,setIsOnAddTask]= useState(false)//by tamir
+    
+    function handleInputChange(ev) {
+        setInputValue(ev.target.value)
+    }
+    function handleAddTask(){
+        setIsOnAddTask(true);
+    }
     return (
         <section className="group-card">
 
-            <div className="group-header">
-                <h1 className="group-title">{group.title}</h1>
+            <div className="group-header flex justify-space-b align-center ">
+                <input
+                    className="group-title"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onFocus={(ev) => ev.target.classList.add("focused")}
+                    onBlur={(ev) => ev.target.classList.remove("focused")}
+                    autoFocus />
+                <button className="group-btn flex justify-center align-center">
+                    <DotsSvg/>
+                </button>
             </div>
 
             <div className="group-tasks">
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
+                <TaskList/>
+           
             </div>
+
+           { !isOnAddTask&&<div className="group-footer flex justify-center align-center">
+            {/* add state  for add task by tamir */}
+               <button onClick={handleAddTask} className="group-btn add-task-btn flex align-center">
+                    Add a card
+                </button>
+                
+
+                <button className="group-btn flex justify-center align-center">
+                    <GenerateTemplateBtnSvg />
+                </button>
+            </div>
+            }
+            {isOnAddTask&&<AddTaskModal/>} 
         </section>
     )
 }
+

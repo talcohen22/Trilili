@@ -1,0 +1,41 @@
+.group-card{
+
+    .group-header, .group-footer{
+        height: 48px;
+        padding: 8px;
+    }
+
+    .group-header{
+        .group-title{
+            background-color: transparent;
+            border: none;
+            padding: 5px;
+            width: 200px;
+            
+            &:focus {
+                height: 30px;
+                border-radius: 7px;
+                background-color: white;
+            }
+
+            &:focus-visible {
+               outline: 2px solid #0C66E4;
+            }
+        }
+    } 
+    
+    .group-btn{
+        width: 32px;
+        &.add-task-btn{
+            width: max-content;
+            flex-grow: 1;
+            justify-content: left;
+            padding: 8px;
+            
+        }
+        
+       &:hover{
+           @include btns-group;
+        }
+    }
+}

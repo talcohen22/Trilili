@@ -1,0 +1,31 @@
+.task-list-container{
+    // overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        padding-top: 20px;
+
+      }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #BFC4CE;
+        border-radius: 30px;
+        height: 12px;
+      }
+    
+    &::-webkit-scrollbar-track {
+        background-color: #D9DCE2;
+        border-radius: 30px;
+        height: 12px;
+        border-bottom: 10px solid transparent;
+      }
+}
+.task-list{
+    height: 100%;
+    width: 100%;
+    vertical-align: top;
+    border-radius: 3px;
+    .list-item{
+        min-height: rem(36px);
+    }
+}

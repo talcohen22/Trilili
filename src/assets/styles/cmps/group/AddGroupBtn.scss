@@ -1,0 +1,19 @@
+.btn-add-group{
+    &:first-child{
+        margin: 0 2px 0 0;
+    }
+    
+    width: rem($card-width);
+    padding: 14px 16px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 34%);
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 0 12px;
+    transition: background-color 0.4s ease; 
+    color: white;
+    
+    &:hover{
+        background-color: rgba(255, 255, 255, 18%);;
+    }
+}
