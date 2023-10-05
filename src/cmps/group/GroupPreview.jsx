@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg";
+import { TaskList } from "../task/TaskList";
 
 export function GroupPreview({ group }) {
     const [inputValue, setInputValue] = useState(group.title)
@@ -24,19 +26,7 @@ export function GroupPreview({ group }) {
             </div>
 
             <div className="group-tasks">
-                <TaskList/>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
+                <TaskList />
             </div>
 
             <div className="group-footer flex justify-center align-center">
