@@ -4,8 +4,8 @@ import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSv
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 export function GroupPreview({ group, onAddTask }) {
-    const [inputValue, setInputValue] = useState(group.title)
     const [isOnAddTask, setIsOnAddTask] = useState(false)
+    const [groupTitle, setGroupTitle] = useState(group.title)
 
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
