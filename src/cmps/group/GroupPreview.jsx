@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg";
-import { TaskList } from "../task/TaskList";
-import { AddTaskModal } from "../task/AddTaskModal";
+import { useState } from "react"
+import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg"
+import { TaskList } from "../task/TaskList"
+import { AddTaskModal } from "../task/AddTaskModal"
+
 export function GroupPreview({ group, onAddTask }) {
-    const [inputValue, setInputValue] = useState(group.title)
+
     const [isOnAddTask, setIsOnAddTask] = useState(false)//by tamir
+    const [groupTitle, setGroupTitle] = useState(group.title)
+    console.log(group);
 
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
@@ -23,7 +26,7 @@ export function GroupPreview({ group, onAddTask }) {
             <div className="group-header flex justify-space-b align-center ">
                 <input
                     className="group-title"
-                    value={inputValue}
+                    value={groupTitle}
                     onChange={handleInputChange}
                     onFocus={(ev) => ev.target.classList.add("focused")}
                     onBlur={(ev) => ev.target.classList.remove("focused")}
