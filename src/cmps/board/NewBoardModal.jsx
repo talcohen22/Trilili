@@ -29,9 +29,7 @@ export function NewBoardModal() {
                 <div className="chosen-bgc">
                     <div className="chosen-bgc-img"
                         style={{
-                            background: `url("${chosenBgcImg}"), url(${chosenBgcImg})`,
-                            // backgroundPosition: 'center center',
-                            // backgroundSize: 'cover'
+                            backgroundImage: `url("${chosenBgcImg}"), url(${chosenBgcImg})`
                         }}>
 
                         <NewBoardSvg />
@@ -47,7 +45,7 @@ export function NewBoardModal() {
                             className="color-button"
                             onClick={() => setChosenBgcImg(paletteImgs[index])}
                             style={{
-                                backgroundImage: `url("${ImgOption}")`,
+                                backgroundImage: `url(${ImgOption})`, //`url("${ImgOption}")`
                                 backgroundPosition: 'center center',
                                 backgroundSize: 'cover'
                             }}
@@ -59,6 +57,7 @@ export function NewBoardModal() {
                         <button
                             key={index}
                             className="color-button"
+                            onClick={() => setChosenBgcImg(palette[index])}
                             style={{ backgroundImage: `url(${colorOption})` }}
                         ></button>
                     ))}

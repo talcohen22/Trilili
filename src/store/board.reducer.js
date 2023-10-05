@@ -1,3 +1,5 @@
+import { boardService } from "../services/board.service.local"
+
 export const SET_BOARDS = 'SET_BOARDS'
 export const REMOVE_BOARD = 'REMOVE_BOARD'
 export const ADD_BOARD = 'ADD_BOARD'
@@ -7,7 +9,8 @@ export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
 
 const initialState = {
     boards: [],
-    lastRemovedBoard: null
+    lastRemovedBoard: null,
+    currBoard: boardService.getEmptyBoard()
 }
 
 export function boardReducer(state = initialState, action) {

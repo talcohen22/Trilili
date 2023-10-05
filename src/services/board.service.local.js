@@ -5,6 +5,18 @@ import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'boardDB'
 
+export const boardService = {
+    query,
+    getById,
+    save,
+    remove,
+    getEmptyBoard,
+    addBoardMsg,
+    getEmptyGroup
+}
+// debug trick
+window.bs = boardService
+
 const BOARDS = [
     {
         _id: "b101",
@@ -674,16 +686,6 @@ const BOARDS = [
     }
 ]
 
-export const boardService = {
-    query,
-    getById,
-    save,
-    remove,
-    getEmptyBoard,
-    addBoardMsg
-}
-// debug trick
-window.bs = boardService
 
 _createBoards()
 
@@ -750,3 +752,11 @@ function _createBoards() {
 
 
 
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        title: '',
+        tasks: [],
+        style: {},
+    }
+}
