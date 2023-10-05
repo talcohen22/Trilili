@@ -734,8 +734,13 @@ async function addBoardMsg(boardId, txt) {
 
 // function getEmptyBoard() {
 //     return {
+
+//         title: 'Board-' + (Date.now() % 1000),
+//         price: utilService.getRandomIntInclusive(1000, 9000),
+
 //         title: '',
 //         bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
+
 //     }
 // }
 
@@ -762,10 +767,6 @@ async function createTask(boardId, groupId, taskToAdd) {
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {title: 'Jira G', price: 980}).then(x => console.log(x))
-
-
-
-
 function getEmptyBoard() {
     return {
         title: "",
@@ -780,6 +781,7 @@ function getEmptyBoard() {
         cmpsOrder: []
     }
 }
+
 
 function getEmptyGroup() {
     return {

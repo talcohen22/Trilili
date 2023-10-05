@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ExitBtnSvg } from "../svg/ImgSvg";
 
 export function AddGroupList({ onAddTitle, onCancel }) {
     const [title, setTitle] = useState('');
@@ -23,8 +24,13 @@ export function AddGroupList({ onAddTitle, onCancel }) {
                 onChange={handleTitleChange}
             />
             <div className="button-container">
-                <button onClick={handleAddClick}>Add list</button>
-                <button onClick={onCancel}>X</button>
+                <button className='btn-action modal-btn' onClick={handleAddClick}>Add list</button>
+
+                <button onClick={onCancel}>
+                    <div className="center-svg">
+                        <ExitBtnSvg />
+                    </div>
+                </button>
             </div>
         </div>
     );

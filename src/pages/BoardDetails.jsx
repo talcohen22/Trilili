@@ -61,7 +61,6 @@ export function BoardDetails() {
         // style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
         >
             <BoardFilter />
-
             {board &&
                 <GroupList
                     board={board}
