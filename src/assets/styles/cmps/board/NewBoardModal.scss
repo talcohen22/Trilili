@@ -81,4 +81,17 @@
             margin-inline-end: 8px;
         }
     }
+
+    .exit-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+
+        margin: 15px;
+
+        svg{
+            width: 16px;
+        }
+    }
 }

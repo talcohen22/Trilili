@@ -12,7 +12,7 @@ export const boardService = {
     remove,
     getEmptyBoard,
     addBoardMsg,
-    getEmptyGroup
+    getEmptyGroup,
 }
 // debug trick
 window.bs = boardService
@@ -709,8 +709,8 @@ async function save(board) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, board)
+        // board.owner = userService.getLoggedinUser()
+        savedBoard = await storageService.post(STORAGE_KEY, {...getEmptyGroup(), title: board.title, bgc: board.bgc})
     }
     return savedBoard
 }
@@ -733,8 +733,8 @@ async function addBoardMsg(boardId, txt) {
 
 function getEmptyBoard() {
     return {
-        title: 'Board-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        title: '',
+        bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
     }
 }
 
@@ -754,9 +754,20 @@ function _createBoards() {
 
 function getEmptyGroup() {
     return {
-        id: utilService.makeId(),
-        title: '',
-        tasks: [],
-        style: {},
+        title: "",
+        isStarred: false,
+        archivedAt: null,
+        createdBy: null,
+        style: { backgroundImage: "" },
+        labels: [],
+        members: [],
+        groups: [],
+        activities: [],
+        cmpsOrder: []
+
+        // id: utilService.makeId(),
+        // title: '',
+        // tasks: [],
+        // style: {},
     }
 }

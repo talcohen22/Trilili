@@ -3,14 +3,20 @@ import { UserSvg } from "../svg/ImgSvg";
 import { BoardPreview } from "./BoardPreview";
 import { useState } from "react";
 import { NewBoardModal } from "./NewBoardModal";
+import { boardService } from "../../services/board.service.local";
 
-export function BoardList({ boards }) {
-    
+export function BoardList({ boards, onAddBoard }) {
+
     const navigate = useNavigate()
     const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false)
 
-    function onGetDetails(boardId) {
+    async function onGetDetails(boardId) {
+        const board = await boardService.getById(boardId)
         navigate(`/board/${boardId}`)
+    }
+
+    function onSetIsOpenModal(){
+        setIsNewBoardModalOpen(!isNewBoardModalOpen)
     }
 
     return (
@@ -33,7 +39,7 @@ export function BoardList({ boards }) {
                     Create new board
                 </li>
             </ul>
-            {isNewBoardModalOpen && <NewBoardModal />}
+            {isNewBoardModalOpen && <NewBoardModal onAddBoard={onAddBoard} onSetIsOpenModal={onSetIsOpenModal} />}
         </section >
     )
 }

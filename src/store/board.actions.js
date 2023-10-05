@@ -47,16 +47,30 @@ export async function removeBoard(boardId) {
     }
 }
 
-export async function addBoard(board) {
-    try {
-        const savedBoard = await boardService.save(board)
-        console.log('Added Board', savedBoard)
-        store.dispatch(getActionAddBoard(savedBoard))
-        return savedBoard
-    } catch (err) {
-        console.log('Cannot add board', err)
-        throw err
-    }
+// export async function addBoard(board) {
+//     try {
+//         const savedBoard = await boardService.save(board)
+//         console.log('Added Board', savedBoard)
+//         store.dispatch(getActionAddBoard(savedBoard))
+//         return savedBoard
+//     } catch (err) {
+//         console.log('Cannot add board', err)
+//         throw err
+//     }
+// }
+
+export function addBoard(board) {
+    return boardService.save(board)
+        .then(savedBoard => {
+            console.log('savedBoard:', savedBoard)
+            // store.dispatch({type: SET_CURR_BOARD, board: savedBoard})
+            store.dispatch({type: ADD_BOARD, board: savedBoard}) 
+            return savedBoard
+        })
+        .catch(err => {
+            console.log('Cannot save board', err)
+            throw err
+        })
 }
 
 export function updateBoard(board) {

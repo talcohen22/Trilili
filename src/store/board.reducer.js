@@ -6,11 +6,12 @@ export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
 
-
 const initialState = {
     boards: [],
-    lastRemovedBoard: null,
-    currBoard: boardService.getEmptyBoard()
+    // currBoard: {},
+    // lastRemovedBoard: null,
+    // currBoard: null
+    // currBoard: boardService.getEmptyBoard()
 }
 
 export function boardReducer(state = initialState, action) {
@@ -33,6 +34,10 @@ export function boardReducer(state = initialState, action) {
             boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, boards }
             break
+        // case UPDATE_BOARD:
+        //     boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
+        //     newState = { ...state, boards }
+        //     break
         case UNDO_REMOVE_BOARD:
             if (state.lastRemovedBoard) {
                 newState = { ...state, boards: [...state.boards, state.lastRemovedBoard], lastRemovedBoard: null }
