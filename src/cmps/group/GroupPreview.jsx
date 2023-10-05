@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
-export function GroupPreview({ group }) {
+export function GroupPreview({ group,onAddTask}) {
     const [inputValue, setInputValue] = useState(group.title)
     const [isOnAddTask,setIsOnAddTask]= useState(false)//by tamir
     
@@ -10,8 +10,13 @@ export function GroupPreview({ group }) {
         setInputValue(ev.target.value)
     }
     function handleAddTask(){
-        setIsOnAddTask(true);
+        setIsOnAddTask(true)
     }
+
+    function onCloseAddTaskModal(){
+        setIsOnAddTask(false)
+    }
+
     return (
         <section className="group-card">
 
@@ -29,7 +34,7 @@ export function GroupPreview({ group }) {
             </div>
 
             <div className="group-tasks">
-                <TaskList/>
+                <TaskList group={group}/>
            
             </div>
 
@@ -45,7 +50,7 @@ export function GroupPreview({ group }) {
                 </button>
             </div>
             }
-            {isOnAddTask&&<AddTaskModal/>} 
+            {isOnAddTask&&<AddTaskModal group={group} onAddTask={onAddTask} onCloseAddTaskModal={onCloseAddTaskModal}/>} 
         </section>
     )
 }

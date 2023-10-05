@@ -33,11 +33,23 @@
             justify-content: left;
             padding: 8px;
         }
-        
+        svg{
+            fill:#d7d8da
+        }
        &:hover{
            background: #f1f2f4;
            border-radius: rem(8px);
+           svg{
+            fill: #0000;
+           }
         }
     }
 
+}
+.svg-hover{
+ 
+      &:hover {
+        fill: red;
+      }
+        
 }
