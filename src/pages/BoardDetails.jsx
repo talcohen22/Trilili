@@ -45,14 +45,9 @@ export function BoardDetails() {
     }
 
     return (
-
-        board && <GroupList board={board} onAddNewGroup={onAddNewGroup} />
-
         <section>
-            <BoardFilter/>
-            {board && <GroupList board={board} />}
-            
+            <BoardFilter />
+            {board && <GroupList board={board} onAddNewGroup={onAddNewGroup} />}
         </section>
-
     )
 }
