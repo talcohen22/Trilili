@@ -1,55 +1,85 @@
-.task-card{
-    padding-bottom: 8px;
+.task-card {
+    position: relative;
     overflow: hidden;
-    margin: 4px;
+    margin-inline: 7px;
     max-width: 100%;
     background-color: #ffffff;
-    border-radius:rem(8px);
-    box-shadow: 0 1px 0 #091e4240;
+    border-radius: rem(8px);
+    box-shadow: $boxShadowTask;
     font-size: 14px;
     white-space: normal;
     cursor: pointer;
-    padding-bottom: 2px;
+    padding: 8px 8px 4px 12px;
 
-    &:hover{
+    &:hover {
         opacity: 1;
-        background-color: #d7d8da;
+        background-color: $groupBgc;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+
+        .task-preview-btn{
+            svg{
+
+                display: block;
+            }
+        }
     }
-    .task-title{
+
+    .task-title {
         word-wrap: break-word;
         clear: both;
-        color:$wsTxtColor;
+        color: $wsTxtColor;
         display: block;
         overflow: hidden;
         padding: 6px 0;
-
+        font-size: rem(14px);
     }
-    .task-preview-btn{
-        width: 32px;
-        &.add-task-btn{
+
+    .task-preview-btn {
+        @include btns-group;
+        svg{
             
+            display: none;
+        }
+
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: rgba(255, 255, 255, 0);
+
+        width: 32px;
+        margin: 2px 2px 0px 0px;
+
+        &.add-task-btn {
+
             width: max-content;
             flex-grow: 1;
             justify-content: left;
-            padding: 8px;
         }
-        svg{
-            fill:#d7d8da
+
+        svg {
+            fill: #d7d8da;
+            height: 16px;
         }
-       &:hover{
-           background: #f1f2f4;
-           border-radius: rem(8px);
-           svg{
-            fill: #0000;
-           }
+
+        &:hover {
+            background: #f1f2f4;
+            border-radius: rem(8px);
+            background-color: $editTaskBtnHover;
+
+            svg {
+                fill: #0000;
+            }
         }
     }
 
 }
-.svg-hover{
- 
-      &:hover {
+
+.svg-hover {
+
+    &:hover {
         fill: red;
-      }
-        
+    }
+
 }
