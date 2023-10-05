@@ -190,31 +190,5 @@
         }
     }
 
-    .btn-action {
-        margin: 0;
-        height: rem(50px);
-        background-color: $headerLogoClr;
-        border: rem(1px) solid $headerLogoClr;
-        border-radius: rem(5px);
-        font-size: rem(16px);
-        padding: rem(11.2px) rem(11.2px) rem(16px) rem(12.8px);
-        transition: 0.2s ease-in-out;
-        color: inherit;
-
-        &:hover {
-            background-color: $LogoHoverClr;
-            border-color: $LogoHoverClr;
-        }
-
-        a {
-            text-decoration: none;
-
-            color: #fff
-        }
-
-        @include for-wide-layout {
-            font-size: rem(16px);
-            width: fit-content;
-        }
-    }
+    
 }

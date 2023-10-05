@@ -1,23 +1,72 @@
+import { useState } from "react"
 import { NewBoardSvg } from "../svg/ImgSvg"
 
 export function NewBoardModal() {
-    console.log("aaa");
+
+    const [chosenBgcImg, setChosenBgcImg] = useState('https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400')
+
+    const paletteImgs = [
+        'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
+        'https://images.unsplash.com/photo-1675889335685-4ac82f1e47ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
+        'https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
+        'https://images.unsplash.com/photo-1694802491008-a528234a9a2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400'
+    ]
+
+    const palette = [
+        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg',
+        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg',
+        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg',
+        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg',
+        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg',
+        'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg'
+    ]
+
+
     return (
         <section className="new-board-modal">
-            <div>
+            <div className="preview">
                 <h1>Create board</h1>
                 <div className="chosen-bgc">
-                    <NewBoardSvg />
+                    <div className="chosen-bgc-img"
+                        style={{
+                            backgroundImage: `url("${chosenBgcImg}"), url(${chosenBgcImg})`
+                        }}>
+
+                        <NewBoardSvg />
+                    </div>
                 </div>
             </div>
-            <div>
+            <div className="bgc-options">
                 <h1>Background</h1>
-                <div className="img-bgc">
-
+                <div className="img-bgc flex justify-space-b">
+                    {paletteImgs.map((ImgOption, index) => (
+                        <button
+                            key={index}
+                            className="color-button"
+                            onClick={() => setChosenBgcImg(paletteImgs[index])}
+                            style={{
+                                backgroundImage: `url(${ImgOption})`, //`url("${ImgOption}")`
+                                backgroundPosition: 'center center',
+                                backgroundSize: 'cover'
+                            }}
+                        ></button>
+                    ))}
                 </div>
-                <div className="color-bgc">
-
+                <div className="color-bgc flex justify-space-b">
+                    {palette.map((colorOption, index) => (
+                        <button
+                            key={index}
+                            className="color-button"
+                            onClick={() => setChosenBgcImg(palette[index])}
+                            style={{ backgroundImage: `url(${colorOption})` }}
+                        ></button>
+                    ))}
                 </div>
+            </div>
+            <div className="board-title">
+                <h1>Board title <span>*</span></h1>
+                <input type="text" />
+                <p><span>👋</span>Board title is required</p>
             </div>
         </section>
     )
