@@ -3,7 +3,6 @@
         height: rem(60px);
         display: flex;
         max-width: 1320px;
-        // font-family: CharlieText-regular;
     }
 
     .homepage-header-btn {
@@ -53,7 +52,7 @@
                     line-height: 1.25;
                     font-size: rem(38px);
                     margin-block-end: rem(8px);
-                    // font-family: charlie-semibold;
+                    font-family: charlie-semibold;
                     letter-spacing: rem(-2.7px);
 
                     @include for-normal-layout {
@@ -128,7 +127,7 @@
         padding: 0 rem(25px) rem(45px);
 
         .productivity-container {
-            // font-family: charlie-regular;
+            font-family: charlie-regular;
             color: $txtClr;
             margin-inline: auto;
             padding-inline: rem(9px);
@@ -140,7 +139,7 @@
                 flex-direction: column;
 
                 .trilili-101 {
-                    // font-family: charlie-semibold;
+                    font-family: charlie-semibold;
                     margin-block-end: rem(1px);
                     font-size: rem(16px);
 
@@ -160,7 +159,7 @@
 
                 h2 {
                     font-size: rem(28px);
-                    // font-family: charlie-semibold;
+                    font-family: charlie-semibold;
                     letter-spacing: rem(-1.75px);
                     margin-block-end: rem(17px);
                     color: $taskBgc;
@@ -177,7 +176,7 @@
                     padding-inline-end: rem(50px);
 
                     p {
-                        // font-family: inherit;
+                        font-family: inherit;
                         font-size: rem(16px);
                         color: #091E42;
 

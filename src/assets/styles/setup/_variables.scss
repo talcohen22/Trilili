@@ -14,10 +14,7 @@ $bgcBtnAddGroupHovered: rgba(223, 217, 217, 0.18);
 //task
 $taskBgc: #ffffff;
 $taskBgcHover: #F1F2F4;
-
-// $boxShadowTask: 0 1px 0 #091e4240;
-$boxShadowTask: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F;
-
+$boxShadowTask:  0px 1px 1px #091E4240, 0px 0px 1px #091E424F;
 
 //workspace
 $wsTxtColor: #172B4D;
@@ -26,7 +23,6 @@ $wsEmptyBoardBgc: #091e420a;
 $wsEmptyBoardBgcHover: #DCDFE4;
 $wsFadeColor: rgba(0, 0, 0, 0.15);
 $wsFadeColorHover: rgba(0, 0, 0, 0.23);
-$editTaskBtnHover: rgb(219, 219, 219);
 
 $requiredField: #e34935;
 $blue1: #388bff;

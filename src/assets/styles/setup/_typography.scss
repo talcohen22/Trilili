@@ -1,6 +1,6 @@
 @font-face {
     font-family: roboto;
-    src: url(./fonts/charilie/charlie-display-regular.ttf);
+    src: url(./fonts/roboto/roboto.ttf);
 }
 @font-face {
     font-family: charlieBold;
@@ -20,26 +20,3 @@
     // font-family: montserrat;
     // src: url(./fonts/Montserrat/Montserrat-Regular.ttf);
 // }
-
-@font-face {
-    font-family: SegoeUI Regular;
-    // font-family: SegoeUI Regular;
-    font-style: normal;
-    font-weight: normal;
-    src: local('Segoe UI Regular'), url('../../fonts/Segoe-UI-Font/SegoeUI.woff') format('woff');
-  }
-  
-  @font-face {
-    font-family: CharlieText-regular;
-    src: url(../../fonts/Charlie/CharlieDisplay-Regular.ttf);
-  }
-  
-  @font-face {
-    font-family: CharlieDisplay-bold;
-    src: url(../../fonts/Charlie/CharlieDisplay-Bold.ttf);
-  }
-  
-  @font-face {
-    font-family: CharlieDisplay-semibold;
-    src: url(../../fonts/Charlie/CharlieDisplay-Semibold.ttf);
-  }

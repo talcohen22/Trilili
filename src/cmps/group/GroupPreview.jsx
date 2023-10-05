@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
@@ -24,7 +23,7 @@ export function GroupPreview({ group, onAddTask }) {
             <div className="group-header flex justify-space-b align-center ">
                 <input
                     className="group-title"
-                    value={groupTitle}
+                    value={inputValue}
                     onChange={handleInputChange}
                     onFocus={(ev) => ev.target.classList.add("focused")}
                     onBlur={(ev) => ev.target.classList.remove("focused")}
