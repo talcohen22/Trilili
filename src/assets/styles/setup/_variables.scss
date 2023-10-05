@@ -4,11 +4,13 @@
 $headerBtnClr: rgba(220, 223, 228, 1);
 $headerLogoClr:#227ffa;
 $LogoHoverClr:rgb(7, 71, 166);
+$focusInput: #0C66E4;
 //group
 $groupHeader: #172B4D;
 $groupMoreActions: #44546F; //add a cart, 3 dots (...), create from template 
 $groupBgc: #F1F2F4;
-
+$bgcBtnAddGroup: rgba(216, 215, 215, 0.34);
+$bgcBtnAddGroupHovered: rgba(223, 217, 217, 0.18);
 //task
 $taskBgc: #ffffff;
 $taskBgcHover: #F1F2F4;
@@ -18,8 +20,8 @@ $wsTxtColor: #172B4D;
 $wsIconColor: #44546F;
 $wsEmptyBoardBgc: #091e420a;
 $wsEmptyBoardBgcHover: #DCDFE4;
-$wsFadeColor: #00000033;
-$wsFadeColorHover: #00000045;
+$wsFadeColor: rgba(0, 0, 0, 0.15);
+$wsFadeColorHover: rgba(0, 0, 0, 0.23);
 
 $requiredField: #e34935;
 $blue1: #388bff;

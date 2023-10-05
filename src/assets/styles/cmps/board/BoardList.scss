@@ -38,9 +38,8 @@
             border-radius: 3px;
 
             color: white;
-            background-image: url("https://images.unsplash.com/photo-1495127280742-47f59274e2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODU3NTUyNDZ8&ixlib=rb-4.0.3&q=80&w=400&quot");
-            background-size: cover;
-            background-position: center;
+            
+            @include fixed-img-url();
 
             .board-fade {
                 position: absolute;
@@ -62,6 +61,7 @@
             font-size: rem(14px);
             background-color: $wsEmptyBoardBgc;
             border-radius: 3px;
+            min-height: 96px;
         }
 
         li:last-child:hover {

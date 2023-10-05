@@ -26,6 +26,8 @@ export function BoardDetails() {
         }
     }, [])
 
+    console.log(board);
+
     async function onAddNewGroup(newGroup) {
         try {
             const updatedBoard = board
@@ -38,8 +40,8 @@ export function BoardDetails() {
             console.log('err onAddNewGroup: ', err)
         }
     }
-  
-    async function onAddTask(newTask,groupId) {
+
+    async function onAddTask(newTask, groupId) {
         console.log(newTask);
         try {
             const updatedBoard = board
@@ -55,13 +57,17 @@ export function BoardDetails() {
     }
 
     return (
-        <section>
-            <div className="board-filter-container">
+
+        <section
+        // style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
+        >
             <BoardFilter />
-            </div>
-            {board && <GroupList board={board} onAddNewGroup={onAddNewGroup} onAddTask={onAddTask} />}
-
+            {board &&
+                <GroupList
+                    board={board}
+                    onAddNewGroup={onAddNewGroup}
+                    onAddTask={onAddTask} />
+            }
         </section>
-
     )
 }

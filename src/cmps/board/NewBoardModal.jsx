@@ -1,7 +1,9 @@
 import { useState } from "react"
-import { NewBoardSvg } from "../svg/ImgSvg"
+import { ExitBtnSvg, NewBoardSvg } from "../svg/ImgSvg"
 
-export function NewBoardModal() {
+export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
+
+    const [txtInput, setTxtInput] = useState('')
 
     const [chosenBgcImg, setChosenBgcImg] = useState('https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400')
 
@@ -21,7 +23,16 @@ export function NewBoardModal() {
         'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg'
     ]
 
+    function handleSubmit(ev) {
+        ev.preventDefault()
+        onAddBoard({ title: txtInput, bgc: chosenBgcImg })
+    }
 
+    function handleChange({ target }) {
+        const { name: field, value } = target
+        setTxtInput(value)
+    }
+    
     return (
         <section className="new-board-modal">
             <div className="preview">
@@ -31,7 +42,6 @@ export function NewBoardModal() {
                         style={{
                             backgroundImage: `url("${chosenBgcImg}"), url(${chosenBgcImg})`
                         }}>
-
                         <NewBoardSvg />
                     </div>
                 </div>
@@ -65,8 +75,13 @@ export function NewBoardModal() {
             </div>
             <div className="board-title">
                 <h1>Board title <span>*</span></h1>
-                <input type="text" />
+                <form action="" onSubmit={handleSubmit}>
+                    <input value={txtInput} type="text" name="name" onChange={handleChange} required />
+                </form>
                 <p><span>👋</span>Board title is required</p>
+            </div>
+            <div className="exit-btn" onClick={onSetIsOpenModal}>
+                <ExitBtnSvg />
             </div>
         </section>
     )

@@ -12,12 +12,17 @@ export function AddGroupBtn({ onAddNewGroup }) {
         setAddListToggle(true)
     }
 
+    function onCancel() {
+        setAddListToggle(false)
+    }
+
     function onAddTitle(newGroupTitle) {
         const updatedNewGroup = { ...boardService.getEmptyGroup() }
         updatedNewGroup.title = newGroupTitle
         onAddNewGroup(updatedNewGroup)
         setGroupTitle(newGroupTitle)
     }
+
 
     return (
         <section>
@@ -30,7 +35,7 @@ export function AddGroupBtn({ onAddNewGroup }) {
                     <h1>Add another list</h1>
                 </button>
             ) : (
-                <AddGroupList onAddTitle={onAddTitle} />
+                <AddGroupList onAddTitle={onAddTitle} onCancel={onCancel} />
             )}
         </section>
     );
