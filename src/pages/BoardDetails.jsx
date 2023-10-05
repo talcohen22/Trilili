@@ -57,7 +57,6 @@ export function BoardDetails() {
     }
 
     return (
-
         <section
         // style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
         >
