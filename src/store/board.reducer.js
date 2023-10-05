@@ -10,7 +10,7 @@ export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
 const initialState = {
     boards: [],
     lastRemovedBoard: null,
-    currBoard: boardService.getEmptyBoard()
+    currBoard: null
 }
 
 export function boardReducer(state = initialState, action) {

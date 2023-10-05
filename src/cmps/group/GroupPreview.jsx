@@ -27,7 +27,7 @@ export function GroupPreview({ group, onAddTask }) {
                     onChange={handleInputChange}
                     onFocus={(ev) => ev.target.classList.add("focused")}
                     onBlur={(ev) => ev.target.classList.remove("focused")}
-                    autoFocus />
+                />
                 <button className="group-btn flex justify-center align-center">
                     <DotsSvg />
                 </button>
