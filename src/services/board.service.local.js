@@ -783,22 +783,6 @@ function getEmptyBoard() {
 }
 
 
-
-function getEmptyBoard() {
-    return {
-        title: "",
-        isStarred: false,
-        archivedAt: null,
-        createdBy: null,
-        style: { backgroundImage: "" },
-        labels: [],
-        members: [],
-        groups: [],
-        activities: [],
-        cmpsOrder: []
-    }
-}
-
 function getEmptyGroup() {
     return {
         id: utilService.makeId(),
