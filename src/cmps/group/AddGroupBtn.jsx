@@ -32,7 +32,7 @@ export function AddGroupBtn({ onAddNewGroup }) {
                     onClick={() => onOpenFormTitle()}
                 >
                     <PlusBtnAddListSvg />
-                    <h1>Add another list</h1>
+                    <p>Add another list</p>
                 </button>
             ) : (
                 <AddGroupList onAddTitle={onAddTitle} onCancel={onCancel} />
