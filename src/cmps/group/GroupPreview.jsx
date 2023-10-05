@@ -8,6 +8,7 @@ export function GroupPreview({ group, onAddTask }) {
     const [isOnAddTask, setIsOnAddTask] = useState(false)//by tamir
     const [groupTitle, setGroupTitle] = useState(group.title)
     console.log(group);
+    console.log(isOnAddTask);
 
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
