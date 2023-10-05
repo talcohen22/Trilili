@@ -1,52 +1,40 @@
-button {
-   
-}
-
-form > * {
-  
-}
-
-.btn-link {
-    // border:0;
-    // background-color: transparent;
-    // text-decoration: underline;
-    // transition: .5s;
-}
-.btn-link:hover {
-    // background-color: $clr1;
-    // transform: scale(1.1);
-}
-
-.btn-action {
+.button-container{
+    display: flex;
     align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    color: white;
-    margin: 0;
-    height: rem(50px);
-    background-color: $headerLogoClr;
-    border: rem(1px) solid $headerLogoClr;
-    border-radius: rem(5px);
-    font-size: rem(16px);
-    padding: rem(11.2px) rem(11.2px) rem(16px) rem(12.8px);
-    transition: 0.2s ease-in-out;
-    &:hover {
-        background-color: $LogoHoverClr;
-        border-color: $LogoHoverClr;
-    }
-    &.modal-btn{
-        width: rem(80px);
-        height: rem(31px);
-    }
+    margin: 8px;
 
-    a {
-        text-decoration: none;
-
-        color: #fff
-    }
-
-    @include for-wide-layout {
+    .btn-action {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        color: white;
+        margin-inline-end: 6px;
+        height: rem(50px);
+        background-color: $headerLogoClr;
+        border: rem(1px) solid $headerLogoClr;
+        border-radius: rem(3px);
         font-size: rem(16px);
-        width: fit-content;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            background-color: $LogoHoverClr;
+            border-color: $LogoHoverClr;
+            
+        }
+
+        &.modal-btn{
+            width: rem(80px);
+            height: rem(31px);
+        }
+    
+        a {
+            text-decoration: none;
+            color: #fff
+        }
+    
+        @include for-wide-layout {
+            font-size: rem(16px);
+            width: fit-content;
+        }
     }
 }
