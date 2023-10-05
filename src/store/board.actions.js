@@ -60,9 +60,9 @@ export async function removeBoard(boardId) {
 // }
 
 export function addBoard(board) {
+    console.log('board:', board)
     return boardService.save(board)
         .then(savedBoard => {
-            console.log('savedBoard:', savedBoard)
             // store.dispatch({type: SET_CURR_BOARD, board: savedBoard})
             store.dispatch({type: ADD_BOARD, board: savedBoard}) 
             return savedBoard

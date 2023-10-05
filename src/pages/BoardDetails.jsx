@@ -26,6 +26,8 @@ export function BoardDetails() {
         }
     }, [])
 
+    console.log(board);
+
     async function onAddNewGroup(newGroup) {
         try {
             const updatedBoard = board
@@ -55,7 +57,8 @@ export function BoardDetails() {
     }
 
     return (
-        <section>
+        <section
+        style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
             <BoardFilter />
 
             {board &&

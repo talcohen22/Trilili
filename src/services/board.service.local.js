@@ -30,7 +30,7 @@ const BOARDS = [
             "imgUrl": "http://some-img"
         },
         style: {
-            backgroundImage: ""
+            backgroundImage: "https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400"
         },
         labels: [
             {
@@ -160,7 +160,7 @@ const BOARDS = [
             "imgUrl": "http://marketing-img"
         },
         style: {
-            backgroundImage: "http://marketing-bg"
+            backgroundImage: "https://images.unsplash.com/photo-1675889335685-4ac82f1e47ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400"
         },
         labels: [
             {
@@ -294,7 +294,7 @@ const BOARDS = [
             "imgUrl": "http://evadavis-img"
         },
         style: {
-            backgroundImage: "http://project-bg"
+            backgroundImage: "https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400"
         },
         labels: [
             {
@@ -428,7 +428,7 @@ const BOARDS = [
             "imgUrl": "http://michael-img"
         },
         style: {
-            backgroundImage: "http://event-bg"
+            backgroundImage: "https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400"
         },
         labels: [
             {
@@ -562,7 +562,7 @@ const BOARDS = [
             "imgUrl": "http://sophia-img"
         },
         style: {
-            backgroundImage: "http://product-bg"
+            backgroundImage: "https://images.unsplash.com/photo-1694802491008-a528234a9a2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400"
         },
         labels: [
             {
@@ -711,7 +711,7 @@ async function save(board) {
     } else {
         // Later, owner is set by the backend
         // board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, {...getEmptyGroup(), title: board.title, bgc: board.bgc})
+        savedBoard = await storageService.post(STORAGE_KEY, { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
     }
     return savedBoard
 }
@@ -732,12 +732,12 @@ async function addBoardMsg(boardId, txt) {
     return msg
 }
 
-function getEmptyBoard() {
-    return {
-        title: '',
-        bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
-    }
-}
+// function getEmptyBoard() {
+//     return {
+//         title: '',
+//         bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400',
+//     }
+// }
 
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
@@ -766,7 +766,7 @@ async function createTask(boardId, groupId, taskToAdd) {
 
 
 
-function getEmptyGroup() {
+function getEmptyBoard() {
     return {
         title: "",
         isStarred: false,
@@ -778,13 +778,18 @@ function getEmptyGroup() {
         groups: [],
         activities: [],
         cmpsOrder: []
-
-        // id: utilService.makeId(),
-        // title: '',
-        // tasks: [],
-        // style: {},
     }
 }
+
+function getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        title: '',
+        tasks: [],
+        style: {},
+    }
+}
+
 function getEmptyTask() {
     return {
         id: utilService.makeId(),
@@ -793,7 +798,7 @@ function getEmptyTask() {
         priority: null,
         description: null,
         comments: [],
-        checklists:[],
+        checklists: [],
         memberIds: null,
         labelIds: null,
         dueDate: null,

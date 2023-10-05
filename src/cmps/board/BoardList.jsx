@@ -15,7 +15,7 @@ export function BoardList({ boards, onAddBoard }) {
         navigate(`/board/${boardId}`)
     }
 
-    function onSetIsOpenModal(){
+    function onSetIsOpenModal() {
         setIsNewBoardModalOpen(!isNewBoardModalOpen)
     }
 
@@ -28,12 +28,15 @@ export function BoardList({ boards, onAddBoard }) {
             </div>
             <ul className="board-list">
                 {boards.map(board =>
-                    <li className="board-item" onClick={() => onGetDetails(board._id)} key={board._id}>
+                    <li className="board-item"
+                        onClick={() => onGetDetails(board._id)}
+                        key={board._id}
+                        style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
+                    >
                         <span className="board-fade">
                             <BoardPreview board={board} />
                         </span>
                     </li>
-
                 )}
                 <li onClick={() => setIsNewBoardModalOpen(!isNewBoardModalOpen)}>
                     Create new board

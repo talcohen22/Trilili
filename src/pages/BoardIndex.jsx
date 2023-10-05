@@ -27,9 +27,9 @@ export function BoardIndex() {
     //     }
     // }
 
-    async function onAddBoard(board) {
+    async function onAddBoard({title, bgc}) {
         try {
-            const savedBoard = await addBoard(board)
+            const savedBoard = await addBoard({title, style: {backgroundImage: bgc}})
             navigate(`/board/${savedBoard._id}`)
             showSuccessMsg(`Board added (id: ${savedBoard._id})`)
         } catch (err) {
