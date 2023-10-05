@@ -1,29 +1,27 @@
 import { useState } from 'react'
 import { boardService } from '../../services/board.service.local'
-export function AddTaskModal() {
-    const [newTaskText, setNewTaskText] = useState({text:''})
+export function AddTaskModal({group,onAddTask,onCloseAddTaskModal}) {
+    const [newTaskText, setNewTaskText] = useState('')
 
     function handleChange({ target }) {
-        const value = target.value
-        const field = target.name
-        setNewTaskText(prevTask => ({ ...prevTask, [field]: value }))
-        console.log(newTaskText)
+        const title = target.value
+        setNewTaskText(title )
     }
-
-    async function onAddTask(e) {
+    function handleCloseModal(){
+        onCloseAddTaskModal()
+    }
+    
+  function onSubmit(e) {
         e.preventDefault()
-        if (newTaskText.trim().length > 0) {
-          const task = boardService.createTask(newTaskText)
-          try {
-            await saveNewTask(board, group._id, task, activity)
-            await addActivity(activity)
-          } catch (err) {
-            console.log('err', err)
-          }
+        if (newTaskText.trim().length>0){ 
+            const groupId=group.id
+            const taskToAdd= {...boardService.getEmptyTask()}
+            taskToAdd.title=newTaskText
+            onAddTask(taskToAdd,groupId)
+            setNewTaskText('')
         }
-        setIsAddingTask(true)
-        setNewTaskText('')
       }
+
    const {text}=newTaskText
     return (
         <div>
@@ -31,8 +29,8 @@ export function AddTaskModal() {
             <input  type="text" placeholder="Enter a title for this card…" name="text" value={text} onChange={handleChange}
                         />
                 <div>
-                    <button className='btn-action modal-btn'>Add</button>
-                    <button onClick={onAddTask}>X</button>
+                    <button onClick={onSubmit}className='btn-action modal-btn'>Add</button>
+                    <button onClick={handleCloseModal}>X</button>
                 </div>
             </form>
         </div>

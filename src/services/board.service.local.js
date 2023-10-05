@@ -13,6 +13,7 @@ export const boardService = {
     getEmptyBoard,
     addBoardMsg,
     getEmptyGroup,
+    getEmptyTask
 }
 // debug trick
 window.bs = boardService
@@ -746,6 +747,19 @@ function _createBoards() {
     }
 }
 
+async function createTask(boardId, groupId, taskToAdd) {
+    try {
+        const board = await getById(boardId)
+        const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+        let task = taskToAdd
+        task[id] = utilService.makeId()
+        board.group[groupIdx].tasks.push(task)
+        return save(board)
+    } catch (err) {
+
+    }
+}
+
 // TEST DATA
 // storageService.post(STORAGE_KEY, {title: 'Jira G', price: 980}).then(x => console.log(x))
 
@@ -769,5 +783,23 @@ function getEmptyGroup() {
         // title: '',
         // tasks: [],
         // style: {},
+    }
+}
+function getEmptyTask() {
+    return {
+        id: utilService.makeId(),
+        title: '',
+        status: null, // monday
+        priority: null,
+        description: null,
+        comments: [],
+        checklists:[],
+        memberIds: null,
+        labelIds: null,
+        dueDate: null,
+        byMember: null,
+        style: {
+
+        }
     }
 }

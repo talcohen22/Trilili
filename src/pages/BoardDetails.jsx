@@ -16,8 +16,6 @@ export function BoardDetails() {
 
     useEffect(() => {
         if (boardId) loadBoard(boardId)
-        // else setBoardToEdit(boardService.getEmptyBoard())
-
         async function loadBoard(boardId) {
             try {
                 const boardById = await boardService.getById(boardId)
@@ -29,13 +27,25 @@ export function BoardDetails() {
     }, [])
 
     async function onAddNewGroup(newGroup) {
-        // console.log('newGroup: ', newGroup)
         try {
             const updatedBoard = board
             updatedBoard.groups.push(newGroup)
             boardService.save(updatedBoard)
+            const savedBoard = await updateBoard(updatedBoard)
+            setBoard(savedBoard)
+            console.log('savedBoard', savedBoard)
+        } catch (err) {
+            console.log('err onAddNewGroup: ', err)
+        }
+    }
 
-            // console.log('test')
+    async function onAddTask(newTask, groupId) {
+        console.log(newTask);
+        try {
+            const updatedBoard = board
+            const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+            updatedBoard.groups[groupIdx].tasks.push(newTask)
+            boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
             console.log('savedBoard', savedBoard)
@@ -46,10 +56,14 @@ export function BoardDetails() {
 
     return (
         <section>
-            <BoardFilter/>
-            {board && <GroupList board={board} onAddNewGroup={onAddNewGroup} />}
-            
-        </section>
+            <BoardFilter />
 
+            {board &&
+                <GroupList
+                    board={board}
+                    onAddNewGroup={onAddNewGroup}
+                    onAddTask={onAddTask} />
+            }
+        </section>
     )
 }
