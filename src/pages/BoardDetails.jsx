@@ -56,7 +56,9 @@ export function BoardDetails() {
 
     return (
         <section>
+            <div className="board-filter-container">
             <BoardFilter />
+            </div>
             {board && <GroupList board={board} onAddNewGroup={onAddNewGroup} onAddTask={onAddTask} />}
 
         </section>

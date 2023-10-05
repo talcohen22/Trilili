@@ -710,8 +710,8 @@ async function save(board) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, board)
+        // board.owner = userService.getLoggedinUser()
+        savedBoard = await storageService.post(STORAGE_KEY, { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
     }
     return savedBoard
 }
@@ -732,12 +732,12 @@ async function addBoardMsg(boardId, txt) {
     return msg
 }
 
-function getEmptyBoard() {
-    return {
-        title: 'Board-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-    }
-}
+// function getEmptyBoard() {
+//     return {
+//         title: 'Board-' + (Date.now() % 1000),
+//         price: utilService.getRandomIntInclusive(1000, 9000),
+//     }
+// }
 
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
@@ -762,7 +762,20 @@ async function createTask(boardId, groupId, taskToAdd) {
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {title: 'Jira G', price: 980}).then(x => console.log(x))
-
+function getEmptyBoard() {
+    return {
+        title: "",
+        isStarred: false,
+        archivedAt: null,
+        createdBy: null,
+        style: { backgroundImage: "" },
+        labels: [],
+        members: [],
+        groups: [],
+        activities: [],
+        cmpsOrder: []
+    }
+}
 
 
 

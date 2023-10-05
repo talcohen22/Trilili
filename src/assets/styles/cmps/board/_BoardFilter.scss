@@ -1,4 +1,119 @@
-.icon{
-    width: rem(20px);
+.board-filter-container {
+    width: 300px; /* Set the desired width for your container */
+    height: 100%; /* Adjust the height as needed */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    position: relative; /* Position relative to its container */
+  }
+  .BoardFilter {
+    position: fixed;
+    top: 0; /* Stick to the top of the container */
+    left: 0; /* Stick to the left side of the container */
+    background-color: #fff; /* Set a background color if needed */
+    z-index: 1; /* Ensure it's above other content */
+  }
+.board-filter {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    background-color: rgb(121, 121, 121);
     
+
+    .board-visibility {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .header-title {
+        &:hover {
+            cursor: pointer;
+            background-color: lighten(rgb(173, 170, 170), 5%);
+        }
+    }
+
+    input {
+        font-size: rem(18px);
+        border: none;
+        background-color: inherit;
+        outline: none;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+
+
+
+        &:focus {
+            background-color: white;
+            height: rem(32px);
+            border: rem(1.8px) solid #0c66e4;
+            padding: 0 rem(10px);
+            color: black;
+        }
+    }
+
+    &-btn {
+        display: flex;
+        align-items: center;
+    }
+
+    svg {
+        width: rem(15px);
+        height: rem(15px);
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        margin: 0 rem(4px) 0 0;
+        background: none;
+        height: rem(32px);
+        border: none;
+        font-size: rem(14px);
+        border-radius: rem(3px);
+        min-width: rem(32px);
+
+        &:hover {
+            cursor: pointer;
+            background-color: $buttonHoverClr;
+        }
+    }
+
+    .board-filter {
+        display: flex;
+        justify-content: center;
+        gap: rem(8px);
+        padding: rem(6px) rem(10px) rem(6px) rem(12px);
+        
+        .full-btn{
+            background-color: #ffffff;
+            color: $wsTxtColor;
+            font-weight: 400;
+            height: rem(32px);
+            width: rem(100px);
+            justify-content: center;
+            &:hover{
+                background-color:$buttonHoverClr;
+            }
+        }
+    }
+
+    .img {
+
+        gap: rem(4px);
+        position: relative;
+
+        .member-img {
+            width: rem(28px);
+            height: rem(28px);
+            border-radius: 50%;
+            left: rem(40px);
+        }
+    }
+
+    >* {
+        font-weight: 700;
+        color: white;
+    }
+
 }
