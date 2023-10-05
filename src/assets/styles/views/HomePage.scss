@@ -1,25 +1,27 @@
 .homepage {
-
-    //homepage-header
     .homepage-header {
         height: rem(60px);
-        -webkit-box-align: stretch;
         display: flex;
         max-width: 1320px;
     }
 
-    .homepage-header-btn a {
-        -webkit-box-align: center;
-        align-items: center;
-        align-self: stretch;
-        color: #fff;
-        display: flex;
-        font-size: 1.2rem;
-        height: 100%;
-        padding: 0.5rem 1.5rem;
-        text-decoration: none;
+    .homepage-header-btn {
+        // align-self: stretch;
+        // align-items: center;
+        // color: #fff;
+        // display: flex;
+        // height: 100%;
+        // padding: 0.5rem 1.5rem;
+        // text-decoration: none;
         background-color: $headerLogoClr;
-        height: 100%;
+        height: max-content;
+        min-width: 205px;
+        max-width: max-content;
+        
+        a{
+            font-size: 1.2rem;
+            // background-color: $headerLogoClr;
+        }
     }
 
     .homepage-container {
@@ -190,31 +192,5 @@
         }
     }
 
-    .btn-action {
-        margin: 0;
-        height: rem(50px);
-        background-color: $headerLogoClr;
-        border: rem(1px) solid $headerLogoClr;
-        border-radius: rem(5px);
-        font-size: rem(16px);
-        padding: rem(11.2px) rem(11.2px) rem(16px) rem(12.8px);
-        transition: 0.2s ease-in-out;
-        color: inherit;
-
-        &:hover {
-            background-color: $LogoHoverClr;
-            border-color: $LogoHoverClr;
-        }
-
-        a {
-            text-decoration: none;
-
-            color: #fff
-        }
-
-        @include for-wide-layout {
-            font-size: rem(16px);
-            width: fit-content;
-        }
-    }
+    
 }

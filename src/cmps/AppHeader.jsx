@@ -4,20 +4,30 @@ import { Link, NavLink } from 'react-router-dom'
 // import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 // import { login, logout, signup } from '../store/user.actions.js'
 // import { LoginSignup } from './LoginSignup.jsx'
-import { ArrowDown, LogoApp } from './svg/ImgSvg'
+import { ArrowDown, LogoApp, NotificationsSvg, SearchSvg } from './svg/ImgSvg'
+import { useState } from 'react'
+import { utilService } from '../services/util.service'
+// import stav from '../assets/img/stav-black.jpg'
 
 export function AppHeader() {
-    return (
-        <header className="app-header " >
-            <nav className='flex justify-space-b align-center'>
-                <div className='btns-header-ops flex justify-space-b align-center'>
 
-                    <button className="btn-ops btn-logo">
-                        <LogoApp />
-                        <Link to="/">
+    const [inputValue, setInputValue] = useState('')
+
+    function handleInputChange(ev) {
+        setInputValue(ev.target.value)
+    }
+
+    return (
+        <header className="app-header" >
+            <nav className='flex justify-space-b align-center'>
+                <div className='btns-header-ops flex  align-center'>
+
+                    <Link to="/">
+                        <button className="btn-ops btn-logo flex justify-space-b ">
+                            <LogoApp />
                             Trilili
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
 
                     <button className="btn-ops btn-workspaces">
                         Workspaces
@@ -36,10 +46,27 @@ export function AppHeader() {
                 </div>
 
                 <div className='btns-header-user flex justify-space-b align-center'>
-                    <input type="text" name="search-bar" id="search-bar" placeholder='Search' />
-                    <button className="btn-user btn-notifications">notifications</button>
-                    <button className="btn-user btn-img-user">user
-                        {/* <img src="https://friconix.com/png/fi-cnsuxl-user-circle.png" alt="" /> */}
+
+                    <input
+                        className="search-bar"
+                        value={inputValue}
+                        placeholder='Search'
+                        onChange={handleInputChange}
+                        onFocus={(ev) => ev.target.classList.add("focused")}
+                        onBlur={(ev) => ev.target.classList.remove("focused")}
+                    />
+
+                    {/* <SearchSvg /> */}
+                    <button className="btn-user btn-notifications">
+                        <div className="center-svg">
+                            <NotificationsSvg />
+                        </div>
+                    </button>
+
+                    <button className="btn-user btn-img-user">
+                        <div className="center-svg">
+                            <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" />
+                        </div>
                     </button>
                 </div>
             </nav>

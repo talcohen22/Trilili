@@ -1,7 +1,7 @@
 import { AddGroupBtn } from "./AddGroupBtn";
 import { GroupPreview } from "./GroupPreview";
 
-export function GroupList({ board, onAddNewGroup }) {
+export function GroupList({ board, onAddNewGroup,onAddTask }) {
     const { groups } = board
     console.log(groups)
 
@@ -10,7 +10,7 @@ export function GroupList({ board, onAddNewGroup }) {
             <ul>
                 {groups.map((group) => (
                     <li key={group.id}>
-                        <GroupPreview group={group} />
+                        <GroupPreview group={group} board={board} onAddTask={onAddTask}/>
                     </li>
                 ))}
             </ul>

@@ -1,10 +1,20 @@
 import { useState } from "react";
-
-export function GroupPreview({ group }) {
+import { DotsSvg, GenerateTemplateBtnSvg } from "../svg/ImgSvg";
+import { TaskList } from "../task/TaskList";
+import { AddTaskModal } from "../task/AddTaskModal";
+export function GroupPreview({ group, onAddTask }) {
     const [inputValue, setInputValue] = useState(group.title)
+    const [isOnAddTask, setIsOnAddTask] = useState(false)//by tamir
 
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
+    }
+    function handleAddTask() {
+        setIsOnAddTask(true)
+    }
+
+    function onCloseAddTaskModal() {
+        setIsOnAddTask(false)
     }
 
     return (
@@ -17,37 +27,28 @@ export function GroupPreview({ group }) {
                     onChange={handleInputChange}
                     onFocus={(ev) => ev.target.classList.add("focused")}
                     onBlur={(ev) => ev.target.classList.remove("focused")}
-                    autoFocus />
+                />
                 <button className="group-btn flex justify-center align-center">
                     <DotsSvg />
                 </button>
             </div>
 
             <div className="group-tasks">
-                <TaskList/>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
-                <div>dddd</div>
+                <TaskList group={group} />
             </div>
 
-            <div className="group-footer flex justify-center align-center">
-                <button className="group-btn add-task-btn flex align-center">
+            {!isOnAddTask && <div className="group-footer flex justify-center align-center">
+                <button onClick={handleAddTask} className="group-btn add-task-btn flex align-center">
                     Add a card
                 </button>
+
+
                 <button className="group-btn flex justify-center align-center">
                     <GenerateTemplateBtnSvg />
                 </button>
             </div>
-
+            }
+            {isOnAddTask && <AddTaskModal group={group} onAddTask={onAddTask} onCloseAddTaskModal={onCloseAddTaskModal} />}
         </section>
     )
 }

@@ -1,7 +1,7 @@
 .app-header {
     padding: 9px;
     height: 48px;
-    border-bottom: 0.5px solid $wsEmptyBoardBgc;
+    border-bottom: 1px solid $wsEmptyBoardBgcHover;
 
     .btn-ops{
         margin: 0 4px;
@@ -9,9 +9,44 @@
         @include btns-header-ops;
     }
 
-    .btn-user{
-        margin: 0 4px;
-        padding: 6px 10px 6px 12px;
-         @include btns-header-user;
+    .btns-header-user{
+        .btn-user{
+            margin-inline-start: 4px;
+            @include btns-header-user;
+            .center-svg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                padding:  4px;
+            }
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        
+        .search-bar{
+            height: 32px;
+            width: 200px;
+            border: 1px solid #172b4d29;
+            border-radius: 5px;
+
+            &:hover {
+            background-color: #172b4d09
+            }
+
+            &:focus {
+                border:none;
+                background-color: white;
+            }
+
+            &:focus-visible {
+               outline: 2px solid $focusInput;
+            }
+        
+        }
     }
 }

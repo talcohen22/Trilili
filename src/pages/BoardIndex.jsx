@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadBoards, addBoard, updateBoard, removeBoard } from '../store/board.actions.js'
+import { loadBoards, addBoard, removeBoard } from '../store/board.actions.js'
+import { useNavigate } from "react-router";
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
@@ -11,6 +12,7 @@ import { Menu } from '../cmps/Menu.jsx'
 export function BoardIndex() {
 
     const boards = useSelector(storeState => storeState.boardModule.boards)
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadBoards()
@@ -25,16 +27,15 @@ export function BoardIndex() {
     //     }
     // }
 
-    // async function onAddBoard() {
-    //     const board = boardService.getEmptyBoard()
-    //     board.title = prompt('Title?')
-    //     try {
-    //         const savedBoard = await addBoard(board)
-    //         showSuccessMsg(`Board added (id: ${savedBoard._id})`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot add board')
-    //     }        
-    // }
+    async function onAddBoard(board) {
+        try {
+            const savedBoard = await addBoard(board)
+            navigate(`/board/${savedBoard._id}`)
+            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
+        } catch (err) {
+            showErrorMsg('Cannot add board')
+        }        
+    }
 
     // async function onUpdateBoard(board) {
     //     const price = +prompt('New price?')
@@ -63,7 +64,7 @@ export function BoardIndex() {
             <main className='main-container'>
                 {/* <button onClick={onAddBoard}>Add Board ⛐</button> */}
                 <Menu/>
-                <BoardList boards={boards}/>
+                <BoardList boards={boards} onAddBoard={onAddBoard}/>
             </main>
         </div>
     )

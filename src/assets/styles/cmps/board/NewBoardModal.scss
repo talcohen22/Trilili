@@ -1,0 +1,97 @@
+.new-board-modal {
+    position: fixed;
+    top: 130px;
+    left: calc(50%);
+    width: 304px;
+    will-change: top, left;
+    background-color: white;
+    box-shadow: var(--ds-shadow-overlay, 0px 8px 12px #091e4226, 0px 0px 1px #091e424f);
+    line-height: 20px;
+    color: $wsIconColor;
+    padding: 8px 12px 12px;
+    border-radius: 8px;
+
+    * {
+        font-size: rem(12px);
+        border-radius: 3px;
+    }
+
+    .preview {
+
+        h1 {
+            padding: 15px 8px;
+            margin: 0;
+            font-size: rem(14px);
+        }
+
+        text-align: center;
+        margin: 0;
+        margin-bottom: 20px;
+
+        .chosen-bgc .chosen-bgc-img {
+            @include fixed-img-url;
+
+            width: 200px;
+            height: 120px;
+            padding: 8px 9px;
+            margin: auto;
+        }
+    }
+
+    .bgc-options {
+        h1 {
+            margin: 0;
+            margin-bottom: 4px;
+        }
+
+        .img-bgc button {
+            @include button-select-bgc(64px, 40px, 8px);
+        }
+
+        .color-bgc button {
+            @include button-select-bgc(42px, 32px, 16px);
+        }
+    }
+
+    .board-title {
+        h1 {
+            margin: 0;
+        }
+
+        h1 span {
+            color: $requiredField;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px 12px;
+            border: solid 2px $blue1;
+        }
+
+        input:hover {
+            border: solid 2px $requiredField ;
+        }
+
+        p {
+            margin-top: 7px;
+            font-size: rem(14px);
+        }
+
+        p span {
+            margin-inline-end: 8px;
+        }
+    }
+
+    .exit-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+
+        margin: 15px;
+
+        svg{
+            width: 16px;
+        }
+    }
+}
