@@ -54,13 +54,24 @@ export function BoardDetails() {
         }
     }
 
+    async function onSetBoard(updatedBoard){
+        console.log(updatedBoard)
+        try{
+            const savedBoard= await updateBoard(updatedBoard)
+             setBoard(savedBoard)
+            console.log('saved board',savedBoard)
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     if (!board) return <div></div>
     return (
         <section
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
-            <BoardFilter />
+            <BoardFilter board={board} onSetBoard={onSetBoard} />
             {board &&
                 <GroupList
                     board={board}
