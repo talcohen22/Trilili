@@ -26,8 +26,6 @@ export function BoardDetails() {
         }
     }, [])
 
-    console.log(board);
-
     async function onAddNewGroup(newGroup) {
         try {
             const updatedBoard = board

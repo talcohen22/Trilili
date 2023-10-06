@@ -1,17 +1,46 @@
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
-export function GroupPreview({ group, onAddTask }) {
+import { boardService } from "../../services/board.service.local";
+
+export function GroupPreview({ board, group, onAddTask }) {
+
     const [isOnAddTask, setIsOnAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
 
-    function handleInputChange(ev) {
-        setInputValue(ev.target.value)
+    // const [inputActive, setInputActive] = useState(false);
+    // const inputRef = useRef(null);
+
+    // const handleClickOutside = (event) => {
+    //     if (inputRef.current && !inputRef.current.contains(event.target)) {
+    //       setInputActive(false);
+    //     }
+    //   };
+    
+    //   useEffect(() => {
+    //     document.addEventListener('click', handleClickOutside);
+    
+    //     return () => {
+    //       document.removeEventListener('click', handleClickOutside);
+    //     };
+    //   }, []);
+
+
+    function handleInputChange({ target }) {
+        const { value } = target
+        setGroupTitle(value)
     }
-    function handleAddTask() {
+
+    function handleAddTask({ target }) {
         setIsOnAddTask(true)
+        const newBoard = boardService.setBoardGroups(board, group, groupTitle)
+        boardService.save({ ...board, groups: newBoard.groups })
+    }
+
+    function handleKeyDown(ev) {
+        if (ev.key === 'Enter') handleAddTask(ev)
     }
 
     function onCloseAddTaskModal() {
@@ -23,11 +52,15 @@ export function GroupPreview({ group, onAddTask }) {
 
             <div className="group-header flex justify-space-b align-center ">
                 <input
+                    // ref={inputRef}
+                    // onFocus={() => setInputActive(true)}
+                    // onBlur={() => setInputActive(false)}
                     className="group-title"
                     value={groupTitle}
                     onChange={handleInputChange}
-                    onFocus={(ev) => ev.target.classList.add("focused")}
-                    onBlur={(ev) => ev.target.classList.remove("focused")}
+                    // onFocus={(ev) => ev.target.classList.add("focused")}
+                    // onBlur={(ev) => ev.target.classList.remove("focused")}
+                    onKeyDown={handleKeyDown}
                 />
                 <button className="group-btn flex justify-center align-center">
                     <DotsSvg />
