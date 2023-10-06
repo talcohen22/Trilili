@@ -2,20 +2,22 @@
     display: flex;
     align-items: center;
     margin: 4px;
+}
 
     .btn-action {
+        font-family: 'CharlieText-regular', sans-serif;
         align-items: center;
         display: inline-flex;
         justify-content: center;
         color: white;
         margin-inline-end: 6px;
         height: rem(50px);
-        background-color: $headerLogoClr;
-        border: rem(1px) solid $headerLogoClr;
+        background-color: $actionBtnClr;
+        border: rem(1px) solid $actionBtnClr;
         border-radius: rem(3px);
         font-size: rem(16px);
         transition: 0.2s ease-in-out;
-
+        padding: rem(11.2px) rem(16px) rem(12.8px);
         &:hover {
             background-color: $LogoHoverClr;
             border-color: $LogoHoverClr;
@@ -34,7 +36,10 @@
     
         @include for-wide-layout {
             font-size: rem(16px);
+            width: 300px;
+        }
+        @include for-narrow-layout{
+            font-size: rem(16px);
             width: fit-content;
         }
     }
-}
