@@ -13,7 +13,8 @@ export const boardService = {
     getEmptyBoard,
     addBoardMsg,
     getEmptyGroup,
-    getEmptyTask
+    getEmptyTask,
+    setBoardGroups
 }
 // debug trick
 window.bs = boardService
@@ -809,4 +810,10 @@ function getEmptyTask() {
 
         }
     }
+}
+
+function setBoardGroups(board, group, title){
+    const idx = board.groups.findIndex(g => g.id === group.id)
+    board.groups[idx].title = title
+    return board
 }

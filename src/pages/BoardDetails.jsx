@@ -8,11 +8,13 @@ import { updateBoard } from "../store/board.actions";
 
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { StarSvg } from "../cmps/svg/ImgSvg";
+import { TaskDetails } from "../cmps/task/TaskDetails";
 
 
 export function BoardDetails() {
     const { boardId } = useParams()
     const [board, setBoard] = useState(null)
+    const [isOpenTaskDetails, setIsOpenTaskDetails] = useState(false)
 
     useEffect(() => {
         if (boardId) loadBoard(boardId)
@@ -26,7 +28,9 @@ export function BoardDetails() {
         }
     }, [])
 
-    console.log(board);
+    function onSetIsOpenTaskDetails(isOpen){
+        setIsOpenTaskDetails(isOpen)
+    }
 
     async function onAddNewGroup(newGroup) {
         try {
@@ -60,15 +64,18 @@ export function BoardDetails() {
     return (
         <section
             className="board-details"
-            style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
-        >
+            style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
+
             <BoardFilter />
             {board &&
                 <GroupList
                     board={board}
                     onAddNewGroup={onAddNewGroup}
-                    onAddTask={onAddTask} />
+                    onAddTask={onAddTask} 
+                    onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}/>
             }
+
+            {isOpenTaskDetails && <TaskDetails/>}
         </section>
     )
 }
