@@ -18,10 +18,10 @@ export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }
     //       setInputActive(false);
     //     }
     //   };
-    
+
     //   useEffect(() => {
     //     document.addEventListener('click', handleClickOutside);
-    
+
     //     return () => {
     //       document.removeEventListener('click', handleClickOutside);
     //     };
@@ -47,6 +47,7 @@ export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }
         setIsOnAddTask(false)
     }
 
+    const labelsPaletteBoard = board.labels
     return (
         <section className='group-card'>
 
@@ -61,6 +62,7 @@ export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }
                     // onFocus={(ev) => ev.target.classList.add("focused")}
                     // onBlur={(ev) => ev.target.classList.remove("focused")}
                     onKeyDown={handleKeyDown}
+
                 />
                 <button className="group-btn flex justify-center align-center">
                     <DotsSvg />
@@ -68,7 +70,10 @@ export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }
             </div>
 
             <div className="group-tasks">
-                <TaskList group={group} onSetIsOpenTaskDetails={onSetIsOpenTaskDetails} />
+                <TaskList
+                    group={group}
+                    onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
+                    labelsPaletteBoard={labelsPaletteBoard} />
             </div>
 
             {!isOnAddTask &&

@@ -8,7 +8,7 @@
     font-size: 14px;
     white-space: normal;
     cursor: pointer;
-    padding: 4px 8px 4px 12px;
+    // padding: 4px 8px 4px 12px;
     &:hover {
         opacity: 1;
         background-color: $groupBgc;
@@ -18,7 +18,6 @@
 
         .task-preview-btn{
             svg{
-
                 display: block;
             }
         }
@@ -36,8 +35,7 @@
 
     .task-preview-btn {
         @include btns-group;
-        svg{
-            
+        svg{  
             display: none;
         }
 
@@ -74,10 +72,14 @@
 
 }
 
-.svg-hover {
-
-    &:hover {
-        fill: red;
+.task-footer-dashboard{
+    >*{
+        margin-inline-end: 6px;
+        padding-bottom: 4px;
     }
-
+    
+    .task-comments > * {
+        margin-inline-end: 3px;
+        width: max-content;
+    }
 }

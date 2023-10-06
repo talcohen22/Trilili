@@ -1,0 +1,23 @@
+.task-card-info {
+    flex-direction: column;
+    padding: 4px 8px 4px 12px;
+    .task-labels-interface {
+        flex-wrap: wrap;
+        .task-label {
+            width: 40px;
+            height: 8px;
+            border-radius: 20px;
+            margin-inline-end: 4px;
+            margin-top: 4px;
+
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.bg-task-header-clr{
+    min-height: rem(32px);
+    max-height: auto;
+}
