@@ -16,11 +16,13 @@ export const boardService = {
     getEmptyTask,
     setBoardGroups,
     // getEmptyLabelsPalette
+    getTask
 }
 // debug trick
 window.bs = boardService
 
 const BOARDS = [
+
     {
         "_id": "b101",
         "title": "Robot dev proj",
@@ -108,11 +110,13 @@ const BOARDS = [
                         "id": "c104",
                         "title": "Add Bgc",
                         "archivedAt": 1589983468412
+
                     }
                 ],
                 "style": {}
             },
             {
+
                 "id": "g102",
                 "title": "Group 2",
                 "tasks": [
@@ -168,6 +172,7 @@ const BOARDS = [
                                 ]
                             }
                         ],
+
                         "memberIds": ["u101"],
                         "labelIds": ["l101", "l102", "l105", "l106"],
                         "dueDate": 16156215211,
@@ -185,6 +190,7 @@ const BOARDS = [
                 "style": {}
             }
         ],
+
         "activities": [
             {
                 "id": "a101",
@@ -372,3 +378,12 @@ function setBoardGroups(board, group, title) {
 //         }
 //     ];
 // }
+
+async function getTask(boardId, groupId, taskId) {
+    const board = await storageService.get(STORAGE_KEY, boardId)
+    const group = board.groups.find(group => group.id === groupId)
+    const task = group.tasks.find(task => task.id === taskId)
+    return {group, task}
+}
+
+

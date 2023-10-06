@@ -1,0 +1,31 @@
+.dynamic-feature-container{
+
+    position: absolute;
+    right: -33px;
+    top: 140px;
+    
+    width: 304px;
+    background-color: white;
+
+    padding: 0 12px 12px 12px;
+    border-radius: 8px;
+
+    .dyn-cmp-header{
+        padding: 15px;
+        text-align: center;
+    }
+
+    .exit-btn{
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+
+        margin: 10px 14px;
+
+        svg{
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

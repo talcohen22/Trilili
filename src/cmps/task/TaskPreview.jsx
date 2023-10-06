@@ -6,15 +6,14 @@ import { CommentCounter } from "./TaskFeatures/CommentCounter ";
 import { DoneTasksCounter } from "./TaskFeatures/DoneTasksCounter";
 // import { TaskHeaderBgc } from "../group/TaskFeatures/TaskHeaderBgc ";
 
+
 export function TaskPreview({ group, task, onSetIsOpenTaskDetails, labelsPaletteBoard }) {
     const { boardId } = useParams()
 
     const navigate = useNavigate()
-    // console.log();
 
     function onGetTaskDetails() {
         navigate(`/board/${boardId}/${group.id}/${task.id}`)
-        onSetIsOpenTaskDetails(true)
     }
 
     function inHandleClickEditTitle(taskId) {
