@@ -5,7 +5,7 @@ import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 import { boardService } from "../../services/board.service.local";
 
-export function GroupPreview({ board, group, onAddTask }) {
+export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }) {
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
@@ -68,7 +68,7 @@ export function GroupPreview({ board, group, onAddTask }) {
             </div>
 
             <div className="group-tasks">
-                <TaskList group={group} />
+                <TaskList group={group} onSetIsOpenTaskDetails={onSetIsOpenTaskDetails} />
             </div>
 
             {!isOnAddTask &&

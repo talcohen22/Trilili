@@ -29,6 +29,11 @@ const routes = [
         component: <BoardDetails />,
         label: 'Board',
     },
+    {
+        path: '/board/:boardId/:groupId/:taskId',
+        component: <BoardDetails />,
+        label: 'Board',
+    },
 
 
     // {
