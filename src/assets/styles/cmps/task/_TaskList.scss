@@ -1,33 +1,38 @@
 .task-list-container{
-    // overflow-y: auto;
-    // gap: 7px;
-
-    &::-webkit-scrollbar {
-        width: 8px;
-        padding-top: 20px;
-
-      }
-    
-    &::-webkit-scrollbar-thumb {
-        background-color: #BFC4CE;
-        border-radius: 30px;
-        height: 12px;
-      }
-    
-    &::-webkit-scrollbar-track {
-        background-color: #D9DCE2;
-        border-radius: 30px;
-        height: 12px;
-        border-bottom: 10px solid transparent;
-      }
+  max-height: none;
 }
-.task-list{
-  gap: 7px;
-    height: 100%;
-    width: 100%;
-    vertical-align: top;
-    border-radius: 3px;
-    .list-item{
+
+.group-tasks{
+  max-height: 73vh;
+  overflow-y: auto;
+
+    .task-list{
+      gap: 7px;
+      height: 100%;
+      width: 100%;
+      vertical-align: top;
+      border-radius: 3px; 
+      margin: 1px 0;
+
+      .list-item{
         min-height: rem(36px);
+      }
     }
+  
 }
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $scrollbarClrY;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $scrollbarBgcY;
+    border-radius: 5px;
+  }
+

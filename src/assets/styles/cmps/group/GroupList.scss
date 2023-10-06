@@ -1,4 +1,6 @@
 .groups-list-container{
+    overflow-x: auto;
+    height: calc(100vh - 104px);
     display: flex;
     padding: 12px;
     li{
@@ -13,6 +15,7 @@
     }
     
     .group-card{
+        width: 272px;
         background-color: $groupBgc;
         border-radius: 12px;
         // margin: 6px;

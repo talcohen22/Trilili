@@ -48,7 +48,7 @@ export function GroupPreview({ board, group, onAddTask }) {
     }
 
     return (
-        <section className="group-card">
+        <section className='group-card'>
 
             <div className="group-header flex justify-space-b align-center ">
                 <input
@@ -86,7 +86,14 @@ export function GroupPreview({ board, group, onAddTask }) {
                     </button>
                 </div>
             }
-            {isOnAddTask && <AddTaskModal group={group} onAddTask={onAddTask} onCloseAddTaskModal={onCloseAddTaskModal} />}
+            {isOnAddTask &&
+                <AddTaskModal
+                    group={group}
+                    onAddTask={onAddTask}
+                    onCloseAddTaskModal={onCloseAddTaskModal}
+                />}
+
+
         </section>
     )
 }
