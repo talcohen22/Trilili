@@ -2,15 +2,13 @@ import { PencilSvg } from "../svg/ImgSvg";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 
-export function TaskPreview({ group, task, onSetIsOpenTaskDetails }) {
+export function TaskPreview({ group, task }) {
     const { boardId } = useParams()
 
     const navigate = useNavigate()
-    // console.log();
 
     function onGetTaskDetails() {
         navigate(`/board/${boardId}/${group.id}/${task.id}`)
-        onSetIsOpenTaskDetails(true)
     }
 
     return (

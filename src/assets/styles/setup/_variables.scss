@@ -16,6 +16,7 @@ $taskBgc: #ffffff;
 $taskBgcHover: #F1F2F4;
 $scrollbarClrY:#c5c9d1;
 $scrollbarBgcY:#e4e6ea;
+$taskItemsBgc: #091E420F;
 
 // $boxShadowTask: 0 1px 0 #091e4240;
 $boxShadowTask: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F;
@@ -40,10 +41,12 @@ $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 
+//taskDetails
+$overlayBgc: rgba(0, 0, 0, 0.663);
+$taskInput: #dfe1e6;
+
 $card-width: 272px;
 
 //boardFilter
 
 $buttonHoverClr:#A6C5E229;
-
-
