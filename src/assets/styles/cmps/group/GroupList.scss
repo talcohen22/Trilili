@@ -1,4 +1,6 @@
 .groups-list-container{
+    overflow-x: auto;
+    height: calc(100vh - 104px);
     display: flex;
     padding: 12px;
     li{

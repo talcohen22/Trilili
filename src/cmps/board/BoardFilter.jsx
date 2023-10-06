@@ -12,6 +12,7 @@ export function BoardFilter() {
     }
 
     return (
+        <div className="header-color">
         <header className="board-filter">
             <section className="board-visibility">
                 <section className="header-title">
@@ -19,16 +20,16 @@ export function BoardFilter() {
                 </section>
                 <section className=" board-filter">
                     <button className="board-filter-btn "><StarSvg/></button>
-                    <button className="board-filter-btn "><DashboardSvg/><span>Board</span></button>
+                    <button className="board-filter-btn dashboard-btn "><DashboardSvg/><span>Dashboard</span></button>
                 </section>
             </section>
 
 
             <section className="board-filter group-editing">
                 <button className="board-filter-btn"><PowerUpSvg/></button>
-                <button className="board-filter-btn filter"><FilterSvg/><span>Filter</span></button> |
+                <button className="board-filter-btn filter"><FilterSvg/><span>Filter</span></button> 
                 <section className="board-filter img">
-                    <img className="member-img" src="https://source.unsplash.com/random/300×300" alt="" />
+                    <span className="seperator"></span><img className="member-img" src="https://source.unsplash.com/random/300×300" alt="" />
                     <img className="member-img" src="https://source.unsplash.com/random/350×350" alt="" />
                     <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" />
                     <button className="board-filter-btn full-btn"><ShareSvg/><span>Share</span></button>
@@ -36,5 +37,6 @@ export function BoardFilter() {
                 </section>
             </section>
         </header>
+        </div>
     )
 }
