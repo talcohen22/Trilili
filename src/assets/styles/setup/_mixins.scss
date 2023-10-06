@@ -81,7 +81,7 @@
   }
 }
 
-@mixin button-select-bgc($width, $height, $marginBottom){
+@mixin button-select-bgc($width, $height, $marginBottom) {
   width: $width;
   height: $height;
   margin: 0;
@@ -99,12 +99,47 @@
 
 //   }
 
-
-@mixin btns-group{
-    font-size: rem(16px);
-    height: 32px;
-    background-color:#d0d4db;
-    border-radius: 8px;
+@mixin member-img {
+  width: rem(28px);
+  height: rem(28px);
+  border-radius: 50%;
 }
-//   }
 
+
+@mixin btns-group {
+  font-size: rem(16px);
+  height: 32px;
+  background-color: #d0d4db;
+  border-radius: 8px;
+}
+
+@mixin input-task-feature {
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-size: rem(14px);
+  border: none;
+  line-height: 20px;
+  outline: none;
+  box-shadow: inset 0 0 0 2px $taskInput;
+  width: 100%;
+
+  &::placeholder {
+    color: $groupHeader ;
+  }
+}
+
+@mixin btn-gray-bgc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $taskItemsBgc ;
+  height: 32px;
+  border-radius: 3px;
+  transition: all 0.1s;
+
+  &:hover{
+    background-color: $wsEmptyBoardBgcHover;
+  }
+}
+
+//   }
