@@ -5,7 +5,7 @@ import React from 'react';
 
 
 
-export function TaskDetailsFeatures() {
+export function TaskDetailsFeatures({board, group, task}) {
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
 
@@ -50,7 +50,11 @@ export function TaskDetailsFeatures() {
             {isDynamicCmpOpen &&
                 <TaskFeaturePreview
                     dynamicParams={dynamicParams}
-                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen} />}
+                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
+                    setDynamicParams={setDynamicParams}
+                    board={board}
+                    group={group}
+                    task={task} />}
 
         </React.Fragment>
     )

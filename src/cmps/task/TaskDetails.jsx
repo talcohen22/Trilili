@@ -4,15 +4,17 @@ import { TaskDetailsFeatures } from "./TaskDetailsFeatures";
 import { TaskDetailsData } from "./TaskDetailsData";
 import { useEffect, useState } from 'react'
 import { boardService } from "../../services/board.service.local";
-
+import { useNavigate } from "react-router";
 
 export function TaskDetails() {
 
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
+    const [board, setBoard] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const { taskId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadTask()
@@ -20,12 +22,17 @@ export function TaskDetails() {
 
     async function loadTask() {
         try {
-            const { group, task } = await boardService.getTask(boardId, groupId, taskId)
+            const {board, group, task } = await boardService.getBoardGroupTask(boardId, groupId, taskId)
             setTask(task)
             setGroup(group)
+            setBoard(board)
         } catch (err) {
             showErrorMsg('Cant load task')
         }
+    }
+
+    function onGetBoardDetails(){
+        navigate(-1)
     }
 
     if (!task) return <div></div>
@@ -48,10 +55,10 @@ export function TaskDetails() {
 
                 <main className="task-details-content flex justify-space-b">
                     <TaskDetailsData task={task} />
-                    <TaskDetailsFeatures />
+                    <TaskDetailsFeatures board={board} group={group} task={task} />
                 </main>
 
-                <div className="exit-taxt-details-btn">
+                <div className="exit-taxt-details-btn" onClick={onGetBoardDetails}>
                     <ExitBtnSvg />
                 </div>
 
