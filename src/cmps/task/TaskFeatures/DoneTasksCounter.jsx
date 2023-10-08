@@ -1,3 +1,5 @@
+import { CheckBoxSmallSvg } from "../../svg/ImgSvg";
+
 export function DoneTasksCounter({ checklists }) {
 
     if (checklists.length === 0) return
@@ -19,6 +21,7 @@ export function DoneTasksCounter({ checklists }) {
 
     return (
         <div className="task-checklists-calc flex align-center">
+            <CheckBoxSmallSvg />
             <p className="fs12" >{totalCalc}</p>
         </div>
     );

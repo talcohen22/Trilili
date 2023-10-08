@@ -23,11 +23,11 @@ export const boardService = {
 window.bs = boardService
 
 const BOARDS = [
-
     {
         "_id": "b101",
         "title": "Robot dev proj",
         "isStarred": false,
+        "isExpandedLabels": false,
         "archivedAt": 1589983468418,
         "createdBy": {
             "_id": "u101",
@@ -84,16 +84,18 @@ const BOARDS = [
                 "status": "in-progress",
                 "priority": "low",
                 "description": "description",
-                "labelIds": ["l104", "l105", "l102"],
+                "labelIds": ["l101", "l102", "l105", "l106"],
                 "tasks": [
                     {
                         "id": "c101",
                         "title": "Replace logo",
                         "archivedAt": 1589983468414,
                         "style": {
-                            "backgroundColor": "#26de81"
+                            "backgroundColor": "#26de81",
+                            "cover": "#26de81"
                         },
-                        "labelIds": []
+                        "labelIds": ["l101", "l102", "l105", "l106"],
+
                     },
                     {
                         "id": "c102",
@@ -106,9 +108,9 @@ const BOARDS = [
                         "title": "Add Boarder",
                         "archivedAt": 1589983468413,
                         "style": {
-                            "backgroundColor": "#26de81"
-                        },
-                        "labelIds": []
+                            "backgroundColor": "#26de81",
+                            "cover": "#26de81"
+                        }
                     },
                     {
                         "id": "c104",
@@ -177,10 +179,12 @@ const BOARDS = [
                                 ]
                             }
                         ],
-
                         "memberIds": ["u101"],
                         "labelIds": ["l101", "l102", "l105", "l106"],
-                        "dueDate": 16156215211,
+                        "dueDate": {
+                            "timeStamp": 1673061314,
+                            "isDone": false
+                        },
                         "byMember": {
                             "_id": "u101",
                             "username": "Tal",
@@ -188,7 +192,8 @@ const BOARDS = [
                             "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                         },
                         "style": {
-                            "backgroundColor": "#26de81"
+                            "backgroundColor": "",
+                            "cover": "https://i.pinimg.com/1200x/b5/14/f1/b514f164d8a5eda34595a9e034f05aa8.jpg",
                         }
                     }
                 ],
@@ -388,8 +393,8 @@ async function getBoardGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
-    return { board, group, task }
-}
+    return { group, task }
+
 
 async function getLabel(boardId, labelId){
     const board = await storageService.get(STORAGE_KEY, boardId)

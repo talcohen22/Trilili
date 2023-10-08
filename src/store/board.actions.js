@@ -205,3 +205,34 @@ export function onRemoveBoardOptimistic(boardId) {
             })
         })
 }
+
+
+function getGroupIdx(board, group) {
+    return board.groups.findIndex(g => g.id === group.id)
+}
+
+function getTaskIdx(group, task) {
+    return group.tasks.findIndex(t => t.id === task.id)
+}
+
+export async function setIsCheckDate(board, group, task) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        board.groups[gIdx].tasks[tIdx].dueDate.isDone = !board.groups[gIdx].tasks[tIdx].dueDate.isDone
+        await updateBoard(board)
+    } catch (err) {
+        console.log('Cannot remove label from task', err)
+        throw err
+    }
+}
+
+export async function setIsExpandedLabels(board) {
+    try {
+        board.isExpandedLabels = !board.isExpandedLabels
+        await updateBoard(board)
+    } catch (err) {
+        console.log('Cannot remove label from task', err)
+        throw err
+    }
+}
