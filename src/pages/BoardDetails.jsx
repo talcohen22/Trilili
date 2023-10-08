@@ -83,7 +83,9 @@ export function BoardDetails() {
                     board={board}
                     onAddNewGroup={onAddNewGroup}
                     onAddTask={onAddTask} 
-                    onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}/>
+                    onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
+                    onSetBoard={onSetBoard}
+                    />
             }
 
             {isOpenTaskDetails && <TaskDetails/>}
