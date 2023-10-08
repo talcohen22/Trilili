@@ -9,7 +9,6 @@ import { useState } from 'react'
 import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 
 
-
 export function FeatureLabels({ board, group, task, setDynamicParams, onSetLabelIdToEdit }) {
 
     const boards = useSelector(storeState => storeState.boardModule.boards)
