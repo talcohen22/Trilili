@@ -1,7 +1,13 @@
 import { TaskPreview } from "./TaskPreview"
 
 
-export function TaskList({ group, onSetIsOpenTaskDetails, labelsPaletteBoard }) {
+export function TaskList({
+    group,
+    onSetIsOpenTaskDetails,
+    labelsPaletteBoard,
+    onIsCheckDate,
+    isExpandedLabels,
+    onIsExpandedLabels }) {
     const { tasks } = group
     return (
         <section className="task-list-container">
@@ -13,6 +19,9 @@ export function TaskList({ group, onSetIsOpenTaskDetails, labelsPaletteBoard }) 
                             group={group}
                             onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
                             labelsPaletteBoard={labelsPaletteBoard}
+                            onIsCheckDate={onIsCheckDate}
+                            onIsExpandedLabels={onIsExpandedLabels}
+                            isExpandedLabels={isExpandedLabels}
                         />
                     </li>
                 ))}

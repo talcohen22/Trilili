@@ -283,12 +283,20 @@ export function SuggestionSvg() {
 
 export function CheckBoxSmallSvg() {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" version="1.0" width="39.000000pt" height="39.000000pt" viewBox="0 0 39.000000 39.000000" preserveAspectRatio="xMidYMid meet">
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" version="1.0" viewBox="0 0 39.000000 39.000000" preserveAspectRatio="xMidYMid meet">
 
             <g transform="translate(0.000000,39.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                 <path d="M50 340 c-22 -14 -22 -286 0 -300 19 -12 260 -13 279 -1 18 11 26 119 11 141 -16 23 -30 -5 -30 -62 l0 -48 -120 0 -120 0 0 120 0 120 105 0 c98 0 105 1 105 20 0 19 -7 20 -107 20 -60 0 -115 -5 -123 -10z" />
                 <path d="M270 235 c-41 -41 -80 -75 -86 -75 -6 0 -24 16 -38 35 -30 39 -46 45 -46 17 0 -10 20 -38 45 -62 l44 -43 86 83 c73 72 104 120 77 120 -4 0 -41 -34 -82 -75z" />
             </g>
+        </svg>
+    )
+}
+
+export function ClockSvg() {
+    return (
+        <svg role="presentation" width="16" height="16" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 6C13 5.44772 12.5523 5 12 5C11.4477 5 11 5.44772 11 6V12C11 12.2652 11.1054 12.5196 11.2929 12.7071L13.7929 15.2071C14.1834 15.5976 14.8166 15.5976 15.2071 15.2071C15.5976 14.8166 15.5976 14.1834 15.2071 13.7929L13 11.5858V6Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z" fill="currentColor"></path>
         </svg>
     )
 }

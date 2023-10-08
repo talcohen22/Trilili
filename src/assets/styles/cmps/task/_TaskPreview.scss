@@ -74,12 +74,38 @@
 
 .task-footer-dashboard{
     >*{
-        margin-inline-end: 6px;
+        margin-inline-end: 10px;
         padding-bottom: 4px;
     }
+
+    .btn-task-f{
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: rem(24px);
+            padding: 4px;
+        }
     
     .task-comments > * {
         margin-inline-end: 3px;
         width: max-content;
     }
+
+    .task-checklists-calc >*{
+        margin-inline-end: 3px;
+        width: max-content;
+    }
+
+    /* Add these styles to your CSS */
+    .due-date-passed {
+    background-color:$btnTaskDashNotDone;
+    color:  $btnTaskDashNotDoneFont;
+    }
+
+    .clicked {
+    background-color:$btnBgcTaskDashDone;
+    color: white;
+    }
 }
+

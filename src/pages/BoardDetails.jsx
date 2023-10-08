@@ -4,7 +4,7 @@ import { boardService } from "../services/board.service.local";
 import { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
-import { updateBoard } from "../store/board.actions";
+import { setIsCheckDate, setIsExpandedLabels, updateBoard } from "../store/board.actions";
 
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { StarSvg } from "../cmps/svg/ImgSvg";
@@ -13,6 +13,7 @@ import { StarSvg } from "../cmps/svg/ImgSvg";
 export function BoardDetails() {
     const { boardId } = useParams()
     const [board, setBoard] = useState(null)
+    const boards = useSelector(storeState => storeState.boardModule.boards)
 
     useEffect(() => {
         if (boardId) loadBoard(boardId)
@@ -24,7 +25,7 @@ export function BoardDetails() {
                 console.log(err)
             }
         }
-    }, [])
+    }, [boards])
 
     async function onAddNewGroup(newGroup) {
         try {
@@ -54,16 +55,34 @@ export function BoardDetails() {
         }
     }
 
-    async function onSetBoard(updatedBoard){
+    async function onSetBoard(updatedBoard) {
         console.log(updatedBoard)
-        try{
-            const savedBoard= await updateBoard(updatedBoard)
-             setBoard(savedBoard)
-            console.log('saved board',savedBoard)
-        }catch(err){
+        try {
+            const savedBoard = await updateBoard(updatedBoard)
+            setBoard(savedBoard)
+            console.log('saved board', savedBoard)
+        } catch (err) {
             console.log(err);
         }
     }
+
+    async function onIsCheckDate(group, task) {
+        try {
+            setIsCheckDate(board, group, task)
+        } catch (err) {
+            console.log('err')
+        }
+    }
+
+    async function onIsExpandedLabels() {
+        try {
+            setIsExpandedLabels(board)
+        } catch (err) {
+            console.log('err')
+        }
+    }
+
+
 
     if (!board) return <div></div>
     return (
@@ -77,7 +96,9 @@ export function BoardDetails() {
                     board={board}
                     onAddNewGroup={onAddNewGroup}
                     onAddTask={onAddTask}
-                     />
+                    onIsCheckDate={onIsCheckDate}
+                    onIsExpandedLabels={onIsExpandedLabels}
+                />
             }
         </section>
     )
