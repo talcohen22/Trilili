@@ -9,7 +9,7 @@ const colors = ['#baf3db', '#f8e6a0', '#ffe2bd', '#ffd2cc', '#dfd8fd', '#4bce97'
 export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit }) {
 
     const [title, setTitle] = useState('')
-    const [color, setColor] = useState('#ffffff')
+    const [color, setColor] = useState('#ffd2cc')
 
     useEffect(() => {
         getTitle()
@@ -40,6 +40,10 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
         }
     }
 
+    function onRemoveLabel() {
+        setDynamicParams({ type: 'Delete Label' })
+    }
+
     return (
         <section className="edit-label">
             <div className="display-chosen-label flex justify-center align-center">
@@ -65,7 +69,10 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
             <hr />
             <div className="save-delete-btns flex justify-space-b">
                 <button onClick={onSaveLabel}>Save</button>
-                <button>Delete</button>
+                <button
+                    style={{ display: labelIdToEdit ? 'inline' : 'none' }}
+                    onClick={onRemoveLabel}
+                >Delete</button>
             </div>
             <div className="back-btn" onClick={() => setDynamicParams({ type: 'Labels' })}>
                 <BackBtnSvg />

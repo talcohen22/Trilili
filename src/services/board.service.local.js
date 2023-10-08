@@ -397,4 +397,3 @@ async function getLabel(boardId, labelId){
     return label
 }
 
-

@@ -3,12 +3,13 @@ import { EditLabel } from "./EditLabel";
 import { FeatureAttachment } from "./FeatureAttachment";
 import { FeatureLabels } from "./FeatureLabels";
 import { useState } from 'react'
+import { DeleteLabel } from "./TaskFeatures/DeleteLabel";
 
 export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
 
     const [labelIdToEdit, setLabelIdToEdit] = useState('')
 
-    function onSetLabelIdToEdit(labelId){
+    function onSetLabelIdToEdit(labelId) {
         setLabelIdToEdit(labelId)
     }
 
@@ -22,7 +23,6 @@ export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDy
                     board={board}
                     group={group}
                     task={task}
-                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
                     setDynamicParams={setDynamicParams}
                     onSetLabelIdToEdit={onSetLabelIdToEdit} />}
 
@@ -31,8 +31,16 @@ export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDy
                     board={board}
                     group={group}
                     task={task}
-                    labelIdToEdit={labelIdToEdit}
-                    setDynamicParams={setDynamicParams} />}
+                    setDynamicParams={setDynamicParams}
+                    labelIdToEdit={labelIdToEdit} />}
+
+            {dynamicParams.type === 'Delete Label' &&
+                <DeleteLabel
+                    board={board}
+                    group={group}
+                    task={task}
+                    setDynamicParams={setDynamicParams}
+                    labelIdToEdit={labelIdToEdit} />}
 
             {dynamicParams.type === 'Attach' &&
                 <FeatureAttachment setDynamicParams={setDynamicParams} />}

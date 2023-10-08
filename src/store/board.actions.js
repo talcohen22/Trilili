@@ -120,6 +120,21 @@ export async function editLabel(board, group, task, labelId, color, title) {
     }
 }
 
+export async function removeLabel(board, group, task, labelId) {
+    console.log("aaaaaa");
+    const gIdx = getGroupIdx(board, group)
+    const tIdx = getTaskIdx(group, task)
+    const lTaskIdx = getLabelIdsIndex(task,labelId)
+
+    console.log("bbbbbbbbb");
+
+    const lBoardIdx = board.labels.find(label => label.id === labelId)
+    console.log('lBoardIdx:', lBoardIdx)
+    board.labels.splice(lBoardIdx, 1)
+
+    console.log('board:', board)
+}
+
 function getGroupIdx(board, group) {
     return board.groups.findIndex(g => g.id === group.id)
 }

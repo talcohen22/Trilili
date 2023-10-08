@@ -167,7 +167,36 @@
   &:hover {
     background-color: $LogoHoverClr;
     border-color: $LogoHoverClr;
+  }
+}
 
+@mixin blue-action-btn {
+  width: 53px;
+  height: 32px;
+  background-color: $actionBtnClr;
+  border-color: $actionBtnClr;
+  color: white;
+  border-radius: 3px;
+  font-size: rem(14px);
+
+  &:hover {
+    background-color: $LogoHoverClr;
+    border-color: $LogoHoverClr;
+  }
+}
+
+@mixin red-action-btn {
+  width: 53px;
+  height: 32px;
+  background-color: $deleteBtnBgc;
+  border-color: $deleteBtnBgc;
+  color: white;
+  border-radius: 3px;
+  font-size: rem(14px);
+
+  &:hover {
+    background-color: $deleteBtnHover;
+    border-color: $deleteBtnHover;
   }
 }
 

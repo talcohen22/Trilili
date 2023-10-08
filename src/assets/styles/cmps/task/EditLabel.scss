@@ -62,19 +62,11 @@
 
     .save-delete-btns {
         button {
-            @include action-btn;
-            height: 32px;
-            width: 53px;
-            font-size: rem(14px);
+            @include blue-action-btn;
         }
 
         button:last-child{
-            background-color: $deleteBtnBgc;;
-            border-color: $deleteBtnBgc;
-
-            &:hover{
-                background-color: $deleteBtnHover;
-            }
+            @include red-action-btn;
         }
     }
 

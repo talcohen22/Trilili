@@ -10,7 +10,7 @@ import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 
 
 
-export function FeatureLabels({ board, group, task, onSetIsDynamicCmpOpen, setDynamicParams, onSetLabelIdToEdit }) {
+export function FeatureLabels({ board, group, task, setDynamicParams, onSetLabelIdToEdit }) {
 
     const boards = useSelector(storeState => storeState.boardModule.boards)
 
