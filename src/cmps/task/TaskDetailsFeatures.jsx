@@ -1,6 +1,6 @@
 import { AttachmentSvg, CheckListSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
 import { useEffect, useState } from 'react'
-import { TaskFeaturePreview } from "./TaskFeaturePreview";
+import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 import React from 'react';
 
 
@@ -48,7 +48,7 @@ export function TaskDetailsFeatures({board, group, task}) {
             </section>
 
             {isDynamicCmpOpen &&
-                <TaskFeaturePreview
+                <TaskFeatureDynamic
                     dynamicParams={dynamicParams}
                     onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
                     setDynamicParams={setDynamicParams}

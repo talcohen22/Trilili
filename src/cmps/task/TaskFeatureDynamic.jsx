@@ -3,7 +3,7 @@ import { EditLabel } from "./EditLabel";
 import { FeatureLabels } from "./FeatureLabels";
 
 
-export function TaskFeaturePreview({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
+export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
 
     return (
         <div className="dynamic-feature-container">

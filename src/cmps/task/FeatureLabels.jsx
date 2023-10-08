@@ -6,7 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { addLabelTask, removeLabelTask } from "../../store/board.actions";
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { TaskFeaturePreview } from "./TaskFeaturePreview";
+import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 
 
 
