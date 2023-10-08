@@ -142,13 +142,15 @@
         display: flex;
         justify-content: center;
         padding: rem(6px) 0 rem(6px) 0;
-  
+        
+        .share-btn{
+          width: rem(75px);
+        }
         .full-btn {
           background-color: #DFE1E6;
           color: $wsTxtColor; /* Make sure $wsTxtColor is defined */
           font-weight: 400;
           height: rem(32px);
-          width: rem(75px);
           justify-content: center;
   
           &:hover {

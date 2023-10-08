@@ -2,7 +2,19 @@
     width: 256px;
     padding: 0 16px;
 
+
     div{
-        padding: 6px 8px;
+        padding: rem(4px) rem(8px) rem(4px) rem(40px);
+        margin: rem(4px) rem(0px) rem(0px);
+        justify-content: space-between;
+        p{
+            flex-grow: 0.9;
+        }
+        
+        &:hover{
+            cursor: pointer;
+            background-color:$exitBtnHover ;
+            border-radius: rem(8px);
+        }
     }
 }

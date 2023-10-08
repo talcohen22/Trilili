@@ -5,12 +5,15 @@
 }
 
     .btn-action {
-        
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: rem(14px);
         @include action-btn;
-
         &.modal-btn{
-            width: rem(80px);
+            // width: rem(80px);
             height: rem(31px);
+            font-size: rem(14px);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
         }
     
         a {
@@ -19,11 +22,11 @@
         }
     
         @include for-wide-layout {
-            font-size: rem(16px);
+            font-size: rem(14px);
             width: 300px;
         }
         @include for-narrow-layout{
-            font-size: rem(16px);
+            font-size: rem(14px);
             width: fit-content;
         }
     }

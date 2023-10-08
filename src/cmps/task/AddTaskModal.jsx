@@ -53,7 +53,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal }) {
                 />
                 <div className="button-container">
                     <button onClick={onSubmit} className='btn-action modal-btn'>
-                        Add
+                        Add card
                     </button>
 
                     <button onClick={handleCloseModal}>
