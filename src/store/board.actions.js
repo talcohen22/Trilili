@@ -123,7 +123,7 @@ export async function editLabel(board, group, task, labelId, color, title) {
 export async function removeLabel(board, group, task, labelId) {
     const gIdx = getGroupIdx(board, group)
     const tIdx = getTaskIdx(group, task)
-    const lTaskIdx = getLabelIdsIndex(task,labelId)
+    const lTaskIdx = getLabelIdsIndex(task, labelId)
 
     const lBoardIdx = board.labels.find(label => label.id === labelId)
     board.labels.splice(lBoardIdx, 1)
@@ -204,15 +204,6 @@ export function onRemoveBoardOptimistic(boardId) {
                 type: UNDO_REMOVE_BOARD
             })
         })
-}
-
-
-function getGroupIdx(board, group) {
-    return board.groups.findIndex(g => g.id === group.id)
-}
-
-function getTaskIdx(group, task) {
-    return group.tasks.findIndex(t => t.id === task.id)
 }
 
 export async function setIsCheckDate(board, group, task) {
