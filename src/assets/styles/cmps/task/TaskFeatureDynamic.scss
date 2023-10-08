@@ -1,31 +1,32 @@
-.dynamic-feature-container{
+.dynamic-feature-container {
+    p{
+        color: $groupHeader;
+    }
 
     position: absolute;
     right: -33px;
-    top: 140px;
-    
+    top: 70px;
+
     width: 304px;
     background-color: white;
 
     padding: 0 12px 12px 12px;
     border-radius: 8px;
 
-    .dyn-cmp-header{
+    .dyn-cmp-header {
         padding: 15px;
         text-align: center;
     }
 
-    .exit-btn{
-        position: absolute;
-        right: 0;
-        top: 0;
-        cursor: pointer;
+    .exit-btn {
+        @include back-and-exit-btns;
+        right: 8px;
+        top: 6px;
 
-        margin: 10px 14px;
-
-        svg{
+        svg {
             width: 16px;
             height: 16px;
+            margin: 3px 1px 0px 2px;
         }
     }
 }

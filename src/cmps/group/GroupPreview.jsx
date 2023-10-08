@@ -4,6 +4,7 @@ import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSv
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 import { boardService } from "../../services/board.service.local";
+import { updateGroup } from "../../store/board.actions";
 
 export function GroupPreview({
     board,
@@ -33,7 +34,6 @@ export function GroupPreview({
     //     };
     //   }, []);
 
-
     function handleInputChange({ target }) {
         const { value } = target
         setGroupTitle(value)
@@ -41,8 +41,7 @@ export function GroupPreview({
 
     function handleAddTask({ target }) {
         setIsOnAddTask(true)
-        const newBoard = boardService.setBoardGroups(board, group, groupTitle)
-        boardService.save({ ...board, groups: newBoard.groups })
+        updateGroup(board, group, 'title', groupTitle)
     }
 
     function handleKeyDown(ev) {

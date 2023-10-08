@@ -280,11 +280,17 @@ export function SuggestionSvg() {
     )
 }
 
+export function BackBtnSvg() {
+    return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.29289 11.2929L14.364 4.22185C14.7545 3.83132 15.3876 3.83132 15.7782 4.22185C16.1687 4.61237 16.1687 5.24554 15.7782 5.63606L9.41421 12L15.7782 18.364C16.1687 18.7545 16.1687 19.3877 15.7782 19.7782C15.3877 20.1687 14.7545 20.1687 14.364 19.7782L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929Z" fill="currentColor"></path>
+        </svg>
+    )
+}
 
 export function CheckBoxSmallSvg() {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" version="1.0" viewBox="0 0 39.000000 39.000000" preserveAspectRatio="xMidYMid meet">
-
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" version="1.0" viewBox="0 0 39.000000 39.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,39.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                 <path d="M50 340 c-22 -14 -22 -286 0 -300 19 -12 260 -13 279 -1 18 11 26 119 11 141 -16 23 -30 -5 -30 -62 l0 -48 -120 0 -120 0 0 120 0 120 105 0 c98 0 105 1 105 20 0 19 -7 20 -107 20 -60 0 -115 -5 -123 -10z" />
                 <path d="M270 235 c-41 -41 -80 -75 -86 -75 -6 0 -24 16 -38 35 -30 39 -46 45 -46 17 0 -10 20 -38 45 -62 l44 -43 86 83 c73 72 104 120 77 120 -4 0 -41 -34 -82 -75z" />

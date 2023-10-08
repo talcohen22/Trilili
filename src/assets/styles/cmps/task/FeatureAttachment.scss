@@ -1,0 +1,12 @@
+.feature-attachment{
+
+    .attach-file{
+        margin-top: 7px;
+    }
+    
+    .choose-file{
+        @include btn-gray-bgc;
+
+        margin: 12px 0 15px 0;
+    }
+}

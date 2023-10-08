@@ -1,11 +1,11 @@
 import { AttachmentSvg, CheckListSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
 import { useEffect, useState } from 'react'
-import { TaskFeaturePreview } from "./TaskFeaturePreview";
+import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 import React from 'react';
 
 
 
-export function TaskDetailsFeatures() {
+export function TaskDetailsFeatures({board, group, task}) {
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
 
@@ -40,7 +40,7 @@ export function TaskDetailsFeatures() {
                     <DatesSvg />
                     <p>Dates</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Attachment'))}>
+                <div onClick={(() => getDynamicCmp('Attach'))}>
                     <AttachmentSvg />
                     <p>Attachment</p>
                 </div>
@@ -48,9 +48,13 @@ export function TaskDetailsFeatures() {
             </section>
 
             {isDynamicCmpOpen &&
-                <TaskFeaturePreview
+                <TaskFeatureDynamic
                     dynamicParams={dynamicParams}
-                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen} />}
+                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
+                    setDynamicParams={setDynamicParams}
+                    board={board}
+                    group={group}
+                    task={task} />}
 
         </React.Fragment>
     )
