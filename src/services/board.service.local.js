@@ -16,7 +16,8 @@ export const boardService = {
     getEmptyTask,
     setBoardGroups,
     // getEmptyLabelsPalette
-    getBoardGroupTask
+    getBoardGroupTask,
+    getLabel
 }
 // debug trick
 window.bs = boardService
@@ -40,7 +41,7 @@ const BOARDS = [
             {
                 "id": "l101",
                 "title": "Remote",
-                "color": "#4bce97"
+                "color": "#4bce97",
             },
             {
                 "id": "l102",
@@ -91,12 +92,14 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "style": {
                             "backgroundColor": "#26de81"
-                        }
+                        },
+                        "labelIds": []
                     },
                     {
                         "id": "c102",
                         "title": "Add Samples",
-                        "archivedAt": 1589983468418
+                        "archivedAt": 1589983468418,
+                        "labelIds": []
                     },
                     {
                         "id": "c103",
@@ -104,13 +107,14 @@ const BOARDS = [
                         "archivedAt": 1589983468413,
                         "style": {
                             "backgroundColor": "#26de81"
-                        }
+                        },
+                        "labelIds": []
                     },
                     {
                         "id": "c104",
                         "title": "Add Bgc",
-                        "archivedAt": 1589983468412
-
+                        "archivedAt": 1589983468412,
+                        "labelIds": []
                     }
                 ],
                 "style": {}
@@ -143,6 +147,7 @@ const BOARDS = [
                                 }
                             }
                         ],
+                        "attachment": '',
                         "checklists": [
                             {
                                 "id": "YEhmF",
@@ -383,7 +388,13 @@ async function getBoardGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
-    return {board, group, task}
+    return { board, group, task }
+}
+
+async function getLabel(boardId, labelId){
+    const board = await storageService.get(STORAGE_KEY, boardId)
+    const label = board.labels.find(label => label.id === labelId)
+    return label
 }
 
 

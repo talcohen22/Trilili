@@ -40,7 +40,7 @@ export function TaskDetailsFeatures({board, group, task}) {
                     <DatesSvg />
                     <p>Dates</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Attachment'))}>
+                <div onClick={(() => getDynamicCmp('Attach'))}>
                     <AttachmentSvg />
                     <p>Attachment</p>
                 </div>

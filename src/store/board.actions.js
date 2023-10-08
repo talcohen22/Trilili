@@ -2,6 +2,7 @@ import { boardService } from "../services/board.service.local.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { utilService } from "../services/util.service.js";
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -51,26 +52,22 @@ export async function updateGroup(board, group, field, value) {
     try {
         const idx = board.groups.findIndex(g => g.id === group.id)
         board.groups[idx][field] = value
-        boardService.save({ ...board, groups: board.groups })
-        updateBoard(board)
+        await updateBoard(board)
     } catch (err) {
         console.log('Cannot update group', err)
         throw err
     }
 }
-
-export async function removeLabelTask(board, group, task, labelId) {
+export async function setLabelNotChecked(board, group, task, labelId) {
     try {
         const newLabelIds = task.labelIds.filter(lId => lId !== labelId)
-   
+
         const gIdx = getGroupIdx(board, group)
-        const tIdx = getTaskIdx(group,task)
-        const lIdx = getLabelIdsIndex(task, labelId)
+        const tIdx = getTaskIdx(group, task)
 
         board.groups[gIdx].tasks[tIdx].labelIds = newLabelIds
-        
-        boardService.save({ ...board, groups: board.groups })
-        updateBoard(board)
+
+        await updateBoard(board)
 
     } catch (err) {
         console.log('Cannot remove label from task', err)
@@ -78,18 +75,47 @@ export async function removeLabelTask(board, group, task, labelId) {
     }
 }
 
-export async function addLabelTask(board, group, task, labelId) {
+export async function setLabelChecked(board, group, task, labelId) {
     try {
         const gIdx = getGroupIdx(board, group)
-        const tIdx = getTaskIdx(group,task)
+        const tIdx = getTaskIdx(group, task)
 
         board.groups[gIdx].tasks[tIdx].labelIds.push(labelId)
-        
-        boardService.save({ ...board, groups: board.groups })
-        updateBoard(board)
+
+        await updateBoard(board)
 
     } catch (err) {
         console.log('Cannot remove label from task', err)
+        throw err
+    }
+}
+
+export async function editLabel(board, group, task, labelId, color, title) {
+    try {
+        const newLabel = {
+            id: utilService.makeId(),
+            title,
+            color
+        }
+
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        if (task.labelIds.includes(labelId)) { //edit
+            const labelIdx = board.labels.findIndex(label => label.id === labelId)
+            board.labels[labelIdx].color = color
+            board.labels[labelIdx].title = title
+
+        }
+        else { //add
+            board.labels.push(newLabel)
+            board.groups[gIdx].tasks[tIdx].labelIds.push(newLabel.id)
+        }
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot add label', err)
         throw err
     }
 }

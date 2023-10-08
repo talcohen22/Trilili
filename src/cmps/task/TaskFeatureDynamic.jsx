@@ -1,9 +1,16 @@
 import { ExitBtnSvg } from "../svg/ImgSvg";
 import { EditLabel } from "./EditLabel";
+import { FeatureAttachment } from "./FeatureAttachment";
 import { FeatureLabels } from "./FeatureLabels";
-
+import { useState } from 'react'
 
 export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
+
+    const [labelIdToEdit, setLabelIdToEdit] = useState('')
+
+    function onSetLabelIdToEdit(labelId){
+        setLabelIdToEdit(labelId)
+    }
 
     return (
         <div className="dynamic-feature-container">
@@ -16,10 +23,19 @@ export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDy
                     group={group}
                     task={task}
                     onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
-                    setDynamicParams={setDynamicParams} />}
+                    setDynamicParams={setDynamicParams}
+                    onSetLabelIdToEdit={onSetLabelIdToEdit} />}
 
             {dynamicParams.type === 'Edit label' &&
-                <EditLabel setDynamicParams={setDynamicParams} />}
+                <EditLabel
+                    board={board}
+                    group={group}
+                    task={task}
+                    labelIdToEdit={labelIdToEdit}
+                    setDynamicParams={setDynamicParams} />}
+
+            {dynamicParams.type === 'Attach' &&
+                <FeatureAttachment setDynamicParams={setDynamicParams} />}
 
             <div className="exit-btn" onClick={() => onSetIsDynamicCmpOpen(false)}>
                 <ExitBtnSvg />

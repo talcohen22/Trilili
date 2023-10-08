@@ -1,5 +1,9 @@
 .dynamic-feature-container {
 
+    *{
+        color: $groupMoreActions;
+    }
+
     position: absolute;
     right: -33px;
     top: 70px;
