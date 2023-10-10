@@ -4,10 +4,15 @@
         margin-top: 7px;
     }
     
-    button{
+    .upload-btn{
         @include btn-gray-bgc;
 
         width: 100%;
         margin: 12px 0 15px 0;
+    }
+
+    input{
+        display: none;
+        // visibility: hidden;
     }
 }

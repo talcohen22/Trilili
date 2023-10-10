@@ -17,6 +17,7 @@ export const boardService = {
     setBoardGroups,
     // getEmptyLabelsPalette
     getBoardGroupTask,
+    getLabel
 }
 // debug trick
 window.bs = boardService
@@ -392,13 +393,12 @@ async function getBoardGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
-    return { group, task }
-
-
-    async function getLabel(boardId, labelId) {
-        const board = await storageService.get(STORAGE_KEY, boardId)
-        const label = board.labels.find(label => label.id === labelId)
-        return label
-    }
-
+    return { board, group, task }
 }
+
+async function getLabel(boardId, labelId) {
+    const board = await storageService.get(STORAGE_KEY, boardId)
+    const label = board.labels.find(label => label.id === labelId)
+    return label
+}
+

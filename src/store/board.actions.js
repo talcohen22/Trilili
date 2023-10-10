@@ -125,13 +125,12 @@ export async function removeLabel(board, group, task, labelId) {
     const tIdx = getTaskIdx(group, task)
     const lTaskIdx = getLabelIdsIndex(task, labelId)
 
-    const lBoardIdx = board.labels.find(label => label.id === labelId)
+    const lBoardIdx = board.labels.findIndex(label => label.id === labelId)
     board.labels.splice(lBoardIdx, 1)
 
     board.groups[gIdx].tasks[tIdx].labelIds.splice(lTaskIdx, 1)
 
     await updateBoard(board)
-
 }
 
 function getGroupIdx(board, group) {

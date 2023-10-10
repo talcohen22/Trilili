@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { DeleteLabel } from "./TaskFeatures/DeleteLabel";
 
 export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
-
+    
     const [labelIdToEdit, setLabelIdToEdit] = useState('')
 
     function onSetLabelIdToEdit(labelId) {

@@ -33,7 +33,7 @@ export function GroupList({
                 </ul>
                 <AddGroupBtn onAddNewGroup={onAddNewGroup} />
             </section>
-            {taskId && <TaskDetails />}
+            {taskId && <TaskDetails board={board} />}
         </React.Fragment>
     )
 }

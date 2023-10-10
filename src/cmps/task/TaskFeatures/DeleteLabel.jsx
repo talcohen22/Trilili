@@ -6,7 +6,7 @@ export function DeleteLabel({ board, group, task, setDynamicParams, labelIdToEdi
     async function onRemoveLabel() {
         try {
             await removeLabel(board, group, task, labelIdToEdit)
-            setDynamicParams({type: 'Labels'})
+            setDynamicParams({ type: 'Labels' })
         } catch (err) {
             console.log('cannot remove label, error: ', err);
         }

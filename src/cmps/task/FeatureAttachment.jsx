@@ -4,16 +4,19 @@ export function FeatureAttachment() {
 
     const [selectedFile, setSelectedFile] = useState(null);
 
-    function handleFileChange(event) {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-    }
+    // console.log(selectedFile);
 
-    async function handleUpload() {
-        if (selectedFile) {
+    async function handleFileChange(event) {
+        console.log("aaaaaaaaa");
+        const file = event.target.files[0];
+        console.log(file);
+        // setSelectedFile(file);
+
+        if (file) {
+            console.log(file);
             try {
                 const formData = new FormData();
-                formData.append('file', selectedFile);
+                formData.append('file', file);
 
                 // Send the file data to the server using an API request (e.g., Axios)
                 const response = await fetch('/api/upload', {
@@ -38,8 +41,8 @@ export function FeatureAttachment() {
         <section className="feature-attachment">
             <p className="attach-file">Attach a file from your computer</p>
             <p className="choose-file">Choose a file</p>
-            <input type="file" onChange={handleFileChange} style={{ visibility: 'hidden' }}/>
-            <button onClick={handleUpload} disabled={!selectedFile}>Upload</button>
+            <label className='upload-btn' htmlFor="files">Upload</label>
+            <input type="file" id="files" name="files" onChange={handleFileChange} />
             <hr />
         </section>
     )
