@@ -32,7 +32,7 @@ function handleInputChange({ target }) {
         <section className='group-card'>
 
             <div className="group-header flex justify-space-b align-center " {...provided.dragHandleProps}>
-                <input
+                <input 
                     // ref={inputRef}
                     // onFocus={() => setInputActive(true)}
                     // onBlur={() => setInputActive(false)}

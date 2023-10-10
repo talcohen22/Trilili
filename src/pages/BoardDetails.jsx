@@ -88,7 +88,7 @@ export function BoardDetails() {
                     />
             }
 
-            {isOpenTaskDetails && <TaskDetails/>}
+            {isOpenTaskDetails && <TaskDetails/> }
         </section>
     )
 }

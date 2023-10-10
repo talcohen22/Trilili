@@ -22,7 +22,7 @@ export function GroupList({
     return (
         <section className='groups-list-container'>
             <DragDropContext onDragEnd={onHandleDragEnd}>
-                <Droppable
+                <Droppable 
                     droppableId='board'
                     direction='horizontal'
                     type='group'

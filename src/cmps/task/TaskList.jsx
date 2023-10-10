@@ -6,7 +6,7 @@ export function TaskList({ group, onSetIsOpenTaskDetails }) {
     const { tasks } = group
     return (
         <section className="task-list-container">
-            <Droppable droppableId={group.id} type='task'>
+            <Droppable  droppableId={group.id} type='task'>
                 {(provided) => (
                     <ul className="task-list flex column" {...provided.droppableProps} ref={provided.innerRef} style={{'overflow:':'hidden'}}>
                         {tasks.map((task, index) => (
