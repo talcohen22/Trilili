@@ -107,10 +107,11 @@ const BOARDS = [
                         "id": "c103",
                         "title": "Add Boarder",
                         "archivedAt": 1589983468413,
+                        "labelIds": [],
                         "style": {
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
-                        }
+                        },
                     },
                     {
                         "id": "c104",
@@ -129,7 +130,8 @@ const BOARDS = [
                     {
                         "id": "c103",
                         "title": "Do that",
-                        "archivedAt": 1589983468418
+                        "archivedAt": 1589983468418,
+                        "labelIds": []
                     },
                     {
                         "id": "c104",
@@ -149,7 +151,7 @@ const BOARDS = [
                                 }
                             }
                         ],
-                        "attachment": '',
+                        "attachment": [],
                         "checklists": [
                             {
                                 "id": "YEhmF",

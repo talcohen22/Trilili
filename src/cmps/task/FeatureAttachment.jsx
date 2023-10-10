@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 
 export function FeatureAttachment() {
 
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    // console.log(selectedFile);
-
-    async function handleFileChange(event) {
-        console.log("aaaaaaaaa");
+    async function onSaveFile(event) {
         const file = event.target.files[0];
         console.log(file);
-        // setSelectedFile(file);
+
 
         if (file) {
             console.log(file);
@@ -42,7 +37,7 @@ export function FeatureAttachment() {
             <p className="attach-file">Attach a file from your computer</p>
             <p className="choose-file">Choose a file</p>
             <label className='upload-btn' htmlFor="files">Upload</label>
-            <input type="file" id="files" name="files" onChange={handleFileChange} />
+            <input type="file" id="files" name="files" onChange={onSaveFile} />
             <hr />
         </section>
     )
