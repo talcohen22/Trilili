@@ -4,7 +4,7 @@ export function HomePageHero() {
   return (
     <section className="homepage-hero flex">
       <div className="homepage-hero-txt">
-        <h1 className="homepage-hero-header"> Trilili brings all your tasks, teammates, and tools together</h1>
+        <h1 className="homepage-hero-header"> Trilili brings all your</h1> <h1 className="homepage-hero-header"> tasks, teammates, and tools together</h1>
         <p className="homepage-hero-p">Keep everything in the same place-even if your team isn’t.</p>
         <button className="btn-action"><Link to={'/workspace'} >
           Take control
