@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
@@ -6,16 +5,22 @@ import { AddTaskModal } from "../task/AddTaskModal";
 import { boardService } from "../../services/board.service.local";
 import { updateGroup } from "../../store/board.actions";
 
+
 export function GroupPreview({
     board,
     group,
     onAddTask,
     onSetIsOpenTaskDetails,
     onIsCheckDate,
-    onIsExpandedLabels }) {
+    onIsExpandedLabels,
+    provided}) {
+
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
+
+
+
 
     // const [inputActive, setInputActive] = useState(false);
     // const inputRef = useRef(null);
@@ -35,6 +40,7 @@ export function GroupPreview({
     //   }, []);
 
     function handleInputChange({ target }) {
+
         const { value } = target
         setGroupTitle(value)
     }
@@ -56,8 +62,8 @@ export function GroupPreview({
     return (
         <section className='group-card'>
 
-            <div className="group-header flex justify-space-b align-center ">
-                <input
+            <div className="group-header flex justify-space-b align-center " {...provided.dragHandleProps}>
+                <input 
                     // ref={inputRef}
                     // onFocus={() => setInputActive(true)}
                     // onBlur={() => setInputActive(false)}
@@ -110,4 +116,3 @@ export function GroupPreview({
         </section>
     )
 }
-

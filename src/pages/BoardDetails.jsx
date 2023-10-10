@@ -95,11 +95,15 @@ export function BoardDetails() {
                 <GroupList
                     board={board}
                     onAddNewGroup={onAddNewGroup}
-                    onAddTask={onAddTask}
+                    onAddTask={onAddTask} 
+                    onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
+                    onSetBoard={onSetBoard}
+                    {isOpenTaskDetails && <TaskDetails/>            
                     onIsCheckDate={onIsCheckDate}
                     onIsExpandedLabels={onIsExpandedLabels}
                 />
             }
+
         </section>
     )
 }
