@@ -1,18 +1,18 @@
-
+import { HighlightSvg,LogoSvg,MultiMembersSvg,ViewsSvg } from "./svg/ImgSvg"
 export function Menu() {
     return (
         <div className="menu-container">
-            <div>
-                <p>Boards</p>
+            <div className="flex">
+            <LogoSvg/><p>Boards</p>
             </div>
-            <div>
-                <p>Highlight</p>
+            <div className=" flex">   
+             <HighlightSvg/><p>Highlight</p>
             </div>
-            <div>
-                <p>Views</p>
+            <div className="flex">
+               <ViewsSvg/> <p>Views</p>
             </div>
-            <div>
-                <p>Members</p>
+            <div className="flex">
+               <MultiMembersSvg/> <p>Members</p>
             </div>
             
         </div>

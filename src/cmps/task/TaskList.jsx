@@ -1,8 +1,15 @@
 import { TaskPreview } from "./TaskPreview"
+
 import { Component } from 'react'
 import { ReactDOM } from "react"
 import { Droppable, Draggable } from "react-beautiful-dnd"
-export function TaskList({ group, onSetIsOpenTaskDetails }) {
+export function TaskList({
+                            group,
+                            onSetIsOpenTaskDetails,
+                            labelsPaletteBoard,
+                            onIsCheckDate,
+                            isExpandedLabels,
+                            onIsExpandedLabels }) {
     const { tasks } = group
     return (
         <section className="task-list-container">
@@ -17,7 +24,15 @@ export function TaskList({ group, onSetIsOpenTaskDetails }) {
                                  {...provided.dragHandleProps}
                                  ref={provided.innerRef}
                                  >
-                                    <TaskPreview task={task} group={group} onSetIsOpenTaskDetails={onSetIsOpenTaskDetails} />
+                                    <TaskPreview
+                                      task={task}
+                                      group={group}
+                                      onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
+                                      labelsPaletteBoard={labelsPaletteBoard}
+                                      onIsCheckDate={onIsCheckDate}
+                                      onIsExpandedLabels={onIsExpandedLabels}
+                                      isExpandedLabels={isExpandedLabels}
+/>
                                 </li>
                                 )}
                             </Draggable>
@@ -26,6 +41,7 @@ export function TaskList({ group, onSetIsOpenTaskDetails }) {
                     </ul>
                 )}
             </Droppable>
+
         </section>
     )
 }

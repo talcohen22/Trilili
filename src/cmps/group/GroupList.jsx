@@ -1,7 +1,12 @@
+
 import { dragAndDropService } from "../../services/drag-and-drop.service.js"
 import { AddGroupBtn } from "./AddGroupBtn";
 import { GroupPreview } from "./GroupPreview";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { TaskDetails } from "../task/TaskDetails";
+import { useParams } from "react-router";
+import React from 'react';
+
 
 
 export function GroupList({
@@ -10,8 +15,11 @@ export function GroupList({
     onAddTask,
     onSetIsOpenTaskDetails,
     onSetBoard,
+   onIsCheckDate,
+    onIsExpandedLabels 
 }) {
     const { groups } = board
+    const { taskId } = useParams()
 
     function onHandleDragEnd(result) {
         const updateBoard = dragAndDropService.handleDragEnd(result, board)
@@ -20,6 +28,8 @@ export function GroupList({
 
 
     return (
+
+      <React.Fragment>
         <section className='groups-list-container'>
             <DragDropContext onDragEnd={onHandleDragEnd}>
                 <Droppable 
@@ -49,6 +59,8 @@ export function GroupList({
                                                     group={group}
                                                     onAddTask={onAddTask}
                                                     onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
+                                                    onIsCheckDate={onIsCheckDate}
+                                                    onIsExpandedLabels={onIsExpandedLabels} />
                                                 />
                                             </li>
                                         )}
@@ -61,5 +73,8 @@ export function GroupList({
             </DragDropContext>
             <AddGroupBtn onAddNewGroup={onAddNewGroup} />
         </section>
+  {taskId && <TaskDetails board={board} />}
+   </React.Fragment>
     );
 }
+

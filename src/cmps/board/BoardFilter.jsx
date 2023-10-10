@@ -31,7 +31,7 @@ export function BoardFilter({ board, onSetBoard }) {
                     </section>
                     <section className=" board-filter">
                         <button onClick={handleIsStarred} className="board-filter-btn ">{isStarred ? <FullStarSvg /> : <StarSvg />}</button>
-                        <button className="board-filter-btn dashboard-btn "><DashboardSvg /><span>Dashboard</span></button>
+                        <button className="board-filter-btn dashboard-btn full-btn "><DashboardSvg /><span>Dashboard</span></button>
                     </section>
                 </section>
 
@@ -43,7 +43,7 @@ export function BoardFilter({ board, onSetBoard }) {
                         <span className="seperator"></span><img className="member-img" src="https://source.unsplash.com/random/300×300" alt="" />
                         <img className="member-img" src="https://source.unsplash.com/random/350×350" alt="" />
                         <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" />
-                        <button className="board-filter-btn full-btn"><ShareSvg /><span>Share</span></button>
+                        <button className="board-filter-btn share-btn full-btn"><ShareSvg /><span>Share</span></button>
                         <button className="board-filter-btn dots"><DotsSvg /></button>
                     </section>
                 </section>

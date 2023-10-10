@@ -27,14 +27,14 @@ export function BoardIndex() {
     //     }
     // }
 
-    async function onAddBoard({title, bgc}) {
+    async function onAddBoard({ title, bgc }) {
         try {
-            const savedBoard = await addBoard({title, style: {backgroundImage: bgc}})
+            const savedBoard = await addBoard({ title, style: { backgroundImage: bgc } })
             navigate(`/board/${savedBoard._id}`)
             showSuccessMsg(`Board added (id: ${savedBoard._id})`)
         } catch (err) {
             showErrorMsg('Cannot add board')
-        }        
+        }
     }
 
     // async function onUpdateBoard(board) {
@@ -58,13 +58,13 @@ export function BoardIndex() {
     //     return board.owner?._id === user._id
     // }
 
-    
+
     return (
         <div>
             <main className='main-container'>
                 {/* <button onClick={onAddBoard}>Add Board ⛐</button> */}
-                <Menu/>
-                <BoardList boards={boards} onAddBoard={onAddBoard}/>
+                <Menu />
+                <BoardList boards={boards} onAddBoard={onAddBoard} />
             </main>
         </div>
     )

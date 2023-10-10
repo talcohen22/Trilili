@@ -17,6 +17,7 @@
 // @import "views/AboutUs";
 @import "views/HomePage";
 @import "views/ReviewIndex";
+@import "views/TaskDetails.scss";
 // @import "views/UserDetails";
 
 // Components
@@ -38,7 +39,16 @@
 @import "./cmps/task/TaskPreview";
 @import "./cmps/task/TaskList";
 @import "./cmps/task/AddTaskModal";
+@import "./cmps/task/TaskLabels";
+@import "./cmps/task/EditLabel.scss";
 
+
+@import "./cmps/task/TaskDetailsFeatures.scss";
+@import "./cmps/task/TaskDetailsData.scss";
+@import "./cmps/task/TaskFeatureDynamic.scss";
+@import "./cmps/task/FeatureLabels.scss";
+@import "./cmps/task/FeatureAttachment.scss";
+@import "./cmps/task/DeleteLabel.scss";
 
 
 @import "./cmps/Menu";

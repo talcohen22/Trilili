@@ -1,20 +1,20 @@
 @font-face {
     font-family: roboto;
-    src: url(./fonts/charilie/charlie-display-regular.ttf);
+    src: url('src//assets//fonts//roboto//Roboto-Regular.ttf');
 }
 @font-face {
     font-family: charlieBold;
-    src: url(./fonts/charlie/charlie-display-bold.ttf);
+    src: url('.//fonts//charilie//charlie-display-bold.ttf');
 }
 
 @font-face {
     font-family: charlie-regular;
-    src: url(./fonts/charlie/charlie-display-regular.ttf);
+    src: url('.//fonts//charilie//charlie-display-regular.ttf');
 }
 
 @font-face {
     font-family: charlie-semibold;
-    src: url(./fonts/charlie/charlie-text-semibold.ttf);
+    src: url('.//fonts//charilie//charlie-text-semibold.ttf');
 }
 // @font-face {
     // font-family: montserrat;
@@ -29,17 +29,21 @@
     src: local('Segoe UI Regular'), url('../../fonts/Segoe-UI-Font/SegoeUI.woff') format('woff');
   }
   
-  @font-face {
-    font-family: CharlieText-regular;
-    src: url(../../fonts/Charlie/CharlieDisplay-Regular.ttf);
-  }
+  // @font-face {
+  //   font-family: CharlieText-regular;
+  //   src: url(../../fonts/Charlie/CharlieDisplay-Regular.ttf);
+  // }
   
-  @font-face {
-    font-family: CharlieDisplay-bold;
-    src: url(../../fonts/Charlie/CharlieDisplay-Bold.ttf);
-  }
+  // @font-face {
+  //   font-family: CharlieDisplay-bold;
+  //   src: url(../../fonts/Charlie/CharlieDisplay-Bold.ttf);
+  // }
   
+  // @font-face {
+  //   font-family: CharlieDisplay-semibold;
+  //   src: url(../../fonts/Charlie/CharlieDisplay-Semibold.ttf);
+  // }
   @font-face {
-    font-family: CharlieDisplay-semibold;
-    src: url(../../fonts/Charlie/CharlieDisplay-Semibold.ttf);
+    font-family: 'charlie-semibold'; // Replace with your desired font name
+    src: url('src//assets//fonts//Charlie//CharlieDisplay-Semibold.woff2')format('woff2'),
   }
