@@ -34,14 +34,12 @@ export function BoardDetails() {
             boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
-            console.log('savedBoard', savedBoard)
         } catch (err) {
-            console.log('err onAddNewGroup: ', err)
+            console.log('err', err)
         }
     }
 
     async function onAddTask(newTask, groupId) {
-        console.log(newTask);
         try {
             const updatedBoard = board
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
@@ -49,18 +47,15 @@ export function BoardDetails() {
             boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
-            console.log('savedBoard', savedBoard)
         } catch (err) {
             console.log('err onAddNewGroup: ', err)
         }
     }
 
     async function onSetBoard(updatedBoard) {
-        console.log(updatedBoard)
         try {
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
-            console.log('saved board', savedBoard)
         } catch (err) {
             console.log(err);
         }
@@ -96,9 +91,7 @@ export function BoardDetails() {
                     board={board}
                     onAddNewGroup={onAddNewGroup}
                     onAddTask={onAddTask} 
-                    onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
-                    onSetBoard={onSetBoard}
-                    {isOpenTaskDetails && <TaskDetails/>            
+                    onSetBoard={onSetBoard}                         
                     onIsCheckDate={onIsCheckDate}
                     onIsExpandedLabels={onIsExpandedLabels}
                 />
