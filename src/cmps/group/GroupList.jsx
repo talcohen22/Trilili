@@ -4,7 +4,7 @@ import { GroupPreview } from "./GroupPreview";
 import { useParams } from "react-router";
 import React from 'react';
 
-export function GroupList({ board, onAddNewGroup, onAddTask, onSetIsOpenTaskDetails }) {
+export function GroupList({ board, onAddNewGroup, onAddTask, onSetIsOpenTaskDetails,RemoveGroup }) {
 
     const { groups } = board
     const { taskId } = useParams()
@@ -19,7 +19,9 @@ export function GroupList({ board, onAddNewGroup, onAddTask, onSetIsOpenTaskDeta
                                 board={board}
                                 group={group}
                                 onAddTask={onAddTask}
-                                onSetIsOpenTaskDetails={onSetIsOpenTaskDetails} />
+                                onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
+                                RemoveGroup={RemoveGroup}
+                                />
                         </li>
                     ))}
                 </ul>

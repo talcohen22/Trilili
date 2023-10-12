@@ -5,12 +5,14 @@ import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 import { boardService } from "../../services/board.service.local";
 import { updateGroup } from "../../store/board.actions";
+import { GroupActionsModal } from "../group/GroupActionsModal"
 
-export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }) {
+export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails, RemoveGroup }) {
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
-
+    const [isOnUsingAction, setIsOnUsingAction] = useState(false)
+    const [groupActionPostion,setGroupActionPosition]=useState({left:null,top:null})
     // const [inputActive, setInputActive] = useState(false);
     // const inputRef = useRef(null);
 
@@ -38,6 +40,19 @@ export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }
         updateGroup(board, group, 'title', groupTitle)
     }
 
+    function handleUsingAction(ev) {
+        console.log(ev);
+        const positionX= ev.pageX
+        const positionY= ev.pageX
+        console.log(positionX,positionY) 
+        setGroupActionPosition({left:positionX,top:positionY})
+        setIsOnUsingAction(true)
+    }
+
+    function handleClose() {
+        setIsOnUsingAction(false)
+    }
+
     function handleKeyDown(ev) {
         if (ev.key === 'Enter') handleAddTask(ev)
     }
@@ -63,9 +78,16 @@ export function GroupPreview({ board, group, onAddTask, onSetIsOpenTaskDetails }
                     onKeyDown={handleKeyDown}
 
                 />
-                <button className="group-btn flex justify-center align-center">
+                <button className="group-btn flex justify-center align-center" onClick={handleUsingAction}>
                     <DotsSvg />
                 </button>
+                <div>
+                    {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
+                        group={group}
+                        handleClose={handleClose}
+                        RemoveGroup={RemoveGroup}
+                    />}
+                </div>
             </div>
 
             <div className="group-tasks">
