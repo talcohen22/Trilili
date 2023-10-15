@@ -14,9 +14,8 @@ export function HomePage() {
                 <HomePageHero />
             </section>
             <section className="homepage-productivity">
-                <HomePageProductivity />
+                <HomePageProductivity/>
             </section>
-                <ProductivitySlider/>
         </section>
     )
 }
