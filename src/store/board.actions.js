@@ -58,6 +58,19 @@ export async function updateGroup(board, group, field, value) {
         throw err
     }
 }
+
+// export async function addTaskAttach(board, group, task, attach) {
+//     try {
+//         const gIdx = getGroupIdx(board, group)
+//         const tIdx = getTaskIdx(group, task)
+//         board.groups[gIdx].tasks[tIdx].attachment.push(attach)
+//         await updateBoard(board)
+//     } catch (err) {
+//         console.log('Cannot add attachment', err)
+//         throw err
+//     }
+// }
+
 export async function setLabelNotChecked(board, group, task, labelId) {
     try {
         const newLabelIds = task.labelIds.filter(lId => lId !== labelId)

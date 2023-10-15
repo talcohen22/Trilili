@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { DeleteLabel } from "./TaskFeatures/DeleteLabel";
 
 export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
-    
+
     const [labelIdToEdit, setLabelIdToEdit] = useState('')
 
     function onSetLabelIdToEdit(labelId) {
@@ -43,7 +43,11 @@ export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDy
                     labelIdToEdit={labelIdToEdit} />}
 
             {dynamicParams.type === 'Attach' &&
-                <FeatureAttachment setDynamicParams={setDynamicParams} />}
+                <FeatureAttachment
+                    board={board}
+                    group={group}
+                    task={task}
+                    setDynamicParams={setDynamicParams} />}
 
             <div className="exit-btn" onClick={() => onSetIsDynamicCmpOpen(false)}>
                 <ExitBtnSvg />

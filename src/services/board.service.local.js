@@ -95,13 +95,14 @@ const BOARDS = [
                             "cover": "#26de81"
                         },
                         "labelIds": ["l101", "l102", "l105", "l106"],
-
+                        "attachment": [],
                     },
                     {
                         "id": "c102",
                         "title": "Add Samples",
                         "archivedAt": 1589983468418,
-                        "labelIds": []
+                        "labelIds": [],
+                        "attachment": [],
                     },
                     {
                         "id": "c103",
@@ -112,12 +113,14 @@ const BOARDS = [
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
                         },
+                        "attachment": [],
                     },
                     {
                         "id": "c104",
                         "title": "Add Bgc",
                         "archivedAt": 1589983468412,
-                        "labelIds": []
+                        "labelIds": [],
+                        "attachment": [],
                     }
                 ],
                 "style": {}
@@ -131,7 +134,8 @@ const BOARDS = [
                         "id": "c103",
                         "title": "Do that",
                         "archivedAt": 1589983468418,
-                        "labelIds": []
+                        "labelIds": [],
+                        "attachment": [],
                     },
                     {
                         "id": "c104",
