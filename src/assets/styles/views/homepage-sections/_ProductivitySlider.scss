@@ -1,0 +1,26 @@
+.productivity-slider-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 1rem 0px 1rem;
+    width: 100%;
+    display: flex;
+
+    .slider-card-list {
+
+    }
+
+    .productivity-card {
+        color: $txtClr;
+        background-color: white;
+        font-size: rem(16px);
+        padding: rem(16px) rem(16px) rem(16px) rem(24px);
+
+        h3 {
+            font-family: 'charlie-Display-regular',sans-serif;
+            margin: 0px 0px rem(8px);
+        }
+        p{
+            font-family: 'charlie-regular',sans-serif;
+        }
+    }
+}

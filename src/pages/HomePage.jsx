@@ -4,6 +4,7 @@ import { utilService } from '../services/util.service.js'
 import { HomePageHeader } from './home-page-cmps/HomePageHeader.jsx'
 import { HomePageHero } from './home-page-cmps/HomePageHero.jsx'
 import { HomePageProductivity } from './home-page-cmps/HomePageProductivity.jsx'
+import { ProductivitySlider } from './home-page-cmps/ProductivitySlider.jsx'
 
 export function HomePage() {
     return (
@@ -15,6 +16,7 @@ export function HomePage() {
             <section className="homepage-productivity">
                 <HomePageProductivity />
             </section>
+                <ProductivitySlider/>
         </section>
     )
 }
