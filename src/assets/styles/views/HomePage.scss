@@ -53,7 +53,7 @@
                     line-height: 1.25;
                     font-size: rem(38px);
                     margin-block-end: rem(8px);
-                    // font-family: charlie-semibold;
+                    font-family:'charlie-semibold';
                     letter-spacing: rem(-2.7px);
 
                     @include for-normal-layout {
@@ -62,10 +62,11 @@
                 }
 
                 .homepage-hero-p {
-                    font-size: rem(18px);
+                    font-family: charlie-regular,sans-serif;
+                    font-size: rem(20px);
                     line-height: normal;
                     letter-spacing: normal;
-                    margin-block-end: rem(42px);
+                    margin-block-end: rem(24px);
                     font-weight: 400;
 
                     @include for-normal-layout {
@@ -138,9 +139,9 @@
 
             .productivity-text {
                 flex-direction: column;
-
+                color: $productivityText;
                 .trilili-101 {
-                    // font-family: charlie-semibold;
+                    font-family: charlie-semibold,sans-serif;
                     margin-block-end: rem(1px);
                     font-size: rem(16px);
 
@@ -163,7 +164,7 @@
                     // font-family: charlie-semibold;
                     letter-spacing: rem(-1.75px);
                     margin-block-end: rem(17px);
-                    color: $taskBgc;
+                    
                     line-height: rem(35px);
 
                     @include for-normal-layout {

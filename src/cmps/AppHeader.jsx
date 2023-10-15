@@ -12,10 +12,12 @@ import { utilService } from '../services/util.service'
 export function AppHeader() {
 
     const [inputValue, setInputValue] = useState('')
-
+    const [isWatchingNotifications,setIsWatchingNotifications] =useState(false)
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
     }
+
+    function handleWatchNotifications(){}
 
     return (
         <header className="app-header" >
@@ -58,7 +60,7 @@ export function AppHeader() {
 
                     {/* <SearchSvg /> */}
                     <button className="btn-user btn-notifications">
-                        <div className="center-svg">
+                        <div className="center-svg" onClick={handleWatchNotifications}>
                             <NotificationsSvg />
                         </div>
                     </button>
