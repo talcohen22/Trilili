@@ -4,12 +4,19 @@ import { BackBtnSvg, ExitBtnSvg } from "../svg/ImgSvg"
 import { useEffect, useState } from 'react'
 
 
-const colors = ['#baf3db', '#f8e6a0', '#ffe2bd', '#ffd2cc', '#dfd8fd', '#4bce97', '#e2b203', '#faa53d', '#f87462', '#9f8fef', '#1f845a', '#946f00', '#b65c02', '#ca3521', '#6e5dc6', '#cce0ff', '#c1f0f5', '#d3f1a7', '#fdd0ec', '#dcdfe4', '#579dff', '#60c6d2', '#94c748', '#e774bb', '#8590a2', '#0c66e4', '#1d7f8c', '#5b7f24', '#ae4787', '#626f86']
+const colors = [
+    { color: '#baf3db', colorName: 'green', shade: 'subtle' }, { color: '#f8e6a0', colorName: 'yellow', shade: 'subtle' }, { color: '#ffe2bd', colorName: 'orange', shade: 'subtle' }, { color: '#ffd2cc', colorName: 'red', shade: 'subtle' }, { color: '#dfd8fd', colorName: 'purple', shade: 'subtle' },
+    { color: '#4bce97', colorName: 'green', shade: '' }, { color: '#e2b203', colorName: 'yellow', shade: '' }, { color: '#faa53d', colorName: 'orange', shade: '' }, { color: '#f87462', colorName: 'red', shade: '' }, { color: '#9f8fef', colorName: 'purple', shade: '' },
+    { color: '#1f845a', colorName: 'green', shade: 'bold' }, { color: '#946f00', colorName: 'yellow', shade: 'bold' }, { color: '#b65c02', colorName: 'orange', shade: 'bold' }, { color: '#ca3521', colorName: 'red', shade: 'bold' }, { color: '#6e5dc6', colorName: 'purple', shade: 'bold' },
+    { color: '#cce0ff', colorName: 'blue', shade: 'subtle' }, { color: '#c1f0f5', colorName: 'sky', shade: 'subtle' }, { color: '#d3f1a7', colorName: 'lime', shade: 'subtle' }, { color: '#fdd0ec', colorName: 'pink', shade: 'subtle' }, { color: '#dcdfe4', colorName: 'black', shade: 'subtle' },
+    { color: '#579dff', colorName: 'blue', shade: '' }, { color: '#60c6d2', colorName: 'sky', shade: '' }, { color: '#94c748', colorName: 'lime', shade: '' }, { color: '#e774bb', colorName: 'pink', shade: '' }, { color: '#8590a2', colorName: 'black', shade: '' },
+    { color: '#0c66e4', colorName: 'blue', shade: 'bold' }, { color: '#1d7f8c', colorName: 'sky', shade: 'bold' }, { color: '#5b7f24', colorName: 'lime', shade: 'bold' }, { color: '#ae4787', colorName: 'pink', shade: 'bold' }, { color: '#626f86', colorName: 'black', shade: 'bold' }
+]
 
 export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit }) {
 
     const [title, setTitle] = useState('')
-    const [color, setColor] = useState('#ffd2cc')
+    const [color, setColor] = useState({ color: '#ffd2cc', colorName: 'red', shade: 'subtle' })
 
     useEffect(() => {
         getTitle()
@@ -18,7 +25,7 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
             if (labelIdToEdit) {
                 const label = await boardService.getLabel(board._id, labelIdToEdit)
                 setTitle(label.title)
-                setColor(label.color)
+                setColor({ color: label.color, colorName: label.colorName, shade: label.shade })
             }
         }
     }, [])
@@ -27,8 +34,8 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
         setTitle(target.value)
     }
 
-    function onSetColor(color) {
-        setColor(color)
+    function onSetColor(newColor, colorName, shade) {
+        setColor({ color: newColor, colorName, shade })
     }
 
     async function onSaveLabel() {
@@ -47,8 +54,10 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
     return (
         <section className="edit-label">
             <div className="display-chosen-label flex justify-center align-center">
-                <div className="chosen-color"
-                    style={{ backgroundColor: color }}></div>
+                <div className="chosen-color flex align-center"
+                    style={{ backgroundColor: color.color }}>
+                    {title}
+                </div>
             </div>
             <h3>Title</h3>
             <input className="add-lable" type="text" value={title} onChange={handleChange} />
@@ -57,8 +66,8 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
                 {colors.map((color, idx) => (
                     <li className="color-container"
                         key={idx}
-                        style={{ backgroundColor: color }}
-                        onClick={() => onSetColor(color)}>
+                        style={{ backgroundColor: color.color }}
+                        onClick={() => onSetColor(color.color, color.colorName, color.shade)}>
                     </li>
                 ))}
             </ul>

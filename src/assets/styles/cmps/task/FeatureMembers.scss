@@ -1,0 +1,48 @@
+.feature-members{
+
+    .search-members{
+        @include input-task-feature;
+    }
+
+    .board-members{
+        margin: 16px 0px 8px 0;
+        font-size: rem(12px);
+        color: $groupMoreActions;
+        font-weight: 600;
+    }
+
+    .members-container{
+
+        .member{
+            gap: 10px;
+            color: $groupHeader;
+            padding: 4px;
+            border-radius: 3px;
+            cursor: pointer;
+
+            .member-img{
+                border-radius: 50%;
+                height: 32px;
+                width: 32px;
+            }
+
+            .member-name{
+                font-weight: initial;
+            }
+
+            &:hover{
+                background-color: $exitBtnHover;
+            }
+
+            svg{
+                margin-inline: auto 11px;
+            }
+
+        }
+
+        > *:not(:last-child){
+            margin-bottom: 2px;
+        }
+        
+    }
+}

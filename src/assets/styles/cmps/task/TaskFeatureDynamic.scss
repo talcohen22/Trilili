@@ -1,6 +1,8 @@
 .dynamic-feature-container {
     p{
         color: $groupHeader;
+        font-weight: 600;
+        color: $groupMoreActions;
     }
 
     position: absolute;
@@ -22,11 +24,12 @@
         @include back-and-exit-btns;
         right: 8px;
         top: 6px;
-
+        
         svg {
             width: 16px;
             height: 16px;
             margin: 3px 1px 0px 2px;
+            color: $exitBtn;
         }
     }
 }
