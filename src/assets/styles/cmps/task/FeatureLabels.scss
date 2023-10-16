@@ -35,7 +35,7 @@
             border-radius: 3px;
             padding: 6px 12px 7px 12px;
             font-size: rem(14px);
-            color: $groupMoreActions;
+            color: $labelTextColor;
             font-weight: 500;
         }
 
@@ -70,6 +70,7 @@
     }
 
     .create-new-label{
+        font-weight: 600;
         @include btn-gray-bgc;
     }
 

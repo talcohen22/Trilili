@@ -1,5 +1,4 @@
 .edit-label {
-
     .display-chosen-label{
         width: 300px;
         height: 100px;
@@ -21,7 +20,9 @@
         color: $wsIconColor;
     }
 
+   
     h3 {
+        font-weight: 600;
         margin: 12px 0 8px 0;
     }
 
@@ -62,6 +63,7 @@
         }
 
         .create-new-label {
+            font-weight: 600;
             color: $wsTxtColor;
         }
 
@@ -80,6 +82,7 @@
 
     .save-delete-btns {
         button {
+            font-weight: 500;
             @include blue-action-btn;
         }
 
