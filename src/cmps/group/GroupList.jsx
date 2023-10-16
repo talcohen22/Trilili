@@ -16,7 +16,9 @@ export function GroupList({
     onSetIsOpenTaskDetails,
     onSetBoard,
     onIsCheckDate,
-    onIsExpandedLabels
+    onIsExpandedLabels,
+    removeGroup
+
 }) {
     const { groups } = board
     const { taskId } = useParams()
@@ -60,8 +62,9 @@ export function GroupList({
                                                         onAddTask={onAddTask}
                                                         onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
                                                         onIsCheckDate={onIsCheckDate}
-                                                        onIsExpandedLabels={onIsExpandedLabels} />
-                                                
+                                                        onIsExpandedLabels={onIsExpandedLabels}
+                                                        removeGroup={removeGroup}
+                                                    />
                                                 </li>
                                             )}
                                         </Draggable>

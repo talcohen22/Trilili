@@ -73,7 +73,7 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
             </ul>
             <div className="remove-color-btn flex">
                 <ExitBtnSvg />
-                <p className="create-new-label">Remove Color</p>
+                <p className="create-new-label">Remove color</p>
             </div>
             <hr />
             <div className="save-delete-btns flex justify-space-b">
