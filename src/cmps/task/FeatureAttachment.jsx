@@ -5,6 +5,7 @@ export function FeatureAttachment({board, group, task, setDynamicParams}) {
 
     async function onSaveFile(event) {
         const file = event.target.files[0];
+        console.log(file);
 
         if (file) {
             // try {
@@ -20,8 +21,7 @@ export function FeatureAttachment({board, group, task, setDynamicParams}) {
     return (
         <section className="feature-attachment">
             <p className="attach-file">Attach a file from your computer</p>
-            <p className="choose-file">Choose a file</p>
-            <label className='upload-btn' htmlFor="files">Upload</label>
+            <label className='upload-btn' htmlFor="files">Choose a file</label>
             <input type="file" id="files" name="files" onChange={onSaveFile} />
             <hr />
         </section>

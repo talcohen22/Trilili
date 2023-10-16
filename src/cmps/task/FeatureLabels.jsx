@@ -3,16 +3,17 @@ import * as React from 'react';
 import { FormGroup } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { setLabelChecked, setLabelNotChecked } from "../../store/board.actions";
+import { setLabelChecked, setLabelNotChecked, updateCmp } from "../../store/board.actions";
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 import { boardService } from "../../services/board.service.local";
 
+export function FeatureLabels({  onSetLabelIdToEdit }) {
 
-export function FeatureLabels({ board, group, task, setDynamicParams, onSetLabelIdToEdit }) {
-
-    const boards = useSelector(storeState => storeState.boardModule.boards)
+    // const boards = useSelector(storeState => storeState.boardModule.boards)
+    const board = useSelector(storeState => storeState.boardModule.board)
+    const group = useSelector(storeState => storeState.boardModule.group)
+    const task = useSelector(storeState => storeState.boardModule.task)
 
     const [labels, setLabels] = useState(board.labels)
     const [searchTxt, setSearchTxt] = useState('')
@@ -37,8 +38,10 @@ export function FeatureLabels({ board, group, task, setDynamicParams, onSetLabel
         setLabels(filterLabels)
     }
 
-    function onEditLabel(labelId, cmp) {
-        setDynamicParams({ type: `${cmp} label` })
+    function onEditLabel(ev, labelId, cmp) {
+        ev.stopPropagation()
+        const newCmp = {type: `${cmp} label`, location: null}
+        updateCmp(newCmp)
         onSetLabelIdToEdit(labelId)
     }
 
@@ -47,7 +50,7 @@ export function FeatureLabels({ board, group, task, setDynamicParams, onSetLabel
             <input className="search-lables" value={searchTxt} type="text" placeholder="Search labels..." onChange={handleSearchChange} />
             <div className="labels-suggestions flex align-center">
                 <SuggestionSvg />
-                <h3>Labels</h3>
+                <p className="labels-title">Labels</p>
             </div>
             <ul className="label-options">
                 {labels.map(label => (
@@ -63,13 +66,13 @@ export function FeatureLabels({ board, group, task, setDynamicParams, onSetLabel
                                 </div>}
                                 sx={{ '& .MuiSvgIcon-root': { height: '23px' } }} />
                         </FormGroup>
-                        <div className="edit-label" onClick={() => onEditLabel(label.id, "Edit")}>
+                        <div className="edit-label" onClick={(ev) => onEditLabel(ev, label.id, "Edit")}>
                             <PencilSvg />
                         </div>
                     </li>
                 ))}
             </ul>
-            <p className="create-new-label" onClick={() => onEditLabel(null, 'Add')}>Create a new label</p>
+            <p className="create-new-label" onClick={(ev) => onEditLabel(ev, null, 'Add')}>Create a new label</p>
         </section>
     )
 }

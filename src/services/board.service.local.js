@@ -16,7 +16,7 @@ export const boardService = {
     getEmptyTask,
     setBoardGroups,
     // getEmptyLabelsPalette
-    getBoardGroupTask,
+    getGroupTask,
     getLabel,
     getLabels
 }
@@ -423,11 +423,12 @@ function setBoardGroups(board, group, title) {
 //     ];
 // }
 
-async function getBoardGroupTask(boardId, groupId, taskId) {
+async function getGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
-    return { board, group, task }
+
+    return {group, task} 
 }
 
 async function getLabel(boardId, labelId) {

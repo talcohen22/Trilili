@@ -1,8 +1,8 @@
+import { useSelector } from "react-redux";
 import { boardService } from "../../services/board.service.local";
-import { editLabel } from "../../store/board.actions"
+import { editLabel, updateCmp } from "../../store/board.actions"
 import { BackBtnSvg, ExitBtnSvg } from "../svg/ImgSvg"
 import { useEffect, useState } from 'react'
-
 
 const colors = [
     { color: '#baf3db', colorName: 'green', shade: 'subtle' }, { color: '#f8e6a0', colorName: 'yellow', shade: 'subtle' }, { color: '#ffe2bd', colorName: 'orange', shade: 'subtle' }, { color: '#ffd2cc', colorName: 'red', shade: 'subtle' }, { color: '#dfd8fd', colorName: 'purple', shade: 'subtle' },
@@ -13,7 +13,11 @@ const colors = [
     { color: '#0c66e4', colorName: 'blue', shade: 'bold' }, { color: '#1d7f8c', colorName: 'sky', shade: 'bold' }, { color: '#5b7f24', colorName: 'lime', shade: 'bold' }, { color: '#ae4787', colorName: 'pink', shade: 'bold' }, { color: '#626f86', colorName: 'black', shade: 'bold' }
 ]
 
-export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit }) {
+export function EditLabel({ labelIdToEdit }) {
+
+    const board = useSelector(storeState => storeState.boardModule.board)
+    const group = useSelector(storeState => storeState.boardModule.group)
+    const task = useSelector(storeState => storeState.boardModule.task)
 
     const [title, setTitle] = useState('')
     const [color, setColor] = useState({ color: '#ffd2cc', colorName: 'red', shade: 'subtle' })
@@ -41,15 +45,20 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
     async function onSaveLabel() {
         try {
             await editLabel(board, group, task, labelIdToEdit, color, title)
-            setDynamicParams({ type: 'Labels' })
+            const cmp = { type: `Labels`, location: null }
+            updateCmp(cmp)
         } catch (err) {
             console.log('Cannot add label', err)
         }
     }
 
-    function onRemoveLabel() {
-        setDynamicParams({ type: 'Delete Label' })
+    function getCmp(cmpType) {
+        const cmp = { type: cmpType, location: null }
+        updateCmp(cmp)
     }
+
+
+    const dynClass = color.color === '#091E420F' ? 'without-color' : ''
 
     return (
         <section className="edit-label">
@@ -71,19 +80,22 @@ export function EditLabel({ board, group, task, setDynamicParams, labelIdToEdit 
                     </li>
                 ))}
             </ul>
-            <div className="remove-color-btn flex">
+            <div className={`remove-color-btn flex ${dynClass}`}>
                 <ExitBtnSvg />
-                <p className="create-new-label">Remove Color</p>
+                <p className={`create-new-label ${dynClass}`}
+                    onClick={() => onSetColor('#091E420F', '', '')}>
+                    Remove Color
+                </p>
             </div>
             <hr />
             <div className="save-delete-btns flex justify-space-b">
                 <button onClick={onSaveLabel}>Save</button>
                 <button
                     style={{ display: labelIdToEdit ? 'inline' : 'none' }}
-                    onClick={onRemoveLabel}
+                    onClick={() => getCmp('Delete Label')}
                 >Delete</button>
             </div>
-            <div className="back-btn" onClick={() => setDynamicParams({ type: 'Labels' })}>
+            <div className="back-btn" onClick={() => getCmp('Labels')}>
                 <BackBtnSvg />
             </div>
 

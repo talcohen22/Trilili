@@ -11,7 +11,9 @@
             height: 32px;
             padding-inline: 12px;
             border-radius: 3px;
+            font-size: rem(14px);
             font-weight: 500;
+            color: $chosenColor;
         }
     }
 
@@ -49,8 +51,22 @@
         margin: 8px 0;
         gap: 8px;
 
+        &.without-color{
+            cursor: not-allowed;
+            color: $notAllowedTxt;
+            background-color: $notAllowedBgc;
+        }
+
+        &.without-color:hover{
+            background-color: $notAllowedBgc;
+        }
+
         .create-new-label {
             color: $wsTxtColor;
+        }
+
+        .create-new-label.without-color{
+            color: $notAllowedTxt;
         }
 
         svg {
@@ -80,7 +96,6 @@
         svg{
             margin: 2px 0 0 0;
         }
-
     }
 
 }
