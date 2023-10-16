@@ -8,6 +8,7 @@ import { setIsCheckDate, setIsExpandedLabels, updateBoard } from "../store/board
 
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { StarSvg } from "../cmps/svg/ImgSvg";
+import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
 
 
 export function BoardDetails() {
@@ -91,7 +92,6 @@ export function BoardDetails() {
     }
 
 
-
     if (!board) return <div></div>
     return (
         <section
@@ -110,6 +110,8 @@ export function BoardDetails() {
                     removeGroup={removeGroup}
                 />
             }
+
+            <TaskFeatureDynamic/>
 
         </section>
     )

@@ -1,22 +1,16 @@
 import { AttachmentSvg, CheckListSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
-import { useEffect, useState } from 'react'
-import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 import React from 'react';
+import { useParams } from "react-router";
+import { updateBoardGroupTaskType } from "../../store/board.actions";
 
 
-
-export function TaskDetailsFeatures({board, group, task}) {
-    const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
-    const [dynamicParams, setDynamicParams] = useState({})
+export function TaskDetailsFeatures() {
+    const { boardId } = useParams()
+    const { groupId } = useParams()
+    const { taskId } = useParams()
 
     function getDynamicCmp(cpmType) {
-        setDynamicParams({ type: cpmType })
-        onSetIsDynamicCmpOpen(true)
-
-    }
-
-    function onSetIsDynamicCmpOpen(value) {
-        setIsDynamicCmpOpen(value)
+        updateBoardGroupTaskType(boardId, groupId, taskId, cpmType, null)
     }
 
     return (
@@ -46,15 +40,6 @@ export function TaskDetailsFeatures({board, group, task}) {
                 </div>
 
             </section>
-
-            {isDynamicCmpOpen &&
-                <TaskFeatureDynamic
-                    dynamicParams={dynamicParams}
-                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
-                    setDynamicParams={setDynamicParams}
-                    board={board}
-                    group={group}
-                    task={task} />}
 
         </React.Fragment>
     )

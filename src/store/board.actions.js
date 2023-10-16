@@ -1,7 +1,7 @@
 import { boardService } from "../services/board.service.local.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_CMP, SET_GROUP, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
 import { utilService } from "../services/util.service.js";
 
 // Action Creators:
@@ -46,6 +46,29 @@ export async function removeBoard(boardId) {
         console.log('Cannot remove board', err)
         throw err
     }
+}
+
+export async function updateBoardGroupTaskType(boardId, groupId, taskId, type, location) {
+    if (boardId === null) {
+        store.dispatch({ type: SET_BOARD, board: null })
+        store.dispatch({ type: SET_GROUP, group: null })
+        store.dispatch({ type: SET_TASK, task: null })
+        store.dispatch({ type: SET_CMP, cmp: {type: '' , location: null} })
+    }
+    else {
+        const board = await boardService.getById(boardId)
+        const group = board.groups.find(group => group.id === groupId)
+        const task = group.tasks.find(task => task.id === taskId)
+        const cmp = { type, location }
+        store.dispatch({ type: SET_BOARD, board: board })
+        store.dispatch({ type: SET_GROUP, group: group })
+        store.dispatch({ type: SET_TASK, task: task })
+        store.dispatch({ type: SET_CMP, cmp: cmp })
+    }
+}
+
+export async function updateCmp(cmp){
+    store.dispatch({ type: SET_CMP, cmp: cmp })
 }
 
 export async function updateGroup(board, group, field, value) {
@@ -109,7 +132,7 @@ export async function editLabel(board, group, task, labelId, color, title) {
             id: utilService.makeId(),
             title,
             color: color.color,
-            colorName: color.colorName, 
+            colorName: color.colorName,
             shade: color.shade
         }
 
@@ -178,9 +201,9 @@ export async function EditTaskMember(board, group, task, memberId) {
 
         if (board.groups[gIdx].tasks[tIdx].memberIds.includes(memberId)) {
             const memberIdx = task.memberIds.findIndex(mId => mId === memberId)
-            board.groups[gIdx].tasks[tIdx].memberIds.splice(memberIdx,1)
+            board.groups[gIdx].tasks[tIdx].memberIds.splice(memberIdx, 1)
         }
-        else{
+        else {
             board.groups[gIdx].tasks[tIdx].memberIds.push(memberId)
         }
         await updateBoard(board)
