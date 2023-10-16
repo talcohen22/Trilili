@@ -18,6 +18,7 @@ export function EditLabel({ labelIdToEdit }) {
     const board = useSelector(storeState => storeState.boardModule.board)
     const group = useSelector(storeState => storeState.boardModule.group)
     const task = useSelector(storeState => storeState.boardModule.task)
+    const storeCmp = useSelector(storeState => storeState.boardModule.cmp)
 
     const [title, setTitle] = useState('')
     const [color, setColor] = useState({ color: '#ffd2cc', colorName: 'red', shade: 'subtle' })
@@ -45,7 +46,7 @@ export function EditLabel({ labelIdToEdit }) {
     async function onSaveLabel() {
         try {
             await editLabel(board, group, task, labelIdToEdit, color, title)
-            const cmp = { type: `Labels`, location: null }
+            const cmp = { type: `Labels`, location: storeCmp.location }
             updateCmp(cmp)
         } catch (err) {
             console.log('Cannot add label', err)
@@ -53,7 +54,7 @@ export function EditLabel({ labelIdToEdit }) {
     }
 
     function getCmp(cmpType) {
-        const cmp = { type: cmpType, location: null }
+        const cmp = { type: cmpType, location: storeCmp.location }
         updateCmp(cmp)
     }
 
@@ -61,7 +62,7 @@ export function EditLabel({ labelIdToEdit }) {
     const dynClass = color.color === '#091E420F' ? 'without-color' : ''
 
     return (
-        <section className="edit-label">
+        <section className="edit-label scroll">
             <div className="display-chosen-label flex justify-center align-center">
                 <div className="chosen-color flex align-center"
                     style={{ backgroundColor: color.color }}>

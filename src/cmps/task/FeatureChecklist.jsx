@@ -26,7 +26,7 @@ export function FeatureChecklist() {
     }
 
     return (
-        <section className="feature-checklist">
+        <section className="feature-checklist scroll">
             <p className="checklist-title">Title</p>
             <form action="" onSubmit={onAddChecklist}>
                 <input value={titleTxt} className="title-input" type="text" onChange={handleChange} />

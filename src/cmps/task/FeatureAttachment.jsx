@@ -19,7 +19,7 @@ export function FeatureAttachment() {
     }
 
     return (
-        <section className="feature-attachment">
+        <section className="feature-attachment scroll">
             <p className="attach-file">Attach a file from your computer</p>
             <label className='upload-btn' htmlFor="files">Choose a file</label>
             <input type="file" id="files" name="files" onChange={onSaveFile} />

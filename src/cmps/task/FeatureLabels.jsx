@@ -14,6 +14,7 @@ export function FeatureLabels({  onSetLabelIdToEdit }) {
     const board = useSelector(storeState => storeState.boardModule.board)
     const group = useSelector(storeState => storeState.boardModule.group)
     const task = useSelector(storeState => storeState.boardModule.task)
+    const storeCmp = useSelector(storeState => storeState.boardModule.cmp)
 
     const [labels, setLabels] = useState(board.labels)
     const [searchTxt, setSearchTxt] = useState('')
@@ -40,13 +41,13 @@ export function FeatureLabels({  onSetLabelIdToEdit }) {
 
     function onEditLabel(ev, labelId, cmp) {
         ev.stopPropagation()
-        const newCmp = {type: `${cmp} label`, location: null}
+        const newCmp = {type: `${cmp} label`, location: storeCmp.location}
         updateCmp(newCmp)
         onSetLabelIdToEdit(labelId)
     }
 
     return (
-        <section className="feature-labels">
+        <section className="feature-labels scroll">
             <input className="search-lables" value={searchTxt} type="text" placeholder="Search labels..." onChange={handleSearchChange} />
             <div className="labels-suggestions flex align-center">
                 <SuggestionSvg />

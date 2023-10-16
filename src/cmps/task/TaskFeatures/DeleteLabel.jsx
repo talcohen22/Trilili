@@ -7,6 +7,7 @@ export function DeleteLabel({ labelIdToEdit }) {
     const board = useSelector(storeState => storeState.boardModule.board)
     const group = useSelector(storeState => storeState.boardModule.group)
     const task = useSelector(storeState => storeState.boardModule.task)
+    const storeCmp = useSelector(storeState => storeState.boardModule.cmp)
 
     async function onRemoveLabel() {
         try {
@@ -18,12 +19,12 @@ export function DeleteLabel({ labelIdToEdit }) {
     }
 
     function getCmp(cmpType) {
-        const cmp = { type: cmpType, location: null }
+        const cmp = { type: cmpType, location: storeCmp.location }
         updateCmp(cmp)
     }
 
     return (
-        <section className="delete-label">
+        <section className="delete-label scroll">
             <p>This will remove this label from all cards. There is no undo.</p>
             <button className="delete-btn" onClick={onRemoveLabel}>Delete</button>
             <div className="back-btn" onClick={() => getCmp('Edit label')}>

@@ -25,7 +25,7 @@ export function FeatureMembers() {
     }
 
     return (
-        <section className="feature-members">
+        <section className="feature-members scroll">
             <input value={searchTxt} className="search-members" type="text" placeholder="Search members" onChange={handleChange} />
             <p className="board-members">Board members</p>
             <div className="members-container">
