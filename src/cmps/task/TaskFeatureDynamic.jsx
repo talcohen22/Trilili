@@ -4,9 +4,11 @@ import { FeatureAttachment } from "./FeatureAttachment";
 import { FeatureLabels } from "./FeatureLabels";
 import { useState } from 'react'
 import { DeleteLabel } from "./TaskFeatures/DeleteLabel";
+import { FeatureMembers } from "./TaskFeatures/FeatureMembers";
+import { FeatureChecklist } from "./FeatureChecklist";
 
 export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDynamicParams, board, group, task }) {
-    
+
     const [labelIdToEdit, setLabelIdToEdit] = useState('')
 
     function onSetLabelIdToEdit(labelId) {
@@ -26,7 +28,7 @@ export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDy
                     setDynamicParams={setDynamicParams}
                     onSetLabelIdToEdit={onSetLabelIdToEdit} />}
 
-            {dynamicParams.type === 'Edit label' &&
+            {(dynamicParams.type === 'Edit label' || dynamicParams.type === 'Add label') &&
                 <EditLabel
                     board={board}
                     group={group}
@@ -43,7 +45,24 @@ export function TaskFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, setDy
                     labelIdToEdit={labelIdToEdit} />}
 
             {dynamicParams.type === 'Attach' &&
-                <FeatureAttachment setDynamicParams={setDynamicParams} />}
+                <FeatureAttachment
+                    board={board}
+                    group={group}
+                    task={task}
+                    setDynamicParams={setDynamicParams} />}
+
+            {dynamicParams.type === 'Members' &&
+                <FeatureMembers
+                    board={board}
+                    group={group}
+                    task={task} />}
+
+            {dynamicParams.type === 'Add checklist' &&
+                <FeatureChecklist
+                    board={board}
+                    group={group}
+                    task={task}
+                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen} />}
 
             <div className="exit-btn" onClick={() => onSetIsDynamicCmpOpen(false)}>
                 <ExitBtnSvg />

@@ -58,6 +58,19 @@ export async function updateGroup(board, group, field, value) {
         throw err
     }
 }
+
+// export async function addTaskAttach(board, group, task, attach) {
+//     try {
+//         const gIdx = getGroupIdx(board, group)
+//         const tIdx = getTaskIdx(group, task)
+//         board.groups[gIdx].tasks[tIdx].attachment.push(attach)
+//         await updateBoard(board)
+//     } catch (err) {
+//         console.log('Cannot add attachment', err)
+//         throw err
+//     }
+// }
+
 export async function setLabelNotChecked(board, group, task, labelId) {
     try {
         const newLabelIds = task.labelIds.filter(lId => lId !== labelId)
@@ -95,7 +108,9 @@ export async function editLabel(board, group, task, labelId, color, title) {
         const newLabel = {
             id: utilService.makeId(),
             title,
-            color
+            color: color.color,
+            colorName: color.colorName, 
+            shade: color.shade
         }
 
         const gIdx = getGroupIdx(board, group)
@@ -103,8 +118,10 @@ export async function editLabel(board, group, task, labelId, color, title) {
 
         if (task.labelIds.includes(labelId)) { //edit
             const labelIdx = board.labels.findIndex(label => label.id === labelId)
-            board.labels[labelIdx].color = color
             board.labels[labelIdx].title = title
+            board.labels[labelIdx].color = color.color
+            board.labels[labelIdx].colorName = color.colorName
+            board.labels[labelIdx].shade = color.shade
 
         }
         else { //add
@@ -131,6 +148,47 @@ export async function removeLabel(board, group, task, labelId) {
     board.groups[gIdx].tasks[tIdx].labelIds.splice(lTaskIdx, 1)
 
     await updateBoard(board)
+}
+
+export async function addChecklist(board, group, task, title) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        const checklist = {
+            id: utilService.makeId(),
+            title,
+            todos: []
+        }
+
+        board.groups[gIdx].tasks[tIdx].checklists.push(checklist)
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot add checklist', err)
+        throw err
+    }
+}
+
+export async function EditTaskMember(board, group, task, memberId) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        if (board.groups[gIdx].tasks[tIdx].memberIds.includes(memberId)) {
+            const memberIdx = task.memberIds.findIndex(mId => mId === memberId)
+            board.groups[gIdx].tasks[tIdx].memberIds.splice(memberIdx,1)
+        }
+        else{
+            board.groups[gIdx].tasks[tIdx].memberIds.push(memberId)
+        }
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot edit member', err)
+        throw err
+    }
 }
 
 function getGroupIdx(board, group) {

@@ -17,7 +17,8 @@ export const boardService = {
     setBoardGroups,
     // getEmptyLabelsPalette
     getBoardGroupTask,
-    getLabel
+    getLabel,
+    getLabels
 }
 // debug trick
 window.bs = boardService
@@ -42,38 +43,55 @@ const BOARDS = [
                 "id": "l101",
                 "title": "Remote",
                 "color": "#4bce97",
+                "colorName": 'green',
+                "shade": ''
             },
             {
                 "id": "l102",
                 "title": "Important",
-                "color": "#e2b203"
+                "color": "#e2b203",
+                "colorName": 'yellow', 
+                "shade": ''
             },
             {
                 "id": "l103",
                 "title": "For fun",
-                "color": "#faa53d"
+                "color": "#faa53d",
+                "colorName": 'orange', 
+                "shade": ''
             },
             {
                 "id": "l104",
                 "title": "CR",
-                "color": "#f87462"
+                "color": "#f87462",
+                "colorName": 'red', 
+                "shade": '' 
             },
             {
                 "id": "l105",
                 "title": "Delay",
-                "color": "#9f8fef"
+                "color": "#9f8fef",
+                "colorName": 'purple', 
+                "shade": ''
             },
             {
                 "id": "l106",
                 "title": "Help",
-                "color": "#579dff"
+                "color": "#579dff",
+                "colorName": 'blue', 
+                "shade": ''
             }
         ],
         "members": [
             {
                 "_id": "u101",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "https://www.google.com"
+                "fullname": "Tal Cohen",
+                "imgUrl": "tal"
+            },
+            {
+                "_id": "u102",
+                "fullname": "Stav Cohen",
+                "imgUrl": "stav-black"
             }
         ],
         "groups": [
@@ -95,13 +113,18 @@ const BOARDS = [
                             "cover": "#26de81"
                         },
                         "labelIds": ["l101", "l102", "l105", "l106"],
-
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
                     },
                     {
                         "id": "c102",
                         "title": "Add Samples",
                         "archivedAt": 1589983468418,
-                        "labelIds": []
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
                     },
                     {
                         "id": "c103",
@@ -112,12 +135,18 @@ const BOARDS = [
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
                         },
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
                     },
                     {
                         "id": "c104",
                         "title": "Add Bgc",
                         "archivedAt": 1589983468412,
-                        "labelIds": []
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
                     }
                 ],
                 "style": {}
@@ -128,13 +157,16 @@ const BOARDS = [
                 "title": "Group 2",
                 "tasks": [
                     {
-                        "id": "c103",
+                        "id": "d103",
                         "title": "Do that",
                         "archivedAt": 1589983468418,
-                        "labelIds": []
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
                     },
                     {
-                        "id": "c104",
+                        "id": "d104",
                         "title": "Help me",
                         "status": "in-progress",
                         "priority": "high",
@@ -218,7 +250,7 @@ const BOARDS = [
                     "title": "Urgent Stuff"
                 },
                 "task": {
-                    "id": "c101",
+                    "id": "c106",
                     "title": "Replace Logo"
                 }
             }
@@ -402,5 +434,17 @@ async function getLabel(boardId, labelId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const label = board.labels.find(label => label.id === labelId)
     return label
+}
+
+async function getLabels(boardId, txt){
+    const newTxt = txt.toLowerCase()
+    const board = await storageService.get(STORAGE_KEY, boardId)
+
+    const labels = board.labels.filter(label => {
+        return label.shade.toLowerCase().includes(newTxt) ||
+        label.title.toLowerCase().includes(newTxt) ||
+        label.colorName.toLowerCase().includes(newTxt)
+    })
+    return labels
 }
 

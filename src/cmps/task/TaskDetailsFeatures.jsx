@@ -32,7 +32,7 @@ export function TaskDetailsFeatures({board, group, task}) {
                     <LabelsSvg />
                     <p>Labels</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Checklist'))}>
+                <div onClick={(() => getDynamicCmp('Add checklist'))}>
                     <CheckListSvg />
                     <p>Checklist</p>
                 </div>

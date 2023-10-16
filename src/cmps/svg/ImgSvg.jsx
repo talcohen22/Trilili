@@ -196,7 +196,7 @@ export function SearchSvg() {
 
 export function ExitBtnSvg() {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path fillRule="evenodd" clipRule="evenodd" d="M10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12Z" fill="currentColor" />
         </svg>
     )
@@ -326,6 +326,16 @@ export function ClockSvg() {
     return (
         <svg role="presentation" width="16" height="16" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 6C13 5.44772 12.5523 5 12 5C11.4477 5 11 5.44772 11 6V12C11 12.2652 11.1054 12.5196 11.2929 12.7071L13.7929 15.2071C14.1834 15.5976 14.8166 15.5976 15.2071 15.2071C15.5976 14.8166 15.5976 14.1834 15.2071 13.7929L13 11.5858V6Z" fill="currentColor"></path><path fillRule="evenodd" clipRule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z" fill="currentColor"></path>
+        </svg>
+    )
+}
+
+export function VSvg() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="12" height="12" viewBox="0 0 48.000000 35.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,35.000000) scale(0.100000,-0.100000)" stroke="none">
+                <path d="M384 289 c-10 -12 -63 -62 -117 -112 l-98 -90 -54 53 c-53 52 -85 62 -85 24 0 -21 119 -144 139 -144 26 0 275 255 268 274 -9 22 -30 20 -53 -5z" />
+            </g>
         </svg>
     )
 }

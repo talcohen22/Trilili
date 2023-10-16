@@ -1,34 +1,19 @@
 import React, { useState } from 'react';
+// import { addTaskAttach } from '../../store/board.actions';
 
-export function FeatureAttachment() {
+export function FeatureAttachment({board, group, task, setDynamicParams}) {
 
     async function onSaveFile(event) {
         const file = event.target.files[0];
-        console.log(file);
-
 
         if (file) {
-            console.log(file);
-            try {
-                const formData = new FormData();
-                formData.append('file', file);
-
-                // Send the file data to the server using an API request (e.g., Axios)
-                const response = await fetch('/api/upload', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (response.status === 200) {
-                    // File successfully uploaded
-                    console.log('File uploaded successfully');
-                } else {
-                    // Handle errors here
-                    console.error('Error uploading file');
-                }
-            } catch (error) {
-                console.error('Error uploading file', error);
-            }
+            // try {
+            //     const formData = new FormData();
+            //     formData.append('file', file);
+            //     addTaskAttach(board, group, task, file)
+            // } catch (error) {
+            //     console.error('Error uploading file', error);
+            // }
         }
     }
 
