@@ -53,6 +53,19 @@ export function BoardDetails() {
         }
     }
 
+    async function removeGroup(groupId) {
+        try {
+            const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+            const updatedBoard = board
+            updatedBoard.groups.splice(groupIdx, 1)
+            boardService.save(updatedBoard)
+            const savedBoard = await updateBoard(updatedBoard)
+            setBoard(savedBoard)
+        } catch (err) {
+            console.log('err on RemoveGroup', err)
+        }
+    }
+
     async function onSetBoard(updatedBoard) {
         try {
             const savedBoard = await updateBoard(updatedBoard)
@@ -94,6 +107,7 @@ export function BoardDetails() {
                     onSetBoard={onSetBoard}                         
                     onIsCheckDate={onIsCheckDate}
                     onIsExpandedLabels={onIsExpandedLabels}
+                    removeGroup={removeGroup}
                 />
             }
 

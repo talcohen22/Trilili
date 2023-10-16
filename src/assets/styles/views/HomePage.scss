@@ -142,7 +142,7 @@
                 color: $productivityText;
                 .trilili-101 {
                     font-family: charlie-semibold,sans-serif;
-                    margin-block-end: rem(1px);
+                    margin-block-end: rem(8px);
                     font-size: rem(16px);
 
                     @include for-normal-layout {
@@ -178,7 +178,7 @@
                     padding-inline-end: rem(50px);
 
                     p {
-                        // font-family: inherit;
+                        font-family: 'charlie-regular',sans-serif;
                         font-size: rem(16px);
                         color: #091E42;
 
@@ -193,6 +193,8 @@
             }
         }
     }
+
+    
 
     
 }
