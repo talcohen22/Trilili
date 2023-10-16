@@ -26,7 +26,7 @@ export function TaskFeatureDynamic() {
         }, [cmp]);
     }
 
-    function exitCmp(){
+    function exitCmp() {
         updateBoardGroupTaskType(null, null, null, '', null)
     }
 
@@ -39,7 +39,7 @@ export function TaskFeatureDynamic() {
     }
 
     function handleClickOutside(event) {
-        if (wrapperRef.current && !wrapperRef.current.contains(event.target)){
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
             exitCmp()
         }
     }
@@ -54,42 +54,24 @@ export function TaskFeatureDynamic() {
 
                 {cmp.type === 'Labels' &&
                     <FeatureLabels
-                        board={board}
-                        group={group}
-                        task={task}
                         onSetLabelIdToEdit={onSetLabelIdToEdit} />}
 
                 {(cmp.type === 'Edit label' || cmp.type === 'Add label') &&
                     <EditLabel
-                        board={board}
-                        group={group}
-                        task={task}
                         labelIdToEdit={labelIdToEdit} />}
 
                 {cmp.type === 'Delete Label' &&
                     <DeleteLabel
-                        board={board}
-                        group={group}
-                        task={task}
                         labelIdToEdit={labelIdToEdit} />}
 
                 {cmp.type === 'Attach' &&
-                    <FeatureAttachment
-                        board={board}
-                        group={group}
-                        task={task} />}
+                    <FeatureAttachment />}
 
                 {cmp.type === 'Members' &&
-                    <FeatureMembers
-                        board={board}
-                        group={group}
-                        task={task} />}
+                    <FeatureMembers />}
 
                 {cmp.type === 'Add checklist' &&
-                    <FeatureChecklist
-                        board={board}
-                        group={group}
-                        task={task} />}
+                    <FeatureChecklist />}
 
                 <div className="exit-btn" onClick={() => exitCmp()}>
                     <ExitBtnSvg />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { addTaskAttach } from '../../store/board.actions';
 
-export function FeatureAttachment({board, group, task, setDynamicParams}) {
+export function FeatureAttachment() {
 
     async function onSaveFile(event) {
         const file = event.target.files[0];
