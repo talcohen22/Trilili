@@ -4,7 +4,8 @@ import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 import { boardService } from "../../services/board.service.local";
 import { updateGroup } from "../../store/board.actions";
-
+import { GroupActionsModal } from "../group/GroupActionsModal"
+import { GroupFeatureDynamic } from "./GroupFeatureDynamic";
 
 export function GroupPreview({
     board,
@@ -13,15 +14,16 @@ export function GroupPreview({
     onSetIsOpenTaskDetails,
     onIsCheckDate,
     onIsExpandedLabels,
-    provided}) {
-
+    removeGroup,
+    provided }) {
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
-
-
-
-
+    const [isOnUsingAction, setIsOnUsingAction] = useState(false)
+    const [groupActionPostion, setGroupActionPosition] = useState({ left: null, top: null })
+    const buttonRef = useRef(null)
+    const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
+    const [dynamicParams, setDynamicParams] = useState({})
     // const [inputActive, setInputActive] = useState(false);
     // const inputRef = useRef(null);
 
@@ -46,6 +48,7 @@ export function GroupPreview({
     }
 
     function handleAddTask({ target }) {
+        handleClose()
         setIsOnAddTask(true)
         updateGroup(board, group, 'title', groupTitle)
     }
@@ -57,13 +60,35 @@ export function GroupPreview({
     function onCloseAddTaskModal() {
         setIsOnAddTask(false)
     }
+
+    function handleUsingAction() {
+        // const index = board.groups.findIndex(idx => idx.id === group.id)
+        const buttonRect = buttonRef.current.getBoundingClientRect()
+        const positionX = buttonRect.x
+        const positionY = buttonRect.bottom + 7
+        setGroupActionPosition({ left: positionX, top: positionY })
+        setIsOnUsingAction(true)
+    }
+
+    function handleClose() {
+        setIsOnUsingAction(false)
+    }
+
+    function handleDynamicCmpOpen(cpmType) {
+        setDynamicParams(cpmType)
+        setIsDynamicCmpOpen(true)
+    }
+    function handleIsDynamicCmpOpen(value) {
+        setIsDynamicCmpOpen(value)
+    }
+
     const { isExpandedLabels } = board
     const labelsPaletteBoard = board.labels
     return (
         <section className='group-card'>
 
             <div className="group-header flex justify-space-b align-center " {...provided.dragHandleProps}>
-                <input 
+                <input
                     // ref={inputRef}
                     // onFocus={() => setInputActive(true)}
                     // onBlur={() => setInputActive(false)}
@@ -75,9 +100,27 @@ export function GroupPreview({
                     onKeyDown={handleKeyDown}
 
                 />
-                <button className="group-btn flex justify-center align-center">
+                <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
                     <DotsSvg />
                 </button>
+
+                {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
+                    group={group}
+                    handleClose={handleClose}
+                    removeGroup={removeGroup}
+                    handleAddTask={handleAddTask}
+                    handleDynamicCmpOpen={handleDynamicCmpOpen}
+                />}
+                {isDynamicCmpOpen&&
+                <GroupFeatureDynamic
+                    dynamicParams={dynamicParams}
+                    handleIsDynamicCmpOpen={handleIsDynamicCmpOpen}
+                    setDynamicParams={setDynamicParams}
+                    board={board}
+                    group={group}
+                    />
+                }
+
             </div>
 
             <div className="group-tasks">
