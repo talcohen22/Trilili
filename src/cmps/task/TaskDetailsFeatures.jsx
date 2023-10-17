@@ -8,14 +8,14 @@ export function TaskDetailsFeatures() {
     const { groupId } = useParams()
     const { taskId } = useParams()
 
-    function getDynamicCmp({ target }, cpmType) {
-        const data = target.getBoundingClientRect()
+    function getDynamicCmp(ev, cpmType) {
+        const parentElement = ev.currentTarget;
+        const data = parentElement.getBoundingClientRect()
         const location = { top: data.top, left: data.left }
         updateBoardGroupTaskType(boardId, groupId, taskId, cpmType, location)
     }
 
     return (
-        <React.Fragment>
             <section className="task-features">
 
                 <h3>Add to card</h3>
@@ -41,7 +41,5 @@ export function TaskDetailsFeatures() {
                 </div>
 
             </section>
-
-        </React.Fragment>
     )
 }

@@ -7,7 +7,7 @@ import { DeleteLabel } from "./TaskFeatures/DeleteLabel";
 import { FeatureMembers } from "./TaskFeatures/FeatureMembers";
 import { FeatureChecklist } from "./FeatureChecklist";
 import { useSelector } from 'react-redux'
-import { updateBoardGroupTaskType } from "../../store/board.actions";
+import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions";
 
 export function TaskFeatureDynamic() {
 
@@ -18,11 +18,22 @@ export function TaskFeatureDynamic() {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-    const[componentHeight, setComponentHeight] = useState(0);
+    const [componentHeight, setComponentHeight] = useState(0);
+    const [screenDiff, setScreenDiff] = useState(0)
+
 
     useEffect(() => {
+
         const handleResize = () => {
-            setScreenWidth(window.innerWidth)
+            setScreenWidth(prevWidth => {
+                setScreenDiff(prevWidth - window.innerWidth)
+                return window.innerWidth
+            })
+
+            if (cmp.location) {
+                updateCmp({ ...cmp, location: { ...cmp.location, left: cmp.location.left - (screenDiff) / 2 } })
+            }
+
             setScreenHeight(window.innerHeight)
         }
 
@@ -31,7 +42,7 @@ export function TaskFeatureDynamic() {
         return () => {
             window.removeEventListener('resize', handleResize)
         }
-    }, [])
+    }, [cmp])
 
     useEffect(() => {
         if (wrapperRef.current) {
@@ -67,6 +78,7 @@ export function TaskFeatureDynamic() {
             exitCmp()
         }
     }
+    
 
     if (!board || !group || !task || !cmp.type || !cmp.location || !cmp.location.top || !cmp.location.left) return <div></div>
     return (
@@ -75,7 +87,7 @@ export function TaskFeatureDynamic() {
             <div className="dynamic-feature-container"
                 ref={wrapperRef}
                 style={{
-                    top: cmp.location.top + componentHeight > screenHeight ? screenHeight - componentHeight : cmp.location.top,
+                    top: cmp.location.top + componentHeight > screenHeight ? screenHeight - componentHeight : cmp.location.top + 37,
                     left: cmp.location.left + 304 > screenWidth ? screenWidth - 304 : cmp.location.left
                 }} >
 
