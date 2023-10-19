@@ -26,7 +26,7 @@ window.bs = boardService
 const BOARDS = [
     {
         "_id": "b101",
-        "title": "Robot dev proj",
+        "title": "Trilili project",
         "isStarred": false,
         "isExpandedLabels": false,
         "archivedAt": 1589983468418,
@@ -36,12 +36,12 @@ const BOARDS = [
             "imgUrl": "http://some-img"
         },
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg"
         },
         "labels": [
             {
                 "id": "l101",
-                "title": "Remote",
+                "title": "",
                 "color": "#4bce97",
                 "colorName": 'green',
                 "shade": ''
@@ -50,35 +50,49 @@ const BOARDS = [
                 "id": "l102",
                 "title": "Important",
                 "color": "#e2b203",
-                "colorName": 'yellow', 
+                "colorName": 'yellow',
                 "shade": ''
             },
             {
                 "id": "l103",
-                "title": "For fun",
+                "title": "",
                 "color": "#faa53d",
-                "colorName": 'orange', 
+                "colorName": 'orange',
                 "shade": ''
             },
             {
                 "id": "l104",
                 "title": "CR",
                 "color": "#f87462",
-                "colorName": 'red', 
-                "shade": '' 
+                "colorName": 'red',
+                "shade": ''
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": 'pink',
+                "shade": ''
             },
             {
                 "id": "l105",
-                "title": "Delay",
+                "title": "",
                 "color": "#9f8fef",
-                "colorName": 'purple', 
+                "colorName": 'purple',
                 "shade": ''
             },
             {
                 "id": "l106",
                 "title": "Help",
                 "color": "#579dff",
-                "colorName": 'blue', 
+                "colorName": 'blue',
+                "shade": ''
+            },
+            {
+                "id": "l108",
+                "title": "",
+                "color": "#60c6d2",
+                "colorName": 'sky',
                 "shade": ''
             }
         ],
@@ -97,7 +111,7 @@ const BOARDS = [
         "groups": [
             {
                 "id": "g101",
-                "title": "Group 1",
+                "title": "Backlog-Server",
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
@@ -106,34 +120,42 @@ const BOARDS = [
                 "tasks": [
                     {
                         "id": "c101",
-                        "title": "Replace logo",
+                        "title": "Create a server with express",
                         "archivedAt": 1589983468414,
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
+                        }
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Create backend services",
+                        "archivedAt": 1589983468418,
+                        "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
                         "style": {
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
                         },
-                        "labelIds": ["l101", "l102", "l105", "l106"],
-                        "attachment": [],
-                        "memberIds": ['u102'],
-                        "checklists": [],
-                    },
-                    {
-                        "id": "c102",
-                        "title": "Add Samples",
-                        "archivedAt": 1589983468418,
-                        "labelIds": [],
-                        "attachment": [],
-                        "memberIds": [],
-                        "checklists": [],
                     },
                     {
                         "id": "c103",
-                        "title": "Add Boarder",
+                        "title": "Date modal approval",
                         "archivedAt": 1589983468413,
                         "labelIds": [],
                         "style": {
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
                         },
                         "attachment": [],
                         "memberIds": [],
@@ -141,39 +163,33 @@ const BOARDS = [
                     },
                     {
                         "id": "c104",
-                        "title": "Add Bgc",
+                        "title": "DB implementation",
                         "archivedAt": 1589983468412,
                         "labelIds": [],
+                        "style": {
+                            "backgroundColor": "#6cc3e0",
+                            "cover": "#6cc3e0"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1692061014,
+                            "isDone": false
+                        },
                         "attachment": [],
                         "memberIds": [],
                         "checklists": [],
-                    }
-                ],
-                "style": {}
-            },
-            {
-
-                "id": "g102",
-                "title": "Group 2",
-                "tasks": [
-                    {
-                        "id": "d103",
-                        "title": "Do that",
-                        "archivedAt": 1589983468418,
-                        "labelIds": [],
-                        "attachment": [],
-                        "memberIds": [],
-                        "checklists": [],
-                    },
-                    {
-                        "id": "d104",
-                        "title": "Help me",
-                        "status": "in-progress",
-                        "priority": "high",
-                        "description": "description",
                         "comments": [
                             {
-                                "id": "ZdPnm",
+                                "id": "cm101",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            },
+                            {
+                                "id": "cm102",
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436,
                                 "byMember": {
@@ -183,42 +199,102 @@ const BOARDS = [
                                 }
                             }
                         ],
-                        "attachment": [],
                         "checklists": [
                             {
-                                "id": "YEhmF",
-                                "title": "Checklist",
+                                "id": "cl101",
+                                "title": "check bugs",
                                 "todos": [
                                     {
-                                        "id": "212jX",
-                                        "title": "To Do 1",
-                                        "isDone": false
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "12hmF",
-                                "title": "Checklist",
-                                "todos": [
-                                    {
-                                        "id": "212js",
-                                        "title": "To Do 1",
+                                        "id": "td101",
+                                        "title": "bug in taskDetails cmp",
                                         "isDone": true
                                     },
                                     {
-                                        "id": "wew32",
-                                        "title": "To Do 2",
-                                        "isDone": false
+                                        "id": "td102",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td103",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
                                     }
                                 ]
                             }
                         ],
-                        "memberIds": ["u101"],
-                        "labelIds": ["l101", "l102", "l105", "l106"],
+                    }
+                ],
+                "style": {}
+            },
+            {
+
+                "id": "g102",
+                "title": "Backlog-client",
+                "tasks": [
+                    {
+                        "id": "d103",
+                        "title": "Planning the components tree",
+                        "archivedAt": 1589983468418,
+                        "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
                         "dueDate": {
-                            "timeStamp": 1673061314,
+                            "timeStamp": 1696061014,
                             "isDone": false
                         },
+                        "style": {
+                            "backgroundColor": "#f87168",
+                            "cover": "#f87168"
+                        },
+                    },
+                    {
+                        "id": "d104",
+                        "title": "Build basic template",
+                        "archivedAt": 1589983468418,
+                        "labelIds": ["l103", "l104"],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1698061014,
+                            "isDone": false
+                        },
+                    },
+                    {
+                        "id": "d105",
+                        "title": "Adding npm libraries",
+                        "archivedAt": 1589983468418,
+                        "labelIds": ["l103", "l104", "l105", "l106"],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://trello.com/1/cards/651c005f1738798047c7fd5b/attachments/651c00bd111368598b586279/download/npm.png",
+                        }
+                    },
+                    {
+                        "id": "d106",
+                        "title": "Implement SAAS",
+                        "archivedAt": 1589983468418,
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://trello.com/1/cards/651c01062962bafe88c816a7/attachments/651c01361d684fd84072e13e/download/231-sass-logo-sass.png",
+                        }
+                    },
+                    {
+                        "id": "d107",
+                        "title": "Check user id - 125465",
+                        "status": "in-progress",
+                        "priority": "high",
+                        "description": "description",
+                        "attachment": [],
+                        "memberIds": ["u101"],
                         "byMember": {
                             "_id": "u101",
                             "username": "Tal",
@@ -227,9 +303,242 @@ const BOARDS = [
                         },
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://i.pinimg.com/1200x/b5/14/f1/b514f164d8a5eda34595a9e034f05aa8.jpg",
+                            "cover": "https://trello.com/1/cards/651c01e29ae065f6e43d8f03/attachments/651c020196c5fb62cc35bdf3/download/219969.png",
                         }
                     }
+                ],
+                "style": {}
+            },
+            {
+                "id": "g103",
+                "title": "In development",
+                "archivedAt": 1589983468400,
+                "status": "in-progress",
+                "priority": "low",
+                "description": "description",
+                "labelIds": ["l101", "l102", "l105", "l106"],
+                "tasks": [
+                    {
+                        "id": "d108",
+                        "title": "Sanity test for new component",
+                        "archivedAt": 1589983468418,
+                        "labelIds": ["l102", "l106"],
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "#9f8fef",
+                            "cover": "#9f8fef"
+                        },
+                        "comments": [
+                            {
+                                "id": "cm102",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            },
+                            {
+                                "id": "cm103",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        "id": "c109",
+                        "title": "functional testing for app header",
+                        "archivedAt": 1589983468414,
+                        "style": {
+                            "backgroundColor": "#fea362",
+                            "cover": "#fea362"
+                        },
+                        "labelIds": ["l103", "l104"],
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1699961014,
+                            "isDone": false
+                        },
+                    },
+                    {
+                        "id": "c110",
+                        "title": "",
+                        "archivedAt": 1589983468414,
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://trello.com/1/cards/651c03270cfcb4617c6352e9/attachments/651c03746e39588ea43be583/download/benefit_of_PWA.png",
+                        }
+                    },
+                ],
+                "style": {}
+            },
+            {
+                "id": "g104",
+                "title": "QA",
+                "archivedAt": 1589983468400,
+                "status": "in-progress",
+                "priority": "low",
+                "description": "description",
+                "labelIds": ["l102", "l105"],
+                "tasks": [
+                    {
+                        "id": "c111",
+                        "title": "Meeting with head manager for planning the code progress",
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l102", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
+                    },
+                    {
+                        "id": "c112",
+                        "title": "End day code review with all members",
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l103", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "#579dff",
+                            "cover": "#579dff"
+                        },
+                    },
+                    {
+                        "id": "c113",
+                        "title": "Checking bug",
+                        "archivedAt": 1589983468414,
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": ['u102'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2011/09/thumb_720_450_bug-on-computer-chip_shutterstock_4027501.jpg"
+                        },
+                    },
+                    {
+                        "id": "c114",
+                        "title": "Advices from head manager",
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l102", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u102', 'u104'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://www.youthemployment.org.uk/dev/wp-content/uploads/2018/07/achievement-3408115_640-600x287.jpg"
+                        },
+                    },
+
+                ],
+                "style": {}
+            },
+            {
+                "id": "g105",
+                "title": "Done",
+                "archivedAt": 1589983468400,
+                "status": "in-progress",
+                "priority": "low",
+                "description": "description",
+                "labelIds": ["l102", "l101"],
+                "tasks": [
+                    {
+                        "id": "c115",
+                        "title": "NPM tutorial",
+                        "archivedAt": 1589983468414,
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": ['u102', 'u104'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://www.syncfusion.com/blogs/wp-content/uploads/2023/04/How-You-Should-Treat-NPM-Audit-Results.png"
+                        },
+                    },
+                    {
+                        "id": "c116",
+                        "title": "CSS variables",
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l102", "l101"],
+                        "attachment": [],
+                        "memberIds": ['u102', 'u104'],
+                        "checklists": [],
+                    },
+                    {
+                        "id": "c117",
+                        "title": "CSS directory",
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l101"],
+                        "attachment": [],
+                        "memberIds": ['u102', 'u104'],
+                        "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1699961014,
+                            "isDone": true
+                        },
+                        "checklists": [
+                            {
+                                "id": "cl102",
+                                "title": "CSS directory checklist",
+                                "todos": [
+                                    {
+                                        "id": "td104",
+                                        "title": "bug in taskDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td105",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td106",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                ]
+                            },
+                            {
+                                "id": "cl103",
+                                "title": "CSS directory checklist",
+                                "todos": [
+                                    {
+                                        "id": "td107",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "td108",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                    },
+                    {
+                        "id": "c118",
+                        "title": "Making mixins",
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l104", "l106"],
+                        "attachment": [],
+                        "memberIds": ['u102', 'u104'],
+                        "checklists": [],
+                    },
                 ],
                 "style": {}
             }
@@ -256,8 +565,251 @@ const BOARDS = [
             }
         ],
         "cmpsOrder": ["StatusPicker", "MemberPicker", "DatePicker"]
-    }
+    },
+    {
+        "_id": "b102",
+        "title": "Sales and Marketing project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg",
+        }
+    },
+    {
+        "_id": "b103",
+        "title": "Finance project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg",
+        }
+    },
+    {
+        "_id": "b104",
+        "title": "R&D project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg",
+        }
+    },
+    {
+        "_id": "b105",
+        "title": "Human Resources project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg",
+        }
+    },
+    {
+        "_id": "b106",
+        "title": "IT project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg",
+        }
+    },
+    {
+        "_id": "b107",
+        "title": "Engineering project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+        }
+    },
+    {
+        "_id": "b108",
+        "title": "Design and Creative project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1675889335685-4ac82f1e47ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+        }
+    },
+    {
+        "_id": "b109",
+        "title": "Strategy and Planning project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+        }
+    },
+    {
+        "_id": "b110",
+        "title": "DevOps project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://images.unsplash.com/photo-1694802491008-a528234a9a2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+        }
+    },
+    {
+        "_id": "b111",
+        "title": "Logistics and Transportation project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://media-cdn.tripadvisor.com/media/photo-s/15/48/9f/c9/a-great-view-of-good.jpg",
+        }
+    },
+    {
+        "_id": "b112",
+        "title": "Customer Support and Service project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://hips.hearstapps.com/hmg-prod/images/beautiful-landscape-view-of-fuji-mountain-in-royalty-free-image-1623253648.jpg?crop=1xw:1xh;center,top&resize=980:*",
+        }
+    },
+    {
+        "_id": "b113",
+        "title": "Facilities Management project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://www.skyview.com/dynamic-media/assets/images/home/animated-masthead-sky-optimized.jpg?width=2560&k=4XJaRhknSIht3XnyH6T2oQ&gravity=center&v=responsiveImage",
+        }
+    },
+    {
+        "_id": "b114",
+        "title": "Product Management project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://images.rawpixel.com/image_800/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMi0wNS9mbDUwOTQ5MjU4NjkyLWltYWdlLWtwd2IyN2dmLmpwZw.jpg?s=lD6yhtA_S-iWCgZVDqhOYS4pFBmM6tB6Fsdh3bvBNro",
+        }
+    },
+    {
+        "_id": "b115",
+        "title": "Business Development project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg",
+        }
+    },
+    {
+        "_id": "b116",
+        "title": "Health and Safety project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://verdonsecret.com/wp-content/uploads/2019/03/sillans-la-cascade-la-cascade.jpg",
+        }
+    },
+    {
+        "_id": "b117",
+        "title": "Public Relations project",
+        "activities": [],
+        "archivedAt": null,
+        "cmpsOrder": [],
+        "createdBy": null,
+        "groups": [],
+        "isStarred": false,
+        "labels": [],
+        "members": [],
+        "style": {
+            "backgroundImage": "https://www.pbs.org/wnet/nature/files/2019/07/Super-Hummingbirds-2-1280x675.jpg",
+        }
+    },
 ]
+
+
+
 
 
 _createBoards()
@@ -428,7 +980,7 @@ async function getGroupTask(boardId, groupId, taskId) {
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
 
-    return {group, task} 
+    return { group, task }
 }
 
 async function getLabel(boardId, labelId) {
@@ -437,14 +989,14 @@ async function getLabel(boardId, labelId) {
     return label
 }
 
-async function getLabels(boardId, txt){
+async function getLabels(boardId, txt) {
     const newTxt = txt.toLowerCase()
     const board = await storageService.get(STORAGE_KEY, boardId)
 
     const labels = board.labels.filter(label => {
         return label.shade.toLowerCase().includes(newTxt) ||
-        label.title.toLowerCase().includes(newTxt) ||
-        label.colorName.toLowerCase().includes(newTxt)
+            label.title.toLowerCase().includes(newTxt) ||
+            label.colorName.toLowerCase().includes(newTxt)
     })
     return labels
 }

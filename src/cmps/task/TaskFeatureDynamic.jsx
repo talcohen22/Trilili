@@ -8,6 +8,7 @@ import { FeatureMembers } from "./TaskFeatures/FeatureMembers";
 import { FeatureChecklist } from "./FeatureChecklist";
 import { useSelector } from 'react-redux'
 import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions";
+import { FeatureDates } from "./FeatureDates";
 
 export function TaskFeatureDynamic() {
 
@@ -78,7 +79,7 @@ export function TaskFeatureDynamic() {
             exitCmp()
         }
     }
-    
+
 
     if (!board || !group || !task || !cmp.type || !cmp.location || !cmp.location.top || !cmp.location.left) return <div></div>
     return (
@@ -107,6 +108,8 @@ export function TaskFeatureDynamic() {
                 {cmp.type === 'Members' && <FeatureMembers />}
 
                 {cmp.type === 'Add checklist' && <FeatureChecklist />}
+
+                {cmp.type === 'Dates' && <FeatureDates />}
 
                 <div className="exit-btn" onClick={() => exitCmp()}>
                     <ExitBtnSvg />
