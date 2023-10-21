@@ -27,6 +27,13 @@
 @import "./cmps/board/NewBoardModal.scss";
 @import "./cmps/board/BoardsDetails.scss";
 @import "./cmps/group/GroupActionModal";
+
+//GroupActionModal Features
+@import "./cmps/group/CopyList";
+@import "./cmps/group/MoveList";
+@import "./cmps/group/SortList";
+
+
 // @import "./cmps/board/NewBoardModal.scss";
 
 @import "./cmps/board/BoardFilter";

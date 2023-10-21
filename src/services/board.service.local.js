@@ -378,7 +378,8 @@ function getEmptyTask() {
         byMember: null,
         style: {
             backgroundColor: ''
-        }
+        },
+        createdAt:Date.now()
     }
 }
 

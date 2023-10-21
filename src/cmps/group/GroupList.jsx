@@ -17,7 +17,10 @@ export function GroupList({
     onSetBoard,
     onIsCheckDate,
     onIsExpandedLabels,
-    removeGroup
+    removeGroup,
+    removeTasks,
+    saveCopiedGroup,
+    onMoveBoards
 
 }) {
     const { groups } = board
@@ -64,6 +67,10 @@ export function GroupList({
                                                         onIsCheckDate={onIsCheckDate}
                                                         onIsExpandedLabels={onIsExpandedLabels}
                                                         removeGroup={removeGroup}
+                                                        removeTasks={removeTasks}
+                                                        saveCopiedGroup={saveCopiedGroup}
+                                                        onSetBoard={onSetBoard}
+                                                        onMoveBoards={onMoveBoards}
                                                     />
                                                 </li>
                                             )}
