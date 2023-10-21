@@ -2,8 +2,13 @@ import { utilService } from "../../../services/util.service";
 import { useState } from 'react'
 import { VSvg } from "../../svg/ImgSvg";
 import { EditTaskMember } from "../../../store/board.actions";
+import { useSelector } from "react-redux";
 
-export function FeatureMembers({ board, group, task }) {
+export function FeatureMembers() {
+
+    const board = useSelector(storeState => storeState.boardModule.board)
+    const group = useSelector(storeState => storeState.boardModule.group)
+    const task = useSelector(storeState => storeState.boardModule.task)
 
     const [searchTxt, setSearchTxt] = useState('')
 
@@ -20,7 +25,7 @@ export function FeatureMembers({ board, group, task }) {
     }
 
     return (
-        <section className="feature-members">
+        <section className="feature-members scroll">
             <input value={searchTxt} className="search-members" type="text" placeholder="Search members" onChange={handleChange} />
             <p className="board-members">Board members</p>
             <div className="members-container">

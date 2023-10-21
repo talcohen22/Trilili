@@ -1,61 +1,45 @@
 import { AttachmentSvg, CheckListSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
-import { useEffect, useState } from 'react'
-import { TaskFeatureDynamic } from "./TaskFeatureDynamic";
 import React from 'react';
+import { useParams } from "react-router";
+import { updateBoardGroupTaskType } from "../../store/board.actions";
 
+export function TaskDetailsFeatures() {
+    const { boardId } = useParams()
+    const { groupId } = useParams()
+    const { taskId } = useParams()
 
-
-export function TaskDetailsFeatures({board, group, task}) {
-    const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
-    const [dynamicParams, setDynamicParams] = useState({})
-
-    function getDynamicCmp(cpmType) {
-        setDynamicParams({ type: cpmType })
-        onSetIsDynamicCmpOpen(true)
-
-    }
-
-    function onSetIsDynamicCmpOpen(value) {
-        setIsDynamicCmpOpen(value)
+    function getDynamicCmp(ev, cpmType) {
+        const parentElement = ev.currentTarget;
+        const data = parentElement.getBoundingClientRect()
+        const location = { top: data.top, left: data.left }
+        updateBoardGroupTaskType(boardId, groupId, taskId, cpmType, location)
     }
 
     return (
-        <React.Fragment>
             <section className="task-features">
 
                 <h3>Add to card</h3>
-                <div onClick={(() => getDynamicCmp('Members'))}>
+                <div onClick={((ev) => getDynamicCmp(ev, 'Members'))}>
                     <MembersSvg />
                     <p>Members</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Labels'))}>
+                <div onClick={((ev) => getDynamicCmp(ev, 'Labels'))}>
                     <LabelsSvg />
                     <p>Labels</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Add checklist'))}>
+                <div onClick={((ev) => getDynamicCmp(ev, 'Add checklist'))}>
                     <CheckListSvg />
                     <p>Checklist</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Dates'))}>
+                <div onClick={((ev) => getDynamicCmp(ev, 'Dates'))}>
                     <DatesSvg />
                     <p>Dates</p>
                 </div>
-                <div onClick={(() => getDynamicCmp('Attach'))}>
+                <div onClick={((ev) => getDynamicCmp(ev, 'Attach'))}>
                     <AttachmentSvg />
                     <p>Attachment</p>
                 </div>
 
             </section>
-
-            {isDynamicCmpOpen &&
-                <TaskFeatureDynamic
-                    dynamicParams={dynamicParams}
-                    onSetIsDynamicCmpOpen={onSetIsDynamicCmpOpen}
-                    setDynamicParams={setDynamicParams}
-                    board={board}
-                    group={group}
-                    task={task} />}
-
-        </React.Fragment>
     )
 }

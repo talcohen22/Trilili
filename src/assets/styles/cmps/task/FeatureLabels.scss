@@ -7,11 +7,15 @@
     .labels-suggestions {
         gap: 5px;
 
-        margin-block: 12px;
-        margin-inline-start: 2px;
+        margin: 12px 0px 8px 2px ;
+        // margin-inline-start: 2px;
 
         * {
             color: $groupMoreActions;
+        }
+
+        .labels-title{
+            font-size: rem(12px);
         }
     }
 
@@ -29,7 +33,7 @@
             width: 208px;
             height: 32px;
             border-radius: 3px;
-            padding: 7px 12px;
+            padding: 6px 12px 7px 12px;
             font-size: rem(14px);
             color: $labelTextColor;
             font-weight: 500;

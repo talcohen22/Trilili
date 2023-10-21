@@ -1,7 +1,12 @@
 import { useState } from 'react'
-import { addChecklist } from '../../store/board.actions'
+import { addChecklist, updateBoardGroupTaskType } from '../../store/board.actions'
+import { useSelector } from 'react-redux'
 
-export function FeatureChecklist({ board, group, task, onSetIsDynamicCmpOpen }) {
+export function FeatureChecklist() {
+
+    const board = useSelector(storeState => storeState.boardModule.board)
+    const group = useSelector(storeState => storeState.boardModule.group)
+    const task = useSelector(storeState => storeState.boardModule.task)
 
     const [titleTxt, setTitleTxt] = useState('Checklist')
 
@@ -14,14 +19,14 @@ export function FeatureChecklist({ board, group, task, onSetIsDynamicCmpOpen }) 
 
         try {
             addChecklist(board, group, task, titleTxt)
-            onSetIsDynamicCmpOpen(false)
+            updateBoardGroupTaskType(null, null, null, '', null)
         } catch (err) {
             console.log('Cannot add checklist', err)
         }
     }
 
     return (
-        <section className="feature-checklist">
+        <section className="feature-checklist scroll">
             <p className="checklist-title">Title</p>
             <form action="" onSubmit={onAddChecklist}>
                 <input value={titleTxt} className="title-input" type="text" onChange={handleChange} />

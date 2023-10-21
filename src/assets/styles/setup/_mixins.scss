@@ -143,6 +143,8 @@
   color: $wsTxtColor;
   cursor: pointer;
   margin: 15px 0 0 0;
+  font-size: rem(14px);
+  font-weight: 500;
 
   &:hover {
     background-color: $wsEmptyBoardBgcHover;
