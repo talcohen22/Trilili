@@ -75,6 +75,10 @@ export function FeatureDates() {
             setDueDate(getDate(timestamp))
             setDueDateTimestamp(timestamp)
         }
+        if(isStartDate && isDueDate){
+            setStartDate(getDate(timestamp - 86400))
+            setStartDateTimestamp(timestamp - 86400)
+        }
     }
 
     async function onSaveDate(){
