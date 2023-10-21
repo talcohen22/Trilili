@@ -1,0 +1,107 @@
+.move-list {
+
+    * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: $wsIconColor;
+    }
+
+    .label {
+        display: block;
+        font-size: rem(12px);
+        line-height: rem(16px);
+
+    }
+
+    span {
+        font-size: rem(14px);
+    }
+
+    h3 {
+        font-size: rem(12px);
+        font-weight: 700;
+        margin: 12px 0 8px 0;
+    }
+
+    input,
+    textarea {
+        @include input-task-feature;
+        height: rem(72px);
+        margin: 4px 0 12px;
+    }
+
+
+    .remove-color-btn {
+        @include btn-gray-bgc;
+        margin: 8px 0;
+        gap: 8px;
+
+        .create-new-label {
+            font-weight: 600;
+            color: $wsTxtColor;
+        }
+
+        svg {
+            width: 14px;
+        }
+    }
+
+    .save-delete-btns {
+        button {
+            font-weight: 500;
+            @include blue-action-btn;
+            width: max-content;
+            margin: rem(8px) rem(4px) 0px 0px;
+            padding: rem(6px) rem(24px)rem(6px) rem(24px)
+        }
+
+        .back-btn {
+            @include back-and-exit-btns;
+            position: absolute;
+            top: 7px;
+
+            svg {
+                margin: 2px 0 0 0;
+            }
+
+        }
+    }
+
+    .button-link {
+        width: 100%;
+        background-color: #091e420f;
+        border: none;
+        border-radius: 3px;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #172b4d;
+        cursor: pointer;
+        display: block;
+        font-weight: 500;
+        height: rem(50px);
+        margin-top: rem(8px);
+        padding: rem(6px) rem(12px) rem(6px) rem(12px);
+    }
+
+    select {
+        // width: 280px;
+        // display: block;
+        // position: absolute;
+        // left: 12px;
+        // border: none;
+        // opacity: 0;
+        // color: transparent;
+        top: -40px;
+        height: 50px;
+        width: 280px;
+        display: block;
+        position: relative;
+        left: -12px;
+        border: none;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .move-list-btn{
+        margin-block: rem(6px);
+    }
+}

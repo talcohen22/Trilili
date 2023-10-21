@@ -8,7 +8,9 @@ import { setIsCheckDate, setIsExpandedLabels, updateBoard } from "../store/board
 
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { StarSvg } from "../cmps/svg/ImgSvg";
+import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
+
 
 
 export function BoardDetails() {
@@ -65,11 +67,32 @@ export function BoardDetails() {
             console.log('err on RemoveGroup', err)
         }
     }
+    async function removeTasks(groupId) {
+        try {
+            const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+            const updatedBoard = {...board}
+            updatedBoard.groups[groupIdx].tasks=[]
+            boardService.save(updatedBoard)
+            const savedBoard = await updateBoard(updatedBoard)
+            setBoard(savedBoard)
+        } catch (err) {
+            console.log('err on RemoveTasks', err)
+        }
+    }
 
     async function onSetBoard(updatedBoard) {
         try {
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async function onMoveBoards(sourceBoard,destinationBoard) {
+        try {
+            const fromBoard = await updateBoard(sourceBoard)
+            const toBoard = await updateBoard(destinationBoard)
         } catch (err) {
             console.log(err);
         }
@@ -91,6 +114,18 @@ export function BoardDetails() {
         }
     }
 
+    function saveCopiedGroup(copiedGroup) {
+        const newGroup = boardService.getEmptyGroup()
+        newGroup.title = copiedGroup.title
+        newGroup.tasks = copiedGroup.tasks
+        const updatedTasks = newGroup.tasks.map(task => {
+            const newId =utilService.makeId();
+            const updatedTask = { ...task, id: newId };
+            return updatedTask;
+        })
+        newGroup.tasks=updatedTasks
+        onAddNewGroup(newGroup)
+    }
 
     if (!board) return <div></div>
     return (
@@ -103,11 +138,14 @@ export function BoardDetails() {
                 <GroupList
                     board={board}
                     onAddNewGroup={onAddNewGroup}
-                    onAddTask={onAddTask} 
-                    onSetBoard={onSetBoard}                         
+                    onAddTask={onAddTask}
+                    onSetBoard={onSetBoard}
                     onIsCheckDate={onIsCheckDate}
                     onIsExpandedLabels={onIsExpandedLabels}
                     removeGroup={removeGroup}
+                    removeTasks={removeTasks}
+                    saveCopiedGroup={saveCopiedGroup}
+                    onMoveBoards={onMoveBoards}
                 />
             }
 

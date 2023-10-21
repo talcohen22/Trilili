@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import { DotsSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
+import { DotsSvg, EyeSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
 import { boardService } from "../../services/board.service.local";
 import { updateGroup } from "../../store/board.actions";
 import { GroupActionsModal } from "../group/GroupActionsModal"
-import { GroupFeatureDynamic } from "./GroupFeatureDynamic";
 
 export function GroupPreview({
     board,
@@ -15,6 +14,10 @@ export function GroupPreview({
     onIsCheckDate,
     onIsExpandedLabels,
     removeGroup,
+    removeTasks,
+    saveCopiedGroup,
+    onSetBoard,
+    onMoveBoards,
     provided }) {
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
@@ -74,6 +77,16 @@ export function GroupPreview({
         setIsOnUsingAction(false)
     }
 
+    function handleWatchGroup() {
+        let updatedGroup = { ...group }
+        if (group.isWatch === undefined) updatedGroup = { ...group, isWatch: true }
+        else updatedGroup = { ...group, isWatch: !group.isWatch }
+        const groupIdx = board.groups.findIndex(item => item.id === group.id)
+        board.groups[groupIdx] = updatedGroup
+        onSetBoard(board)
+        handleClose()
+    }
+
     function handleDynamicCmpOpen(cpmType) {
         setDynamicParams(cpmType)
         setIsDynamicCmpOpen(true)
@@ -81,7 +94,6 @@ export function GroupPreview({
     function handleIsDynamicCmpOpen(value) {
         setIsDynamicCmpOpen(value)
     }
-
     const { isExpandedLabels } = board
     const labelsPaletteBoard = board.labels
     return (
@@ -100,26 +112,25 @@ export function GroupPreview({
                     onKeyDown={handleKeyDown}
 
                 />
-                <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
-                    <DotsSvg />
-                </button>
-
+                <div className="flex justify-space-b align-center ">
+                    {group.isWatch && <EyeSvg />}
+                    <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
+                        <DotsSvg />
+                    </button>
+                </div>
                 {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
                     group={group}
                     handleClose={handleClose}
                     removeGroup={removeGroup}
                     handleAddTask={handleAddTask}
                     handleDynamicCmpOpen={handleDynamicCmpOpen}
-                />}
-                {isDynamicCmpOpen&&
-                <GroupFeatureDynamic
-                    dynamicParams={dynamicParams}
-                    handleIsDynamicCmpOpen={handleIsDynamicCmpOpen}
-                    setDynamicParams={setDynamicParams}
+                    saveCopiedGroup={saveCopiedGroup}
                     board={board}
-                    group={group}
-                    />
-                }
+                    onSetBoard={onSetBoard}
+                    onMoveBoards={onMoveBoards}
+                    handleWatchGroup={handleWatchGroup}
+                    removeTasks={removeTasks}
+                />}
 
             </div>
 

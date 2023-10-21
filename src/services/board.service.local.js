@@ -987,6 +987,7 @@ function getEmptyTask() {
         style: {
             backgroundColor: ''
         },
+        createdAt:Date.now()
         dueDate: {
             timeStamp: Date.now(),
             isDone: false
