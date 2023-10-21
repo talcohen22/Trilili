@@ -1,0 +1,34 @@
+
+
+
+//changes on MUI classes
+
+.MuiPickersToolbar-root.MuiPickersLayout-toolbar {
+    display: none;
+}
+
+.MuiDayCalendar-weekContainer.css-flbe84-MuiDayCalendar-weekContainer {
+    justify-content: flex-start;
+}
+
+.css-i5q14k-MuiDayCalendar-header.css-i5q14k-MuiDayCalendar-header {
+    justify-content: flex-start;
+}
+
+.MuiPickersCalendarHeader-labelContainer.css-cyfsxc-MuiPickersCalendarHeader-labelContainer {
+    margin-inline-end: 0;
+}
+
+.MuiDialogActions-root.MuiDialogActions-spacing {
+    display: none;
+}
+
+.MuiPickersCalendarHeader-label.css-dplwbx-MuiPickersCalendarHeader-label{
+    color: $wsTxtColor;
+    font-size: rem(14px);
+}
+
+.MuiPickersCalendarHeader-root.css-nk89i7-MuiPickersCalendarHeader-root{
+    max-width: 280px;
+    justify-content: center;
+}
