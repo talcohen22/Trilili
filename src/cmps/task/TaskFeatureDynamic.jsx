@@ -47,7 +47,8 @@ export function TaskFeatureDynamic() {
 
     useEffect(() => {
         if (wrapperRef.current) {
-            const height = wrapperRef.current.clientHeight;
+            let height = wrapperRef.current.clientHeight;
+            if(cmp.type === 'Dates') height += 460;
             setComponentHeight(height);
         }
     }, [cmp.type]);
@@ -80,7 +81,7 @@ export function TaskFeatureDynamic() {
         }
     }
 
-
+    
     if (!board || !group || !task || !cmp.type || !cmp.location || !cmp.location.top || !cmp.location.left) return <div></div>
     return (
         <div className="dynamic-overlay" onClick={handleClickOutside} >

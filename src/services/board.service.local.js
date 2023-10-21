@@ -129,7 +129,11 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
-                        }
+                        },
+                        // "dueDate": {
+                        //     "timeStamp": 1702061014,
+                        //     "isDone": false
+                        // }, 
                     },
                     {
                         "id": "c102",
@@ -142,6 +146,10 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
                         },
                     },
                     {
@@ -272,7 +280,11 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c005f1738798047c7fd5b/attachments/651c00bd111368598b586279/download/npm.png",
-                        }
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                     {
                         "id": "d106",
@@ -285,7 +297,11 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c01062962bafe88c816a7/attachments/651c01361d684fd84072e13e/download/231-sass-logo-sass.png",
-                        }
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                     {
                         "id": "d107",
@@ -304,7 +320,11 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c01e29ae065f6e43d8f03/attachments/651c020196c5fb62cc35bdf3/download/219969.png",
-                        }
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     }
                 ],
                 "style": {}
@@ -329,6 +349,10 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "#9f8fef",
                             "cover": "#9f8fef"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
                         },
                         "comments": [
                             {
@@ -381,7 +405,11 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c03270cfcb4617c6352e9/attachments/651c03746e39588ea43be583/download/benefit_of_PWA.png",
-                        }
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                 ],
                 "style": {}
@@ -403,6 +431,10 @@ const BOARDS = [
                         "attachment": [],
                         "memberIds": ['u102'],
                         "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                     {
                         "id": "c112",
@@ -415,6 +447,10 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "#579dff",
                             "cover": "#579dff"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
                         },
                     },
                     {
@@ -429,6 +465,10 @@ const BOARDS = [
                             "backgroundColor": "",
                             "cover": "https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2011/09/thumb_720_450_bug-on-computer-chip_shutterstock_4027501.jpg"
                         },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                     {
                         "id": "c114",
@@ -441,6 +481,10 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://www.youthemployment.org.uk/dev/wp-content/uploads/2018/07/achievement-3408115_640-600x287.jpg"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
                         },
                     },
 
@@ -468,6 +512,10 @@ const BOARDS = [
                             "backgroundColor": "",
                             "cover": "https://www.syncfusion.com/blogs/wp-content/uploads/2023/04/How-You-Should-Treat-NPM-Audit-Results.png"
                         },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                     {
                         "id": "c116",
@@ -477,6 +525,10 @@ const BOARDS = [
                         "attachment": [],
                         "memberIds": ['u102', 'u104'],
                         "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                     {
                         "id": "c117",
@@ -538,6 +590,10 @@ const BOARDS = [
                         "attachment": [],
                         "memberIds": ['u102', 'u104'],
                         "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
                     },
                 ],
                 "style": {}
@@ -930,6 +986,10 @@ function getEmptyTask() {
         byMember: null,
         style: {
             backgroundColor: ''
+        },
+        dueDate: {
+            timeStamp: Date.now(),
+            isDone: false
         }
     }
 }
