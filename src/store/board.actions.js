@@ -38,6 +38,48 @@ export async function loadBoards() {
     }
 }
 
+export async function saveDate(board, group, task, startDate, dueDate) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        if (startDate && dueDate) {
+            board.groups[gIdx].tasks[tIdx].startDate = startDate
+            if (board.groups[gIdx].tasks[tIdx].dueDate) board.groups[gIdx].tasks[tIdx].dueDate.timeStamp = dueDate
+            else board.groups[gIdx].tasks[tIdx].dueDate = { timeStamp: dueDate, isDone: false }
+        }
+        if (startDate && !dueDate) {
+            board.groups[gIdx].tasks[tIdx].startDate = startDate
+            delete board.groups[gIdx].tasks[tIdx].dueDate
+        }
+        if (!startDate && dueDate) {
+            if (board.groups[gIdx].tasks[tIdx].dueDate) board.groups[gIdx].tasks[tIdx].dueDate.timeStamp = dueDate
+            else board.groups[gIdx].tasks[tIdx].dueDate = { timeStamp: dueDate, isDone: false }
+            delete board.groups[gIdx].tasks[tIdx].startDate
+        }
+
+        await updateBoard(board)
+    } catch (err) {
+        console.log('Cannot save date', err)
+        throw err
+    }
+}
+
+export async function removeDate(board, group, task) {
+    try{
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+    
+        delete board.groups[gIdx].tasks[tIdx].startDate
+        delete board.groups[gIdx].tasks[tIdx].dueDate
+    
+        await updateBoard(board)
+    }catch (err) {
+        console.log('Cannot remove date', err)
+        throw err
+    }
+}
+
 export async function removeBoard(boardId) {
     try {
         await boardService.remove(boardId)
@@ -53,7 +95,7 @@ export async function updateBoardGroupTaskType(boardId, groupId, taskId, type, l
         store.dispatch({ type: SET_BOARD, board: null })
         store.dispatch({ type: SET_GROUP, group: null })
         store.dispatch({ type: SET_TASK, task: null })
-        store.dispatch({ type: SET_CMP, cmp: {type: '' , location: null} })
+        store.dispatch({ type: SET_CMP, cmp: { type: '', location: null } })
     }
     else {
         const board = await boardService.getById(boardId)
@@ -67,7 +109,7 @@ export async function updateBoardGroupTaskType(boardId, groupId, taskId, type, l
     }
 }
 
-export async function updateCmp(cmp){
+export async function updateCmp(cmp) {
     store.dispatch({ type: SET_CMP, cmp: cmp })
 }
 
