@@ -21,6 +21,7 @@ export function GroupPreview({
     provided }) {
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
+    const [isOnGroupAddTask, setIsOnGroupAddTask] = useState(false)
     const [groupTitle, setGroupTitle] = useState(group.title)
     const [isOnUsingAction, setIsOnUsingAction] = useState(false)
     const [groupActionPostion, setGroupActionPosition] = useState({ left: null, top: null })
@@ -50,11 +51,12 @@ export function GroupPreview({
         setGroupTitle(value)
     }
 
-    function handleAddTask({ target }) {
+    function handleAddTask(position) {
+        (position==='START')?setIsOnGroupAddTask(true):setIsOnAddTask(true)
         handleClose()
-        setIsOnAddTask(true)
         updateGroup(board, group, 'title', groupTitle)
     }
+
 
     function handleKeyDown(ev) {
         if (ev.key === 'Enter') handleAddTask(ev)
@@ -62,7 +64,8 @@ export function GroupPreview({
 
     function onCloseAddTaskModal() {
         setIsOnAddTask(false)
-    }
+        setIsOnGroupAddTask(false)
+    }  
 
     function handleUsingAction() {
         // const index = board.groups.findIndex(idx => idx.id === group.id)
@@ -112,12 +115,10 @@ export function GroupPreview({
                     onKeyDown={handleKeyDown}
 
                 />
-                <div className="flex justify-space-b align-center ">
-                    {group.isWatch && <EyeSvg />}
+                    {group.isWatch && <span className="watch"><EyeSvg /></span>}
                     <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
                         <DotsSvg />
                     </button>
-                </div>
                 {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
                     group={group}
                     handleClose={handleClose}
@@ -133,7 +134,13 @@ export function GroupPreview({
                 />}
 
             </div>
-
+            {isOnGroupAddTask &&
+                <AddTaskModal
+                    isOnAddTask={isOnAddTask}
+                    group={group}
+                    onAddTask={onAddTask}
+                    onCloseAddTaskModal={onCloseAddTaskModal}
+                />}
             <div className="group-tasks">
                 <TaskList
                     group={group}
@@ -143,11 +150,12 @@ export function GroupPreview({
                     onIsExpandedLabels={onIsExpandedLabels}
                     isExpandedLabels={isExpandedLabels} />
             </div>
+           
 
             {!isOnAddTask &&
-                <div className="group-footer flex justify-center align-center">
+                <div className={(!isOnGroupAddTask)?"group-footer flex justify-center align-center":'hidden'}>
                     <button
-                        onClick={handleAddTask}
+                        onClick={()=>{handleAddTask('End')}}
                         className="group-btn add-task-btn flex align-center">
                         <PlusBtnAddListSvg />
                         Add a card
@@ -161,6 +169,7 @@ export function GroupPreview({
             }
             {isOnAddTask &&
                 <AddTaskModal
+                    isOnAddTask={isOnAddTask}
                     group={group}
                     onAddTask={onAddTask}
                     onCloseAddTaskModal={onCloseAddTaskModal}

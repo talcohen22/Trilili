@@ -11,13 +11,13 @@ export function GroupFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, grou
         onSetIsDynamicCmpOpen(false)
     }
     return (
-        <div className="dynamic-feature-container" style={{ left: left + 'px', top: top + 'px', zIndex: 10000 }} >
+        <div className="dynamic-group-feature-container" style={{ left: left + 'px', top: top + 'px', zIndex: 10000 }} >
             <div className='group-modal-header flex justify-space-b'>
                 <button className="exit-icon" onClick={hadleIsDynamicCmpOpen}>
                     <BackBtnSvg />
                 </button>
 
-                <p className="dyn-cmp-header group-feature-header">{dynamicParams.type}</p>
+                <p className="dyn-group-cmp-header group-feature-header">{dynamicParams.type}</p>
 
 
                 <button className="exit-icon" onClick={onHandleClose}>

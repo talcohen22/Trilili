@@ -42,11 +42,13 @@ export function BoardDetails() {
         }
     }
 
-    async function onAddTask(newTask, groupId) {
+    async function onAddTask(newTask, groupId,direction) {
+        
         try {
             const updatedBoard = board
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-            updatedBoard.groups[groupIdx].tasks.push(newTask)
+            if(direction==='START')updatedBoard.groups[groupIdx].tasks.unshift(newTask)
+            else updatedBoard.groups[groupIdx].tasks.push(newTask)
             boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)

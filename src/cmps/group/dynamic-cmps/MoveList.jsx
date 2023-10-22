@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-export function MoveList({ group, board, onSetBoard, onHandleClose,onMoveBoards }) {
+export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards }) {
     const boards = useSelector(storeState => storeState.boardModule.boards);
-    const selectBoardList = [...boards]
+    let selectBoardList = [...boards]
     const selectGroupList = [...board.groups]
 
     const selectRef = useRef(null);
@@ -13,19 +13,17 @@ export function MoveList({ group, board, onSetBoard, onHandleClose,onMoveBoards 
 
     const [selectedBoard, setSelectedBoard] = useState(board.title);
     const [selectedPosition, setSelectedPosition] = useState(currentGroupPosition);
-    useEffect(() => {
-
-    }, [selectedBoard, selectedPosition])
-
+   
     function handleSelectClick({ target }) {
         selectRef.current = target
         selectRef.current.selectedIndex = selectedPosition;
     }
 
     function handleSelectChange({ target }) {
+        console.log(target.value);
         const movedBoard = selectBoardList.find(item => item._id === target.value)
-        selectedBoardRef.current = movedBoard
         setSelectedBoard(movedBoard.title)
+        selectedBoardRef.current = movedBoard
         if (target.value !== board._id) setSelectedPosition(0)
         else setSelectedPosition(currentGroupPosition)
 
@@ -35,7 +33,8 @@ export function MoveList({ group, board, onSetBoard, onHandleClose,onMoveBoards 
         setSelectedPosition(target.value);
     }
 
-     function onMoveList() {
+    function onMoveList() {
+
         if (selectedPosition === currentGroupPosition && selectedBoard === board.title) onHandleClose()
 
         else if (selectedPosition !== currentGroupPosition && selectedBoard === board.title) {
@@ -52,8 +51,8 @@ export function MoveList({ group, board, onSetBoard, onHandleClose,onMoveBoards 
             sourceBoard.groups.splice(currentGroupPosition, 1)
             const destinationBoard = selectedBoardRef.current
             destinationBoard.groups.splice(selectedPosition, 0, group)
-            onMoveBoards(sourceBoard,destinationBoard)
-            
+            onMoveBoards(sourceBoard, destinationBoard)
+
         }
 
     }
@@ -62,37 +61,38 @@ export function MoveList({ group, board, onSetBoard, onHandleClose,onMoveBoards 
     return (
         <section className="move-list">
             <form>
-            <div className='button-link'>
-                <span className='label'>Board</span>
-                <span>{selectedBoard}</span>
-                <select ref={selectRef} onClick={handleSelectClick} onChange={handleSelectChange} value={selectedBoard}>
-                    <optgroup label='WorkSpace name'>
-                        {selectBoardList.map((item) => {
-                            if (item._id !== board._id)
-                                return (
-                                    <option key={item._id} value={item._id}>{item.title}</option>
-                                )
-                        })}
-                    </optgroup>
-                    <optgroup>
-                        <option value={board._id} key={board._id}>(current)</option>
-                    </optgroup>
-                </select>
-            </div>
+                <div className='button-link'>
+                    <span className='label'>Board</span>
+                    <span>{selectedBoard}</span>
+                    <select ref={selectRef} onClick={handleSelectClick} onChange={handleSelectChange} value={selectedBoard}>
+                        <optgroup label='WorkSpace name'>
+                            {selectBoardList
+                                .filter((item) => item._id !== board._id)
+                                .map((item) => (
+                                    <option key={item._id} value={item._id}>
+                                        {item.title}
+                                    </option>
+                                ))}
+                        </optgroup>
+                        <optgroup>
+                            <option value={board._id} key={board._id}>(current)</option>
+                        </optgroup>
+                    </select>
+                </div>
 
-            <div className='button-link'>
-                <span className='label'>Position</span>
-                <span>{(+selectedPosition + 1)}</span>
-                <select ref={selectRef} onClick={handleSelectClick} onChange={handleChangePosition} value={selectedPosition}>
-                    {selectGroupList.map((item, index) => {
-                        if (item.id === group.id) return (<option value={index} key={item.id} >{(index + 1) + " (current)"}</option>)
-                        else return (<option value={index} key={item.id}>{index + 1}</option>)
-                    })}
-                </select>
-            </div>
-            <div className=" move-list-btn save-delete-btns flex justify-space-b">
-                <button onClick={onMoveList} >Move</button>
-            </div>
+                <div className='button-link'>
+                    <span className='label'>Position</span>
+                    <span>{(+selectedPosition + 1)}</span>
+                    <select ref={selectRef} onClick={handleSelectClick} onChange={handleChangePosition} value={selectedPosition}>
+                        {selectGroupList.map((item, index) => {
+                            if (item.id === group.id) return (<option value={index} key={item.id} >{(index + 1) + " (current)"}</option>)
+                            else return (<option value={index} key={item.id}>{index + 1}</option>)
+                        })}
+                    </select>
+                </div>
+                <div className=" move-list-btn save-delete-btns flex justify-space-b">
+                    <button onClick={onMoveList} >Move</button>
+                </div>
             </form>
         </section>
     )

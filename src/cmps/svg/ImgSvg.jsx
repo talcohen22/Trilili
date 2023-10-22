@@ -325,7 +325,7 @@ export function TickSvg() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="16" height="16" viewBox="0 0 23.000000 19.000000" preserveAspectRatio="xMidYMid meet">
 
-        <g transform="translate(0.000000,19.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+        <g transform="translate(0.000000,19.000000) scale(0.100000,-0.100000)" fill="#606d84" stroke="none">
         <path d="M125 110 l-49 -50 -26 25 c-39 37 -46 17 -8 -22 l32 -33 58 57 c32 32 58 61 58 65 0 17 -18 6 -65 -42z"/>
         </g>
         </svg>

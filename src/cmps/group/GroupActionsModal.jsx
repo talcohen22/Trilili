@@ -18,8 +18,7 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
     }
 
     function onAddCard() {
-        const groupId = group.id
-        handleAddTask(groupId)
+        handleAddTask('START')
     }
 
     function getDynamicCmp(cpmType) {
@@ -52,9 +51,9 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
                         <li><button className="group-action-btn" onClick={(() => getDynamicCmp('Sort list'))}>Sort By</button></li>
                         <hr />
                         <li><button className="group-action-btn" onClick={(() => getDynamicCmp('Move all cards in list'))}>Move all cards in this list…</button></li>
-                        <li><button className="group-action-btn" onClick={onRemoveTasks}>Archive all cards in this list…</button></li>
+                        <li><button className="group-action-btn" onClick={onRemoveTasks}>Remove all cards in this list…</button></li>
                         <hr />
-                        <li><button className="group-action-btn" onClick={onRemoveGroup}>Archive this list</button></li>
+                        <li><button className="group-action-btn" onClick={onRemoveGroup}>Remove this list</button></li>
                     </ul>
 
                 </div>
