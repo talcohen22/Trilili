@@ -43,20 +43,10 @@ export async function saveDate(board, group, task, startDate, dueDate) {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
 
-        if (startDate && dueDate) {
-            board.groups[gIdx].tasks[tIdx].startDate = startDate
-            if (board.groups[gIdx].tasks[tIdx].dueDate) board.groups[gIdx].tasks[tIdx].dueDate.timeStamp = dueDate
-            else board.groups[gIdx].tasks[tIdx].dueDate = { timeStamp: dueDate, isDone: false }
-        }
-        if (startDate && !dueDate) {
-            board.groups[gIdx].tasks[tIdx].startDate = startDate
-            delete board.groups[gIdx].tasks[tIdx].dueDate
-        }
-        if (!startDate && dueDate) {
-            if (board.groups[gIdx].tasks[tIdx].dueDate) board.groups[gIdx].tasks[tIdx].dueDate.timeStamp = dueDate
-            else board.groups[gIdx].tasks[tIdx].dueDate = { timeStamp: dueDate, isDone: false }
-            delete board.groups[gIdx].tasks[tIdx].startDate
-        }
+        board.groups[gIdx].tasks[tIdx].startDate = startDate
+        
+        if(task.dueDate && dueDate) board.groups[gIdx].tasks[tIdx].dueDate = {timeStamp: dueDate.timeStamp, isDone: task.dueDate.isDone}
+        else board.groups[gIdx].tasks[tIdx].dueDate = dueDate        
 
         await updateBoard(board)
     } catch (err) {
@@ -70,8 +60,8 @@ export async function removeDate(board, group, task) {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
     
-        delete board.groups[gIdx].tasks[tIdx].startDate
-        delete board.groups[gIdx].tasks[tIdx].dueDate
+        board.groups[gIdx].tasks[tIdx].startDate = null
+        board.groups[gIdx].tasks[tIdx].dueDate = null
     
         await updateBoard(board)
     }catch (err) {

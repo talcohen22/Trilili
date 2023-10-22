@@ -19,8 +19,9 @@ export function DoneTasksCounter({ checklists }) {
 
     const totalCalc = `${completedTodos}/${totalTodos || 1}`;
 
+    const dynClass = (completedTodos === totalTodos) ? "clicked" : ''
     return (
-        <div className="task-checklists-calc flex align-center">
+        <div className={`task-checklists-calc flex align-center ${dynClass}`}>
             <CheckBoxSmallSvg />
             <p className="fs12" >{totalCalc}</p>
         </div>

@@ -8,6 +8,7 @@
     font-size: 14px;
     white-space: normal;
     cursor: pointer;
+
     // padding: 4px 8px 4px 12px;
     &:hover {
         opacity: 1;
@@ -16,8 +17,8 @@
         // justify-content: center;
         // align-items: center;
 
-        .task-preview-btn{
-            svg{
+        .task-preview-btn {
+            svg {
                 display: block;
             }
         }
@@ -36,7 +37,8 @@
 
     .task-preview-btn {
         @include btns-group;
-        svg{  
+
+        svg {
             display: none;
         }
 
@@ -72,42 +74,132 @@
         }
     }
 
+    .task-label {
+
+        &.expanded-labels{
+            min-width: 56px !important;
+            height: 16px !important;
+        }
+
+        p {
+            padding: 0 8px;
+        }
+    }
+
 }
 
-.task-footer-dashboard{
-    >*{
-        margin-inline-end: 10px;
+.task-footer-dashboard {
+    gap: 8px;
+
+    >* {
         padding-bottom: 4px;
     }
 
-    .btn-task-f{
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: rem(24px);
-            padding: 4px;
+    .watch{
+        height: 100%;
+
+        svg{
+            margin-top: 4.5px;
         }
-    
-    .task-comments > * {
-        margin-inline-end: 3px;
-        width: max-content;
     }
 
-    .task-checklists-calc >*{
+    .btn-task-f {
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: rem(24px);
+        padding: 4px;
+        gap: 4px;
+
+        p {
+            padding: 1px 2px 1px 0;
+            font-family: system-ui;
+        }
+
+        p.gray-color {
+            color: $wsTxtColor;
+        }
+    }
+
+    .description{
+        margin-top: 4px;
+        margin-inline-end: 4px;
+        color: $groupMoreActions;
+    }
+
+    .attachment{
+        gap: 5px;
+        margin-top: 7px;
+
+        *{
+            color: $groupMoreActions;
+            font-size: rem(12px);
+        }
+
+        svg{
+            height: 12px;
+            width: 12px;
+        }
+    }
+
+    .task-comments>* {
         margin-inline-end: 3px;
+        margin-top: 6px;
         width: max-content;
+        color: $groupMoreActions;
+    }
+
+    .task-checklists-calc {
+        border-radius: 3px;
+        margin-top: 0px;
+        padding: 4.75px;
+        gap: 5px;
+        color: $groupMoreActions;
+
+        &>* {
+            width: max-content;
+        }
+
+        &.clicked {
+            svg {
+                fill: white;
+            }
+        }
+
+        p {
+            margin-top: 1.5px;
+            padding-inline-end: 1px;
+        }
     }
 
     /* Add these styles to your CSS */
     .due-date-passed {
-    background-color:$btnTaskDashNotDone;
-    color:  $btnTaskDashNotDoneFont;
+        background-color: $btnTaskDashNotDone;
+        color: $btnTaskDashNotDoneFont;
     }
 
     .clicked {
-    background-color:$btnBgcTaskDashDone;
-    color: white;
+        background-color: $btnBgcTaskDashDone;
+        color: white;
     }
+
+    .gray-color {
+        color: $groupMoreActions;
+    }
+
 }
 
+.task-members{
+
+    gap: 4px;
+    margin-top: 4px;
+
+    li{
+        width: fit-content;
+    }
+    img{
+        border-radius: 50%;
+        width: 24px;
+    }
+}

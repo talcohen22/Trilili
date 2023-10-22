@@ -1,4 +1,4 @@
-import { PencilSvg } from "../svg/ImgSvg";
+import { AttachmentSvg, DescriptionSvg, EyeSvg, PencilSvg } from "../svg/ImgSvg";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import { TaskLabels } from "./TaskFeatures/TaskLabels";
@@ -6,9 +6,11 @@ import { CommentCounter } from "./TaskFeatures/CommentCounter ";
 import { DoneTasksCounter } from "./TaskFeatures/DoneTasksCounter";
 import { DateTaskBtn } from "./TaskFeatures/DateTaskBtn";
 import { TaskHeaderBgc } from "./TaskFeatures/TaskHeaderBgc ";
+import { Members } from "./TaskFeatures/Members";
 
 
 export function TaskPreview({
+    board,
     group,
     task,
     onSetIsOpenTaskDetails,
@@ -16,6 +18,7 @@ export function TaskPreview({
     onIsCheckDate,
     isExpandedLabels,
     onIsExpandedLabels }) {
+
     const { boardId } = useParams()
 
     const navigate = useNavigate()
@@ -28,7 +31,9 @@ export function TaskPreview({
         console.log('taskId', taskId)
     }
 
-    const { title, id, labelIds, style: bgHeaderClr, comments, checklists, dueDate } = task
+    const { title, id, labelIds, style: bgHeaderClr, comments, checklists, dueDate, startDate } = task
+
+
     return (
         <article className="task-card" onClick={onGetTaskDetails}>
 
@@ -56,20 +61,47 @@ export function TaskPreview({
 
                 <div className="task-footer-dashboard flex align-center">
 
+                    {task.isWatch &&
+                        <div className="watch flex">
+                            <EyeSvg />
+                        </div>
+                    }
+
                     {/* DateTaskBtn */}
-                    {dueDate &&
+                    {(dueDate || startDate) &&
                         <DateTaskBtn
                             group={group}
                             task={task}
                             dueDate={dueDate}
+                            startDate={startDate}
                             onIsCheckDate={onIsCheckDate} />}
+
+                    {task.description &&
+                        <div className="description flex">
+                            <DescriptionSvg />
+                        </div>
+                    }
+
+                    {task.attachment.length > 0 &&
+                        <div className="attachment flex">
+                            <AttachmentSvg />
+                            <p>{task.attachment.length}</p>
+                        </div>
+                    }
 
                     {/* CommentCounter */}
                     {comments && < CommentCounter comments={comments} />}
 
                     {/* DoneTasksCounter */}
                     {checklists && < DoneTasksCounter checklists={checklists} />}
+
                 </div>
+
+                {task.memberIds.length > 0 && 
+                    <Members
+                        board={board}
+                        group={group}
+                        task={task} />}
             </div>
 
 

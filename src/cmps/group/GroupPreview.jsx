@@ -143,6 +143,7 @@ export function GroupPreview({
                 />}
             <div className="group-tasks">
                 <TaskList
+                    board={board}
                     group={group}
                     onSetIsOpenTaskDetails={onSetIsOpenTaskDetails}
                     labelsPaletteBoard={labelsPaletteBoard}
