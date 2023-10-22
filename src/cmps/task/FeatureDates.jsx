@@ -88,8 +88,8 @@ export function FeatureDates() {
             }
             else{
                 if(isStartDate && !isDueDate) saveDate(board, group, task, startDateTimestamp, null)
-                if(!isStartDate && isDueDate) saveDate(board, group, task, null, dueDateTimestamp)
-                if(isStartDate && isDueDate) saveDate(board, group, task, startDateTimestamp, dueDateTimestamp)
+                if(!isStartDate && isDueDate) saveDate(board, group, task, null, {timeStamp: dueDateTimestamp , isDone: false})
+                if(isStartDate && isDueDate) saveDate(board, group, task, startDateTimestamp, {timeStamp: dueDateTimestamp , isDone: false})
             }
             await updateBoardGroupTaskType(null, null, null, '', null)
         }catch(err){

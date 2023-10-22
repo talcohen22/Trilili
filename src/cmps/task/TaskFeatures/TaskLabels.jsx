@@ -10,9 +10,11 @@ export function TaskLabels({
     const [toggleLabelTxt, setToggleLabelTxt] = useState(isExpandedLabels)
     const boards = useSelector(storeState => storeState.boardModule.boards)
 
+    const dynClass = isExpandedLabels ? "expanded-labels" : ""
+
     const renderLabel = (labelId, backgroundColor, titleTxt) => (
         <div
-            className="task-label flex justify-center align-center "
+            className={`task-label flex align-center ${dynClass} `}
             key={labelId}
             style={{ backgroundColor }}
         >

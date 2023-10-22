@@ -18,7 +18,8 @@ export const boardService = {
     // getEmptyLabelsPalette
     getGroupTask,
     getLabel,
-    getLabels
+    getLabels,
+    getMembersTaskImgs
 }
 // debug trick
 window.bs = boardService
@@ -123,17 +124,22 @@ const BOARDS = [
                         "title": "Create a server with express",
                         "archivedAt": 1589983468414,
                         "labelIds": [],
-                        "attachment": [],
-                        "memberIds": ['u102'],
+                        "description": "description",
+                        "attachment": [
+                            {
+                                "fileName": "trello 1.1.docx",
+                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
+                            }
+                        ],
+                        "memberIds": ['u101', 'u102'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
                         },
-                        // "dueDate": {
-                        //     "timeStamp": 1702061014,
-                        //     "isDone": false
-                        // }, 
+                        "dueDate": null,
+                        "startDate": 1698051014,
+                        "isWatch": true,
                     },
                     {
                         "id": "c102",
@@ -151,6 +157,7 @@ const BOARDS = [
                             "timeStamp": 1702061014,
                             "isDone": false
                         },
+                        "startDate": 1698051014,
                     },
                     {
                         "id": "c103",
@@ -161,10 +168,7 @@ const BOARDS = [
                             "backgroundColor": "#26de81",
                             "cover": "#26de81"
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                         "attachment": [],
                         "memberIds": [],
                         "checklists": [],
@@ -178,10 +182,7 @@ const BOARDS = [
                             "backgroundColor": "#6cc3e0",
                             "cover": "#6cc3e0"
                         },
-                        "dueDate": {
-                            "timeStamp": 1692061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                         "attachment": [],
                         "memberIds": [],
                         "checklists": [],
@@ -215,7 +216,7 @@ const BOARDS = [
                                     {
                                         "id": "td101",
                                         "title": "bug in taskDetails cmp",
-                                        "isDone": true
+                                        "isDone": false
                                     },
                                     {
                                         "id": "td102",
@@ -245,7 +246,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
-                        "memberIds": [],
+                        "memberIds": ['u101', 'u102'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1696061014,
@@ -274,34 +275,38 @@ const BOARDS = [
                         "title": "Adding npm libraries",
                         "archivedAt": 1589983468418,
                         "labelIds": ["l103", "l104", "l105", "l106"],
-                        "attachment": [],
+                        "attachment": [
+                            {
+                                "fileName": "trello 1.1.docx",
+                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
+                            }
+                        ],
                         "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c005f1738798047c7fd5b/attachments/651c00bd111368598b586279/download/npm.png",
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                     {
                         "id": "d106",
                         "title": "Implement SAAS",
                         "archivedAt": 1589983468418,
                         "labelIds": [],
-                        "attachment": [],
+                        "attachment": [
+                            {
+                                "fileName": "trello 1.1.docx",
+                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
+                            }
+                        ],
                         "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c01062962bafe88c816a7/attachments/651c01361d684fd84072e13e/download/231-sass-logo-sass.png",
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                     {
                         "id": "d107",
@@ -309,7 +314,12 @@ const BOARDS = [
                         "status": "in-progress",
                         "priority": "high",
                         "description": "description",
-                        "attachment": [],
+                        "attachment": [
+                            {
+                                "fileName": "trello 1.1.docx",
+                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
+                            }
+                        ],
                         "memberIds": ["u101"],
                         "byMember": {
                             "_id": "u101",
@@ -321,10 +331,7 @@ const BOARDS = [
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c01e29ae065f6e43d8f03/attachments/651c020196c5fb62cc35bdf3/download/219969.png",
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     }
                 ],
                 "style": {}
@@ -352,8 +359,9 @@ const BOARDS = [
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
-                            "isDone": false
+                            "isDone": true
                         },
+                        "startDate": 1698051014,
                         "comments": [
                             {
                                 "id": "cm102",
@@ -387,7 +395,7 @@ const BOARDS = [
                         },
                         "labelIds": ["l103", "l104"],
                         "attachment": [],
-                        "memberIds": ['u102'],
+                        "memberIds": ['u101'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1699961014,
@@ -400,16 +408,13 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u102'],
+                        "memberIds": ['u101'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://trello.com/1/cards/651c03270cfcb4617c6352e9/attachments/651c03746e39588ea43be583/download/benefit_of_PWA.png",
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                 ],
                 "style": {}
@@ -429,12 +434,9 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u102'],
+                        "memberIds": ['u101'],
                         "checklists": [],
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                     {
                         "id": "c112",
@@ -442,7 +444,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
-                        "memberIds": ['u102'],
+                        "memberIds": ['u101'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#579dff",
@@ -459,16 +461,13 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u102'],
+                        "memberIds": ['u101'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2011/09/thumb_720_450_bug-on-computer-chip_shutterstock_4027501.jpg"
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                     {
                         "id": "c114",
@@ -476,16 +475,13 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u102', 'u104'],
+                        "memberIds": ['u101'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://www.youthemployment.org.uk/dev/wp-content/uploads/2018/07/achievement-3408115_640-600x287.jpg"
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
 
                 ],
@@ -506,29 +502,23 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u102', 'u104'],
+                        "memberIds": ['u101', 'u102'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://www.syncfusion.com/blogs/wp-content/uploads/2023/04/How-You-Should-Treat-NPM-Audit-Results.png"
                         },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                     {
                         "id": "c116",
                         "title": "CSS variables",
                         "archivedAt": 1589983468414,
-                        "labelIds": ["l102", "l101"],
+                        "labelIds": ["l101", "l102"],
                         "attachment": [],
-                        "memberIds": ['u102', 'u104'],
+                        "memberIds": ['u101'],
                         "checklists": [],
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                     {
                         "id": "c117",
@@ -536,7 +526,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101"],
                         "attachment": [],
-                        "memberIds": ['u102', 'u104'],
+                        "memberIds": ['u10'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1699961014,
@@ -571,7 +561,7 @@ const BOARDS = [
                                     {
                                         "id": "td107",
                                         "title": "bug in boardDetails cmp",
-                                        "isDone": false
+                                        "isDone": true
                                     },
                                     {
                                         "id": "td108",
@@ -587,13 +577,15 @@ const BOARDS = [
                         "title": "Making mixins",
                         "archivedAt": 1589983468414,
                         "labelIds": ["l104", "l106"],
-                        "attachment": [],
-                        "memberIds": ['u102', 'u104'],
+                        "attachment": [
+                            {
+                                "fileName": "trello 1.1.docx",
+                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
+                            }
+                        ],
+                        "memberIds": ['u101', 'u102'],
                         "checklists": [],
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
+                        "dueDate": null,
                     },
                 ],
                 "style": {}
@@ -987,11 +979,8 @@ function getEmptyTask() {
         style: {
             backgroundColor: ''
         },
-        createdAt:Date.now(),
-        dueDate: {
-            timeStamp: Date.now(),
-            isDone: false
-        }
+        startDate: null,
+        dueDate: null
     }
 }
 
@@ -1062,3 +1051,24 @@ async function getLabels(boardId, txt) {
     return labels
 }
 
+
+function getMembersTaskImgs(board, group, task) {
+
+    var membersImg = []
+    task.memberIds.forEach(memberId => {
+        board.members.forEach(member => {
+            if (member._id === memberId) membersImg.push(member.imgUrl)
+        })
+    })
+
+    return membersImg
+
+}
+
+// function getGroupIdx(board, group) {
+//     return board.groups.findIndex(g => g.id === group.id)
+// }
+
+// function getTaskIdx(group, task) {
+//     return group.tasks.findIndex(t => t.id === task.id)
+// }

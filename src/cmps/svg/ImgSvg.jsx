@@ -206,7 +206,7 @@ export function ExitBtnSvg() {
 export function CommentSvg() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" version="1.0" viewBox="0 0 43.000000 36.000000" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,36.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+            <g transform="translate(0.000000,36.000000) scale(0.100000,-0.100000)" stroke="none">
                 <path d="M95 327 c-37 -17 -53 -36 -65 -76 -11 -38 3 -92 30 -116 11 -10 20 -29 20 -42 0 -34 18 -63 39 -63 10 0 38 15 62 34 35 27 55 35 102 38 70 6 107 30 124 81 16 48 -1 102 -40 131 -24 18 -45 21 -135 24 -73 1 -116 -2 -137 -11z m262 -49 c30 -28 31 -83 1 -115 -17 -19 -32 -23 -77 -23 -50 0 -61 -4 -106 -40 l-50 -40 -3 36 c-2 26 -12 44 -33 61 -37 31 -40 85 -7 120 20 21 29 23 137 23 104 0 117 -2 138 -22z" />
             </g>
         </svg>
@@ -314,7 +314,7 @@ export function BackBtnSvg() {
 export function CheckBoxSmallSvg() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" version="1.0" viewBox="0 0 39.000000 39.000000" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,39.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+            <g transform="translate(0.000000,39.000000) scale(0.100000,-0.100000)" stroke="none">
                 <path d="M50 340 c-22 -14 -22 -286 0 -300 19 -12 260 -13 279 -1 18 11 26 119 11 141 -16 23 -30 -5 -30 -62 l0 -48 -120 0 -120 0 0 120 0 120 105 0 c98 0 105 1 105 20 0 19 -7 20 -107 20 -60 0 -115 -5 -123 -10z" />
                 <path d="M270 235 c-41 -41 -80 -75 -86 -75 -6 0 -24 16 -38 35 -30 39 -46 45 -46 17 0 -10 20 -38 45 -62 l44 -43 86 83 c73 72 104 120 77 120 -4 0 -41 -34 -82 -75z" />
             </g>
@@ -325,9 +325,9 @@ export function TickSvg() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="16" height="16" viewBox="0 0 23.000000 19.000000" preserveAspectRatio="xMidYMid meet">
 
-        <g transform="translate(0.000000,19.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-        <path d="M125 110 l-49 -50 -26 25 c-39 37 -46 17 -8 -22 l32 -33 58 57 c32 32 58 61 58 65 0 17 -18 6 -65 -42z"/>
-        </g>
+            <g transform="translate(0.000000,19.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M125 110 l-49 -50 -26 25 c-39 37 -46 17 -8 -22 l32 -33 58 57 c32 32 58 61 58 65 0 17 -18 6 -65 -42z" />
+            </g>
         </svg>
     )
 }
@@ -346,6 +346,14 @@ export function VSvg() {
             <g transform="translate(0.000000,35.000000) scale(0.100000,-0.100000)" stroke="none">
                 <path d="M384 289 c-10 -12 -63 -62 -117 -112 l-98 -90 -54 53 c-53 52 -85 62 -85 24 0 -21 119 -144 139 -144 26 0 275 255 268 274 -9 22 -30 20 -53 -5z" />
             </g>
+        </svg>
+    )
+}
+
+export function DescriptionSvg(){
+    return (
+        <svg width="16" height="16" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM4 9C3.44772 9 3 9.44772 3 10C3 10.5523 3.44772 11 4 11H20C20.5523 11 21 10.5523 21 10C21 9.44772 20.5523 9 20 9H4ZM3 14C3 13.4477 3.44772 13 4 13H20C20.5523 13 21 13.4477 21 14C21 14.5523 20.5523 15 20 15H4C3.44772 15 3 14.5523 3 14ZM4 17C3.44772 17 3 17.4477 3 18C3 18.5523 3.44772 19 4 19H14C14.5523 19 15 18.5523 15 18C15 17.4477 14.5523 17 14 17H4Z" fill="currentColor"></path>
         </svg>
     )
 }
