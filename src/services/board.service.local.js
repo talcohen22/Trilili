@@ -107,6 +107,11 @@ const BOARDS = [
                 "_id": "u102",
                 "fullname": "Stav Cohen",
                 "imgUrl": "stav-black"
+            },
+            {
+                "_id": "u103",
+                "fullname": "Tamir Kol",
+                "imgUrl": "tamir"
             }
         ],
         "groups": [
@@ -131,7 +136,7 @@ const BOARDS = [
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
                             }
                         ],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -147,11 +152,11 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
-                        "memberIds": [],
+                        "memberIds": ['u103'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#26de81",
-                            "cover": "#26de81"
+                            "cover": ""
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -166,7 +171,7 @@ const BOARDS = [
                         "labelIds": [],
                         "style": {
                             "backgroundColor": "#26de81",
-                            "cover": "#26de81"
+                            "cover": ""
                         },
                         "dueDate": null,
                         "attachment": [],
@@ -180,7 +185,7 @@ const BOARDS = [
                         "labelIds": [],
                         "style": {
                             "backgroundColor": "#6cc3e0",
-                            "cover": "#6cc3e0"
+                            "cover": ""
                         },
                         "dueDate": null,
                         "attachment": [],
@@ -246,7 +251,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1696061014,
@@ -254,7 +259,7 @@ const BOARDS = [
                         },
                         "style": {
                             "backgroundColor": "#f87168",
-                            "cover": "#f87168"
+                            "cover": ""
                         },
                     },
                     {
@@ -263,7 +268,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l103", "l104"],
                         "attachment": [],
-                        "memberIds": [],
+                        "memberIds": ['u103'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1698061014,
@@ -355,7 +360,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#9f8fef",
-                            "cover": "#9f8fef"
+                            "cover": ""
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -391,7 +396,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "style": {
                             "backgroundColor": "#fea362",
-                            "cover": "#fea362"
+                            "cover": ""
                         },
                         "labelIds": ["l103", "l104"],
                         "attachment": [],
@@ -434,7 +439,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": ['u101', 'u103'],
                         "checklists": [],
                         "dueDate": null,
                     },
@@ -444,11 +449,11 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": ['u103'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#579dff",
-                            "cover": "#579dff"
+                            "cover": ""
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -461,7 +466,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -475,7 +480,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -583,7 +588,7 @@ const BOARDS = [
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
                             }
                         ],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "dueDate": null,
                     },
@@ -980,7 +985,8 @@ function getEmptyTask() {
             backgroundColor: ''
         },
         startDate: null,
-        dueDate: null
+        dueDate: null,
+        attachment: []
     }
 }
 

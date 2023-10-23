@@ -68,7 +68,7 @@ export function TaskDetails() {
                         <h1>{task.title}</h1>
                         <p className="flex align-center">in list
                             <a href="#">{group.title}</a>
-                            <EyeSvg />
+                            {task.isWatch && <EyeSvg />}
                         </p>
                     </div>
                 </header>

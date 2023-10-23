@@ -1,12 +1,8 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 
-export function TaskLabels({
-    labelIds,
-    labelsPaletteBoard,
-    onIsExpandedLabels,
-    isExpandedLabels }) {
-
+export function TaskLabels({ labelIds, labelsPaletteBoard, onIsExpandedLabels, isExpandedLabels }) {
+    
     const [toggleLabelTxt, setToggleLabelTxt] = useState(isExpandedLabels)
     const boards = useSelector(storeState => storeState.boardModule.boards)
 
@@ -33,7 +29,7 @@ export function TaskLabels({
             {labelIds.map((labelId) => {
                 const matchingLabel =
                     labelsPaletteBoard.find((paletteItem) =>
-                        (paletteItem.id === labelId))
+                        (paletteItem.id === labelId && paletteItem.color !== '#091E420F'))
 
                 if (matchingLabel) {
                     const backgroundColor = matchingLabel.color

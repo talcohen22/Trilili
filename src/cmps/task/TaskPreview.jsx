@@ -33,7 +33,6 @@ export function TaskPreview({
 
     const { title, id, labelIds, style: bgHeaderClr, comments, checklists, dueDate, startDate } = task
 
-
     return (
         <article className="task-card" onClick={onGetTaskDetails}>
 
@@ -95,13 +94,13 @@ export function TaskPreview({
                     {/* DoneTasksCounter */}
                     {checklists && < DoneTasksCounter checklists={checklists} />}
 
+                    {task.memberIds.length > 0 &&
+                        <Members
+                            board={board}
+                            group={group}
+                            task={task} />}
                 </div>
 
-                {task.memberIds.length > 0 && 
-                    <Members
-                        board={board}
-                        group={group}
-                        task={task} />}
             </div>
 
 
