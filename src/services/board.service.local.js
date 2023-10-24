@@ -16,10 +16,11 @@ export const boardService = {
     getEmptyTask,
     setBoardGroups,
     // getEmptyLabelsPalette
-    getGroupTask,
+    getBoardGroupTask,
     getLabel,
     getLabels,
-    getMembersTaskImgs
+    getMembersTaskImgs,
+    getTaskLabelsColors,
 }
 // debug trick
 window.bs = boardService
@@ -101,12 +102,20 @@ const BOARDS = [
             {
                 "_id": "u101",
                 "fullname": "Tal Cohen",
+                "username": "talcohen222",
                 "imgUrl": "tal"
             },
             {
                 "_id": "u102",
                 "fullname": "Stav Cohen",
+                "username": "stavcohen246",
                 "imgUrl": "stav-black"
+            },
+            {
+                "_id": "u103",
+                "fullname": "Tamir Kol",
+                "username": "tamirkol899",
+                "imgUrl": "tamir"
             }
         ],
         "groups": [
@@ -116,7 +125,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "need to check the backlog-Server",
                 "labelIds": ["l101", "l102", "l105", "l106"],
                 "tasks": [
                     {
@@ -124,14 +133,14 @@ const BOARDS = [
                         "title": "Create a server with express",
                         "archivedAt": 1589983468414,
                         "labelIds": [],
-                        "description": "description",
+                        "description": "install express before start",
                         "attachment": [
                             {
                                 "fileName": "trello 1.1.docx",
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
                             }
                         ],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -147,11 +156,11 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
-                        "memberIds": [],
+                        "memberIds": ['u103'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#26de81",
-                            "cover": "#26de81"
+                            "cover": ""
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -166,7 +175,7 @@ const BOARDS = [
                         "labelIds": [],
                         "style": {
                             "backgroundColor": "#26de81",
-                            "cover": "#26de81"
+                            "cover": ""
                         },
                         "dueDate": null,
                         "attachment": [],
@@ -180,7 +189,7 @@ const BOARDS = [
                         "labelIds": [],
                         "style": {
                             "backgroundColor": "#6cc3e0",
-                            "cover": "#6cc3e0"
+                            "cover": ""
                         },
                         "dueDate": null,
                         "attachment": [],
@@ -246,7 +255,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1696061014,
@@ -254,7 +263,7 @@ const BOARDS = [
                         },
                         "style": {
                             "backgroundColor": "#f87168",
-                            "cover": "#f87168"
+                            "cover": ""
                         },
                     },
                     {
@@ -263,7 +272,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l103", "l104"],
                         "attachment": [],
-                        "memberIds": [],
+                        "memberIds": ['u103'],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1698061014,
@@ -313,7 +322,7 @@ const BOARDS = [
                         "title": "Check user id - 125465",
                         "status": "in-progress",
                         "priority": "high",
-                        "description": "description",
+                        "description": "this user have partial details",
                         "attachment": [
                             {
                                 "fileName": "trello 1.1.docx",
@@ -342,7 +351,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "",
                 "labelIds": ["l101", "l102", "l105", "l106"],
                 "tasks": [
                     {
@@ -355,7 +364,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#9f8fef",
-                            "cover": "#9f8fef"
+                            "cover": ""
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -391,7 +400,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "style": {
                             "backgroundColor": "#fea362",
-                            "cover": "#fea362"
+                            "cover": ""
                         },
                         "labelIds": ["l103", "l104"],
                         "attachment": [],
@@ -425,7 +434,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "",
                 "labelIds": ["l102", "l105"],
                 "tasks": [
                     {
@@ -434,7 +443,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": ['u101', 'u103'],
                         "checklists": [],
                         "dueDate": null,
                     },
@@ -444,11 +453,11 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": ['u103'],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#579dff",
-                            "cover": "#579dff"
+                            "cover": ""
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -461,7 +470,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -475,7 +484,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -493,7 +502,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "",
                 "labelIds": ["l102", "l101"],
                 "tasks": [
                     {
@@ -535,7 +544,7 @@ const BOARDS = [
                         "checklists": [
                             {
                                 "id": "cl102",
-                                "title": "CSS directory checklist",
+                                "title": "CSS primary checklist",
                                 "todos": [
                                     {
                                         "id": "td104",
@@ -556,7 +565,7 @@ const BOARDS = [
                             },
                             {
                                 "id": "cl103",
-                                "title": "CSS directory checklist",
+                                "title": "CSS checklist",
                                 "todos": [
                                     {
                                         "id": "td107",
@@ -583,7 +592,7 @@ const BOARDS = [
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
                             }
                         ],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "dueDate": null,
                     },
@@ -980,7 +989,8 @@ function getEmptyTask() {
             backgroundColor: ''
         },
         startDate: null,
-        dueDate: null
+        dueDate: null,
+        attachment: []
     }
 }
 
@@ -1025,12 +1035,12 @@ function setBoardGroups(board, group, title) {
 //     ];
 // }
 
-async function getGroupTask(boardId, groupId, taskId) {
+async function getBoardGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
 
-    return { group, task }
+    return { board, group, task }
 }
 
 async function getLabel(boardId, labelId) {
@@ -1053,7 +1063,6 @@ async function getLabels(boardId, txt) {
 
 
 function getMembersTaskImgs(board, group, task) {
-
     var membersImg = []
     task.memberIds.forEach(memberId => {
         board.members.forEach(member => {
@@ -1062,7 +1071,17 @@ function getMembersTaskImgs(board, group, task) {
     })
 
     return membersImg
+}
 
+function getTaskLabelsColors(board, task){
+    var labelsColors = []
+    task.labelIds.forEach(labelId => {
+        board.labels.forEach(label => {
+            if (label.id === labelId) labelsColors.push({color: label.color, title: label.title})
+        })
+    })
+
+    return labelsColors
 }
 
 // function getGroupIdx(board, group) {

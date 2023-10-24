@@ -8,7 +8,7 @@ export function Members({ board, group, task }) {
     let count = 1
 
     return (
-        <section className="task-members flex justify-right">
+        <section className="task-members flex">
             {membersImgs.map(membersImg =>
                 <li className="" key={'img' + count++}>
                     <img src={utilService.getAssetSrc(`${membersImg}.jpg`)} alt="user" />

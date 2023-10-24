@@ -21,7 +21,11 @@ export function GroupList({
     removeTasks,
     saveCopiedGroup,
     onMoveBoards,
+<<<<<<< HEAD
     openQuickEdit
+=======
+    onSetChecklistIdToEdit
+>>>>>>> 69933b237daaec8e60b6b8563f72ae24d4aa9979
 
 }) {
     const { groups } = board
@@ -84,7 +88,7 @@ export function GroupList({
                 </DragDropContext>
                 <AddGroupBtn onAddNewGroup={onAddNewGroup} />
             </section>
-            {taskId && <TaskDetails board={board} />}
+            {taskId && <TaskDetails board={board} onSetChecklistIdToEdit={onSetChecklistIdToEdit} />}
         </React.Fragment>
     );
 }

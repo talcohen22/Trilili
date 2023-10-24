@@ -90,6 +90,7 @@
 
 .task-footer-dashboard {
     gap: 8px;
+    flex-wrap: wrap;
 
     >* {
         padding-bottom: 4px;
@@ -193,7 +194,9 @@
 .task-members{
 
     gap: 4px;
+    padding: 0;
     margin-top: 4px;
+    margin-left: auto;
 
     li{
         width: fit-content;
@@ -201,5 +204,6 @@
     img{
         border-radius: 50%;
         width: 24px;
+        height: 24px;
     }
 }

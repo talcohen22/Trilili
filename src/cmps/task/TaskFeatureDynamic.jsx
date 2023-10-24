@@ -9,8 +9,9 @@ import { FeatureChecklist } from "./FeatureChecklist";
 import { useSelector } from 'react-redux'
 import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions";
 import { FeatureDates } from "./FeatureDates";
+import { DeleteChecklist } from "./TaskDetailsData/deleteCheckList";
 
-export function TaskFeatureDynamic() {
+export function TaskFeatureDynamic({checklistIdToEdit}) {
 
     const board = useSelector(storeState => storeState.boardModule.board)
     const group = useSelector(storeState => storeState.boardModule.group)
@@ -21,7 +22,6 @@ export function TaskFeatureDynamic() {
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
     const [componentHeight, setComponentHeight] = useState(0);
     const [screenDiff, setScreenDiff] = useState(0)
-
 
     useEffect(() => {
 
@@ -111,6 +111,8 @@ export function TaskFeatureDynamic() {
                 {cmp.type === 'Add checklist' && <FeatureChecklist />}
 
                 {cmp.type === 'Dates' && <FeatureDates />}
+
+                {cmp.type === 'Delete checklist' && <DeleteChecklist checklistIdToEdit={checklistIdToEdit}/>}
 
                 <div className="exit-btn" onClick={() => exitCmp()}>
                     <ExitBtnSvg />

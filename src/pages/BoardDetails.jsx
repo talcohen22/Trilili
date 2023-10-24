@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+ import { useParams } from "react-router";
 import { GroupList } from "../cmps/group/GroupList";
 import { boardService } from "../services/board.service.local";
 import { useEffect, useState } from "react";
@@ -7,12 +7,9 @@ import { useSelector } from "react-redux";
 import { setIsCheckDate, setIsExpandedLabels, updateBoard } from "../store/board.actions";
 
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
-import { StarSvg } from "../cmps/svg/ImgSvg";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
 import { TaskQuickEdit } from "../cmps/task/TaskQuickEdit";
-
-
 
 export function BoardDetails() {
     const { boardId } = useParams()
@@ -20,6 +17,11 @@ export function BoardDetails() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const[isQuickEditOpen,setIsQuickEditOpen]=useState(false)
     const[quickEdit,setQuickEdit]=useState(null)
+    const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
+
+    function onSetChecklistIdToEdit(checklistId) {
+        setChecklistIdToEdit(checklistId)
+    }
 
     useEffect(() => {
         if (boardId) loadBoard(boardId)
@@ -163,11 +165,14 @@ export function BoardDetails() {
                     saveCopiedGroup={saveCopiedGroup}
                     onMoveBoards={onMoveBoards}
                     openQuickEdit={openQuickEdit}
+                    onSetChecklistIdToEdit={onSetChecklistIdToEdit}
                 />
             }
 
-            <TaskFeatureDynamic />
-        {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} />}
+            <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit}/>
+
+            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} />}
+            
         </section>
     )
 }

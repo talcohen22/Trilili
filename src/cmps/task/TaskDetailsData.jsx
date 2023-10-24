@@ -1,11 +1,45 @@
+import React from "react";
+import { CheckListSvg, DescriptionSvg } from "../svg/ImgSvg";
+import { CheckListData } from "./TaskDetailsData/CheckListData";
+import { DescriptionData } from "./TaskDetailsData/DescriptionData";
+import { FeaturesData } from "./TaskDetailsData/FeaturesData";
 
 
-export function TaskDetailsData({task}){
+export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) {
+
     return (
-        <div>
-            <div className="members-data">
-                <h3>Members</h3>
+        <section className="task-details-data">
+            <FeaturesData
+                board={board}
+                group={group}
+                task={task} />
+
+            <div className="description-svg">
+                <DescriptionSvg />
             </div>
-        </div>
+            <DescriptionData
+                board={board}
+                group={group}
+                task={task}
+            />
+
+            {task.checklists.length > 0 && task.checklists.map(checklist =>
+                <React.Fragment key={checklist.id}>
+                    <div className="checklist-svg">
+                        <CheckListSvg />
+                    </div>
+                    <div className="checklist-item">
+                        <CheckListData
+                            board={board}
+                            group={group}
+                            task={task}
+                            checklist={checklist}
+                            onSetChecklistIdToEdit={onSetChecklistIdToEdit} />
+                    </div>
+                </React.Fragment>
+            )}
+
+
+        </section>
     )
 }
