@@ -16,10 +16,11 @@ export const boardService = {
     getEmptyTask,
     setBoardGroups,
     // getEmptyLabelsPalette
-    getGroupTask,
+    getBoardGroupTask,
     getLabel,
     getLabels,
-    getMembersTaskImgs
+    getMembersTaskImgs,
+    getTaskLabelsColors,
 }
 // debug trick
 window.bs = boardService
@@ -101,16 +102,19 @@ const BOARDS = [
             {
                 "_id": "u101",
                 "fullname": "Tal Cohen",
+                "username": "talcohen222",
                 "imgUrl": "tal"
             },
             {
                 "_id": "u102",
                 "fullname": "Stav Cohen",
+                "username": "stavcohen246",
                 "imgUrl": "stav-black"
             },
             {
                 "_id": "u103",
                 "fullname": "Tamir Kol",
+                "username": "tamirkol899",
                 "imgUrl": "tamir"
             }
         ],
@@ -121,7 +125,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "need to check the backlog-Server",
                 "labelIds": ["l101", "l102", "l105", "l106"],
                 "tasks": [
                     {
@@ -129,7 +133,7 @@ const BOARDS = [
                         "title": "Create a server with express",
                         "archivedAt": 1589983468414,
                         "labelIds": [],
-                        "description": "description",
+                        "description": "install express before start",
                         "attachment": [
                             {
                                 "fileName": "trello 1.1.docx",
@@ -318,7 +322,7 @@ const BOARDS = [
                         "title": "Check user id - 125465",
                         "status": "in-progress",
                         "priority": "high",
-                        "description": "description",
+                        "description": "this user have partial details",
                         "attachment": [
                             {
                                 "fileName": "trello 1.1.docx",
@@ -347,7 +351,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "",
                 "labelIds": ["l101", "l102", "l105", "l106"],
                 "tasks": [
                     {
@@ -430,7 +434,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "",
                 "labelIds": ["l102", "l105"],
                 "tasks": [
                     {
@@ -498,7 +502,7 @@ const BOARDS = [
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
-                "description": "description",
+                "description": "",
                 "labelIds": ["l102", "l101"],
                 "tasks": [
                     {
@@ -540,7 +544,7 @@ const BOARDS = [
                         "checklists": [
                             {
                                 "id": "cl102",
-                                "title": "CSS directory checklist",
+                                "title": "CSS primary checklist",
                                 "todos": [
                                     {
                                         "id": "td104",
@@ -561,7 +565,7 @@ const BOARDS = [
                             },
                             {
                                 "id": "cl103",
-                                "title": "CSS directory checklist",
+                                "title": "CSS checklist",
                                 "todos": [
                                     {
                                         "id": "td107",
@@ -1031,12 +1035,12 @@ function setBoardGroups(board, group, title) {
 //     ];
 // }
 
-async function getGroupTask(boardId, groupId, taskId) {
+async function getBoardGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
 
-    return { group, task }
+    return { board, group, task }
 }
 
 async function getLabel(boardId, labelId) {
@@ -1059,7 +1063,6 @@ async function getLabels(boardId, txt) {
 
 
 function getMembersTaskImgs(board, group, task) {
-
     var membersImg = []
     task.memberIds.forEach(memberId => {
         board.members.forEach(member => {
@@ -1068,7 +1071,17 @@ function getMembersTaskImgs(board, group, task) {
     })
 
     return membersImg
+}
 
+function getTaskLabelsColors(board, task){
+    var labelsColors = []
+    task.labelIds.forEach(labelId => {
+        board.labels.forEach(label => {
+            if (label.id === labelId) labelsColors.push({color: label.color, title: label.title})
+        })
+    })
+
+    return labelsColors
 }
 
 // function getGroupIdx(board, group) {
