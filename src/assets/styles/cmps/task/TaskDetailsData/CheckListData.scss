@@ -42,10 +42,9 @@
         display: flex;
     }
 
-
     .todo {
 
-        margin-bottom: 15px;
+        margin-bottom: 0px;
 
         input[type=checkbox] {
             @include custom-checkbox;
@@ -57,8 +56,28 @@
             border: none;
             background-color: $groupBgc;
             outline: none;
+            width: 100%;
+            padding: 10px 8px;
+            cursor: pointer;
         }
 
+        .todo-title.isDone{
+            text-decoration: line-through;
+        }
+
+        .todo-title:hover{
+            background-color: $taskItemsBgc;
+            border-radius: 12px;
+        }
+
+        .remove-todo{
+            @include btn-gray-bgc;
+            height: fit-content;
+            border-radius: 50%;
+            padding: 8px;
+            margin: 0;
+            background-color: transparent;
+        }
     }
 
     .checklist-title:focus , .todo-title:focus, .add-item:focus {
@@ -84,6 +103,10 @@
 
     .add-item:focus::placeholder{
         font-weight: 400;
+    }
+
+    .update-btns.todo{
+        margin-top: 5px;
     }
 
     .update-btns.todo.flex {

@@ -7,7 +7,7 @@ import { boardService } from "../../services/board.service.local"
 import { useNavigate } from "react-router"
 import { useSelector } from 'react-redux';
 
-export function TaskDetails() {
+export function TaskDetails({ onSetChecklistIdToEdit }) {
 
     const boards = useSelector(storeState => storeState.boardModule.boards);
 
@@ -39,7 +39,7 @@ export function TaskDetails() {
 
     async function loadTask() {
         try {
-            const {board, group, task } = await boardService.getBoardGroupTask(boardId, groupId, taskId)
+            const { board, group, task } = await boardService.getBoardGroupTask(boardId, groupId, taskId)
             setTask(task)
             setGroup(group)
             setBoard(board)
@@ -77,10 +77,11 @@ export function TaskDetails() {
                 </header>
 
                 <main className="task-details-content flex">
-                    <TaskDetailsData 
-                    board={board}
-                    group={group}
-                    task={task} />
+                    <TaskDetailsData
+                        board={board}
+                        group={group}
+                        task={task}
+                        onSetChecklistIdToEdit={onSetChecklistIdToEdit} />
                     <TaskDetailsFeatures />
                 </main>
 

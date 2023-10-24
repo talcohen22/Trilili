@@ -38,24 +38,24 @@ export async function loadBoards() {
     }
 }
 
-export async function updateIsDoneTodo(board, group, task, checklist, todoId, value) {
+export async function updateTodo(board, group, task, checklist, todoId, field, value) {
     try {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
         const clIdx = getChecklistIdx(task, checklist.id)
         const todoIdx = getTodoIdx(checklist, todoId)
 
-        board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos[todoIdx].isDone = value
+        board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos[todoIdx][field] = value
 
         await updateBoard(board)
-            
+
     } catch (err) {
         console.log('Cannot update todo', err)
         throw err
     }
 }
 
-export async function updateChecklistTitle(board, group, task, checklist, title){
+export async function updateChecklistTitle(board, group, task, checklist, title) {
     try {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
@@ -64,9 +64,43 @@ export async function updateChecklistTitle(board, group, task, checklist, title)
         board.groups[gIdx].tasks[tIdx].checklists[clIdx].title = title
 
         await updateBoard(board)
-            
+
     } catch (err) {
         console.log('Cannot update checklist title', err)
+        throw err
+    }
+}
+
+export async function addChecklistTodo(board, group, task, checklist, title) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        const clIdx = getChecklistIdx(task, checklist.id)
+
+        const todo = { id: utilService.makeId(), title, isDone: false }
+        board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos.push(todo)
+
+        await updateBoard(board)
+    }
+    catch (err) {
+        console.log('Cannot add todo', err)
+        throw err
+    }
+}
+
+export async function removeTodo(board, group, task, checklist, todoId) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        const clIdx = getChecklistIdx(task, checklist.id)
+        const todoIdx = getTodoIdx(checklist, todoId)
+        
+        board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos.splice(todoIdx, 1)
+
+        await updateBoard(board)
+    }
+    catch (err) {
+        console.log('Cannot remove todo', err)
         throw err
     }
 }
@@ -341,7 +375,7 @@ function getChecklistIdx(task, checklistId) {
     return task.checklists.findIndex(cl => cl.id === checklistId)
 }
 
-function getTodoIdx(checklist, todoId){
+function getTodoIdx(checklist, todoId) {
     return checklist.todos.findIndex(todo => todo.id === todoId)
 }
 

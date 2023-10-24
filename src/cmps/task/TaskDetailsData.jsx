@@ -5,7 +5,7 @@ import { DescriptionData } from "./TaskDetailsData/DescriptionData";
 import { FeaturesData } from "./TaskDetailsData/FeaturesData";
 
 
-export function TaskDetailsData({ board, group, task }) {
+export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) {
 
     return (
         <section className="task-details-data">
@@ -33,7 +33,8 @@ export function TaskDetailsData({ board, group, task }) {
                             board={board}
                             group={group}
                             task={task}
-                            checklist={checklist} />
+                            checklist={checklist}
+                            onSetChecklistIdToEdit={onSetChecklistIdToEdit} />
                     </div>
                 </React.Fragment>
             )}

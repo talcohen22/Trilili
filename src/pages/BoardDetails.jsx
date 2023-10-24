@@ -7,16 +7,18 @@ import { useSelector } from "react-redux";
 import { setIsCheckDate, setIsExpandedLabels, updateBoard } from "../store/board.actions";
 
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
-import { StarSvg } from "../cmps/svg/ImgSvg";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
-
-
 
 export function BoardDetails() {
     const { boardId } = useParams()
     const [board, setBoard] = useState(null)
     const boards = useSelector(storeState => storeState.boardModule.boards)
+    const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
+
+    function onSetChecklistIdToEdit(checklistId) {
+        setChecklistIdToEdit(checklistId)
+    }
 
     useEffect(() => {
         if (boardId) loadBoard(boardId)
@@ -146,10 +148,11 @@ export function BoardDetails() {
                     removeTasks={removeTasks}
                     saveCopiedGroup={saveCopiedGroup}
                     onMoveBoards={onMoveBoards}
+                    onSetChecklistIdToEdit={onSetChecklistIdToEdit}
                 />
             }
 
-            <TaskFeatureDynamic/>
+            <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit}/>
 
         </section>
     )

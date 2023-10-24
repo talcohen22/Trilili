@@ -20,7 +20,8 @@ export function GroupList({
     removeGroup,
     removeTasks,
     saveCopiedGroup,
-    onMoveBoards
+    onMoveBoards,
+    onSetChecklistIdToEdit
 
 }) {
     const { groups } = board
@@ -83,7 +84,7 @@ export function GroupList({
                 </DragDropContext>
                 <AddGroupBtn onAddNewGroup={onAddNewGroup} />
             </section>
-            {taskId && <TaskDetails board={board} />}
+            {taskId && <TaskDetails board={board} onSetChecklistIdToEdit={onSetChecklistIdToEdit} />}
         </React.Fragment>
     );
 }
