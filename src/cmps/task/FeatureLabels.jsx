@@ -22,10 +22,10 @@ export function FeatureLabels({  onSetLabelIdToEdit }) {
     async function handleChange(event, labelId) {
         const { target } = event
         try {
-            if (target.checked) { //remove label from task
+            if (target.checked) { //add label from task
                 await setLabelChecked(board, group, task, labelId)
             }
-            else { //add label to task
+            else { //remove label to task
                 await setLabelNotChecked(board, group, task, labelId)
             }
         } catch (err) {
@@ -60,7 +60,7 @@ export function FeatureLabels({  onSetLabelIdToEdit }) {
                             <FormControlLabel control={<Checkbox
                                 className="mui-check-box"
                                 checked={task.labelIds ? task.labelIds.includes(label.id) : false}
-                                onChange={() => handleChange(event, label.id)} />}
+                                onChange={(ev) => handleChange(ev, label.id)} />}
                                 label={<div className="color-display"
                                     style={{ backgroundColor: label.color }}>
                                     {label.title}

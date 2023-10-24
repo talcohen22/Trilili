@@ -5,8 +5,11 @@ import { TaskDetailsData } from "./TaskDetailsData"
 import { useEffect, useState, useRef } from 'react'
 import { boardService } from "../../services/board.service.local"
 import { useNavigate } from "react-router"
+import { useSelector } from 'react-redux';
 
 export function TaskDetails() {
+
+    const boards = useSelector(storeState => storeState.boardModule.boards);
 
     function useClickOutsideCmp(ref) {
         useEffect(() => {
@@ -22,7 +25,7 @@ export function TaskDetails() {
 
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
-    // const [board, setBoard] = useState(null)
+    const [board, setBoard] = useState(null)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const { taskId } = useParams()
@@ -32,14 +35,14 @@ export function TaskDetails() {
 
     useEffect(() => {
         loadTask()
-    }, [taskId])
+    }, [taskId, boards])
 
     async function loadTask() {
         try {
-            const { group, task } = await boardService.getGroupTask(boardId, groupId, taskId)
+            const {board, group, task } = await boardService.getBoardGroupTask(boardId, groupId, taskId)
             setTask(task)
             setGroup(group)
-            // setBoard(board)
+            setBoard(board)
         } catch (err) {
             console.log('Cant load task')
         }
@@ -73,8 +76,11 @@ export function TaskDetails() {
                     </div>
                 </header>
 
-                <main className="task-details-content flex justify-space-b">
-                    <TaskDetailsData task={task} />
+                <main className="task-details-content flex">
+                    <TaskDetailsData 
+                    board={board}
+                    group={group}
+                    task={task} />
                     <TaskDetailsFeatures />
                 </main>
 

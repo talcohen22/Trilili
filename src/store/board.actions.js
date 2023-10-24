@@ -38,15 +38,78 @@ export async function loadBoards() {
     }
 }
 
+export async function updateIsDoneTodo(board, group, task, checklist, todoId, value) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        const clIdx = getChecklistIdx(task, checklist.id)
+        const todoIdx = getTodoIdx(checklist, todoId)
+
+        board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos[todoIdx].isDone = value
+
+        await updateBoard(board)
+            
+    } catch (err) {
+        console.log('Cannot update todo', err)
+        throw err
+    }
+}
+
+export async function updateChecklistTitle(board, group, task, checklist, title){
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        const clIdx = getChecklistIdx(task, checklist.id)
+
+        board.groups[gIdx].tasks[tIdx].checklists[clIdx].title = title
+
+        await updateBoard(board)
+            
+    } catch (err) {
+        console.log('Cannot update checklist title', err)
+        throw err
+    }
+}
+
+export async function saveDescription(board, group, task, description) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        board.groups[gIdx].tasks[tIdx].description = description
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot save description', err)
+        throw err
+    }
+}
+
+export async function setIsWatch(board, group, task) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        board.groups[gIdx].tasks[tIdx].isWatch = !board.groups[gIdx].tasks[tIdx].isWatch
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot set isWatch', err)
+        throw err
+    }
+}
+
 export async function saveDate(board, group, task, startDate, dueDate) {
     try {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
 
         board.groups[gIdx].tasks[tIdx].startDate = startDate
-        
-        if(task.dueDate && dueDate) board.groups[gIdx].tasks[tIdx].dueDate = {timeStamp: dueDate.timeStamp, isDone: task.dueDate.isDone}
-        else board.groups[gIdx].tasks[tIdx].dueDate = dueDate        
+
+        if (task.dueDate && dueDate) board.groups[gIdx].tasks[tIdx].dueDate = { timeStamp: dueDate.timeStamp, isDone: task.dueDate.isDone }
+        else board.groups[gIdx].tasks[tIdx].dueDate = dueDate
 
         await updateBoard(board)
     } catch (err) {
@@ -56,16 +119,32 @@ export async function saveDate(board, group, task, startDate, dueDate) {
 }
 
 export async function removeDate(board, group, task) {
-    try{
+    try {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
-    
+
         board.groups[gIdx].tasks[tIdx].startDate = null
         board.groups[gIdx].tasks[tIdx].dueDate = null
-    
+
         await updateBoard(board)
-    }catch (err) {
+    } catch (err) {
         console.log('Cannot remove date', err)
+        throw err
+    }
+}
+
+export async function removeChecklist(board, group, task, checklistId) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        const clIdx = getChecklistIdx(task, checklistId)
+
+        board.groups[gIdx].tasks[tIdx].checklists.splice(clIdx, 1)
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot remove checklist', err)
         throw err
     }
 }
@@ -256,6 +335,14 @@ function getTaskIdx(group, task) {
 
 function getLabelIdsIndex(task, labelId) {
     return task.labelIds.findIndex(lId => lId === labelId)
+}
+
+function getChecklistIdx(task, checklistId) {
+    return task.checklists.findIndex(cl => cl.id === checklistId)
+}
+
+function getTodoIdx(checklist, todoId){
+    return checklist.todos.findIndex(todo => todo.id === todoId)
 }
 
 // export async function addBoard(board) {

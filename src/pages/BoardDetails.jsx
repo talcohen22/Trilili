@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+ import { useParams } from "react-router";
 import { GroupList } from "../cmps/group/GroupList";
 import { boardService } from "../services/board.service.local";
 import { useEffect, useState } from "react";
