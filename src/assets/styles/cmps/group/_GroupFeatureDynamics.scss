@@ -27,12 +27,11 @@
         cursor: default;
         pointer-events: none;
     }
-}
-
-.watch{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28px;
-    padding: 6px;
+    .watch{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        padding: 6px;
+    }
 }

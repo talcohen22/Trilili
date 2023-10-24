@@ -1,10 +1,31 @@
-import { Fragment, useState } from "react";
-import { ExitBtnSvg,TickSvg } from "../svg/ImgSvg";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { ExitBtnSvg, TickSvg } from "../svg/ImgSvg";
 import { GroupFeatureDynamic } from "./GroupFeatureDynamic";
 
 export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks, groupActionPostion, handleAddTask, saveCopiedGroup, board, onSetBoard, onMoveBoards, handleWatchGroup }) {
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
+    const modalRef = useRef(null)
+    const isComponentMounted = useRef(false)
+    useEffect(() => {
+
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)&&!isDynamicCmpOpen) {
+                if (isComponentMounted.current) {
+                    handleClose();
+                }
+            }
+            isComponentMounted.current = true
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+
+    }, [isDynamicCmpOpen,handleClose])
+
     function onHandleClose() {
         handleClose()
     }
@@ -35,7 +56,7 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
     const { left, top } = groupActionPostion
     return (
         <Fragment>
-            <div className={!isDynamicCmpOpen ? "group-actions-modal" : 'hidden'} style={{ left: left + 'px', top: top + 'px' }}>
+            <div className={!isDynamicCmpOpen ? "group-actions-modal" : 'hidden'} style={{ left: left + 'px', top: top + 'px' }} ref={modalRef}>
                 <div className=" group-modal-header">
                     <div></div>
                     <h3>List actions</h3>
@@ -46,7 +67,7 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
                         <li><button className="group-action-btn" onClick={onAddCard}>Add Card...</button></li>
                         <li><button className="group-action-btn" onClick={(() => getDynamicCmp('Copy list'))}>Copy list...</button></li>
                         <li><button className="group-action-btn" onClick={(() => getDynamicCmp('Move list'))}>Move list...</button></li>
-                        <li><button className="group-action-btn" onClick={handleWatchGroup} >Watch {group.isWatch&&<span><TickSvg/></span>}</button></li>
+                        <li><button className="group-action-btn" onClick={handleWatchGroup} >Watch {group.isWatch && <span><TickSvg /></span>}</button></li>
                         <hr />
                         <li><button className="group-action-btn" onClick={(() => getDynamicCmp('Sort list'))}>Sort By</button></li>
                         <hr />

@@ -10,7 +10,8 @@ export function TaskList({
     labelsPaletteBoard,
     onIsCheckDate,
     isExpandedLabels,
-    onIsExpandedLabels }) {
+    onIsExpandedLabels,
+    openQuickEdit }) {
     const { tasks } = group
     return (
         <section className="task-list-container">
@@ -34,6 +35,7 @@ export function TaskList({
                                             onIsCheckDate={onIsCheckDate}
                                             onIsExpandedLabels={onIsExpandedLabels}
                                             isExpandedLabels={isExpandedLabels}
+                                            openQuickEdit={openQuickEdit}
                                         />
                                     </li>
                                 )}

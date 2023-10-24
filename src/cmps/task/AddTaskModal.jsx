@@ -7,10 +7,27 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask
     const [textScrollHeight, setTextScrollHeight] = useState('70px')
     const direction= isOnAddTask
     const textareaRef = useRef(null)
-
+    const isComponentMounted = useRef(false)
+   
     useEffect(() => {
         adjustTextareaRows()
-    }, [newTaskText])
+
+        const handleClickOutside = (event) => {
+            if (textareaRef.current && !textareaRef.current.contains(event.target)) {
+                if (isComponentMounted.current) {
+                    onCloseAddTaskModal();
+                }
+            }
+            isComponentMounted.current = true
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+
+    }, [newTaskText,onCloseAddTaskModal])
 
     function handleChange({ target }) {
         const title = target.value

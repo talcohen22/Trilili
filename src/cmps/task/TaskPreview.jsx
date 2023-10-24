@@ -7,7 +7,7 @@ import { DoneTasksCounter } from "./TaskFeatures/DoneTasksCounter";
 import { DateTaskBtn } from "./TaskFeatures/DateTaskBtn";
 import { TaskHeaderBgc } from "./TaskFeatures/TaskHeaderBgc ";
 import { Members } from "./TaskFeatures/Members";
-
+import { useRef } from "react";
 
 export function TaskPreview({
     board,
@@ -17,18 +17,32 @@ export function TaskPreview({
     labelsPaletteBoard,
     onIsCheckDate,
     isExpandedLabels,
-    onIsExpandedLabels }) {
+    onIsExpandedLabels,
+    openQuickEdit }) {
 
     const { boardId } = useParams()
-
+    const buttonRef=useRef(null)
     const navigate = useNavigate()
 
     function onGetTaskDetails(ev) {
         navigate(`/board/${boardId}/${group.id}/${task.id}`)
     }
 
-    function inHandleClickEditTitle(taskId) {
-        console.log('taskId', taskId)
+    function inHandleClickEditTitle(event,task) {
+        event.stopPropagation()
+        const position= getQuickEditPosition()
+        const groupId=group.id
+        openQuickEdit(task,groupId,position)
+    }
+
+    function getQuickEditPosition() {
+        // const index = board.groups.findIndex(idx => idx.id === group.id)
+        const buttonRect = buttonRef.current.getBoundingClientRect()
+        console.log(buttonRect)
+        const positionX = buttonRect.right
+        const positionY = buttonRect.top
+        return({ left: positionX, top: positionY })
+       
     }
 
     const { title, id, labelIds, style: bgHeaderClr, comments, checklists, dueDate, startDate } = task
@@ -82,12 +96,12 @@ export function TaskPreview({
                         </div>
                     }
 
-                    {task.attachment.length > 0 &&
+                    {/* {task.attachment.length > 0 &&
                         <div className="attachment flex">
                             <AttachmentSvg />
                             <p>{task.attachment.length}</p>
                         </div>
-                    }
+                    } */}
 
                     {/* CommentCounter */}
                     {comments && < CommentCounter comments={comments} />}
@@ -107,8 +121,9 @@ export function TaskPreview({
 
 
             <button
+                ref={buttonRef}
                 className="task-preview-btn flex justify-center align-center"
-                onClick={() => inHandleClickEditTitle(id)}>
+                onClick={(ev) => inHandleClickEditTitle(ev,task)}>
                 <PencilSvg />
             </button>
 

@@ -1,0 +1,30 @@
+.task-quickedit-features{
+    
+    div{
+        display: flex;
+        gap: 6px;
+        cursor: pointer;
+        align-items: center;
+        padding: 6px 12px;
+        border-radius: 3px;
+        margin-top: 8px;
+        background-color: $btnQuickEditBg;
+       
+
+        transition: all 0.1s;
+
+        p{
+            color: $groupHeader;
+            font-weight: 600;
+        }
+        
+        svg{
+            height: 16px;
+        }
+
+        &:hover{
+            background: $scrollbarClrY;
+        }
+    }
+
+}

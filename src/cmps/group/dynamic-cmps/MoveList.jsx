@@ -1,43 +1,37 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { loadBoards } from '../../../store/board.actions';
 
 export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards }) {
     const boards = useSelector(storeState => storeState.boardModule.boards);
     let selectBoardList = [...boards]
     const selectGroupList = [...board.groups]
 
-    const selectRef = useRef(null);
-    const selectedBoardRef = useRef(null)
-    const currentGroupPosition = selectGroupList.findIndex(item => item.id === group.id);
-    const currentBoardPosition = selectBoardList.findIndex(item => item._id === board._id);
-
-    const [selectedBoard, setSelectedBoard] = useState(board.title);
+    const currentGroupPosition = selectGroupList.findIndex(g => g.id === group.id);
+    const [selectedBoard, setSelectedBoard] = useState(board);
     const [selectedPosition, setSelectedPosition] = useState(currentGroupPosition);
-   
-    function handleSelectClick({ target }) {
-        selectRef.current = target
-        selectRef.current.selectedIndex = selectedPosition;
-    }
+
+    useEffect(()=>{
+        loadBoards()
+    },[])
 
     function handleSelectChange({ target }) {
-        console.log(target.value);
-        const movedBoard = selectBoardList.find(item => item._id === target.value)
-        setSelectedBoard(movedBoard.title)
-        selectedBoardRef.current = movedBoard
+        const targetBoard = selectBoardList.find(item => item._id === target.value)
+        setSelectedBoard(targetBoard)
+        // selectedBoardRef.current = targetBoard
         if (target.value !== board._id) setSelectedPosition(0)
         else setSelectedPosition(currentGroupPosition)
-
     }
 
     function handleChangePosition({ target }) {
         setSelectedPosition(target.value);
     }
 
-    function onMoveList() {
+    function onMoveList(event) {
+        event.preventDefault()
+        if (selectedPosition === currentGroupPosition && selectedBoard.title === board.title) onHandleClose()
 
-        if (selectedPosition === currentGroupPosition && selectedBoard === board.title) onHandleClose()
-
-        else if (selectedPosition !== currentGroupPosition && selectedBoard === board.title) {
+        else if (selectedPosition !== currentGroupPosition && selectedBoard.title === board.title) {
             const copiedGroup = group
             selectGroupList.splice(currentGroupPosition, 1)
             selectGroupList.splice(selectedPosition, 0, copiedGroup)
@@ -46,10 +40,10 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
             onSetBoard(updatedBoard)
             onHandleClose()
         }
-        else if (selectedBoard !== board.title) {
+        else if (selectedBoard.title !== board.title) {
             let sourceBoard = { ...board }
             sourceBoard.groups.splice(currentGroupPosition, 1)
-            const destinationBoard = selectedBoardRef.current
+            const destinationBoard = selectedBoard
             destinationBoard.groups.splice(selectedPosition, 0, group)
             onMoveBoards(sourceBoard, destinationBoard)
 
@@ -63,14 +57,14 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
             <form>
                 <div className='button-link'>
                     <span className='label'>Board</span>
-                    <span>{selectedBoard}</span>
-                    <select ref={selectRef} onClick={handleSelectClick} onChange={handleSelectChange} value={selectedBoard}>
+                    <span>{selectedBoard.title}</span>
+                    <select  onChange={handleSelectChange} value={selectedBoard._id}>
                         <optgroup label='WorkSpace name'>
                             {selectBoardList
-                                .filter((item) => item._id !== board._id)
-                                .map((item) => (
-                                    <option key={item._id} value={item._id}>
-                                        {item.title}
+                                .filter((b) => b._id !== board._id)
+                                .map((b) => (
+                                    <option key={b._id} value={b._id}>
+                                        {b.title}
                                     </option>
                                 ))}
                         </optgroup>
@@ -83,10 +77,14 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
                 <div className='button-link'>
                     <span className='label'>Position</span>
                     <span>{(+selectedPosition + 1)}</span>
-                    <select ref={selectRef} onClick={handleSelectClick} onChange={handleChangePosition} value={selectedPosition}>
-                        {selectGroupList.map((item, index) => {
-                            if (item.id === group.id) return (<option value={index} key={item.id} >{(index + 1) + " (current)"}</option>)
-                            else return (<option value={index} key={item.id}>{index + 1}</option>)
+                    <select onChange={handleChangePosition} value={selectedPosition}>
+                        {(selectedBoard._id===board._id)&&selectGroupList.map((g, index) => {
+                            if (g.id === group.id) return (<option value={index} key={g.id} >{(index + 1) + " (current)"}</option>)
+                            else return (<option value={index} key={g.id}>{index + 1}</option>)
+                        })}
+                        {(selectedBoard._id!==board._id)&&selectedBoard.groups.map((g, index) => {
+                            if (g.id === group.id) return (<option value={index} key={g.id} >{(index + 1) + " (current)"}</option>)
+                            else return (<option value={index} key={index}>{index + 1}</option>)
                         })}
                     </select>
                 </div>

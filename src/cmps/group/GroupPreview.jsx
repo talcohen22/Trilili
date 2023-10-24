@@ -18,6 +18,7 @@ export function GroupPreview({
     saveCopiedGroup,
     onSetBoard,
     onMoveBoards,
+    openQuickEdit,
     provided }) {
 
     const [isOnAddTask, setIsOnAddTask] = useState(false)
@@ -149,7 +150,8 @@ export function GroupPreview({
                     labelsPaletteBoard={labelsPaletteBoard}
                     onIsCheckDate={onIsCheckDate}
                     onIsExpandedLabels={onIsExpandedLabels}
-                    isExpandedLabels={isExpandedLabels} />
+                    isExpandedLabels={isExpandedLabels}
+                    openQuickEdit={openQuickEdit} />
             </div>
            
 
