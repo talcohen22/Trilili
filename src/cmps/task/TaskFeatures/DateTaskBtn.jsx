@@ -1,46 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { ClockSvg } from '../../svg/ImgSvg'
+import { boardService } from '../../../services/board.service.local'
 
 export function DateTaskBtn({ dueDate, startDate, onIsCheckDate, group, task }) {
 
     const currentDate = new Date()
 
-    const monthNames = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-    ]
-
     if (dueDate) {
-        var { timeStamp, isDone } = dueDate
-        const dueDateInMilliseconds = timeStamp * 1000
-        const date = new Date(dueDateInMilliseconds)
-        const month = monthNames[date.getMonth()]
-        const day = date.getDate()
-        const year = date.getFullYear()
-        var formattedDate = `${month} ${day}${currentDate.getFullYear() !== year ? ', ' + year : ''}`
+        var { date, formattedDate } = boardService.getFormattedDate(dueDate.timeStamp)
         var isDueDatePassed = date < currentDate
     }
-    var [isTaskDone, setIsClicked] = useState(dueDate ? isDone : false)
 
     if (startDate) {
-        const startDateTimestamp = task.startDate
-        const startDate = new Date(startDateTimestamp * 1000)
-        const startMonth = monthNames[startDate.getMonth()]
-        const startDay = startDate.getDate()
-        const startYear = startDate.getFullYear()
-        var formattedStartDate = `${startMonth} ${startDay}${currentDate.getFullYear() !== startYear ? ', ' + startYear : ''}`
+        var formattedStartDate = boardService.getFormattedDate(task.startDate).formattedDate
     }
-
-    useEffect(() => {
-        if (dueDate && dueDate.isDone && isDueDatePassed) setIsClicked(true)
-        if (dueDate && !dueDate.isDone && isDueDatePassed) setIsClicked(false)
-    }, [isDueDatePassed])
 
     function handleClick(ev) {
         ev.stopPropagation()
         if (dueDate) onIsCheckDate(group, task)
-        isDone = !isDone
-        setIsClicked(dueDate ? isDone : false)
     }
 
     var dateOutput
@@ -49,9 +26,10 @@ export function DateTaskBtn({ dueDate, startDate, onIsCheckDate, group, task }) 
     if (startDate && dueDate) dateOutput = formattedStartDate + ' - ' + formattedDate
 
     const dynClass1 = isDueDatePassed ? 'text-white' : ''
-    const dynClass2 = ((isDueDatePassed || isTaskDone) && dueDate) ? 'due-date-passed' : ''
-    const dynClass3 = isTaskDone ? 'clicked' : ''
-    const dynClass4 = ((startDate && !dueDate) || (dueDate && !isDueDatePassed && !isTaskDone)) ? 'gray-color' : ''
+    const dynClass2 = (task.dueDate && isDueDatePassed && !task.dueDate.isDone) ? 'due-date-passed' : ''
+    const dynClass3 = (task.dueDate && ((isDueDatePassed && task.dueDate.isDone) || (!isDueDatePassed && task.dueDate.isDone))) ? 'clicked' : ''
+    const dynClass4 = ((startDate && !dueDate) || (dueDate && !isDueDatePassed && !task.dueDate.isDone)) ? 'gray-color' : ''
+
     return (
         <div
             className={`btn-task-f flex align-center ${dynClass2} ${dynClass3} ${dynClass4}`}

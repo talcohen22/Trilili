@@ -6,7 +6,9 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getAssetSrc
+    getAssetSrc,
+    getDate,
+    getTime
 }
 
 function makeId(length = 6) {
@@ -68,4 +70,23 @@ function getAssetSrc(name) {
     const modules = import.meta.glob('/src/assets/*', { eager: true })
     const mod = modules[path]
     return mod.default
+}
+
+function getDate(timestamp) {
+    const date = new Date(timestamp * 1000);
+    const year = date.getFullYear() % 100;
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    return `${year}/${month}/${day}`
+}
+
+function getTime(timestamp) {
+    const date = new Date(timestamp * 1000);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    const formattedTime = `${formattedHours}:${minutes < 10 ? '0' : ''}${minutes} ${amPm}`;
+    return formattedTime
 }

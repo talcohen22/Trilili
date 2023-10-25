@@ -78,7 +78,11 @@ export function FeaturesData({ board, group, task }) {
             </div>
 
             {/* dates */}
-            {(task.startDate !==null || task.dueDate !==null) && <DatesData task={task}/>}
+            {(task.startDate !== null || task.dueDate !== null) &&
+                <DatesData
+                    board={board}
+                    group={group}
+                    task={task} />}
 
         </section>
     )
