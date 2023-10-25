@@ -24,7 +24,6 @@ export function MoveTasksList({ group, board, onSetBoard, onHandleClose }) {
     
     }
 
-
     return (
         <section className="move-tasks-list">
             <ul className='group-action-content'>

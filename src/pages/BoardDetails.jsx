@@ -9,11 +9,14 @@ import { setIsCheckDate, setIsExpandedLabels, updateBoard } from "../store/board
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
+import { TaskQuickEdit } from "../cmps/task/TaskQuickEdit";
 
 export function BoardDetails() {
     const { boardId } = useParams()
     const [board, setBoard] = useState(null)
     const boards = useSelector(storeState => storeState.boardModule.boards)
+    const[isQuickEditOpen,setIsQuickEditOpen]=useState(false)
+    const[quickEdit,setQuickEdit]=useState(null)
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
 
     function onSetChecklistIdToEdit(checklistId) {
@@ -26,8 +29,9 @@ export function BoardDetails() {
             try {
                 const boardById = await boardService.getById(boardId)
                 setBoard(boardById)
+                document.title=`${boardById.title} | Trilili`  
             } catch (err) {
-                console.log(err)
+                console.log(err) 
             }
         }
     }, [boards])
@@ -44,17 +48,32 @@ export function BoardDetails() {
         }
     }
 
-    async function onAddTask(newTask, groupId) {
+    async function onAddTask(newTask, groupId, direction) {
+
         try {
             const updatedBoard = board
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-            updatedBoard.groups[groupIdx].tasks.push(newTask)
+            if (direction === 'START') updatedBoard.groups[groupIdx].tasks.unshift(newTask)
+            else updatedBoard.groups[groupIdx].tasks.push(newTask)
             boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
         } catch (err) {
             console.log('err onAddNewGroup: ', err)
         }
+    }
+
+    function openQuickEdit(task,groupId,position) {
+        setQuickEdit({
+            task,
+            groupId,
+            position
+        })
+        setIsQuickEditOpen(true)
+
+    }
+    function closeQuickEdit(){
+        setIsQuickEditOpen(false)
     }
 
     async function removeGroup(groupId) {
@@ -72,8 +91,8 @@ export function BoardDetails() {
     async function removeTasks(groupId) {
         try {
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-            const updatedBoard = {...board}
-            updatedBoard.groups[groupIdx].tasks=[]
+            const updatedBoard = { ...board }
+            updatedBoard.groups[groupIdx].tasks = []
             boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
@@ -84,14 +103,14 @@ export function BoardDetails() {
 
     async function onSetBoard(updatedBoard) {
         try {
+            setBoard(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
-            setBoard(savedBoard)
         } catch (err) {
             console.log(err);
         }
     }
 
-    async function onMoveBoards(sourceBoard,destinationBoard) {
+    async function onMoveBoards(sourceBoard, destinationBoard) {
         try {
             const fromBoard = await updateBoard(sourceBoard)
             const toBoard = await updateBoard(destinationBoard)
@@ -121,14 +140,15 @@ export function BoardDetails() {
         newGroup.title = copiedGroup.title
         newGroup.tasks = copiedGroup.tasks
         const updatedTasks = newGroup.tasks.map(task => {
-            const newId =utilService.makeId();
+            const newId = utilService.makeId();
             const updatedTask = { ...task, id: newId };
             return updatedTask;
         })
-        newGroup.tasks=updatedTasks
+        newGroup.tasks = updatedTasks
         onAddNewGroup(newGroup)
     }
 
+      
     if (!board) return <div></div>
     return (
         <section
@@ -148,11 +168,14 @@ export function BoardDetails() {
                     removeTasks={removeTasks}
                     saveCopiedGroup={saveCopiedGroup}
                     onMoveBoards={onMoveBoards}
+                    openQuickEdit={openQuickEdit}
                     onSetChecklistIdToEdit={onSetChecklistIdToEdit}
                 />
             }
 
             <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit}/>
+
+            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit}/>}
 
         </section>
     )

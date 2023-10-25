@@ -78,7 +78,7 @@
         display: block;
         font-weight: 500;
         height: rem(50px);
-        margin-top: rem(8px);
+        margin-bottom: rem(8px);
         padding: rem(6px) rem(12px) rem(6px) rem(12px);
     }
 
@@ -102,6 +102,6 @@
         z-index: 2;
     }
     .move-list-btn{
-        margin-block: rem(6px);
+        margin-block: rem(4px);
     }
 }

@@ -18,8 +18,8 @@
         height: max-content;
         min-width: 205px;
         max-width: max-content;
-        
-        a{
+
+        a {
             font-size: 1.2rem;
             // background-color: $headerLogoClr;
         }
@@ -29,8 +29,8 @@
         background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
             linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
-        margin-block-end: rem(21px);
-        padding-block-start: rem(68px);
+        // margin-block-end: rem(21px);
+        // padding-block-start: rem(68px);
 
         //hero
         .homepage-hero {
@@ -53,7 +53,7 @@
                     line-height: 1.25;
                     font-size: rem(38px);
                     margin-block-end: rem(8px);
-                    font-family:'charlie-semibold';
+                    font-family: 'charlie-semibold';
                     letter-spacing: rem(-2.7px);
 
                     @include for-normal-layout {
@@ -62,7 +62,7 @@
                 }
 
                 .homepage-hero-p {
-                    font-family: charlie-regular,sans-serif;
+                    font-family: charlie-regular, sans-serif;
                     font-size: rem(20px);
                     line-height: normal;
                     letter-spacing: normal;
@@ -82,7 +82,7 @@
                 }
 
                 @include for-wide-layout {
-                    padding: rem(91px) rem(7px);
+                    padding: rem(128px) rem(16px);
                     max-width: rem(500px);
                 }
             }
@@ -94,9 +94,11 @@
                 img {
                     max-width: 100%;
                     margin: auto;
-
+                    @include for-mobile-layout{
+                        width: 100%;
+                    }
                     @include for-narrow-layout {
-                        max-width: 60%;
+                        max-width: 80%;
                     }
 
                     @include for-wide-layout {
@@ -108,8 +110,8 @@
                 }
 
                 @include for-wide-layout {
-                    padding-block-start: rem(114px);
-                    margin-inline-end: rem(-20px);
+                    padding: rem(128px) rem(16px) 0;
+                    margin: 0 0 0 rem(-190px);
                 }
             }
 
@@ -126,7 +128,7 @@
     .homepage-productivity {
         background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
         background-blend-mode: normal;
-        padding: 0 rem(25px) rem(45px);
+        padding: rem(16px) rem(25px) rem(72px);
 
         .productivity-container {
             // font-family: charlie-regular;
@@ -140,8 +142,9 @@
             .productivity-text {
                 flex-direction: column;
                 color: $productivityText;
+
                 .trilili-101 {
-                    font-family: charlie-semibold,sans-serif;
+                    font-family: charlie-semibold, sans-serif;
                     margin-block-end: rem(8px);
                     font-size: rem(16px);
 
@@ -152,6 +155,7 @@
 
                 .productivity-p {
                     font-size: rem(20px);
+                    line-height: 1.5;
 
                     @include for-wide-layout {
                         padding-inline: 0;
@@ -161,10 +165,9 @@
 
                 h2 {
                     font-size: rem(28px);
-                    // font-family: charlie-semibold;
-                    letter-spacing: rem(-1.75px);
-                    margin-block-end: rem(17px);
-                    
+                    font-family: charlie-semiBold;
+                    margin: 0 0 rem(8px);
+
                     line-height: rem(35px);
 
                     @include for-normal-layout {
@@ -175,10 +178,10 @@
 
 
                 .productivity-text {
-                    padding-inline-end: rem(50px);
+                    padding: 0 0 rem(16px);
 
                     p {
-                        font-family: 'charlie-regular',sans-serif;
+                        font-family: 'charlie-regular', sans-serif;
                         font-size: rem(16px);
                         color: #091E42;
 
@@ -194,7 +197,7 @@
         }
     }
 
-    
 
-    
+
+
 }

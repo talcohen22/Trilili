@@ -21,8 +21,8 @@ export function GroupList({
     removeTasks,
     saveCopiedGroup,
     onMoveBoards,
+    openQuickEdit,
     onSetChecklistIdToEdit
-
 }) {
     const { groups } = board
     const { taskId } = useParams()
@@ -31,7 +31,6 @@ export function GroupList({
         const updateBoard = dragAndDropService.handleDragEnd(result, board)
         onSetBoard(updateBoard)
     }
-
 
     return (
 
@@ -43,9 +42,9 @@ export function GroupList({
                         direction='horizontal'
                         type='group'
                     >
-                        {(provided) => ( // Fixed the syntax here
+                        {(provided) => (
                             <ul className='groups-list' {...provided.droppableProps} ref={provided.innerRef}>
-                                {Array.isArray(groups) &&
+                                {(groups.length > 0) &&
                                     groups.map((group, index) => (
                                         <Draggable
                                             key={group.id}
@@ -56,7 +55,7 @@ export function GroupList({
                                                 <li
                                                     key={group.id}
                                                     {...provided.draggableProps}
-                                                    {...provided.dragHandleProps} // You should include dragHandleProps for dragging
+                                                    {...provided.dragHandleProps}
                                                     ref={provided.innerRef}
                                                 >
                                                     <GroupPreview style={{ overflow: 'hidden' }}
@@ -72,6 +71,7 @@ export function GroupList({
                                                         saveCopiedGroup={saveCopiedGroup}
                                                         onSetBoard={onSetBoard}
                                                         onMoveBoards={onMoveBoards}
+                                                        openQuickEdit={openQuickEdit}
                                                     />
                                                 </li>
                                             )}
