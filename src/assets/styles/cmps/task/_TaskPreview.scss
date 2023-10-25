@@ -89,11 +89,11 @@
 }
 
 .task-footer-dashboard {
-    gap: 8px;
     flex-wrap: wrap;
 
     >* {
         padding-bottom: 4px;
+        margin-inline-end: 8px;
     }
 
     .watch{
@@ -125,13 +125,13 @@
 
     .description{
         margin-top: 4px;
-        margin-inline-end: 4px;
         color: $groupMoreActions;
     }
 
     .attachment{
         gap: 5px;
         margin-top: 7px;
+        margin-inline-start: 7px;
 
         *{
             color: $groupMoreActions;

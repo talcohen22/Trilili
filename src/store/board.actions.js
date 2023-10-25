@@ -379,18 +379,6 @@ function getTodoIdx(checklist, todoId) {
     return checklist.todos.findIndex(todo => todo.id === todoId)
 }
 
-// export async function addBoard(board) {
-//     try {
-//         const savedBoard = await boardService.save(board)
-//         console.log('Added Board', savedBoard)
-//         store.dispatch(getActionAddBoard(savedBoard))
-//         return savedBoard
-//     } catch (err) {
-//         console.log('Cannot add board', err)
-//         throw err
-//     }
-// }
-
 export function addBoard(board) {
     return boardService.save(board)
         .then(savedBoard => {

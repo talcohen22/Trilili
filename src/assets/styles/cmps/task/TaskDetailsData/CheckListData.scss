@@ -84,9 +84,13 @@
         font-size: rem(16px);
         height: 54px;
         background-color: white;
-        
+
         &:hover{
             border-radius: 0;
+        }
+
+        &:focus{
+            text-decoration: none;
         }
     }
 

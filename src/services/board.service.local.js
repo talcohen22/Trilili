@@ -1,4 +1,3 @@
-
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
@@ -15,13 +14,15 @@ export const boardService = {
     getEmptyGroup,
     getEmptyTask,
     setBoardGroups,
-    // getEmptyLabelsPalette
     getBoardGroupTask,
     getLabel,
     getLabels,
     getMembersTaskImgs,
     getTaskLabelsColors,
 }
+
+_createBoards()
+
 // debug trick
 window.bs = boardService
 
@@ -132,7 +133,7 @@ const BOARDS = [
                         "id": "c101",
                         "title": "Create a server with express",
                         "archivedAt": 1589983468414,
-                        "labelIds": [],
+                        "labelIds": ["l101", "l102", "l103", "l104"],
                         "description": "install express before start",
                         "attachment": [
                             {
@@ -141,7 +142,45 @@ const BOARDS = [
                             }
                         ],
                         "memberIds": ['u101', 'u102', 'u103'],
-                        "checklists": [],
+                        "checklists": [
+                            {
+                                "id": "cl103",
+                                "title": "CSS primary checklist",
+                                "todos": [
+                                    {
+                                        "id": "td109",
+                                        "title": "bug in taskDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td110",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td111",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                ]
+                            },
+                            {
+                                "id": "cl104",
+                                "title": "CSS checklist",
+                                "todos": [
+                                    {
+                                        "id": "td112",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td113",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
@@ -445,7 +484,11 @@ const BOARDS = [
                         "attachment": [],
                         "memberIds": ['u101', 'u103'],
                         "checklists": [],
-                        "dueDate": null,
+                        "dueDate": {
+                            "timeStamp": 1696061014,
+                            "isDone": false
+                        },
+                        "startDate": 1695061014,
                     },
                     {
                         "id": "c112",
@@ -865,12 +908,6 @@ const BOARDS = [
     },
 ]
 
-
-
-
-
-_createBoards()
-
 async function query(filterBy = {}) {
     var boards = await storageService.query(STORAGE_KEY)
     return boards
@@ -913,36 +950,11 @@ async function addBoardMsg(boardId, txt) {
     return msg
 }
 
-// function getEmptyBoard() {
-//     return {
-
-//         title: 'Board-' + (Date.now() % 1000),
-//         price: utilService.getRandomIntInclusive(1000, 9000),
-
-//         title: '',
-//         bgc: 'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000',
-
-//     }
-// }
-
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
         boards = BOARDS
         utilService.saveToStorage(STORAGE_KEY, boards)
-    }
-}
-
-async function createTask(boardId, groupId, taskToAdd) {
-    try {
-        const board = await getById(boardId)
-        const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-        let task = taskToAdd
-        task[id] = utilService.makeId()
-        board.group[groupIdx].tasks.push(task)
-        return save(board)
-    } catch (err) {
-
     }
 }
 
@@ -962,7 +974,6 @@ function getEmptyBoard() {
         cmpsOrder: []
     }
 }
-
 
 function getEmptyGroup() {
     return {
@@ -997,43 +1008,9 @@ function getEmptyTask() {
 function setBoardGroups(board, group, title) {
     const idx = board.groups.findIndex(g => g.id === group.id)
     board.groups[idx].title = title
+
     return board
 }
-
-// function getEmptyLabelsPalette() {
-//     return [
-//         {
-//             id: "l101",
-//             title: "",
-//             color: "#4bce97",
-//         },
-//         {
-//             id: "l102",
-//             title: "",
-//             color: "#e2b203",
-//         },
-//         {
-//             id: "l103",
-//             title: "",
-//             color: "#faa53d",
-//         },
-//         {
-//             id: "l104",
-//             title: "",
-//             color: "#f87462",
-//         },
-//         {
-//             id: "l105",
-//             title: "",
-//             color: "#9f8fef",
-//         },
-//         {
-//             id: "l106",
-//             title: "",
-//             color: "#579dff",
-//         }
-//     ];
-// }
 
 async function getBoardGroupTask(boardId, groupId, taskId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
@@ -1061,7 +1038,6 @@ async function getLabels(boardId, txt) {
     return labels
 }
 
-
 function getMembersTaskImgs(board, group, task) {
     var membersImg = []
     task.memberIds.forEach(memberId => {
@@ -1069,25 +1045,15 @@ function getMembersTaskImgs(board, group, task) {
             if (member._id === memberId) membersImg.push(member.imgUrl)
         })
     })
-
     return membersImg
 }
 
-function getTaskLabelsColors(board, task){
+function getTaskLabelsColors(board, task) {
     var labelsColors = []
     task.labelIds.forEach(labelId => {
         board.labels.forEach(label => {
-            if (label.id === labelId) labelsColors.push({color: label.color, title: label.title})
+            if (label.id === labelId) labelsColors.push({ color: label.color, title: label.title })
         })
     })
-
     return labelsColors
 }
-
-// function getGroupIdx(board, group) {
-//     return board.groups.findIndex(g => g.id === group.id)
-// }
-
-// function getTaskIdx(group, task) {
-//     return group.tasks.findIndex(t => t.id === task.id)
-// }
