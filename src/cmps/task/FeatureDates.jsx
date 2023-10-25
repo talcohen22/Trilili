@@ -5,6 +5,7 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { removeDate, saveDate, updateBoardGroupTaskType } from '../../store/board.actions';
+import { utilService } from '../../services/util.service';
 
 export function FeatureDates() {
 
@@ -28,9 +29,9 @@ export function FeatureDates() {
         setDueDateTimestamp(dueDatetimestamp)
         setStartDateTimestamp(startDatetimestamp)
 
-        const startDate = getDate(startDatetimestamp)
-        const dueDate = getDate(dueDatetimestamp)
-        const dueTime = getTime(dueDatetimestamp)
+        const startDate = utilService.getDate(startDatetimestamp)
+        const dueDate = utilService.getDate(dueDatetimestamp)
+        const dueTime = utilService.getTime(dueDatetimestamp)
 
         setStartDate(startDate)
         setDueDate(dueDate)
@@ -46,11 +47,11 @@ export function FeatureDates() {
         if (target.name === "due-date") setIsDueDate(!isDueDate)
 
         if(target.name === "start-date" && !isStartDate && isDueDate && dueDateTimestamp < startDateTimestamp){
-            setStartDate(getDate(dueDateTimestamp - 86400))
+            setStartDate(utilService.getDate(dueDateTimestamp - 86400))
             setStartDateTimestamp(dueDateTimestamp - 86400)
         }
         if(target.name === "due-date" && !isDueDate && isStartDate && dueDateTimestamp < startDateTimestamp){
-            setDueDate(getDate(startDateTimestamp + 86400))
+            setDueDate(utilService.getDate(startDateTimestamp + 86400))
             setDueDateTimestamp(startDateTimestamp + 86400)
         }
     }
@@ -63,20 +64,20 @@ export function FeatureDates() {
         const timestamp = Math.floor(pickDate.getTime() / 1000);
 
         if (isStartDate && !isDueDate) {
-            setStartDate(getDate(timestamp))
+            setStartDate(utilService.getDate(timestamp))
             setStartDateTimestamp(timestamp)
         }
         if ((!isStartDate && isDueDate) || (isStartDate && isDueDate)) {
-            setDueDate(getDate(timestamp))
+            setDueDate(utilService.getDate(timestamp))
             setDueDateTimestamp(timestamp)
         }
         if (!isStartDate && !isDueDate) {
             setIsDueDate(true)
-            setDueDate(getDate(timestamp))
+            setDueDate(utilService.getDate(timestamp))
             setDueDateTimestamp(timestamp)
         }
         if(isStartDate && isDueDate){
-            setStartDate(getDate(timestamp - 86400))
+            setStartDate(utilService.getDate(timestamp - 86400))
             setStartDateTimestamp(timestamp - 86400)
         }
     }
@@ -135,24 +136,4 @@ export function FeatureDates() {
             <button className='remove-btn' onClick={onRemoveDate}>Remove</button>
         </section>
     )
-}
-
-
-function getDate(timestamp) {
-    const date = new Date(timestamp * 1000);
-    const year = date.getFullYear() % 100;
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-
-    return `${year}/${month}/${day}`
-}
-
-function getTime(timestamp) {
-    const date = new Date(timestamp * 1000);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const amPm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12;
-    const formattedTime = `${formattedHours}:${minutes < 10 ? '0' : ''}${minutes} ${amPm}`;
-    return formattedTime
 }

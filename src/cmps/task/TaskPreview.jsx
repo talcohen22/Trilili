@@ -95,12 +95,12 @@ export function TaskPreview({
                         </div>
                     }
 
-                    {/* {task.attachment.length > 0 &&
+                    {task.attachment.length > 0 &&
                         <div className="attachment flex">
                             <AttachmentSvg />
                             <p>{task.attachment.length}</p>
                         </div>
-                    } */}
+                    }
 
                     {/* CommentCounter */}
                     {comments && < CommentCounter comments={comments} />}

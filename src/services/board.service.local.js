@@ -21,7 +21,8 @@ export const boardService = {
     getMembersTaskImgs,
     getTaskLabelsColors,
     getGroupIdx,
-    getTaskIdx
+    getTaskIdx,
+    getFormattedDate
 }
 // debug trick
 window.bs = boardService
@@ -134,7 +135,7 @@ const BOARDS = [
                         "title": "Create a server with express",
                         "createdAt":1698249461229,
                         "archivedAt": 1589983468414,
-                        "labelIds": [],
+                        "labelIds": ["l101", "l102", "l103", "l104"],
                         "description": "install express before start",
                         "attachment": [
                             {
@@ -148,9 +149,51 @@ const BOARDS = [
                             "backgroundColor": "",
                             "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
                         },
-                        "dueDate": null,
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": true
+                        },
                         "startDate": 1698051014,
                         "isWatch": true,
+                        "checklists": [
+                            {
+                                "id": "cl103",
+                                "title": "CSS primary checklist",
+                                "todos": [
+                                    {
+                                        "id": "td109",
+                                        "title": "bug in taskDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td110",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td111",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                ]
+                            },
+                            {
+                                "id": "cl104",
+                                "title": "CSS checklist",
+                                "todos": [
+                                    {
+                                        "id": "td112",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td113",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
                     },
                     {
                         "id": "c102",
@@ -468,7 +511,7 @@ const BOARDS = [
                         "memberIds": ['u101', 'u103'],
                         "checklists": [],
                         "dueDate": null,
-                        "startDate": null,
+                        "startDate": 1698051014,
                     },
                     {
                         "id": "c112",
@@ -1028,7 +1071,7 @@ function getEmptyTask() {
         startDate: null,
         dueDate: null,
         attachment: [],
-        createdAt:Date.now()
+        createdAt: Date.now()
     }
 }
 
@@ -1111,20 +1154,42 @@ function getMembersTaskImgs(board, group, task) {
     return membersImg
 }
 
-function getTaskLabelsColors(board, task){
+function getTaskLabelsColors(board, task) {
     var labelsColors = []
     task.labelIds.forEach(labelId => {
         board.labels.forEach(label => {
-            if (label.id === labelId) labelsColors.push({color: label.color, title: label.title})
+            if (label.id === labelId) labelsColors.push({ color: label.color, title: label.title })
         })
     })
 
     return labelsColors
 }
 
+
 export function getGroupIdx(board, groupId) {
     return board.groups.findIndex(g => g.id === groupId)
 }
+
+function getFormattedDate(timestamp) {
+    const currentDate = new Date()
+
+    const monthNames = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ]
+    const dateInMilliseconds = timestamp * 1000
+    const date = new Date(dateInMilliseconds)
+    const month = monthNames[date.getMonth()]
+    const day = date.getDate()
+    const year = date.getFullYear()
+    var formattedDate = `${month} ${day}${currentDate.getFullYear() !== year ? ', ' + year : ''}`
+
+    return { date, formattedDate }
+}
+
+// function getGroupIdx(board, group) {
+//     return board.groups.findIndex(g => g.id === group.id)
+// }
 
 export function getTaskIdx(group, taskId) {
     return group.tasks.findIndex(t => t.id === taskId)

@@ -1,181 +1,180 @@
 .header-color {
-    background: rgb(88 88 88 / 24%);
-    backdrop-filter: blur(4px);
-    height: auto;
-    position: relative;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    gap: 4px;
+  background: rgb(88 88 88 / 24%);
+  backdrop-filter: blur(4px);
+  height: auto;
+  position: relative;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 4px;
+  align-items: center;
+  padding: 0 10px 0 16px;
+  width: 100%;
+
+  /* Board Filter Container */
+  .board-filter-container {
+    height: calc(100vh - 48px); /* Adjust the height as needed */
+    overflow: auto; /* Enable horizontal scrolling */
+    position: relative; /* Position relative to its container */
+  }
+
+  /* Board Filter */
+  .BoardFilter {
+    position: fixed;
+    top: 0; /* Stick to the top of the container */
+    left: 0; /* Stick to the left side of the container */
+    background-color: #fff; /* Set a background color if needed */
+    z-index: 1; /* Ensure it's above other content */
+  }
+
+  .board-filter {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 10px 0 16px;
-    width: 100%;
-  
-    /* Board Filter Container */
-    .board-filter-container {
-      height: calc(100vh - 48px); /* Adjust the height as needed */
-      overflow: auto; /* Enable horizontal scrolling */
-      position: relative; /* Position relative to its container */
+
+    /* Shared styles for all elements within .board-filter */
+    * {
+      font-family: system-ui;
+      font-weight: bold;
+      font-size: 14px;
     }
-  
-    /* Board Filter */
-    .BoardFilter {
-      position: fixed;
-      top: 0; /* Stick to the top of the container */
-      left: 0; /* Stick to the left side of the container */
-      background-color: #fff; /* Set a background color if needed */
-      z-index: 1; /* Ensure it's above other content */
+
+    /* Styles for .board-visibility */
+    .board-visibility {
+      display: flex;
+      align-items: center;
     }
-  
+
+    /* Styles for .header-title */
+    .header-title {
+      padding-inline-start: 12px;
+      line-height: rem(32px);
+      font-size: rem(18px);
+
+      &:hover {
+        cursor: pointer;
+        background-color: $buttonHoverClr; /* Make sure $buttonHoverClr is defined */
+      }
+    }
+
+    /* Styles for input elements */
+    input {
+      font-size: rem(18px);
+      border: none;
+      background-color: transparent;
+      outline: none;
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:focus {
+        background-color: white;
+        height: rem(32px);
+        border: rem(1.8px) solid #0c66e4;
+        padding: 0 rem(10px);
+        color: black;
+      }
+    }
+
+    /* Styles for .board-btn */
+    &-btn {
+      display: flex;
+      align-items: center;
+    }
+
+    .dashboard-btn {
+      background-color: #DFE1E6;
+      color: $groupHeader; /* Make sure $groupHeader is defined */
+      padding: 6px;
+
+      span {
+        margin-left: 8px;
+      }
+    }
+
+    /* Styles for SVGs */
+    svg {
+      width: rem(15px);
+      height: rem(15px);
+      &:hover{
+          @keyframes scaleAnimation {
+            0% {
+              transform: scale(1);
+            }
+            100% {
+              transform: scale(1.2);
+            }
+          }
+          animation: scaleAnimation 1s ease-in-out;
+      }
+    }
+
+    /* Styles for buttons */
+    button {
+      display: flex;
+      justify-content: center;
+      background: none;
+      height: rem(32px);
+      border: none;
+      font-size: rem(14px);
+      border-radius: rem(3px);
+      min-width: rem(32px);
+      padding: 2px;
+      margin-inline: 2px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $buttonHoverClr; /* Make sure $buttonHoverClr is defined */
+      }
+    }
+
+    /* Styles for .group-editing */
+    .group-editing {
+      .seperator {
+        border-left: 1px solid hsl(0deg 0% 100% / 16%);
+        height: rem(16px);
+        margin: 8px 4px 8px 4px;
+        display: inherit;
+      }
+    }
+
+    /* Styles for .board-filter */
     .board-filter {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-  
-      /* Shared styles for all elements within .board-filter */
-      * {
-        font-family: system-ui;
-        font-weight: bold;
-        font-size: 14px;
+      justify-content: center;
+      padding: rem(6px) 0 rem(6px) 0;
+      
+      .share-btn{
+        width: rem(75px);
       }
-  
-      /* Styles for .board-visibility */
-      .board-visibility {
-        display: flex;
-        align-items: center;
-      }
-  
-      /* Styles for .header-title */
-      .header-title {
-        padding-inline-start: 12px;
-        line-height: rem(32px);
-        font-size: rem(18px);
-  
-        &:hover {
-          cursor: pointer;
-          background-color: $buttonHoverClr; /* Make sure $buttonHoverClr is defined */
-        }
-      }
-  
-      /* Styles for input elements */
-      input {
-        font-size: rem(18px);
-        border: none;
-        background-color: transparent;
-        outline: none;
-        color: white;
-        border-radius: 3px;
-        cursor: pointer;
-  
-        &:focus {
-          background-color: white;
-          height: rem(32px);
-          border: rem(1.8px) solid #0c66e4;
-          padding: 0 rem(10px);
-          color: black;
-        }
-      }
-  
-      /* Styles for .board-btn */
-      &-btn {
-        display: flex;
-        align-items: center;
-      }
-  
-      .dashboard-btn {
+      .full-btn {
         background-color: #DFE1E6;
-        color: $groupHeader; /* Make sure $groupHeader is defined */
-        padding: 6px;
-  
-        span {
-          margin-left: 8px;
-        }
-      }
-  
-      /* Styles for SVGs */
-      svg {
-        width: rem(15px);
-        height: rem(15px);
-        &:hover{
-            @keyframes scaleAnimation {
-              0% {
-                transform: scale(1);
-              }
-              100% {
-                transform: scale(1.2);
-              }
-            }
-            animation: scaleAnimation 1s ease-in-out;
-        }
-      }
-  
-      /* Styles for buttons */
-      button {
-        display: flex;
-        justify-content: center;
-        background: none;
+        color: $wsTxtColor; /* Make sure $wsTxtColor is defined */
+        font-weight: 400;
         height: rem(32px);
-        border: none;
-        font-size: rem(14px);
-        border-radius: rem(3px);
-        min-width: rem(32px);
-        padding: 2px;
-        margin-inline: 2px;
-  
-        &:hover {
-          cursor: pointer;
-          background-color: $buttonHoverClr; /* Make sure $buttonHoverClr is defined */
-        }
-      }
-  
-      /* Styles for .group-editing */
-      .group-editing {
-        .seperator {
-          border-left: 1px solid hsl(0deg 0% 100% / 16%);
-          height: rem(16px);
-          margin: 8px 4px 8px 4px;
-          display: inherit;
-        }
-      }
-  
-      /* Styles for .board-filter */
-      .board-filter {
-        display: flex;
         justify-content: center;
-        padding: rem(6px) 0 rem(6px) 0;
-        
-        .share-btn{
-          width: rem(75px);
+
+        &:hover {
+          background-color: #ffffff;
         }
-        .full-btn {
-          background-color: #DFE1E6;
-          color: $wsTxtColor; /* Make sure $wsTxtColor is defined */
-          font-weight: 400;
-          height: rem(32px);
-          justify-content: center;
-  
-          &:hover {
-            background-color: #ffffff;
-          }
-        }
-      }
-  
-      /* Styles for .img */
-      .img {
-        gap: rem(4px);
-        position: relative;
-  
-        .member-img {
-          width: rem(28px);
-          height: rem(28px);
-          border-radius: 50%;
-          left: rem(40px);
-        }
-      }
-  
-      > * {
-        font-weight: 700;
-        color: white;
       }
     }
+
+    /* Styles for .img */
+    .img {
+      gap: rem(4px);
+      position: relative;
+
+      .member-img {
+        width: rem(28px);
+        height: rem(28px);
+        border-radius: 50%;
+        left: rem(40px);
+      }
+    }
+
+    > * {
+      font-weight: 700;
+      color: white;
+    }
   }
-  
+}
