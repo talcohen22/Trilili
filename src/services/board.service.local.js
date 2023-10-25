@@ -990,7 +990,8 @@ function getEmptyTask() {
         },
         startDate: null,
         dueDate: null,
-        attachment: []
+        attachment: [],
+        createdAt:Date.now()
     }
 }
 

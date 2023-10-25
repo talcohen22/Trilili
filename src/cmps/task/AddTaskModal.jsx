@@ -30,8 +30,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask
     }, [newTaskText,onCloseAddTaskModal])
 
     function handleChange({ target }) {
-        const title = target.value
-        setNewTaskText(title)
+        setNewTaskText(target.value)
     }
 
     function handleCloseModal() {

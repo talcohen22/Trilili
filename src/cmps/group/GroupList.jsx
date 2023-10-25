@@ -42,9 +42,9 @@ export function GroupList({
                         direction='horizontal'
                         type='group'
                     >
-                        {(provided) => ( 
+                        {(provided) => (
                             <ul className='groups-list' {...provided.droppableProps} ref={provided.innerRef}>
-                                {(groups.length>0) &&
+                                {(groups.length > 0) &&
                                     groups.map((group, index) => (
                                         <Draggable
                                             key={group.id}
@@ -55,7 +55,7 @@ export function GroupList({
                                                 <li
                                                     key={group.id}
                                                     {...provided.draggableProps}
-                                                    {...provided.dragHandleProps} 
+                                                    {...provided.dragHandleProps}
                                                     ref={provided.innerRef}
                                                 >
                                                     <GroupPreview style={{ overflow: 'hidden' }}

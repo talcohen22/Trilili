@@ -241,6 +241,34 @@ export function MembersSvg() {
     )
 }
 
+export function CoverSvg() {
+    return (
+        <svg role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M5 5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5ZM19 7H5V13H19V7Z" ></path>
+        </svg>
+    )
+}
+
+export function MoveSvg() {
+    return (
+        <svg role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.292 4.29149C11.903 4.67949 11.903 5.31649 12.292 5.70549L17.586 10.9995H4C3.45 10.9995 3 11.4495 3 11.9995C3 12.5505 3.45 13.0005 4 13.0005H17.586L12.289 18.2965C11.9 18.6855 11.9 19.3215 12.289 19.7105C12.678 20.1005 13.315 20.1005 13.703 19.7105L20.702 12.7125C20.704 12.7115 20.706 12.7095 20.709 12.7075C20.903 12.5145 21 12.2565 21 11.9995C21 11.7425 20.903 11.4855 20.709 11.2915C20.706 11.2905 20.703 11.2885 20.701 11.2865L13.706 4.29149C13.512 4.09749 13.255 4.00049 12.999 4.00049C12.743 4.00049 12.486 4.09749 12.292 4.29149Z" ></path>
+        </svg>
+    )
+}
+export function CopySvg() {
+    return (
+        <svg role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 16V4.99188C5 3.8918 5.90195 3 7.00853 3H14.9915L15 3.00002V5H7V16H5ZM8 19C8 20.1046 8.89543 21 10 21H18C19.1046 21 20 20.1046 20 19V8C20 6.89543 19.1046 6 18 6H10C8.89543 6 8 6.89543 8 8V19ZM10 8V19H18V8H10Z" fillRule="evenodd" clipRule="evenodd" ></path>
+        </svg>
+    )
+}
+export function ArchiveSvg() {
+    return (
+        <svg role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.03418 5.59621C2.98604 5.04603 3.39303 4.56099 3.94322 4.51286L19.8823 3.11837C20.4325 3.07023 20.9175 3.47722 20.9657 4.02741L21.0528 5.0236L3.12133 6.5924L3.03418 5.59621Z" ></path><path d="M9 12.9999C9 12.4476 9.44772 11.9999 10 11.9999H14C14.5523 11.9999 15 12.4476 15 12.9999C15 13.5522 14.5523 13.9999 14 13.9999H10C9.44772 13.9999 9 13.5522 9 12.9999Z" ></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3 18.9999V7.99993H21V18.9999C21 20.1045 20.1046 20.9999 19 20.9999H5C3.89543 20.9999 3 20.1045 3 18.9999ZM5 9.99993H19V18.9999H5L5 9.99993Z" ></path>
+        </svg>
+    )
+}
+
 export function LabelsSvg() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="16px" height="16px" viewBox="0 0 67.000000 67.000000" preserveAspectRatio="xMidYMid meet">
@@ -330,9 +358,9 @@ export function TickSvg() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="16" height="16" viewBox="0 0 23.000000 19.000000" preserveAspectRatio="xMidYMid meet">
 
-        <g transform="translate(0.000000,19.000000) scale(0.100000,-0.100000)" fill="#606d84" stroke="none">
-        <path d="M125 110 l-49 -50 -26 25 c-39 37 -46 17 -8 -22 l32 -33 58 57 c32 32 58 61 58 65 0 17 -18 6 -65 -42z"/>
-        </g> 
+            <g transform="translate(0.000000,19.000000) scale(0.100000,-0.100000)" fill="#606d84" stroke="none">
+                <path d="M125 110 l-49 -50 -26 25 c-39 37 -46 17 -8 -22 l32 -33 58 57 c32 32 58 61 58 65 0 17 -18 6 -65 -42z" />
+            </g>
         </svg>
     )
 }

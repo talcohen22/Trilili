@@ -29,8 +29,9 @@ export function BoardDetails() {
             try {
                 const boardById = await boardService.getById(boardId)
                 setBoard(boardById)
+                document.title=`${boardById.title} | Trilili`  
             } catch (err) {
-                console.log(err)
+                console.log(err) 
             }
         }
     }, [boards])
@@ -70,6 +71,9 @@ export function BoardDetails() {
         })
         setIsQuickEditOpen(true)
 
+    }
+    function closeQuickEdit(){
+        setIsQuickEditOpen(false)
     }
 
     async function removeGroup(groupId) {
@@ -144,7 +148,7 @@ export function BoardDetails() {
         onAddNewGroup(newGroup)
     }
 
-    
+      
     if (!board) return <div></div>
     return (
         <section
@@ -171,8 +175,8 @@ export function BoardDetails() {
 
             <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit}/>
 
-            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} />}
-            
+            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit}/>}
+
         </section>
     )
 }

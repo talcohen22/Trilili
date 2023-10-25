@@ -20,7 +20,8 @@ export function handleDragEnd(result, board) {
         return handleDragGroup(result)
     }
     if (result.type === 'task') {
-        return handleDragTask(result)
+         handleDragTask(result)
+         return gBoard
     }
 }
 
@@ -54,7 +55,7 @@ export function handleDragTask(result) {
         return handleMoveToDifferentTaskList(sourceGroup, destinationGroup, result.source.index, result.destination.index)
     }
 
-    handleMoveInSameTaskLis(sourceGroup, result.source.index, result.destination.index)
+  return  handleMoveInSameTaskLis(sourceGroup, result.source.index, result.destination.index)
 
 }
 
@@ -80,11 +81,13 @@ export function handleMoveToDifferentTaskList(sourceGroup, destinationGroup, sou
 
 export function handleMoveInSameTaskLis(group, sourceIndex, destinationIndex) {
     reorder(group.tasks, sourceIndex, destinationIndex)
-    const updatedGroups = groups.map((g) => {
+    const updatedGroup = groups.map((g,index) => {
         if (g.id === group.id) {
-            return group
+            groups[index]=group 
+            gBoard.groups=groups
         }
-        return g
+       
+       
     })
 }
 

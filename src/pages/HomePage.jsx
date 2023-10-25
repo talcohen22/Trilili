@@ -7,6 +7,7 @@ import { HomePageProductivity } from './home-page-cmps/HomePageProductivity.jsx'
 import { ProductivitySlider } from './home-page-cmps/ProductivitySlider.jsx'
 
 export function HomePage() {
+    document.title='Trilili'
     return (
         <section className="homepage">
             {/* <HomePageHeader /> */}
