@@ -175,7 +175,7 @@ export function BoardDetails() {
 
             <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit}/>
 
-            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit}/>}
+            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit} onSetBoard={onSetBoard}/>}
 
         </section>
     )

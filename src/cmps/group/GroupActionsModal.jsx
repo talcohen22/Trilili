@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { ExitBtnSvg, TickSvg } from "../svg/ImgSvg";
 import { GroupFeatureDynamic } from "./GroupFeatureDynamic";
 
-export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks, groupActionPostion, handleAddTask, saveCopiedGroup, board, onSetBoard, onMoveBoards, handleWatchGroup }) {
+export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks, groupActionPostion, handleAddTask, saveCopiedGroup, board, onSetBoard, onMoveBoards, handleWatchGroup,openGroupActionModal }) {
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
     const modalRef = useRef(null)
@@ -50,6 +50,7 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
 
     function onSetIsDynamicCmpOpen(value) {
         setIsDynamicCmpOpen(value)
+        
     }
 
 
@@ -91,6 +92,7 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
                     saveCopiedGroup={saveCopiedGroup}
                     onSetBoard={onSetBoard}
                     onMoveBoards={onMoveBoards}
+                    openGroupActionModal={openGroupActionModal}
                 />
             }
         </Fragment>

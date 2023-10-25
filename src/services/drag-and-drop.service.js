@@ -13,7 +13,7 @@ export function handleDragEnd(result, board) {
     gBoard = board
     groups = board.groups
     if (!result.destination) {
-        return
+        return gBoard
     }
     if (result.type === 'group') {
         result.groups = groups
