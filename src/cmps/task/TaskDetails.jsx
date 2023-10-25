@@ -22,7 +22,6 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
         }, [ref])
     }
 
-
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
     const [board, setBoard] = useState(null)
@@ -61,6 +60,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
     if (!task) return <div></div>
     return (
         <div className="overlay" onClick={handleClickOutside} >
+
             <section className="task-details-container" ref={wrapperRef}>
 
                 <header className="task-header flex align-top">
@@ -89,8 +89,8 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
                     <ExitBtnSvg />
                 </div>
 
-
             </section>
+            
         </div>
     )
 }

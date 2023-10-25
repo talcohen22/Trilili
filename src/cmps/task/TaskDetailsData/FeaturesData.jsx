@@ -3,6 +3,7 @@ import { utilService } from "../../../services/util.service";
 import { setIsWatch, updateBoardGroupTaskType } from "../../../store/board.actions";
 import { EyeSvg, PlusBtnAddListSvg, VSvg } from "../../svg/ImgSvg";
 import { useParams } from "react-router";
+import { DatesData } from "./DatesData";
 
 export function FeaturesData({ board, group, task }) {
 
@@ -21,10 +22,10 @@ export function FeaturesData({ board, group, task }) {
         updateBoardGroupTaskType(boardId, groupId, taskId, cpmType, location)
     }
 
-    async function onSetIsWatch(){
-        try{
+    async function onSetIsWatch() {
+        try {
             await setIsWatch(board, group, task)
-        }catch (err) {
+        } catch (err) {
             console.log('Cannot set isWatch', err)
         }
     }
@@ -32,6 +33,7 @@ export function FeaturesData({ board, group, task }) {
     return (
         <section className="features-data flex">
 
+            {/* members */}
             {membersImgs.length > 0 &&
                 <div className="members">
                     <p className="title">Members</p>
@@ -47,6 +49,7 @@ export function FeaturesData({ board, group, task }) {
                     </div>
                 </div>}
 
+            {/* labels */}
             {labelsColors.length > 0 &&
                 <div className="labels">
                     <p className="title">Labels</p>
@@ -63,6 +66,7 @@ export function FeaturesData({ board, group, task }) {
                     </div>
                 </div>}
 
+            {/* isWatch */}
             <div className="watch">
                 <p className="title">Notofications</p>
                 <div className="notifications flex" onClick={onSetIsWatch}>
@@ -72,6 +76,9 @@ export function FeaturesData({ board, group, task }) {
                         <div className="v-icon flex justify-center align-center"><VSvg /></div>}
                 </div>
             </div>
+
+            {/* dates */}
+            {(task.startDate !==null || task.dueDate !==null) && <DatesData task={task}/>}
 
         </section>
     )
