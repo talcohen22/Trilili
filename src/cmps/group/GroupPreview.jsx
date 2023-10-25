@@ -81,6 +81,10 @@ export function GroupPreview({
         setIsOnUsingAction(false)
     }
 
+    function openGroupActionModal() {
+        setIsOnUsingAction(true)
+    }
+
     function handleWatchGroup() {
         let updatedGroup = { ...group }
         if (group.isWatch === undefined) updatedGroup = { ...group, isWatch: true }
@@ -132,6 +136,7 @@ export function GroupPreview({
                     onMoveBoards={onMoveBoards}
                     handleWatchGroup={handleWatchGroup}
                     removeTasks={removeTasks}
+                    openGroupActionModal={openGroupActionModal}
                 />}
 
             </div>

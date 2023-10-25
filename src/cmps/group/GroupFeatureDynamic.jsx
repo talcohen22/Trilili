@@ -1,17 +1,38 @@
-import { useState } from 'react'
+import { useEffect,useRef } from 'react'
 import { BackBtnSvg, ExitBtnSvg } from "../svg/ImgSvg";
 import { CopyList } from './dynamic-cmps/CopyList';
 import { MoveList } from './dynamic-cmps/MoveList';
 import { MoveTasksList } from './dynamic-cmps/MoveTasksList';
 import { SortList } from './dynamic-cmps/SortList';
 
-export function GroupFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, groupActionPostion, setDynamicParams, board,onSetBoard, group, onHandleClose,saveCopiedGroup,onMoveBoards }) {
+export function GroupFeatureDynamic({ dynamicParams, onSetIsDynamicCmpOpen, groupActionPostion, setDynamicParams, board,onSetBoard, group, onHandleClose,saveCopiedGroup,onMoveBoards,openGroupActionModal }) {
     const { left, top } = groupActionPostion
     function hadleIsDynamicCmpOpen(){
+        openGroupActionModal()
         onSetIsDynamicCmpOpen(false)
     }
+    const modalRef= useRef(null)
+    const isComponentMounted = useRef(false)
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                if (isComponentMounted.current) {
+                    onHandleClose();
+                }
+            }
+            isComponentMounted.current = true
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+
+    }, [onHandleClose])
+
     return (
-        <div className="dynamic-group-feature-container" style={{ left: left + 'px', top: top + 'px', zIndex: 10000 }} >
+        <div className="dynamic-group-feature-container" style={{ left: left + 'px', top: top + 'px', zIndex: 10000 }} ref={modalRef} >
             <div className='group-modal-header flex justify-space-b'>
                 <button className="exit-icon" onClick={hadleIsDynamicCmpOpen}>
                     <BackBtnSvg />

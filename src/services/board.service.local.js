@@ -20,6 +20,8 @@ export const boardService = {
     getLabels,
     getMembersTaskImgs,
     getTaskLabelsColors,
+    getGroupIdx,
+    getTaskIdx
 }
 // debug trick
 window.bs = boardService
@@ -130,6 +132,7 @@ const BOARDS = [
                     {
                         "id": "c101",
                         "title": "Create a server with express",
+                        "createdAt":1698249461229,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "description": "install express before start",
@@ -152,6 +155,7 @@ const BOARDS = [
                     {
                         "id": "c102",
                         "title": "Create backend services",
+                        "createdAt":1698249461230,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
@@ -185,6 +189,7 @@ const BOARDS = [
                     {
                         "id": "c104",
                         "title": "DB implementation",
+                        "createdAt":1698249461231,
                         "archivedAt": 1589983468412,
                         "labelIds": [],
                         "style": {
@@ -253,6 +258,7 @@ const BOARDS = [
                     {
                         "id": "d103",
                         "title": "Planning the components tree",
+                        "createdAt":1698249461232,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
@@ -271,6 +277,7 @@ const BOARDS = [
                     {
                         "id": "d104",
                         "title": "Build basic template",
+                        "createdAt":1698249461233,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l103", "l104"],
                         "attachment": [],
@@ -285,6 +292,7 @@ const BOARDS = [
                     {
                         "id": "d105",
                         "title": "Adding npm libraries",
+                        "createdAt":1698249461234,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l103", "l104", "l105", "l106"],
                         "attachment": [
@@ -305,6 +313,7 @@ const BOARDS = [
                     {
                         "id": "d106",
                         "title": "Implement SAAS",
+                        "createdAt":1698249461238,
                         "archivedAt": 1589983468418,
                         "labelIds": [],
                         "attachment": [
@@ -325,6 +334,7 @@ const BOARDS = [
                     {
                         "id": "d107",
                         "title": "Check user id - 125465",
+                        "createdAt":1698249461239,
                         "status": "in-progress",
                         "priority": "high",
                         "description": "this user have partial details",
@@ -363,6 +373,7 @@ const BOARDS = [
                     {
                         "id": "d108",
                         "title": "Sanity test for new component",
+                        "createdAt":1698249461241,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l102", "l106"],
                         "attachment": [],
@@ -403,6 +414,7 @@ const BOARDS = [
                     {
                         "id": "c109",
                         "title": "functional testing for app header",
+                        "createdAt":1698249461242,
                         "archivedAt": 1589983468414,
                         "style": {
                             "backgroundColor": "#fea362",
@@ -421,6 +433,7 @@ const BOARDS = [
                     {
                         "id": "c110",
                         "title": "",
+                        "createdAt":1698249461245,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
@@ -438,7 +451,7 @@ const BOARDS = [
             },
             {
                 "id": "g104",
-                "title": "QA",
+                "title": "QA",             
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
@@ -448,6 +461,7 @@ const BOARDS = [
                     {
                         "id": "c111",
                         "title": "Meeting with head manager for planning the code progress",
+                        "createdAt":1698249461246,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
@@ -459,6 +473,7 @@ const BOARDS = [
                     {
                         "id": "c112",
                         "title": "End day code review with all members",
+                        "createdAt":1698249461248,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
@@ -477,6 +492,7 @@ const BOARDS = [
                     {
                         "id": "c113",
                         "title": "Checking bug",
+                        "createdAt":1698249461265,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
@@ -492,6 +508,7 @@ const BOARDS = [
                     {
                         "id": "c114",
                         "title": "Advices from head manager",
+                        "createdAt":1698249461267,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
@@ -520,6 +537,7 @@ const BOARDS = [
                     {
                         "id": "c115",
                         "title": "NPM tutorial",
+                        "createdAt":1698249461273,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
@@ -535,6 +553,7 @@ const BOARDS = [
                     {
                         "id": "c116",
                         "title": "CSS variables",
+                        "createdAt":1698249461275,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101", "l102"],
                         "attachment": [],
@@ -546,6 +565,7 @@ const BOARDS = [
                     {
                         "id": "c117",
                         "title": "CSS directory",
+                        "createdAt":1698249461276,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101"],
                         "attachment": [],
@@ -599,6 +619,7 @@ const BOARDS = [
                     {
                         "id": "c118",
                         "title": "Making mixins",
+                        "createdAt":1698249461279,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l104", "l106"],
                         "attachment": [
@@ -1101,10 +1122,10 @@ function getTaskLabelsColors(board, task){
     return labelsColors
 }
 
-// function getGroupIdx(board, group) {
-//     return board.groups.findIndex(g => g.id === group.id)
-// }
+export function getGroupIdx(board, groupId) {
+    return board.groups.findIndex(g => g.id === groupId)
+}
 
-// function getTaskIdx(group, task) {
-//     return group.tasks.findIndex(t => t.id === task.id)
-// }
+export function getTaskIdx(group, taskId) {
+    return group.tasks.findIndex(t => t.id === taskId)
+}
