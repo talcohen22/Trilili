@@ -24,4 +24,28 @@
             height: 19px;
         }
     }
+
+    .attachment-svg{
+        grid-template-columns: 1/2;
+
+        svg{
+            width: 19px;
+            height: 19px;
+        }
+    }
+
+    .attachment-header{
+        grid-template-columns: 2/3;
+        font-size: rem(16px);
+        font-weight: 600;
+        color: $groupHeader;
+        margin-bottom: 12px;
+    }
+
+    .attachments-container{
+        grid-column: 2/3;
+
+        flex-direction: column;
+        gap: 10px;
+    }
 }

@@ -11,7 +11,7 @@ import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions";
 import { FeatureDates } from "./FeatureDates";
 import { DeleteChecklist } from "./TaskDetailsData/deleteCheckList";
 
-export function TaskFeatureDynamic({checklistIdToEdit}) {
+export function TaskFeatureDynamic({ checklistIdToEdit }) {
 
     const board = useSelector(storeState => storeState.boardModule.board)
     const group = useSelector(storeState => storeState.boardModule.group)
@@ -48,10 +48,12 @@ export function TaskFeatureDynamic({checklistIdToEdit}) {
     useEffect(() => {
         if (wrapperRef.current) {
             let height = wrapperRef.current.clientHeight;
-            if(cmp.type === 'Dates') height += 460;
+            if (cmp.type === 'Dates') height += 549;
+            // if (cmp.type === 'Dates') height += 412;
             setComponentHeight(height);
         }
     }, [cmp.type]);
+
 
     function useClickOutsideCmp(ref) {
         useEffect(() => {
@@ -81,17 +83,19 @@ export function TaskFeatureDynamic({checklistIdToEdit}) {
         }
     }
 
-    
     if (!board || !group || !task || !cmp.type || !cmp.location || !cmp.location.top || !cmp.location.left) return <div></div>
+
+    const style = {
+        top: cmp.location.top + componentHeight > screenHeight ? screenHeight - componentHeight - 10 : cmp.location.top + 37,
+        left: cmp.location.left + 304 > screenWidth ? screenWidth - 304 - 5 : cmp.location.left
+    }
+
     return (
         <div className="dynamic-overlay" onClick={handleClickOutside} >
 
-            <div className="dynamic-feature-container"
+            <div className={`dynamic-feature-container ${cmp.type}`}
                 ref={wrapperRef}
-                style={{
-                    top: cmp.location.top + componentHeight > screenHeight ? screenHeight - componentHeight : cmp.location.top + 37,
-                    left: cmp.location.left + 304 > screenWidth ? screenWidth - 304 : cmp.location.left
-                }} >
+                style={style} >
 
                 <p className="dyn-cmp-header">{cmp.type}</p>
 
@@ -112,7 +116,7 @@ export function TaskFeatureDynamic({checklistIdToEdit}) {
 
                 {cmp.type === 'Dates' && <FeatureDates />}
 
-                {cmp.type === 'Delete checklist' && <DeleteChecklist checklistIdToEdit={checklistIdToEdit}/>}
+                {cmp.type === 'Delete checklist' && <DeleteChecklist checklistIdToEdit={checklistIdToEdit} />}
 
                 <div className="exit-btn" onClick={() => exitCmp()}>
                     <ExitBtnSvg />

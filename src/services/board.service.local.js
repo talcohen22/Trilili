@@ -31,7 +31,7 @@ const BOARDS = [
     {
         "_id": "b101",
         "title": "Trilili project",
-        "isStarred": false,
+        "isStarred": true,
         "isExpandedLabels": false,
         "archivedAt": 1589983468418,
         "createdBy": {
@@ -45,7 +45,7 @@ const BOARDS = [
         "labels": [
             {
                 "id": "l101",
-                "title": "",
+                "title": "Done",
                 "color": "#4bce97",
                 "colorName": 'green',
                 "shade": ''
@@ -59,28 +59,28 @@ const BOARDS = [
             },
             {
                 "id": "l103",
-                "title": "",
+                "title": "Very important",
                 "color": "#faa53d",
                 "colorName": 'orange',
                 "shade": ''
             },
             {
                 "id": "l104",
-                "title": "CR",
+                "title": "Most important",
                 "color": "#f87462",
                 "colorName": 'red',
                 "shade": ''
             },
             {
                 "id": "l107",
-                "title": "",
+                "title": "CR",
                 "color": "#e774bb",
                 "colorName": 'pink',
                 "shade": ''
             },
             {
                 "id": "l105",
-                "title": "",
+                "title": "Again",
                 "color": "#9f8fef",
                 "colorName": 'purple',
                 "shade": ''
@@ -94,7 +94,7 @@ const BOARDS = [
             },
             {
                 "id": "l108",
-                "title": "",
+                "title": "Refactor",
                 "color": "#60c6d2",
                 "colorName": 'sky',
                 "shade": ''
@@ -135,7 +135,7 @@ const BOARDS = [
                         "title": "Create a server with express",
                         "createdAt":1698249461229,
                         "archivedAt": 1589983468414,
-                        "labelIds": ["l101", "l102", "l103", "l104"],
+                        "labelIds": ["l101", "l102", "l103", "l108"],
                         "description": "install express before start",
                         "attachment": [
                             {
@@ -243,7 +243,6 @@ const BOARDS = [
                         "startDate": null,
                         "attachment": [],
                         "memberIds": [],
-                        "checklists": [],
                         "comments": [
                             {
                                 "id": "cm101",
@@ -322,7 +321,7 @@ const BOARDS = [
                         "title": "Build basic template",
                         "createdAt":1698249461233,
                         "archivedAt": 1589983468418,
-                        "labelIds": ["l103", "l104"],
+                        "labelIds": ["l108", "l104"],
                         "attachment": [],
                         "memberIds": ['u103'],
                         "checklists": [],
@@ -381,6 +380,7 @@ const BOARDS = [
                         "status": "in-progress",
                         "priority": "high",
                         "description": "this user have partial details",
+                        "labelIds": [],
                         "attachment": [
                             {
                                 "fileName": "trello 1.1.docx",
@@ -400,6 +400,7 @@ const BOARDS = [
                         },
                         "dueDate": null,
                         "startDate": null,
+                        "checklists": [],
                     }
                 ],
                 "style": {}
@@ -463,7 +464,7 @@ const BOARDS = [
                             "backgroundColor": "#fea362",
                             "cover": ""
                         },
-                        "labelIds": ["l103", "l104"],
+                        "labelIds": ["l108", "l104"],
                         "attachment": [],
                         "memberIds": ['u101'],
                         "checklists": [],
@@ -475,12 +476,12 @@ const BOARDS = [
                     },
                     {
                         "id": "c110",
-                        "title": "",
+                        "title": "Connecting to PWA",
                         "createdAt":1698249461245,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": [],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -850,7 +851,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://media-cdn.tripadvisor.com/media/photo-s/15/48/9f/c9/a-great-view-of-good.jpg",
+            "backgroundImage": "https://images.unsplash.com/photo-1617965215075-b1f768dc8a61?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwdmlld3xlbnwwfHwwfHx8MA%3D%3D",
         }
     },
     {
@@ -861,11 +862,11 @@ const BOARDS = [
         "cmpsOrder": [],
         "createdBy": null,
         "groups": [],
-        "isStarred": false,
+        "isStarred": true,
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://hips.hearstapps.com/hmg-prod/images/beautiful-landscape-view-of-fuji-mountain-in-royalty-free-image-1623253648.jpg?crop=1xw:1xh;center,top&resize=980:*",
+            "backgroundImage": "https://les.mitsubishielectric.co.uk/assets/Uploads/328a039bfe/Changing-view-from-space.jpg",
         }
     },
     {
@@ -880,7 +881,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://www.skyview.com/dynamic-media/assets/images/home/animated-masthead-sky-optimized.jpg?width=2560&k=4XJaRhknSIht3XnyH6T2oQ&gravity=center&v=responsiveImage",
+            "backgroundImage": "https://static.vecteezy.com/system/resources/thumbnails/007/515/187/original/timelapse-of-beautiful-blue-sky-in-pure-daylight-with-puffy-fluffy-white-clouds-background-amazing-flying-through-beautiful-thick-fluffy-clouds-nature-and-cloudscape-concept-free-video.jpg",
         }
     },
     {
@@ -925,7 +926,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://verdonsecret.com/wp-content/uploads/2019/03/sillans-la-cascade-la-cascade.jpg",
+            "backgroundImage": "https://contents.mediadecathlon.com/s901275/k$8f51d8612b8dc765e3b89173d46a056e/1920x0/2808pt1703/5616xcr2808/Tropical-trek-in-Costa-Rica.jpeg?format=auto",
         }
     },
     {
