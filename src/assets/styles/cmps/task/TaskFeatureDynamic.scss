@@ -8,11 +8,17 @@
 }
 
 .dynamic-feature-container {
-  
+
     .scroll{
-        max-height: 460px;
+        max-height: 80vh;
+        // max-height: 540px;
         overflow-y: auto;
         overflow-x: hidden;
+        padding: 0 12px 12px 12px;
+    }
+
+    .Dates.scroll{
+        max-height: 40px;
     }
 
     * {
@@ -33,7 +39,7 @@
     width: 304px;
     background-color: white;
 
-    padding: 0 12px 12px 12px;
+    // padding: 0 12px 12px 12px;
     border-radius: 8px;
 
     .dyn-cmp-header {

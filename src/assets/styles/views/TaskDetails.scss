@@ -16,9 +16,10 @@
         width: 768px;
         background-color: $groupBgc;
         border-radius: 8px;
-        padding: 26px 16px;
+        padding: 21px 16px 26px 16px;
         z-index: 20;
         transform: translate(-50%, 0%);
+        min-height: 900px;
 
         .task-title p{
             height: 23px;
@@ -52,8 +53,8 @@
 
     .exit-taxt-details-btn {
         position: absolute;
-        top: 12px;
-        right: 12px;
+        top: 21px;
+        right: 17px;
         padding: 5px 8.5px 5px 8.5px;
         // margin: 10px 17px 10px 17px;
         cursor: pointer;
@@ -67,6 +68,7 @@
             width: 20px;
             height: 20px;
             margin-top: 3px;
+            color: $wsIconColor;
         }
 
     }
@@ -82,6 +84,8 @@
             font-size: rem(20px);
             color: $groupHeader;
             font-weight: 600;
+            max-width: 512px;
+            word-wrap: break-word;
         }
 
         p {

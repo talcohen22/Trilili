@@ -29,6 +29,8 @@ export function GroupPreview({
     const buttonRef = useRef(null)
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
+
+ 
     // const [inputActive, setInputActive] = useState(false);
     // const inputRef = useRef(null);
 
@@ -121,7 +123,7 @@ export function GroupPreview({
 
                 />
                 {group.isWatch && <span className="watch"><EyeSvg /></span>}
-                <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
+                <button className="group-btn dots flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
                     <DotsSvg />
                 </button>
                 {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
@@ -168,7 +170,7 @@ export function GroupPreview({
                         Add a card
                     </button>
 
-                    <button className="group-btn flex justify-center align-center">
+                    <button className="group-btn new-template flex justify-center align-center">
                         <GenerateTemplateBtnSvg />
                     </button>
                 </div>
@@ -180,7 +182,6 @@ export function GroupPreview({
                     onAddTask={onAddTask}
                     onCloseAddTaskModal={onCloseAddTaskModal}
                 />}
-
 
         </section>
     )

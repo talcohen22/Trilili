@@ -1,7 +1,16 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ExitBtnSvg, NewBoardSvg } from "../svg/ImgSvg"
+import { useSelector } from "react-redux"
+import { updateNewBoardModal } from "../../store/board.actions"
 
 export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [screenHeight, setScreenHeight] = useState(window.innerHeight)
+    const [componentHeight, setComponentHeight] = useState(0);
+    const wrapperRef = useRef(null)
+    useClickOutsideCmp(wrapperRef)
+
+    const newBoardModal = useSelector(storeState => storeState.boardModule.newBoardModal)
 
     const [txtInput, setTxtInput] = useState('')
 
@@ -23,6 +32,30 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
         'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg'
     ]
 
+    useEffect(() => {
+        if (wrapperRef.current) {
+            let height = wrapperRef.current.clientHeight;
+            setComponentHeight(height)
+        }
+    }, [newBoardModal.location]);
+
+    function useClickOutsideCmp(ref) {
+        useEffect(() => {
+
+            document.addEventListener("mousedown", handleClickOutside)
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside)
+            }
+        }, [])
+    }
+
+    function handleClickOutside(event) {
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            onSetIsOpenModal()
+            updateNewBoardModal(newBoardModal)
+        }
+    }
+
     function handleSubmit(ev) {
         ev.preventDefault()
         onAddBoard({ title: txtInput, bgc: chosenBgcImg })
@@ -32,57 +65,64 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
         const { name: field, value } = target
         setTxtInput(value)
     }
-    
+
     return (
-        <section className="new-board-modal">
-            <div className="preview">
-                <h1>Create board</h1>
-                <div className="chosen-bgc">
-                    <div className="chosen-bgc-img"
-                        style={{
-                            backgroundImage: `url("${chosenBgcImg}"), url(${chosenBgcImg})`
-                        }}>
-                        <NewBoardSvg />
+        <div className="new-board-modal-overlay" onClick={handleClickOutside} >
+            <section className="new-board-modal"
+                ref={wrapperRef}
+                style={{
+                    top: newBoardModal.location.top + componentHeight > screenHeight ? screenHeight - componentHeight - 20 : newBoardModal.location.top,
+                    left: newBoardModal.location.left + 304 > screenWidth ? screenWidth - 315 : newBoardModal.location.left
+                }}>
+                <div className="preview">
+                    <h1>Create board</h1>
+                    <div className="chosen-bgc">
+                        <div className="chosen-bgc-img"
+                            style={{
+                                backgroundImage: `url("${chosenBgcImg}"), url(${chosenBgcImg})`
+                            }}>
+                            <NewBoardSvg />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="bgc-options">
-                <h1>Background</h1>
-                <div className="img-bgc flex justify-space-b">
-                    {paletteImgs.map((ImgOption, index) => (
-                        <button
-                            key={index}
-                            className="color-button"
-                            onClick={() => setChosenBgcImg(paletteImgs[index])}
-                            style={{
-                                backgroundImage: `url(${ImgOption})`, //`url("${ImgOption}")`
-                                backgroundPosition: 'center center',
-                                backgroundSize: 'cover'
-                            }}
-                        ></button>
-                    ))}
+                <div className="bgc-options">
+                    <h1>Background</h1>
+                    <div className="img-bgc flex justify-space-b">
+                        {paletteImgs.map((ImgOption, index) => (
+                            <button
+                                key={index}
+                                className="color-button"
+                                onClick={() => setChosenBgcImg(paletteImgs[index])}
+                                style={{
+                                    backgroundImage: `url(${ImgOption})`, //`url("${ImgOption}")`
+                                    backgroundPosition: 'center center',
+                                    backgroundSize: 'cover'
+                                }}
+                            ></button>
+                        ))}
+                    </div>
+                    <div className="color-bgc flex justify-space-b">
+                        {palette.map((colorOption, index) => (
+                            <button
+                                key={index}
+                                className="color-button"
+                                onClick={() => setChosenBgcImg(palette[index])}
+                                style={{ backgroundImage: `url(${colorOption})` }}
+                            ></button>
+                        ))}
+                    </div>
                 </div>
-                <div className="color-bgc flex justify-space-b">
-                    {palette.map((colorOption, index) => (
-                        <button
-                            key={index}
-                            className="color-button"
-                            onClick={() => setChosenBgcImg(palette[index])}
-                            style={{ backgroundImage: `url(${colorOption})` }}
-                        ></button>
-                    ))}
+                <div className="board-title">
+                    <h1>Board title <span>*</span></h1>
+                    <form action="" onSubmit={handleSubmit}>
+                        <input value={txtInput} type="text" name="name" onChange={handleChange} required />
+                    </form>
+                    <p><span>👋</span>Board title is required</p>
                 </div>
-            </div>
-            <div className="board-title">
-                <h1>Board title <span>*</span></h1>
-                <form action="" onSubmit={handleSubmit}>
-                    <input value={txtInput} type="text" name="name" onChange={handleChange} required />
-                </form>
-                <p><span>👋</span>Board title is required</p>
-            </div>
-            <div className="exit-btn" onClick={onSetIsOpenModal}>
-                <ExitBtnSvg />
-            </div>
-        </section>
+                <div className="exit-btn" onClick={onSetIsOpenModal}>
+                    <ExitBtnSvg />
+                </div>
+            </section>
+        </div>
     )
 }
