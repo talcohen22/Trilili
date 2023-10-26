@@ -3,6 +3,7 @@ import { TaskDetailsFeatures } from "./TaskDetailsFeatures"
 import { ArchiveSvg, AttachmentSvg, CardIconSvg, CheckListSvg, CopySvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg, MoveSvg } from "../svg/ImgSvg"
 import { useNavigate } from "react-router"
 import { boardService } from "../../services/board.service.local"
+import { updateBoardGroupTaskType } from "../../store/board.actions"
 
 export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) {
 
@@ -63,6 +64,13 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
         board.groups[groupIdx].tasks.splice(taskIdx,1)
         onSetBoard(board)
         handleCloseQuickEdit()
+    }
+
+    function getDynamicCmp(ev, cpmType) {
+        const parentElement = ev.currentTarget;
+        const data = parentElement.getBoundingClientRect()
+        const location = { top: data.top, left: data.left }
+        updateBoardGroupTaskType(board._id, groupId, task.id, cpmType, location)
     }
 
     return (

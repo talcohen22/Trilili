@@ -53,7 +53,7 @@ export function GroupPreview({
     }
 
     function handleAddTask(position) {
-        (position==='START')?setIsOnGroupAddTask(true):setIsOnAddTask(true)
+        (position === 'START') ? setIsOnGroupAddTask(true) : setIsOnAddTask(true)
         handleClose()
         updateGroup(board, group, 'title', groupTitle)
     }
@@ -66,7 +66,7 @@ export function GroupPreview({
     function onCloseAddTaskModal() {
         setIsOnAddTask(false)
         setIsOnGroupAddTask(false)
-    }  
+    }
 
     function handleUsingAction() {
         // const index = board.groups.findIndex(idx => idx.id === group.id)
@@ -120,10 +120,10 @@ export function GroupPreview({
                     onKeyDown={handleKeyDown}
 
                 />
-                    {group.isWatch && <span className="watch"><EyeSvg /></span>}
-                    <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
-                        <DotsSvg />
-                    </button>
+                {group.isWatch && <span className="watch"><EyeSvg /></span>}
+                <button className="group-btn flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
+                    <DotsSvg />
+                </button>
                 {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
                     group={group}
                     handleClose={handleClose}
@@ -158,17 +158,15 @@ export function GroupPreview({
                     isExpandedLabels={isExpandedLabels}
                     openQuickEdit={openQuickEdit} />
             </div>
-           
 
             {!isOnAddTask &&
-                <div className={(!isOnGroupAddTask)?"group-footer flex justify-center align-center":'hidden'}>
+                <div className={(!isOnGroupAddTask) ? "group-footer flex justify-center align-center" : 'hidden'}>
                     <button
-                        onClick={()=>{handleAddTask('End')}}
+                        onClick={() => { handleAddTask('End') }}
                         className="group-btn add-task-btn flex align-center">
                         <PlusBtnAddListSvg />
                         Add a card
                     </button>
-
 
                     <button className="group-btn flex justify-center align-center">
                         <GenerateTemplateBtnSvg />
