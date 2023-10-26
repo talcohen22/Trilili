@@ -54,7 +54,6 @@
                     font-size: rem(38px);
                     margin-block-end: rem(8px);
                     font-family: 'charlie-semibold';
-                    letter-spacing: rem(-2.7px);
 
                     @include for-normal-layout {
                         font-size: rem(48px);
@@ -128,7 +127,7 @@
     .homepage-productivity {
         background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
         background-blend-mode: normal;
-        padding: rem(16px) rem(25px) rem(72px);
+        padding: rem(16px);
 
         .productivity-container {
             // font-family: charlie-regular;

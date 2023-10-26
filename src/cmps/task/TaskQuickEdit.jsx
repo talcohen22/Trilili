@@ -12,17 +12,15 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
 
     const navigate = useNavigate()
     const modalRef= useRef(null)
-    const isComponentMounted = useRef(false)
-
+    const inputRef= useRef(null)
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                if (isComponentMounted.current) {
+        handleBlur()
+        function handleClickOutside(event){
+            console.log(event.target.id);
+            if (modalRef.current && !modalRef.current.contains(event.target )  ) {
                     handleCloseQuickEdit();
-                }
             }
-            isComponentMounted.current = true
-        };
+        }
 
         document.addEventListener("click", handleClickOutside);
 
@@ -46,8 +44,18 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
         setTitle(target.value)
     }
 
+    function handleBlur(){
+        if (inputRef.current && inputRef.current.value) {
+          inputRef.current.focus();
+        }
+      }
+
     function onUpdateTask(ev) {
         ev.preventDefault()
+        if(!title ||!title.trim()){
+            handleBlur()
+            return
+        } 
         const groupIdx = boardService.getGroupIdx(board, groupId)
         const group = board.groups[groupIdx]
         const taskIdx = boardService.getTaskIdx(group,task.id)
@@ -66,10 +74,10 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     }
 
     return (
-        <div className="overlay">
+        <div className="overlay" id="overlay">
             <div className="quickedit-modal" ref={modalRef}>
                 <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
-                    <textarea
+                    <textarea ref={inputRef}
                         className='custom-textarea'
                         name="text"
                         value={title}
