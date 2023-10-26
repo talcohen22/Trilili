@@ -1,5 +1,7 @@
 .group-actions-modal {
-   
+   &:not(.group-action-content,button,svg){
+        cursor: default;
+    }
     top: 0;
     left: 0;
     // height: rem(352px);
@@ -38,9 +40,7 @@
     }
 
 }
-:not(.group-action-content,button,svg){
-    cursor: default;
-} 
+ 
 .group-action-content {
     display: flex;
     flex-direction: column;
