@@ -38,7 +38,6 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
     }
 
     function onSubmit(ev) {
-        debugger
         ev.preventDefault()
         if (newTaskText.trim().length > 0) {
             const groupId = group.id
