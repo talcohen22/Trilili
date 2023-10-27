@@ -94,9 +94,11 @@ export function CheckListData({ board, group, task, checklist, onSetChecklistIdT
 
     async function onSaveTodoTitle() {
         try {
-            updateTodo(board, group, task, checklist, currTodo.id, 'title', currTodo.title)
+            if (currTodo.id) {
+                updateTodo(board, group, task, checklist, currTodo.id, 'title', currTodo.title)
+                setTodo({ id: '', title: '' })
+            }
             setFocusedTodoId(null)
-            setTodo({ id: '', title: '' })
         } catch (err) {
             console.log('Cannot update todo', err)
         }
