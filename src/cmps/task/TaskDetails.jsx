@@ -57,11 +57,24 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
         }
     }
 
+
     if (!task) return <div></div>
+
+    const isCover = task.style.backgroundColor || task.style.cover
+    
     return (
         <div className="overlay" onClick={handleClickOutside} >
 
             <section className="task-details-container" ref={wrapperRef}>
+
+                {isCover &&
+                    <div className={`cover ${task.style.cover ? 'img' : ''}`}
+                        style={{
+                            backgroundColor: task.style.backgroundColor ? task.style.backgroundColor : 'transparent',
+                            backgroundImage: task.style.cover ? `url(${task.style.cover})` : 'none'
+                        }}>
+
+                    </div>}
 
                 <header className="task-header flex align-top">
                     <div className="title-img">
@@ -90,7 +103,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
                 </div>
 
             </section>
-            
+
         </div>
     )
 }

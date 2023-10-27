@@ -49,11 +49,59 @@ export async function updateBoardUsStarred(board) {
     }
 }
 
+export async function updateColorBackground(board, group, task, color) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        board.groups[gIdx].tasks[tIdx].style.backgroundColor = color
+        board.groups[gIdx].tasks[tIdx].style.cover = ''
+
+        await updateBoard(board)
+        
+    } catch (err) {
+        console.log('Cannot update background color', err)
+        throw err
+    }
+}
+
+export async function updatePhotoBackground(board, group, task, photo) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        board.groups[gIdx].tasks[tIdx].style.backgroundColor = ''
+        board.groups[gIdx].tasks[tIdx].style.cover = photo
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot update background photo', err)
+        throw err
+    }
+}
+
+export async function removeCover(board, group, task) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+
+        board.groups[gIdx].tasks[tIdx].style.backgroundColor = ''
+        board.groups[gIdx].tasks[tIdx].style.cover = ''
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot remove cover', err)
+        throw err
+    }
+}
+
 export async function removeAttachment(board, group, task, attachIdx) {
     try {
         const gIdx = getGroupIdx(board, group)
         const tIdx = getTaskIdx(group, task)
-        
+
         board.groups[gIdx].tasks[tIdx].attachment.splice(attachIdx, 1)
 
         await updateBoard(board)

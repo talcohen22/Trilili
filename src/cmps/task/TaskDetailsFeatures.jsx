@@ -1,4 +1,4 @@
-import { AttachmentSvg, CheckListSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
+import { AttachmentSvg, CheckListSvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
 import React from 'react';
 import { useParams } from "react-router";
 import { updateBoardGroupTaskType } from "../../store/board.actions";
@@ -38,6 +38,10 @@ export function TaskDetailsFeatures() {
                 <div onClick={((ev) => getDynamicCmp(ev, 'Attach'))}>
                     <AttachmentSvg />
                     <p>Attachment</p>
+                </div>
+                <div onClick={((ev) => getDynamicCmp(ev, 'Cover'))}>
+                    <CoverSvg />
+                    <p>Cover</p>
                 </div>
 
             </section>

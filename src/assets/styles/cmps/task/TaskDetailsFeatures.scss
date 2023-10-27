@@ -1,6 +1,11 @@
 .task-features{   
     margin-top: 20px; 
 
+    h3{
+        color: $wsIconColor;
+        font-weight: 600;
+    }
+
     div{
         display: flex;
         gap: 6px;
