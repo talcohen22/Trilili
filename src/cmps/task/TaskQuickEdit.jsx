@@ -12,21 +12,21 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     const boardId = board._id
 
     const navigate = useNavigate()
-    const modalRef = useRef(null)
-    const isComponentMounted = useRef(false)
-
+    const modalRef= useRef(null)
+    const inputRef= useRef(null)
+    
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target)
+        handleBlur()
+        function handleClickOutside(event){
+            console.log(event.target.id);
+            if (modalRef.current && !modalRef.current.contains(event.target ) 
                 && !event.relatedTarget instanceof HTMLDivElement 
                 && !Array.from(event.relatedTarget.classList).includes('dynamic-feature-container')
-                ){
-        if (isComponentMounted.current) {
-            handleCloseQuickEdit();
+               ) {
+                    handleCloseQuickEdit();
+            }
         }
-    }
-    isComponentMounted.current = true
-};
+
 
 document.addEventListener("click", handleClickOutside);
 
@@ -42,31 +42,39 @@ function onGetTaskDetails(ev) {
 }
 
 function handleCloseQuickEdit() {
-
     closeQuickEdit()
 }
+    function handleBlur(){
+        if (inputRef.current && inputRef.current.value) {
+          inputRef.current.focus();
+        }
+      }
 
+    function onUpdateTask(ev) {
+        ev.preventDefault()
+        if(!title ||!title.trim()){
+            handleBlur()
+            return
+        } 
+        const groupIdx = boardService.getGroupIdx(board, groupId)
+        const group = board.groups[groupIdx]
+        const taskIdx = boardService.getTaskIdx(group,task.id)
+        board.groups[groupIdx].tasks[taskIdx].title=title
+        onSetBoard(board)
+        handleCloseQuickEdit()
+    }
+    function onRemoveTask(ev) {
+        ev.preventDefault()
+        const groupIdx = boardService.getGroupIdx(board, groupId)
+        const group = board.groups[groupIdx]
+        const taskIdx = boardService.getTaskIdx(group,task.id)
+        board.groups[groupIdx].tasks.splice(taskIdx,1)
+        onSetBoard(board)
+        handleCloseQuickEdit()
+    }
+       
 function handleChange({ target }) {
     setTitle(target.value)
-}
-
-function onUpdateTask(ev) {
-    ev.preventDefault()
-    const groupIdx = boardService.getGroupIdx(board, groupId)
-    const group = board.groups[groupIdx]
-    const taskIdx = boardService.getTaskIdx(group, task.id)
-    board.groups[groupIdx].tasks[taskIdx].title = title
-    onSetBoard(board)
-    handleCloseQuickEdit()
-}
-function onRemoveTask(ev) {
-    ev.preventDefault()
-    const groupIdx = boardService.getGroupIdx(board, groupId)
-    const group = board.groups[groupIdx]
-    const taskIdx = boardService.getTaskIdx(group, task.id)
-    board.groups[groupIdx].tasks.splice(taskIdx, 1)
-    onSetBoard(board)
-    handleCloseQuickEdit()
 }
 
 function getDynamicCmp(ev, cpmType) {
@@ -77,20 +85,20 @@ function getDynamicCmp(ev, cpmType) {
 }
 
 return (
-    <div className="overlay">
-        <div className="quickedit-modal" ref={modalRef}>
-            <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
-                <textarea
-                    className='custom-textarea'
-                    name="text"
-                    value={title}
-                    onChange={handleChange}
-                />
-                <div className="button-container">
-                    <button className='btn-action modal-btn'>
-                        Save
-                    </button>
-                </div>
+    <div className="overlay" id="overlay">
+            <div className="quickedit-modal" ref={modalRef}>
+                <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
+                    <textarea ref={inputRef}
+                        className='custom-textarea'
+                        name="text"
+                        value={title}
+                        onChange={handleChange}
+                    />
+                    <div className="button-container">
+                        <button className='btn-action modal-btn'>
+                            Save
+                        </button>
+                    </div>
 
             </form>
             <div style={{ position: 'absolute', top: position.top - 8, left: position.left + 10, }}>

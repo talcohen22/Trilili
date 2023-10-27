@@ -31,6 +31,18 @@
     justify-content: space-between;
     align-items: center;
 
+    .board-filter-btn.filter {
+      button {
+        padding: 6px !important;
+      }
+      svg{
+        margin-right: 8px;
+      }
+
+    }
+    .board-filter-btn.dots{
+      padding: 4px;
+    }
     /* Shared styles for all elements within .board-filter */
     * {
       font-family: system-ui;
@@ -118,7 +130,7 @@
       font-size: rem(14px);
       border-radius: rem(3px);
       min-width: rem(32px);
-      padding: 2px;
+      padding: 6px;
       margin-inline: 2px;
 
       &:hover {
@@ -144,6 +156,10 @@
       padding: rem(6px) 0 rem(6px) 0;
       
       .share-btn{
+        span{
+          margin: 0 0 0 4px;
+
+        }
         width: rem(75px);
       }
       .full-btn {
