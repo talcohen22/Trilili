@@ -355,7 +355,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c005f1738798047c7fd5b/attachments/651c00bd111368598b586279/download/npm.png",
+                            "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/800px-Npm-logo.svg.png",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -376,7 +376,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c01062962bafe88c816a7/attachments/651c01361d684fd84072e13e/download/231-sass-logo-sass.png",
+                            "cover": "https://i0.wp.com/techprimelab.com/wp-content/uploads/2020/06/SCSS-or-CSS.jpg?fit=1024%2C576&ssl=1",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -404,7 +404,7 @@ const BOARDS = [
                         },
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c01e29ae065f6e43d8f03/attachments/651c020196c5fb62cc35bdf3/download/219969.png",
+                            "cover": "https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-female-5-512.png",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -498,7 +498,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c03270cfcb4617c6352e9/attachments/651c03746e39588ea43be583/download/benefit_of_PWA.png",
+                            "cover": "https://ionic.io/blog/wp-content/uploads/2016/05/what-is-pwa-img.png",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -561,7 +561,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2011/09/thumb_720_450_bug-on-computer-chip_shutterstock_4027501.jpg"
+                            "cover": "https://i0.wp.com/boingboing.net/wp-content/uploads/2022/08/bug.jpg?fit=1&resize=600%2C4000&ssl=1"
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -577,7 +577,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://www.youthemployment.org.uk/dev/wp-content/uploads/2018/07/achievement-3408115_640-600x287.jpg"
+                            "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnHCT_iiFMufTpF4bhFHwRPxQkfxQle_3_Om4ryZE5P2gwaB9-39CV3SdQ_tZCYNBWOwI&usqp=CAU"
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -696,7 +696,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://www.syncfusion.com/blogs/wp-content/uploads/2023/04/How-You-Should-Treat-NPM-Audit-Results.png"
+                            "cover": "https://kinsta.com/wp-content/uploads/2022/06/what-is-npm.png"
                         },
                         "dueDate": null,
                         "startDate": null,

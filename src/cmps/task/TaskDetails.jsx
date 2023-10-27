@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react'
 import { boardService } from "../../services/board.service.local"
 import { useNavigate } from "react-router"
 import { useSelector } from 'react-redux';
+import { FastAverageColor } from 'fast-average-color'
 
 export function TaskDetails({ onSetChecklistIdToEdit }) {
 
@@ -31,6 +32,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
     const navigate = useNavigate()
     const wrapperRef = useRef(null);
     useClickOutsideCmp(wrapperRef);
+    const [bgColor, setBgColor] = useState('transparent');
 
     useEffect(() => {
         loadTask()
@@ -57,11 +59,24 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
         }
     }
 
+    useEffect(() => {
+        async function getBgc() {
+            if (task) {
+                const fac = new FastAverageColor();
+                const color = await fac.getColorAsync(task.style.cover);
+                setBgColor(color.hex);
+            }
+        }
+
+        if (task && task.style.cover) getBgc();
+
+    }, [task]);
+
 
     if (!task) return <div></div>
 
     const isCover = task.style.backgroundColor || task.style.cover
-    
+
     return (
         <div className="overlay" onClick={handleClickOutside} >
 
@@ -70,7 +85,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
                 {isCover &&
                     <div className={`cover ${task.style.cover ? 'img' : ''}`}
                         style={{
-                            backgroundColor: task.style.backgroundColor ? task.style.backgroundColor : 'transparent',
+                            backgroundColor: task.style.backgroundColor ? task.style.backgroundColor : bgColor ? bgColor : 'transparent',
                             backgroundImage: task.style.cover ? `url(${task.style.cover})` : 'none'
                         }}>
 

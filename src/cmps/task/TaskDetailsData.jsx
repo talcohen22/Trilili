@@ -24,6 +24,27 @@ export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) 
                 task={task}
             />
 
+            {task.attachment.length > 0 &&
+                <React.Fragment>
+                    <div className="attachment-svg">
+                        <AttachmentSvg />
+                    </div>
+                    <p className="attachment-header">Attachment</p>
+                    <div className="attachments-container flex">
+                        {task.attachment.map((attachment, idx) =>
+                            <div key={idx}>
+                                <AttachmentData
+                                    board={board}
+                                    group={group}
+                                    task={task}
+                                    attachment={attachment}
+                                    attachIdx={idx} />
+                            </div>
+                        )}
+                    </div>
+                </React.Fragment>
+            }
+
             {task.checklists.length > 0 && task.checklists.map(checklist =>
                 <React.Fragment key={checklist.id}>
                     <div className="checklist-svg">
@@ -39,29 +60,6 @@ export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) 
                     </div>
                 </React.Fragment>
             )}
-
-            {task.attachment.length > 0 &&
-                <React.Fragment>
-                    <div className="attachment-svg">
-                        <AttachmentSvg />
-                    </div>
-                    <p className="attachment-header">Attachment</p>
-                    <div className="attachments-container flex"> 
-                        {task.attachment.map((attachment, idx) =>
-                            <div key={idx}>
-                                <AttachmentData 
-                                board={board}
-                                group={group}
-                                task={task}
-                                attachment={attachment}
-                                attachIdx={idx} />
-                            </div>
-                        )}
-                    </div>
-                </React.Fragment>
-
-            }
-
 
         </section>
     )
