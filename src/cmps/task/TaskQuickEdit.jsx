@@ -18,7 +18,6 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     useEffect(() => {
         handleBlur()
         function handleClickOutside(event) {
-            console.log(event.target.className === 'overlay quick-edit-overlay');
             if (modalRef.current && !modalRef.current.contains(event.target) &&
                 event.target.className === 'overlay quick-edit-overlay') {
                 handleCloseQuickEdit();
