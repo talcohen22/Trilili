@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router";
-import { UserSvg } from "../svg/ImgSvg";
+import { StarFillSvg, StarSvg, UserSvg } from "../svg/ImgSvg";
 import { BoardPreview } from "./BoardPreview";
 import { useState } from "react";
 import { NewBoardModal } from "./NewBoardModal";
 import { boardService } from "../../services/board.service.local";
+import { updateBoardUsStarred, updateNewBoardModal } from "../../store/board.actions";
 
 export function BoardList({ boards, onAddBoard }) {
 
@@ -19,16 +20,34 @@ export function BoardList({ boards, onAddBoard }) {
         setIsNewBoardModalOpen(!isNewBoardModalOpen)
     }
 
+    async function onSetBoardIsStarred(ev, board) {
+        ev.stopPropagation()
+        try {
+            await updateBoardUsStarred(board)
+        } catch (err) {
+            console.log('Cannot update isStarred board', err)
+            throw err
+        }
+    }
+
+    function onSetIsNewBoardModalOpen(ev){
+        setIsNewBoardModalOpen(!isNewBoardModalOpen)
+        const parentElement = ev.currentTarget;
+        const data = parentElement.getBoundingClientRect()
+        const location = { top: data.top, left: data.left }
+        const newBoardModal = {isOpen: true, location: location}
+        updateNewBoardModal(newBoardModal)
+    }
+
     return (
         <section className="board-list-container">
-            <h1>WorkSpace name</h1>
-            <div className="boards-header">
-                <UserSvg />
-                <h3>Your boards</h3>
+            <div className="starred-boards flex">
+                <StarSvg />
+                <h3>Starred boards</h3>
             </div>
             <ul className="board-list">
-                {boards.map(board =>
-                    <li className="board-item"
+                {boards.filter(board => board.isStarred).map(board =>
+                    <li className="board-item starred"
                         onClick={() => onGetDetails(board._id)}
                         key={board._id}
                         style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
@@ -36,9 +55,32 @@ export function BoardList({ boards, onAddBoard }) {
                         <span className="board-fade">
                             <BoardPreview board={board} />
                         </span>
+                        <div className="star-svg" onClick={(ev) => onSetBoardIsStarred(ev, board)}>
+                            <StarFillSvg />
+                        </div>
                     </li>
                 )}
-                <li onClick={() => setIsNewBoardModalOpen(!isNewBoardModalOpen)}>
+            </ul>
+            <div className="boards-header flex align-center">
+                <UserSvg />
+                <h3>Your boards</h3>
+            </div>
+            <ul className="board-list">
+                {boards.map(board =>
+                    <li className={`board-item ${board.isStarred ? 'starred' : ''}`}
+                        onClick={() => onGetDetails(board._id)}
+                        key={board._id}
+                        style={{ backgroundImage: `url(${board.style.backgroundImage})` }}
+                    >
+                        <span className="board-fade">
+                            <div className="star-svg" onClick={(ev) => onSetBoardIsStarred(ev, board)}>
+                                {board.isStarred ? <StarFillSvg /> : <StarSvg />}
+                            </div>
+                            <BoardPreview board={board} />
+                        </span>
+                    </li>
+                )}
+                <li className="create-board" onClick={onSetIsNewBoardModalOpen}>
                     Create new board
                 </li>
             </ul>

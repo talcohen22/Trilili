@@ -2,13 +2,13 @@ import { useState, useRef, useEffect } from 'react'
 import { boardService } from '../../services/board.service.local'
 import { ExitBtnSvg } from '../svg/ImgSvg'
 
-export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask }) {
+export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTask }) {
     const [newTaskText, setNewTaskText] = useState('')
     const [textScrollHeight, setTextScrollHeight] = useState('70px')
-    const direction= isOnAddTask
+    const direction = isOnAddTask
     const textareaRef = useRef(null)
     const isComponentMounted = useRef(false)
-   
+
     useEffect(() => {
         adjustTextareaRows()
 
@@ -27,7 +27,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask
             document.removeEventListener("click", handleClickOutside);
         };
 
-    }, [newTaskText,onCloseAddTaskModal])
+    }, [newTaskText, onCloseAddTaskModal])
 
     function handleChange({ target }) {
         setNewTaskText(target.value)
@@ -36,15 +36,15 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask
     function handleCloseModal() {
         onCloseAddTaskModal()
     }
-    
+
     function onSubmit(ev) {
         ev.preventDefault()
         if (newTaskText.trim().length > 0) {
             const groupId = group.id
             const taskToAdd = { ...boardService.getEmptyTask() }
             taskToAdd.title = newTaskText
-            if(direction)onAddTask(taskToAdd, groupId,'END')
-            else if(!direction) onAddTask(taskToAdd, groupId,'START')
+            if (direction) onAddTask(taskToAdd, groupId, 'END')
+            else if (!direction) onAddTask(taskToAdd, groupId, 'START')
             // onAddTask(taskToAdd, groupId)
             setNewTaskText('')
         }
@@ -58,6 +58,13 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask
         }
     }
 
+    function handleKeyPress(ev) {
+        if (ev.key === 'Enter' && !ev.shiftKey) {
+            ev.preventDefault()
+            onSubmit(ev)
+        }
+    }
+
     return (
         <div>
             <form className='form-add-new-task'>
@@ -67,6 +74,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal,isOnAddTask
                     name="text"
                     value={newTaskText}
                     onChange={handleChange}
+                    onKeyDown={handleKeyPress}
                     ref={textareaRef}
                 />
                 <div className="button-container">

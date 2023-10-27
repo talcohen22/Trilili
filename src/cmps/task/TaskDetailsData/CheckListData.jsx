@@ -2,6 +2,7 @@ import { addChecklistTodo, removeTodo, updateBoardGroupTaskType, updateChecklist
 import { ExitBtnSvg } from "../../svg/ImgSvg";
 import { useState } from 'react'
 import React from 'react';
+import { ProgressBar } from "./ProgressBar";
 
 export function CheckListData({ board, group, task, checklist, onSetChecklistIdToEdit }) {
 
@@ -142,6 +143,8 @@ export function CheckListData({ board, group, task, checklist, onSetChecklistIdT
                     Delete
                 </button>
             </div>
+
+            <ProgressBar checklist={checklist} />
 
             <div className={`update-btns ${isTitleInputFocused ? 'focused' : ''}`}>
                 <button className="save-title" onClick={onSaveCheckListTitle}>Save</button>

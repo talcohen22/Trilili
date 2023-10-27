@@ -1,0 +1,45 @@
+.attachment-container {
+
+    gap: 20px;
+
+    .file-type {
+        &:hover {
+            background-color: $taskItemsBgc;
+        }
+
+        .filetype-preview {
+            width: 112px;
+            height: 80px;
+            color: $groupMoreActions;
+            background-color: $taskItemsBgc;
+            font-size: rem(18px);
+            font-weight: 700;
+            border-radius: 3px;
+        }
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 5px;
+
+        a {
+            color: $groupHeader;
+            font-weight: 700;
+            max-width: 512px ;
+            word-wrap: break-word ;
+        }
+
+        button {
+            text-decoration: underline;
+            color: $groupMoreActions;
+        }
+
+        svg {
+            height: 10px;
+            margin-inline-start: 5px;
+        }
+    }
+
+}

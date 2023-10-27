@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 
 export function TaskLabels({ labelIds, labelsPaletteBoard, onIsExpandedLabels, isExpandedLabels }) {
-    
+
     const [toggleLabelTxt, setToggleLabelTxt] = useState(isExpandedLabels)
     const boards = useSelector(storeState => storeState.boardModule.boards)
 
@@ -12,6 +12,7 @@ export function TaskLabels({ labelIds, labelsPaletteBoard, onIsExpandedLabels, i
         <div
             className={`task-label flex align-center ${dynClass} `}
             key={labelId}
+            onClick={onToggleLabelTxt}
             style={{ backgroundColor }}
         >
             {isExpandedLabels && <p className="fs12">{titleTxt}</p>}
@@ -25,7 +26,7 @@ export function TaskLabels({ labelIds, labelsPaletteBoard, onIsExpandedLabels, i
     }
 
     return (
-        <section className="task-labels-interface flex" onClick={onToggleLabelTxt}>
+        <section className="task-labels-interface flex" >
             {labelIds.map((labelId) => {
                 const matchingLabel =
                     labelsPaletteBoard.find((paletteItem) =>

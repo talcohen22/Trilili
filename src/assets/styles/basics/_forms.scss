@@ -2,6 +2,24 @@
     display: flex;
     align-items: center;
     margin: 4px;
+
+    .center-svg{
+
+        border-radius: 3px;
+        height: 31px;
+        width: 31px;
+
+        &:hover{
+            background-color: $exitBtnHover;
+        }
+
+        svg{
+            width: 20px;
+            height: 20px;
+            color: $wsTxtColor;
+            margin: 6px 0 0 0px;
+        }
+    }
 }
 
     .btn-action {

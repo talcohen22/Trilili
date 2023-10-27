@@ -1,7 +1,7 @@
 import { boardService } from "../services/board.service.local.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_CMP, SET_GROUP, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_CMP, SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
 import { utilService } from "../services/util.service.js";
 
 // Action Creators:
@@ -34,6 +34,32 @@ export async function loadBoards() {
 
     } catch (err) {
         console.log('Cannot load boards', err)
+        throw err
+    }
+}
+
+export async function updateBoardUsStarred(board) {
+    try {
+        board.isStarred = !board.isStarred
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot update isStarred board', err)
+        throw err
+    }
+}
+
+export async function removeAttachment(board, group, task, attachIdx) {
+    try {
+        const gIdx = getGroupIdx(board, group)
+        const tIdx = getTaskIdx(group, task)
+        
+        board.groups[gIdx].tasks[tIdx].attachment.splice(attachIdx, 1)
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot delete attachment', err)
         throw err
     }
 }
@@ -94,7 +120,7 @@ export async function removeTodo(board, group, task, checklist, todoId) {
         const tIdx = getTaskIdx(group, task)
         const clIdx = getChecklistIdx(task, checklist.id)
         const todoIdx = getTodoIdx(checklist, todoId)
-        
+
         board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos.splice(todoIdx, 1)
 
         await updateBoard(board)
@@ -210,6 +236,10 @@ export async function updateBoardGroupTaskType(boardId, groupId, taskId, type, l
         store.dispatch({ type: SET_TASK, task: task })
         store.dispatch({ type: SET_CMP, cmp: cmp })
     }
+}
+
+export async function updateNewBoardModal(newBoardModal) {
+    store.dispatch({ type: SET_NEW_BOARD_MODAL, newBoardModal: newBoardModal })
 }
 
 export async function updateCmp(cmp) {
