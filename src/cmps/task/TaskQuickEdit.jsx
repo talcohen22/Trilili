@@ -18,14 +18,11 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     useEffect(() => {
         handleBlur()
         function handleClickOutside(event) {
-            if (modalRef.current && !modalRef.current.contains(event.target)
-                && !event.relatedTarget instanceof HTMLDivElement
-                && !Array.from(event.relatedTarget.classList).includes('dynamic-feature-container')
-            ) {
+            if (modalRef.current && !modalRef.current.contains(event.target) &&
+                event.target.className === 'overlay quick-edit-overlay') {
                 handleCloseQuickEdit();
             }
         }
-
 
         document.addEventListener("click", handleClickOutside);
 
@@ -84,7 +81,7 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     }
 
     return (
-        <section className="overlay" id="overlay">
+        <div className="overlay quick-edit-overlay" id="overlay">
             <div className="quickedit-modal" ref={modalRef}>
                 <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
                     <textarea ref={inputRef}
@@ -138,6 +135,6 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                     </section>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }

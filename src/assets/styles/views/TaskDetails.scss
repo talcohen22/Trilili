@@ -20,6 +20,21 @@
         z-index: 20;
         transform: translate(-50%, 0%);
         min-height: 900px;
+        
+        .cover{
+            height: 116px;
+            width: 768px;
+            margin: -21px -16px 21px -16px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .cover.img{
+            height: 160px;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
 
         .task-title p{
             height: 23px;

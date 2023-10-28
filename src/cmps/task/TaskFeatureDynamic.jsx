@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions";
 import { FeatureDates } from "./FeatureDates";
 import { DeleteChecklist } from "./TaskDetailsData/deleteCheckList";
+import { FeatureCover } from "./FeatureCover";
 
 export function TaskFeatureDynamic({ checklistIdToEdit }) {
 
@@ -108,13 +109,15 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
                 {cmp.type === 'Delete Label' &&
                     <DeleteLabel labelIdToEdit={labelIdToEdit} />}
 
-                {cmp.type === 'Attach' && <FeatureAttachment />}
-
                 {cmp.type === 'Members' && <FeatureMembers />}
 
                 {cmp.type === 'Add checklist' && <FeatureChecklist />}
 
                 {cmp.type === 'Dates' && <FeatureDates />}
+
+                {cmp.type === 'Attach' && <FeatureAttachment />}
+
+                {cmp.type === 'Cover' && <FeatureCover />}
 
                 {cmp.type === 'Delete checklist' && <DeleteChecklist checklistIdToEdit={checklistIdToEdit} />}
 

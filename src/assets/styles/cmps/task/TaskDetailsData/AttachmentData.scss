@@ -16,6 +16,13 @@
             font-weight: 700;
             border-radius: 3px;
         }
+
+        &.img {
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 3px;
+        }
     }
 
     .content {
@@ -27,8 +34,8 @@
         a {
             color: $groupHeader;
             font-weight: 700;
-            max-width: 512px ;
-            word-wrap: break-word ;
+            max-width: 512px;
+            word-wrap: break-word;
         }
 
         button {
@@ -39,6 +46,19 @@
         svg {
             height: 10px;
             margin-inline-start: 5px;
+        }
+
+        .options{
+            gap: 10px;
+
+            svg{
+                margin-inline-end: 5px;
+                height: 16px;
+            }
+
+            div{
+                cursor: pointer;
+            }
         }
     }
 

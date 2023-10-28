@@ -38,7 +38,6 @@ export function TaskPreview({
     function getQuickEditPosition() {
         // const index = board.groups.findIndex(idx => idx.id === group.id)
         const buttonRect = buttonRef.current.getBoundingClientRect()
-        console.log(buttonRect)
         const positionX = buttonRect.right
         const positionY = buttonRect.top
         return({ left: positionX, top: positionY })

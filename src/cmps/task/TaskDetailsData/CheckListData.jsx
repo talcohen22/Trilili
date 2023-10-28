@@ -94,9 +94,11 @@ export function CheckListData({ board, group, task, checklist, onSetChecklistIdT
 
     async function onSaveTodoTitle() {
         try {
-            updateTodo(board, group, task, checklist, currTodo.id, 'title', currTodo.title)
+            if (currTodo.id) {
+                updateTodo(board, group, task, checklist, currTodo.id, 'title', currTodo.title)
+                setTodo({ id: '', title: '' })
+            }
             setFocusedTodoId(null)
-            setTodo({ id: '', title: '' })
         } catch (err) {
             console.log('Cannot update todo', err)
         }
@@ -128,70 +130,72 @@ export function CheckListData({ board, group, task, checklist, onSetChecklistIdT
     }
 
     return (
-        <section className="check-list-container">
+        // <React.Fragment>
+            <section className="check-list-container">
 
-            {/* checklist title */}
-            <div className="header flex align-center justify-space-b">
-                <input className="checklist-title"
-                    value={checkListTitle}
-                    onFocus={onFocusChecklistInput}
-                    onBlur={onBlurChecklistInput}
-                    onChange={onHandleTitleChange}>
-                </input>
-                <button className={`delete-checklist ${isTitleInputFocused ? 'focused' : ''}`}
-                    onClick={onRemoveChecklist}>
-                    Delete
-                </button>
-            </div>
+                {/* checklist title */}
+                <div className="header flex align-center justify-space-b">
+                    <input className="checklist-title"
+                        value={checkListTitle}
+                        onFocus={onFocusChecklistInput}
+                        onBlur={onBlurChecklistInput}
+                        onChange={onHandleTitleChange}>
+                    </input>
+                    <button className={`delete-checklist ${isTitleInputFocused ? 'focused' : ''}`}
+                        onClick={onRemoveChecklist}>
+                        Delete
+                    </button>
+                </div>
 
-            <ProgressBar checklist={checklist} />
+                <ProgressBar checklist={checklist} />
 
-            <div className={`update-btns ${isTitleInputFocused ? 'focused' : ''}`}>
-                <button className="save-title" onClick={onSaveCheckListTitle}>Save</button>
-                <button className="exit-title"><ExitBtnSvg /></button>
-            </div>
+                <div className={`update-btns ${isTitleInputFocused ? 'focused' : ''}`}>
+                    <button className="save-title" onClick={onSaveCheckListTitle}>Save</button>
+                    <button className="exit-title"><ExitBtnSvg /></button>
+                </div>
 
-            {/* todos */}
-            {checklist.todos.length > 0 && checklist.todos.map(todo =>
-                <React.Fragment key={todo.id}>
-                    <div className="todo flex align-center" >
-                        <input className="todo-checkbox"
-                            type="checkbox"
-                            checked={todo.isDone}
-                            onChange={(ev) => onUpdateIsDoneTodo(ev, todo.id)} />
-                        <input className={`todo-title ${todo.isDone ? 'isDone' : ''}`}
-                            type="text"
-                            value={currTodo.id === todo.id ? currTodo.title : todo.title}
-                            onFocus={() => onFocusTodoInput(todo.id)}
-                            onBlur={onBlurTodoInput}
-                            onChange={(ev) => onHandleTodoChange(ev, todo.id)}
-                            ref={(el) => (inputRefs[todo.id] = el)} />
-                        <div className="remove-todo" onClick={() => onRemoveTodo(todo.id)}>
-                            <ExitBtnSvg />
+                {/* todos */}
+                {checklist.todos.length > 0 && checklist.todos.map(todo =>
+                    <React.Fragment key={todo.id}>
+                        <div className="todo flex align-center" >
+                            <input className="todo-checkbox"
+                                type="checkbox"
+                                checked={todo.isDone}
+                                onChange={(ev) => onUpdateIsDoneTodo(ev, todo.id)} />
+                            <input className={`todo-title ${todo.isDone ? 'isDone' : ''}`}
+                                type="text"
+                                value={currTodo.id === todo.id ? currTodo.title : todo.title}
+                                onFocus={() => onFocusTodoInput(todo.id)}
+                                onBlur={onBlurTodoInput}
+                                onChange={(ev) => onHandleTodoChange(ev, todo.id)}
+                                ref={(el) => (inputRefs[todo.id] = el)} />
+                            <div className="remove-todo" onClick={() => onRemoveTodo(todo.id)}>
+                                <ExitBtnSvg />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className={`update-btns todo ${focusedTodoId === todo.id ? 'flex' : ''}`}>
-                        <button className="save-title" onClick={onSaveTodoTitle}>Save</button>
-                        <button className="exit-title"><ExitBtnSvg /></button>
-                    </div>
-                </React.Fragment>
-            )}
+                        <div className={`update-btns todo ${focusedTodoId === todo.id ? 'flex' : ''}`}>
+                            <button className="save-title" onClick={onSaveTodoTitle}>Save</button>
+                            <button className="exit-title"><ExitBtnSvg /></button>
+                        </div>
+                    </React.Fragment>
+                )}
 
-            {/* add item */}
-            <input className="add-item"
-                value={newTodoTitle}
-                placeholder="Add an item"
-                onChange={onHandleAddItemInput}
-                onFocus={onFocusAddItemInput}
-                onBlur={onBlurAddItemInput}>
-            </input>
+                {/* add item */}
+                <input className="add-item"
+                    value={newTodoTitle}
+                    placeholder="Add an item"
+                    onChange={onHandleAddItemInput}
+                    onFocus={onFocusAddItemInput}
+                    onBlur={onBlurAddItemInput}>
+                </input>
 
-            {isAddItemFocused && <div className={`update-btns-add-item flex`}>
-                <button className="save-title" onClick={onSaveTodo}>Save</button>
-                <button className="exit-title flex align-center"><ExitBtnSvg /></button>
-            </div>}
+                {isAddItemFocused && <div className={`update-btns-add-item flex`}>
+                    <button className="save-title" onClick={onSaveTodo}>Save</button>
+                    <button className="exit-title flex align-center"><ExitBtnSvg /></button>
+                </div>}
 
-        </section>
+            </section>
+        // </React.Fragment>
     )
 }

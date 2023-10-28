@@ -133,11 +133,15 @@ const BOARDS = [
                     {
                         "id": "c101",
                         "title": "Create a server with express",
-                        "createdAt":1698249461229,
+                        "createdAt": 1698249461229,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101", "l102", "l103", "l108"],
                         "description": "install express before start",
                         "attachment": [
+                            {
+                                "fileName": "wood.jpg",
+                                "url": "http://res.cloudinary.com/dug2dklcy/image/upload/v1698412953/wbdqdkxlzz0q0tfh4wfy.jpg"
+                            },
                             {
                                 "fileName": "trello 1.1.docx",
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
@@ -198,7 +202,7 @@ const BOARDS = [
                     {
                         "id": "c102",
                         "title": "Create backend services",
-                        "createdAt":1698249461230,
+                        "createdAt": 1698249461230,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
@@ -232,7 +236,7 @@ const BOARDS = [
                     {
                         "id": "c104",
                         "title": "DB implementation",
-                        "createdAt":1698249461231,
+                        "createdAt": 1698249461231,
                         "archivedAt": 1589983468412,
                         "labelIds": [],
                         "style": {
@@ -300,14 +304,14 @@ const BOARDS = [
                     {
                         "id": "d103",
                         "title": "Planning the components tree",
-                        "createdAt":1698249461232,
+                        "createdAt": 1698249461232,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
                         "memberIds": ['u101', 'u102', 'u103'],
                         "checklists": [],
                         "dueDate": {
-                            "timeStamp": 1696061014,
+                            "timeStamp": 1672061014,
                             "isDone": false
                         },
                         "startDate": null,
@@ -319,7 +323,7 @@ const BOARDS = [
                     {
                         "id": "d104",
                         "title": "Build basic template",
-                        "createdAt":1698249461233,
+                        "createdAt": 1698249461233,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l108", "l104"],
                         "attachment": [],
@@ -330,11 +334,15 @@ const BOARDS = [
                             "isDone": false
                         },
                         "startDate": null,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
                     },
                     {
                         "id": "d105",
                         "title": "Adding npm libraries",
-                        "createdAt":1698249461234,
+                        "createdAt": 1698249461234,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l103", "l104", "l105", "l106"],
                         "attachment": [
@@ -347,7 +355,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c005f1738798047c7fd5b/attachments/651c00bd111368598b586279/download/npm.png",
+                            "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/800px-Npm-logo.svg.png",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -355,7 +363,7 @@ const BOARDS = [
                     {
                         "id": "d106",
                         "title": "Implement SAAS",
-                        "createdAt":1698249461238,
+                        "createdAt": 1698249461238,
                         "archivedAt": 1589983468418,
                         "labelIds": [],
                         "attachment": [
@@ -368,7 +376,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c01062962bafe88c816a7/attachments/651c01361d684fd84072e13e/download/231-sass-logo-sass.png",
+                            "cover": "https://i0.wp.com/techprimelab.com/wp-content/uploads/2020/06/SCSS-or-CSS.jpg?fit=1024%2C576&ssl=1",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -376,7 +384,7 @@ const BOARDS = [
                     {
                         "id": "d107",
                         "title": "Check user id - 125465",
-                        "createdAt":1698249461239,
+                        "createdAt": 1698249461239,
                         "status": "in-progress",
                         "priority": "high",
                         "description": "this user have partial details",
@@ -396,7 +404,7 @@ const BOARDS = [
                         },
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c01e29ae065f6e43d8f03/attachments/651c020196c5fb62cc35bdf3/download/219969.png",
+                            "cover": "https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-female-5-512.png",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -417,10 +425,15 @@ const BOARDS = [
                     {
                         "id": "d108",
                         "title": "Sanity test for new component",
-                        "createdAt":1698249461241,
+                        "createdAt": 1698249461241,
                         "archivedAt": 1589983468418,
                         "labelIds": ["l102", "l106"],
-                        "attachment": [],
+                        "attachment": [
+                            {
+                                "fileName": "wood.jpg",
+                                "url": "http://res.cloudinary.com/dug2dklcy/image/upload/v1698412953/wbdqdkxlzz0q0tfh4wfy.jpg"
+                            },
+                        ],
                         "memberIds": [],
                         "checklists": [],
                         "style": {
@@ -458,7 +471,7 @@ const BOARDS = [
                     {
                         "id": "c109",
                         "title": "functional testing for app header",
-                        "createdAt":1698249461242,
+                        "createdAt": 1698249461242,
                         "archivedAt": 1589983468414,
                         "style": {
                             "backgroundColor": "#fea362",
@@ -477,7 +490,7 @@ const BOARDS = [
                     {
                         "id": "c110",
                         "title": "Connecting to PWA",
-                        "createdAt":1698249461245,
+                        "createdAt": 1698249461245,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
@@ -485,7 +498,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://trello.com/1/cards/651c03270cfcb4617c6352e9/attachments/651c03746e39588ea43be583/download/benefit_of_PWA.png",
+                            "cover": "https://ionic.io/blog/wp-content/uploads/2016/05/what-is-pwa-img.png",
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -495,7 +508,7 @@ const BOARDS = [
             },
             {
                 "id": "g104",
-                "title": "QA",             
+                "title": "QA",
                 "archivedAt": 1589983468400,
                 "status": "in-progress",
                 "priority": "low",
@@ -505,7 +518,7 @@ const BOARDS = [
                     {
                         "id": "c111",
                         "title": "Meeting with head manager for planning the code progress",
-                        "createdAt":1698249461246,
+                        "createdAt": 1698249461246,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
@@ -513,11 +526,15 @@ const BOARDS = [
                         "checklists": [],
                         "dueDate": null,
                         "startDate": 1698051014,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
                     },
                     {
                         "id": "c112",
                         "title": "End day code review with all members",
-                        "createdAt":1698249461248,
+                        "createdAt": 1698249461248,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
@@ -536,7 +553,7 @@ const BOARDS = [
                     {
                         "id": "c113",
                         "title": "Checking bug",
-                        "createdAt":1698249461265,
+                        "createdAt": 1698249461265,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
@@ -544,7 +561,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2011/09/thumb_720_450_bug-on-computer-chip_shutterstock_4027501.jpg"
+                            "cover": "https://i0.wp.com/boingboing.net/wp-content/uploads/2022/08/bug.jpg?fit=1&resize=600%2C4000&ssl=1"
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -552,7 +569,7 @@ const BOARDS = [
                     {
                         "id": "c114",
                         "title": "Advices from head manager",
-                        "createdAt":1698249461267,
+                        "createdAt": 1698249461267,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
@@ -560,12 +577,102 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://www.youthemployment.org.uk/dev/wp-content/uploads/2018/07/achievement-3408115_640-600x287.jpg"
+                            "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnHCT_iiFMufTpF4bhFHwRPxQkfxQle_3_Om4ryZE5P2gwaB9-39CV3SdQ_tZCYNBWOwI&usqp=CAU"
                         },
                         "dueDate": null,
                         "startDate": null,
                     },
 
+                ],
+                "style": {}
+            },
+            {
+                "id": "g106",
+                "title": "Code review",
+                "archivedAt": 1589983468400,
+                "status": "",
+                "priority": "low",
+                "description": "",
+                "labelIds": ["l102", "l106"],
+                "tasks": [
+                    {
+                        "id": "c119",
+                        "title": "Implement homepage layout",
+                        "createdAt": 1698249461246,
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l102", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u101', 'u103'],
+                        "checklists": [],
+                        "dueDate": null,
+                        "startDate": 1698051014,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
+                    },
+                    {
+                        "id": "c120",
+                        "title": "Code refactoring for performance",
+                        "createdAt": 1698249461248,
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l103", "l104", "l105", "l106", "l107"],
+                        "attachment": [],
+                        "memberIds": ['u103'],
+                        "checklists": [],
+                        "isWatch": true,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://images.ctfassets.net/lzny33ho1g45/learn-html-css-p-img/12978ef50623cf76538cfe18e1011fc5/file.png?w=1520&fm=jpg&q=30&fit=thumb&h=760"
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": true
+                        },
+                        "startDate": null,
+                        "checklists": [
+                            {
+                                "id": "cl106",
+                                "title": "CSS primary checklist",
+                                "todos": [
+                                    {
+                                        "id": "td115",
+                                        "title": "bug in taskDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td116",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "td117",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                ]
+                            },
+                        ],
+                    },
+                    {
+                        "id": "c121",
+                        "title": "Review coding style",
+                        "createdAt": 1698249461246,
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l102", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u101', 'u103'],
+                        "checklists": [],
+                        "dueDate": {
+                            "timeStamp": 1672061014,
+                            "isDone": false
+                        },
+                        "startDate": null,
+                        "style": {
+                            "backgroundColor": "#e774bb",
+                            "cover": ""
+                        },
+                    },
                 ],
                 "style": {}
             },
@@ -581,7 +688,7 @@ const BOARDS = [
                     {
                         "id": "c115",
                         "title": "NPM tutorial",
-                        "createdAt":1698249461273,
+                        "createdAt": 1698249461273,
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
@@ -589,7 +696,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://www.syncfusion.com/blogs/wp-content/uploads/2023/04/How-You-Should-Treat-NPM-Audit-Results.png"
+                            "cover": "https://kinsta.com/wp-content/uploads/2022/06/what-is-npm.png"
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -597,7 +704,7 @@ const BOARDS = [
                     {
                         "id": "c116",
                         "title": "CSS variables",
-                        "createdAt":1698249461275,
+                        "createdAt": 1698249461275,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101", "l102"],
                         "attachment": [],
@@ -605,16 +712,24 @@ const BOARDS = [
                         "checklists": [],
                         "dueDate": null,
                         "startDate": null,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
                     },
                     {
                         "id": "c117",
                         "title": "CSS directory",
-                        "createdAt":1698249461276,
+                        "createdAt": 1698249461276,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101"],
                         "attachment": [],
                         "memberIds": ['u10'],
                         "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
                         "dueDate": {
                             "timeStamp": 1699961014,
                             "isDone": true
@@ -663,7 +778,7 @@ const BOARDS = [
                     {
                         "id": "c118",
                         "title": "Making mixins",
-                        "createdAt":1698249461279,
+                        "createdAt": 1698249461279,
                         "archivedAt": 1589983468414,
                         "labelIds": ["l104", "l106"],
                         "attachment": [
@@ -676,10 +791,61 @@ const BOARDS = [
                         "checklists": [],
                         "dueDate": null,
                         "startDate": null,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
                     },
                 ],
                 "style": {}
-            }
+            },
+            {
+                "id": "g107",
+                "title": "Testing",
+                "archivedAt": 1589983468400,
+                "status": "",
+                "priority": "low",
+                "description": "",
+                "labelIds": ["l102", "l106"],
+                "tasks": [
+                    {
+                        "id": "c122",
+                        "title": "Bug while adding task",
+                        "createdAt": 1698249461248,
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l103", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u103'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "#60c6d2",
+                            "cover": ""
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
+                        "startDate": null,
+                    },
+                    {
+                        "id": "c123",
+                        "title": "Bug while adding group",
+                        "createdAt": 1698249461246,
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l102", "l105"],
+                        "attachment": [],
+                        "memberIds": ['u101', 'u103'],
+                        "checklists": [],
+                        "dueDate": null,
+                        "startDate": 1698051014,
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": ""
+                        },
+                    },
+                ],
+                "style": {}
+            },
         ],
 
         "activities": [
@@ -1067,8 +1233,10 @@ function getEmptyTask() {
         dueDate: null,
         byMember: null,
         style: {
-            backgroundColor: ''
+            backgroundColor: '',
+            cover: ''
         },
+
         startDate: null,
         dueDate: null,
         attachment: [],
