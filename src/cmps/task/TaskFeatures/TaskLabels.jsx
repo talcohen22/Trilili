@@ -13,8 +13,8 @@ export function TaskLabels({ labelIds, labelsPaletteBoard, onIsExpandedLabels, i
             className={`task-label flex align-center ${dynClass} `}
             key={labelId}
             onClick={onToggleLabelTxt}
-            style={{ backgroundColor }}
-        >
+            style={{ backgroundColor }}>
+
             {isExpandedLabels && <p className="fs12">{titleTxt}</p>}
         </div >
     )

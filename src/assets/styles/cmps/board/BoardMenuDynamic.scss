@@ -1,4 +1,5 @@
 .board-menu-dynamic {
+    display: none;
     height: 100%;
     width: 340px;
     background-color: white;
@@ -6,12 +7,12 @@
     right: -340px;
     top: 0;
     padding: 0 12px 8px 12px;
-    transition: all 0.2s;
+    transition: right 0.2s;
 
     &.is-open {
+        display: block;
         right: 0px;
     }
-
 
     h1,
     a,

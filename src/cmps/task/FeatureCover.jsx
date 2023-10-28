@@ -18,8 +18,6 @@ export function FeatureCover() {
         "https://images.unsplash.com/photo-1695808403805-ff03eec7de03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400"
     ]
 
-
-
     async function onSetColorBackground(color) {
         try {
             await updateColorBackground(board, group, task, color)

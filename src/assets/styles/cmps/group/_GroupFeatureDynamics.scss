@@ -1,33 +1,32 @@
-.dynamic-group-feature-container{
+.dynamic-group-feature-container {
     position: absolute;
     z-index: 100;
-
     width: 304px;
     background-color: white;
-
     border-radius: 8px;
 
-    .dyn-group-cmp-header{
+    .dyn-group-cmp-header {
         font-weight: 600;
-        // padding: 15px;
         text-align: center;
     }
+
     .dynamic-feature-content {
         * {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: rem(14px);
         }
-    
+
         padding: 0 12px 12px 12px;
     }
-    
+
     .disabled {
         background: none !important;
         color: #b3b9c4 !important;
         cursor: default;
         pointer-events: none;
     }
-    .watch{
+
+    .watch {
         display: flex;
         justify-content: center;
         align-items: center;

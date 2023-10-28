@@ -7,7 +7,6 @@ export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
     const photos = [0, 50, 100, 150, 200, 250, 300, 350];
 
     async function onUpdateBgc(bgc) {
-        console.log(bgc);
         try {
             await updateBoardBgc(board, bgc)
         } catch (err) {

@@ -3,10 +3,12 @@ import { ExitBtnSvg, TickSvg } from "../svg/ImgSvg";
 import { GroupFeatureDynamic } from "./GroupFeatureDynamic";
 
 export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks, groupActionPostion, handleAddTask, saveCopiedGroup, board, onSetBoard, onMoveBoards, handleWatchGroup,openGroupActionModal }) {
+    
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
     const modalRef = useRef(null)
     const isComponentMounted = useRef(false)
+    
     useEffect(() => {
 
         const handleClickOutside = (event) => {
@@ -16,23 +18,25 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
                 }
             }
             isComponentMounted.current = true
-        };
+        }
 
-        document.addEventListener("click", handleClickOutside);
+        document.addEventListener("click", handleClickOutside)
 
         return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
+            document.removeEventListener("click", handleClickOutside)
+        }
 
     }, [isDynamicCmpOpen,handleClose])
 
     function onHandleClose() {
         handleClose()
     }
+
     function onRemoveGroup() {
         const groupId = group.id
         removeGroup(groupId)
     }
+
     function onRemoveTasks() {
         const groupId = group.id
         removeTasks(groupId)
@@ -45,24 +49,25 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
     function getDynamicCmp(cpmType) {
         setDynamicParams({ type: cpmType })
         onSetIsDynamicCmpOpen(true)
-
     }
 
     function onSetIsDynamicCmpOpen(value) {
         setIsDynamicCmpOpen(value)
-        
     }
 
-
     const { left, top } = groupActionPostion
+    
     return (
         <Fragment>
+
             <div className={!isDynamicCmpOpen ? "group-actions-modal" : 'hidden'} style={{ left: left + 'px', top: top + 'px' }} ref={modalRef}>
+                
                 <div className=" group-modal-header">
                     <div></div>
                     <h3>List actions</h3>
                     <button className="exit-icon " onClick={onHandleClose}><ExitBtnSvg /></button>
                 </div>
+
                 <div>
                     <ul className="group-action-content ">
                         <li><button className="group-action-btn" onClick={onAddCard}>Add Card...</button></li>
@@ -77,9 +82,10 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
                         <hr />
                         <li><button className="group-action-btn" onClick={onRemoveGroup}>Remove this list</button></li>
                     </ul>
-
                 </div>
+
             </div>
+
             {isDynamicCmpOpen &&
                 <GroupFeatureDynamic
                     groupActionPostion={groupActionPostion}
@@ -92,9 +98,9 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
                     saveCopiedGroup={saveCopiedGroup}
                     onSetBoard={onSetBoard}
                     onMoveBoards={onMoveBoards}
-                    openGroupActionModal={openGroupActionModal}
-                />
+                    openGroupActionModal={openGroupActionModal}/>
             }
+
         </Fragment>
     )
 }

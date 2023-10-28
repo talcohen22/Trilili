@@ -8,7 +8,6 @@
     z-index: 10;
 
     .task-details-container {
-
         position: fixed;
         top: 48px;
         left: 50%;
@@ -20,8 +19,8 @@
         z-index: 20;
         transform: translate(-50%, 0%);
         min-height: 900px;
-        
-        .cover{
+
+        .cover {
             height: 116px;
             width: 768px;
             margin: -21px -16px 21px -16px;
@@ -29,18 +28,18 @@
             border-top-right-radius: 8px;
         }
 
-        .cover.img{
+        .cover.img {
             height: 160px;
             background-size: contain;
             background-position: center center;
             background-repeat: no-repeat;
         }
 
-        .task-title p{
+        .task-title p {
             height: 23px;
         }
 
-        .task-details-content{
+        .task-details-content {
             gap: 15px;
         }
     }
@@ -58,7 +57,6 @@
     h3 {
         font-size: rem(12px);
         color: $groupMoreActions;
-        // margin: 0px rem(8px) rem(4px) 0px;
     }
 
     h2 {
@@ -71,7 +69,6 @@
         top: 21px;
         right: 17px;
         padding: 5px 8.5px 5px 8.5px;
-        // margin: 10px 17px 10px 17px;
         cursor: pointer;
 
         &:hover {
@@ -85,7 +82,6 @@
             margin-top: 3px;
             color: $wsIconColor;
         }
-
     }
 }
 
@@ -119,5 +115,4 @@
     svg {
         margin: 4px;
     }
-
 }

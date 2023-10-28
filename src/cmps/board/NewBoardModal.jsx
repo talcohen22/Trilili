@@ -7,14 +7,13 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [screenHeight, setScreenHeight] = useState(window.innerHeight)
     const [componentHeight, setComponentHeight] = useState(0);
+    const [txtInput, setTxtInput] = useState('')
+    const [chosenBgcImg, setChosenBgcImg] = useState('https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400')
+
     const wrapperRef = useRef(null)
     useClickOutsideCmp(wrapperRef)
 
     const newBoardModal = useSelector(storeState => storeState.boardModule.newBoardModal)
-
-    const [txtInput, setTxtInput] = useState('')
-
-    const [chosenBgcImg, setChosenBgcImg] = useState('https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=400')
 
     const paletteImgs = [
         'https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000',
@@ -68,12 +67,14 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
 
     return (
         <div className="new-board-modal-overlay" onClick={handleClickOutside} >
+
             <section className="new-board-modal"
                 ref={wrapperRef}
                 style={{
                     top: newBoardModal.location.top + componentHeight > screenHeight ? screenHeight - componentHeight - 20 : newBoardModal.location.top,
                     left: newBoardModal.location.left + 304 > screenWidth ? screenWidth - 315 : newBoardModal.location.left
                 }}>
+
                 <div className="preview">
                     <h1>Create board</h1>
                     <div className="chosen-bgc">
@@ -85,6 +86,7 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
                         </div>
                     </div>
                 </div>
+
                 <div className="bgc-options">
                     <h1>Background</h1>
                     <div className="img-bgc flex justify-space-b">
@@ -112,6 +114,7 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
                         ))}
                     </div>
                 </div>
+
                 <div className="board-title">
                     <h1>Board title <span>*</span></h1>
                     <form action="" onSubmit={handleSubmit}>
@@ -119,10 +122,13 @@ export function NewBoardModal({ onAddBoard, onSetIsOpenModal }) {
                     </form>
                     <p><span>👋</span>Board title is required</p>
                 </div>
+                
                 <div className="exit-btn" onClick={onSetIsOpenModal}>
                     <ExitBtnSvg />
                 </div>
+
             </section>
+
         </div>
     )
 }

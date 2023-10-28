@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+import * as React from 'react'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import { removeDate, saveDate, updateBoardGroupTaskType } from '../../store/board.actions';
-import { utilService } from '../../services/util.service';
+import { useSelector } from 'react-redux'
+import { removeDate, saveDate, updateBoardGroupTaskType } from '../../store/board.actions'
+import { utilService } from '../../services/util.service'
 
 export function FeatureDates() {
 
@@ -41,16 +41,15 @@ export function FeatureDates() {
         setIsDueDate(task.dueDate || (!task.dueDate && !task.startDate) ? true : false)
     }, [])
 
-
     function handleCheckboxChange({ target }) {
         if (target.name === "start-date") setIsStartDate(!isStartDate)
         if (target.name === "due-date") setIsDueDate(!isDueDate)
 
-        if(target.name === "start-date" && !isStartDate && isDueDate && dueDateTimestamp < startDateTimestamp){
+        if (target.name === "start-date" && !isStartDate && isDueDate && dueDateTimestamp < startDateTimestamp) {
             setStartDate(utilService.getDate(dueDateTimestamp - 86400))
             setStartDateTimestamp(dueDateTimestamp - 86400)
         }
-        if(target.name === "due-date" && !isDueDate && isStartDate && dueDateTimestamp < startDateTimestamp){
+        if (target.name === "due-date" && !isDueDate && isStartDate && dueDateTimestamp < startDateTimestamp) {
             setDueDate(utilService.getDate(startDateTimestamp + 86400))
             setDueDateTimestamp(startDateTimestamp + 86400)
         }
@@ -76,33 +75,33 @@ export function FeatureDates() {
             setDueDate(utilService.getDate(timestamp))
             setDueDateTimestamp(timestamp)
         }
-        if(isStartDate && isDueDate){
+        if (isStartDate && isDueDate) {
             setStartDate(utilService.getDate(timestamp - 86400))
             setStartDateTimestamp(timestamp - 86400)
         }
     }
 
-    async function onSaveDate(){
-        try{
-            if(!isStartDate && !isDueDate){
+    async function onSaveDate() {
+        try {
+            if (!isStartDate && !isDueDate) {
                 onRemoveDate()
             }
-            else{
-                if(isStartDate && !isDueDate) saveDate(board, group, task, startDateTimestamp, null)
-                if(!isStartDate && isDueDate) saveDate(board, group, task, null, {timeStamp: dueDateTimestamp , isDone: false})
-                if(isStartDate && isDueDate) saveDate(board, group, task, startDateTimestamp, {timeStamp: dueDateTimestamp , isDone: false})
+            else {
+                if (isStartDate && !isDueDate) saveDate(board, group, task, startDateTimestamp, null)
+                if (!isStartDate && isDueDate) saveDate(board, group, task, null, { timeStamp: dueDateTimestamp, isDone: false })
+                if (isStartDate && isDueDate) saveDate(board, group, task, startDateTimestamp, { timeStamp: dueDateTimestamp, isDone: false })
             }
             await updateBoardGroupTaskType(null, null, null, '', null)
-        }catch(err){
+        } catch (err) {
             console.log('Cannot save date', err)
         }
     }
 
-    async function onRemoveDate(){
-        try{
+    async function onRemoveDate() {
+        try {
             await removeDate(board, group, task)
             await updateBoardGroupTaskType(null, null, null, '', null)
-        }catch(err){
+        } catch (err) {
             console.log('Cannot remove date', err)
         }
     }

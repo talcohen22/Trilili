@@ -1,7 +1,7 @@
-import { AttachmentSvg, CheckListSvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg";
-import React from 'react';
-import { useParams } from "react-router";
-import { updateBoardGroupTaskType } from "../../store/board.actions";
+import { AttachmentSvg, CheckListSvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg } from "../svg/ImgSvg"
+import React from 'react'
+import { useParams } from "react-router"
+import { updateBoardGroupTaskType } from "../../store/board.actions"
 
 export function TaskDetailsFeatures() {
     const { boardId } = useParams()

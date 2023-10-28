@@ -16,10 +16,9 @@ export function ChangeColorBackground({ board, onOpenMenuCmp }) {
     ]
 
     async function onUpdateBgc(bgc) {
-        console.log(bgc);
         try {
             await updateBoardBgc(board, bgc)
-        }catch (err) {
+        } catch (err) {
             console.log('Cannot update bgc board', err)
         }
     }
@@ -41,6 +40,7 @@ export function ChangeColorBackground({ board, onOpenMenuCmp }) {
             <div className="back-btn flex align-center justify-center" onClick={() => onOpenMenuCmp('Change background')}>
                 <BackBtnSvg />
             </div>
+            
         </section>
     )
 }

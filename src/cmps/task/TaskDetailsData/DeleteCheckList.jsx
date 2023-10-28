@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { removeChecklist, updateBoardGroupTaskType } from "../../../store/board.actions";
+import { useSelector } from "react-redux"
+import { removeChecklist, updateBoardGroupTaskType } from "../../../store/board.actions"
 
 export function DeleteChecklist({ checklistIdToEdit }) {
 

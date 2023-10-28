@@ -1,11 +1,9 @@
- import { useParams } from "react-router";
-import { GroupList } from "../cmps/group/GroupList";
-import { boardService } from "../services/board.service.local";
-import { useEffect, useState } from "react";
-
+import { useParams } from "react-router"
+import { GroupList } from "../cmps/group/GroupList"
+import { boardService } from "../services/board.service.local"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import { setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu } from "../store/board.actions";
-
+import { setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu } from "../store/board.actions"
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
@@ -13,11 +11,12 @@ import { TaskQuickEdit } from "../cmps/task/TaskQuickEdit";
 import { BoardMenuDynamic } from "../cmps/board/BoardMenuDynamic";
 
 export function BoardDetails() {
+
     const { boardId } = useParams()
     const [board, setBoard] = useState(null)
     const boards = useSelector(storeState => storeState.boardModule.boards)
-    const[isQuickEditOpen,setIsQuickEditOpen]=useState(false)
-    const[quickEdit,setQuickEdit]=useState(null)
+    const [isQuickEditOpen, setIsQuickEditOpen] = useState(false)
+    const [quickEdit, setQuickEdit] = useState(null)
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
 
     function onSetChecklistIdToEdit(checklistId) {
@@ -30,9 +29,9 @@ export function BoardDetails() {
             try {
                 const boardById = await boardService.getById(boardId)
                 setBoard(boardById)
-                document.title=`${boardById.title} | Trilili`  
+                document.title = `${boardById.title} | Trilili`
             } catch (err) {
-                console.log(err) 
+                console.log(err)
             }
         }
     }, [boards])
@@ -50,7 +49,6 @@ export function BoardDetails() {
     }
 
     async function onAddTask(newTask, groupId, direction) {
-
         try {
             const updatedBoard = board
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
@@ -64,16 +62,12 @@ export function BoardDetails() {
         }
     }
 
-    function openQuickEdit(task,groupId,position) {
-        setQuickEdit({
-            task,
-            groupId,
-            position
-        })
+    function openQuickEdit(task, groupId, position) {
+        setQuickEdit({ task, groupId, position })
         setIsQuickEditOpen(true)
 
     }
-    function closeQuickEdit(){
+    function closeQuickEdit() {
         setIsQuickEditOpen(false)
     }
 
@@ -149,22 +143,24 @@ export function BoardDetails() {
         onAddNewGroup(newGroup)
     }
 
-    function onOpenMenuCmp(cmpType){
-        updateBoardMenu({isOpen: true, cmpType: cmpType})
+    function onOpenMenuCmp(cmpType) {
+        updateBoardMenu({ isOpen: true, cmpType: cmpType })
     }
 
-    function onCloseMenuCmp(){
-        updateBoardMenu({isOpen: false, cmpType: ''})
+    function onCloseMenuCmp() {
+        updateBoardMenu({ isOpen: false, cmpType: '' })
     }
 
-    
+
     if (!board) return <div></div>
+    
     return (
         <section
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
             <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} />
+            
             {board &&
                 <GroupList
                     board={board}
@@ -178,15 +174,14 @@ export function BoardDetails() {
                     saveCopiedGroup={saveCopiedGroup}
                     onMoveBoards={onMoveBoards}
                     openQuickEdit={openQuickEdit}
-                    onSetChecklistIdToEdit={onSetChecklistIdToEdit}
-                />
+                    onSetChecklistIdToEdit={onSetChecklistIdToEdit}/>
             }
 
-            <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit}/>
+            <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit} />
 
-            {isQuickEditOpen&& <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit} onSetBoard={onSetBoard}/>}
+            {isQuickEditOpen && <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit} onSetBoard={onSetBoard} />}
 
-            <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp}/>
+            <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
 
         </section>
     )

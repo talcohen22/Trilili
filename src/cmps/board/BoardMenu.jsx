@@ -1,5 +1,4 @@
-import { ExitBtnSvg, LabelsSvg } from "../svg/ImgSvg";
-
+import { LabelsSvg } from "../svg/ImgSvg";
 
 export function BoardMenu({ board, onOpenMenuCmp }) {
 

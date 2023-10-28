@@ -21,8 +21,7 @@ export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) 
             <DescriptionData
                 board={board}
                 group={group}
-                task={task}
-            />
+                task={task} />
 
             {task.attachment.length > 0 &&
                 <React.Fragment>
@@ -42,8 +41,7 @@ export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) 
                             </div>
                         )}
                     </div>
-                </React.Fragment>
-            }
+                </React.Fragment>}
 
             {task.checklists.length > 0 && task.checklists.map(checklist =>
                 <React.Fragment key={checklist.id}>
@@ -58,8 +56,7 @@ export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) 
                             checklist={checklist}
                             onSetChecklistIdToEdit={onSetChecklistIdToEdit} />
                     </div>
-                </React.Fragment>
-            )}
+                </React.Fragment>)}
 
         </section>
     )

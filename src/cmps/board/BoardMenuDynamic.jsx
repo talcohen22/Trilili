@@ -17,6 +17,7 @@ export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
                     <a target="_blank" href="https://unsplash.com/?utm_source=trello&utm_medium=referral&utm_campaign=api-credit">Unsplash</a>
                 </h1> :
                 <h1>{boardMenu.cmpType}</h1>}
+
             <hr />
 
             {boardMenu.cmpType === 'Menu' && <BoardMenu board={board} onOpenMenuCmp={onOpenMenuCmp} />}
@@ -28,6 +29,7 @@ export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
             {boardMenu.cmpType === 'Colors' && <ChangeColorBackground board={board} onOpenMenuCmp={onOpenMenuCmp} />}
 
             <div className="exit-btn flex justify-center align-center" onClick={onCloseMenuCmp}><ExitBtnSvg /></div>
+        
         </section>
     )
 }

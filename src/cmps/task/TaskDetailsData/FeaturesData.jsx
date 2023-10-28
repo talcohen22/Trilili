@@ -1,9 +1,9 @@
 import { boardService } from "../../../services/board.service.local"
-import { utilService } from "../../../services/util.service";
-import { setIsWatch, updateBoardGroupTaskType } from "../../../store/board.actions";
-import { EyeSvg, PlusBtnAddListSvg, VSvg } from "../../svg/ImgSvg";
-import { useParams } from "react-router";
-import { DatesData } from "./DatesData";
+import { utilService } from "../../../services/util.service"
+import { setIsWatch, updateBoardGroupTaskType } from "../../../store/board.actions"
+import { EyeSvg, PlusBtnAddListSvg, VSvg } from "../../svg/ImgSvg"
+import { useParams } from "react-router"
+import { DatesData } from "./DatesData"
 
 export function FeaturesData({ board, group, task }) {
 
@@ -12,8 +12,8 @@ export function FeaturesData({ board, group, task }) {
     const { taskId } = useParams()
 
     const membersImgs = boardService.getMembersTaskImgs(board, group, task)
-    let count = 1
     const labelsColors = boardService.getTaskLabelsColors(board, task)
+    let count = 1
 
     function getDynamicCmp(ev, cpmType) {
         const parentElement = ev.currentTarget;

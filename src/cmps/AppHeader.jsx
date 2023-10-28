@@ -1,29 +1,22 @@
-import { Link, NavLink } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
-// import routes from '../routes'
-// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-// import { login, logout, signup } from '../store/user.actions.js'
-// import { LoginSignup } from './LoginSignup.jsx'
-import { ArrowDown, LogoApp, NotificationsSvg, SearchSvg } from './svg/ImgSvg'
+import { Link } from 'react-router-dom'
+import { ArrowDown, LogoApp, NotificationsSvg } from './svg/ImgSvg'
 import { useState } from 'react'
 import { utilService } from '../services/util.service'
-// import stav from '../assets/img/stav-black.jpg'
 
 export function AppHeader() {
 
     const [inputValue, setInputValue] = useState('')
-    const [isWatchingNotifications,setIsWatchingNotifications] =useState(false)
     function handleInputChange(ev) {
         setInputValue(ev.target.value)
     }
 
-    function handleWatchNotifications(){}
+    function handleWatchNotifications() { }
 
     return (
         <header className="app-header" >
             <nav className='flex justify-space-b align-center'>
+                
                 <div className='btns-header-ops flex  align-center'>
-
                     <Link to="/">
                         <button className="btn-ops btn-logo flex justify-space-b ">
                             <LogoApp />
@@ -55,8 +48,7 @@ export function AppHeader() {
                         placeholder='Search'
                         onChange={handleInputChange}
                         onFocus={(ev) => ev.target.classList.add("focused")}
-                        onBlur={(ev) => ev.target.classList.remove("focused")}
-                    />
+                        onBlur={(ev) => ev.target.classList.remove("focused")}/>
 
                     {/* <SearchSvg /> */}
                     <button className="btn-user btn-notifications">

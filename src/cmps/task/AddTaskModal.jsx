@@ -3,6 +3,7 @@ import { boardService } from '../../services/board.service.local'
 import { ExitBtnSvg } from '../svg/ImgSvg'
 
 export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTask }) {
+
     const [newTaskText, setNewTaskText] = useState('')
     const [textScrollHeight, setTextScrollHeight] = useState('70px')
     const direction = isOnAddTask
@@ -14,18 +15,15 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
 
         const handleClickOutside = (event) => {
             if (textareaRef.current && !textareaRef.current.contains(event.target)) {
-                if (isComponentMounted.current) {
-                    onCloseAddTaskModal();
-                }
+                if (isComponentMounted.current) onCloseAddTaskModal()
             }
             isComponentMounted.current = true
-        };
-
+        }
         document.addEventListener("click", handleClickOutside);
 
         return () => {
             document.removeEventListener("click", handleClickOutside);
-        };
+        }
 
     }, [newTaskText, onCloseAddTaskModal])
 
@@ -45,7 +43,6 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
             taskToAdd.title = newTaskText
             if (direction) onAddTask(taskToAdd, groupId, 'END')
             else if (!direction) onAddTask(taskToAdd, groupId, 'START')
-            // onAddTask(taskToAdd, groupId)
             setNewTaskText('')
         }
     }
@@ -68,6 +65,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
     return (
         <div>
             <form className='form-add-new-task'>
+
                 <textarea
                     className='custom-textarea'
                     placeholder="Enter a title for this card…"
@@ -75,20 +73,18 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
                     value={newTaskText}
                     onChange={handleChange}
                     onKeyDown={handleKeyPress}
-                    ref={textareaRef}
-                />
-                <div className="button-container">
-                    <button onClick={onSubmit} className='btn-action modal-btn'>
-                        Add card
-                    </button>
+                    ref={textareaRef} />
 
+                <div className="button-container">
+                    <button onClick={onSubmit} className='btn-action modal-btn'>Add card</button>
                     <button onClick={handleCloseModal}>
                         <div className="center-svg">
                             <ExitBtnSvg />
                         </div>
                     </button>
                 </div>
+
             </form>
         </div>
-    );
+    )
 }

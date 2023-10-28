@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { DotsSvg, EyeSvg, GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { TaskList } from "../task/TaskList";
 import { AddTaskModal } from "../task/AddTaskModal";
-import { boardService } from "../../services/board.service.local";
 import { updateGroup } from "../../store/board.actions";
 import { GroupActionsModal } from "../group/GroupActionsModal"
 
@@ -30,26 +29,7 @@ export function GroupPreview({
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
 
- 
-    // const [inputActive, setInputActive] = useState(false);
-    // const inputRef = useRef(null);
-
-    // const handleClickOutside = (event) => {
-    //     if (inputRef.current && !inputRef.current.contains(event.target)) {
-    //       setInputActive(false);
-    //     }
-    //   };
-
-    //   useEffect(() => {
-    //     document.addEventListener('click', handleClickOutside);
-
-    //     return () => {
-    //       document.removeEventListener('click', handleClickOutside);
-    //     };
-    //   }, []);
-
     function handleInputChange({ target }) {
-
         const { value } = target
         setGroupTitle(value)
     }
@@ -59,7 +39,6 @@ export function GroupPreview({
         handleClose()
         updateGroup(board, group, 'title', groupTitle)
     }
-
 
     function handleKeyDown(ev) {
         if (ev.key === 'Enter') {
@@ -74,7 +53,6 @@ export function GroupPreview({
     }
 
     function handleUsingAction() {
-        // const index = board.groups.findIndex(idx => idx.id === group.id)
         const buttonRect = buttonRef.current.getBoundingClientRect()
         const positionX = buttonRect.x
         const positionY = buttonRect.bottom + 7
@@ -104,33 +82,34 @@ export function GroupPreview({
         setDynamicParams(cpmType)
         setIsDynamicCmpOpen(true)
     }
+
     function handleIsDynamicCmpOpen(value) {
         setIsDynamicCmpOpen(value)
     }
+
     const { isExpandedLabels } = board
     const labelsPaletteBoard = board.labels
+
     return (
         <section className='group-card'>
 
             <div className="group-header flex justify-space-b align-center " {...provided.dragHandleProps}>
+
                 <input
-                    // ref={inputRef}
-                    // onFocus={() => setInputActive(true)}
-                    // onBlur={() => setInputActive(false)}
                     className="group-title"
                     value={groupTitle}
                     onChange={handleInputChange}
                     onBlur={handleAddTask}
-                    // onFocus={(ev) => ev.target.classList.add("focused")}
-                    // onBlur={(ev) => ev.target.classList.remove("focused")}
-                    onKeyDown={handleKeyDown}
+                    onKeyDown={handleKeyDown} />
 
-                />
                 {group.isWatch && <span className="watch"><EyeSvg /></span>}
+
                 <button className="group-btn dots flex justify-center align-center" ref={buttonRef} onClick={handleUsingAction}>
                     <DotsSvg />
                 </button>
-                {isOnUsingAction && <GroupActionsModal groupActionPostion={groupActionPostion}
+
+                {isOnUsingAction && <GroupActionsModal
+                    groupActionPostion={groupActionPostion}
                     group={group}
                     handleClose={handleClose}
                     removeGroup={removeGroup}
@@ -142,17 +121,17 @@ export function GroupPreview({
                     onMoveBoards={onMoveBoards}
                     handleWatchGroup={handleWatchGroup}
                     removeTasks={removeTasks}
-                    openGroupActionModal={openGroupActionModal}
-                />}
+                    openGroupActionModal={openGroupActionModal} />}
 
             </div>
+
             {isOnGroupAddTask &&
                 <AddTaskModal
                     isOnAddTask={isOnAddTask}
                     group={group}
                     onAddTask={onAddTask}
-                    onCloseAddTaskModal={onCloseAddTaskModal}
-                />}
+                    onCloseAddTaskModal={onCloseAddTaskModal} />}
+
             <div className="group-tasks">
                 <TaskList
                     board={board}
@@ -177,15 +156,14 @@ export function GroupPreview({
                     <button className="group-btn new-template flex justify-center align-center">
                         <GenerateTemplateBtnSvg />
                     </button>
-                </div>
-            }
+                </div>}
+
             {isOnAddTask &&
                 <AddTaskModal
                     isOnAddTask={isOnAddTask}
                     group={group}
                     onAddTask={onAddTask}
-                    onCloseAddTaskModal={onCloseAddTaskModal}
-                />}
+                    onCloseAddTaskModal={onCloseAddTaskModal} />}
 
         </section>
     )

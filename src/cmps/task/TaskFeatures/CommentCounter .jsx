@@ -1,6 +1,7 @@
-import { CommentSvg } from "../../svg/ImgSvg";
+import { CommentSvg } from "../../svg/ImgSvg"
 
 export function CommentCounter({ comments }) {
+
     const commentCount = comments.length;
     if (commentCount === 0) return
 

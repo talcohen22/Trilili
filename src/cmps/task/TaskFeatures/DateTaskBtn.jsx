@@ -31,10 +31,8 @@ export function DateTaskBtn({ dueDate, startDate, onIsCheckDate, group, task }) 
     const dynClass4 = ((startDate && !dueDate) || (dueDate && !isDueDatePassed && !task.dueDate.isDone)) ? 'gray-color' : ''
 
     return (
-        <div
-            className={`btn-task-f flex align-center ${dynClass2} ${dynClass3} ${dynClass4}`}
-            onClick={handleClick}
-        >
+        <div className={`btn-task-f flex align-center ${dynClass2} ${dynClass3} ${dynClass4}`}
+            onClick={handleClick}>
             <ClockSvg />
             <p className={`fs12 ${dynClass1} ${dynClass4}`}>{dateOutput}</p>
         </div>

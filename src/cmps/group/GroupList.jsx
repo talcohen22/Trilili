@@ -1,13 +1,11 @@
 
 import { dragAndDropService } from "../../services/drag-and-drop.service.js"
-import { AddGroupBtn } from "./AddGroupBtn";
-import { GroupPreview } from "./GroupPreview";
-import { TaskDetails } from "../task/TaskDetails";
-import { useParams } from "react-router";
-import React from 'react';
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
-
+import { AddGroupBtn } from "./AddGroupBtn"
+import { GroupPreview } from "./GroupPreview"
+import { TaskDetails } from "../task/TaskDetails"
+import { useParams } from "react-router"
+import React from 'react'
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 export function GroupList({
     board,
@@ -24,6 +22,7 @@ export function GroupList({
     openQuickEdit,
     onSetChecklistIdToEdit
 }) {
+
     const { groups } = board
     const { taskId } = useParams()
 
@@ -86,6 +85,6 @@ export function GroupList({
             </section>
             {taskId && <TaskDetails board={board} onSetChecklistIdToEdit={onSetChecklistIdToEdit} />}
         </React.Fragment>
-    );
+    )
 }
 
