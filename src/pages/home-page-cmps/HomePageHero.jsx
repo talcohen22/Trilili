@@ -6,8 +6,8 @@ export function HomePageHero() {
       <div className="homepage-hero-txt">
         <h1 className="homepage-hero-header"> Trilili brings all your tasks, teammates, and tools together</h1>
         <p className="homepage-hero-p">Keep everything in the same place-even if your team isn’t.</p>
-        <Link to={'/workspace'} > <button className="btn-action">
-          Take control
+        <Link to={'/workspace'} > <button className="btn-call-to-action">
+          Start now!
         </button>
         </Link>
       </div>

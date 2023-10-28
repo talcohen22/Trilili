@@ -85,7 +85,7 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
             <div className="quickedit-modal" ref={modalRef}>
                 <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
                     <textarea ref={inputRef}
-                        className='custom-textarea'
+                        className='custom-textarea quick-edit-textarea'
                         name="text"
                         value={title}
                         onChange={handleChange}

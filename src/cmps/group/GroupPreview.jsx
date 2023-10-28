@@ -84,9 +84,11 @@ export function GroupPreview({
         setDynamicParams(cpmType)
         setIsDynamicCmpOpen(true)
     }
+
     function handleIsDynamicCmpOpen(value) {
         setIsDynamicCmpOpen(value)
     }
+    
     const { isExpandedLabels } = board
     const labelsPaletteBoard = board.labels
     return (
@@ -125,14 +127,14 @@ export function GroupPreview({
                 />}
 
             </div>
-            {isOnGroupAddTask &&
+            {/* {isOnGroupAddTask &&
                 <AddTaskModal
                     updateGroup={updateGroup}
                     isOnAddTask={isOnAddTask}
                     group={group}
                     onAddTask={onAddTask}
                     onCloseAddTaskModal={onCloseAddTaskModal}
-                />}
+                />} */}
             <div className="group-tasks">
                 <TaskList
                     board={board}
@@ -144,6 +146,7 @@ export function GroupPreview({
                     isExpandedLabels={isExpandedLabels}
                     openQuickEdit={openQuickEdit}
                     isOnAddTask={isOnAddTask}
+                    isOnGroupAddTask={isOnGroupAddTask}
                     onCloseAddTaskModal={onCloseAddTaskModal}
                     onAddTask={onAddTask}
                     handleClose={handleClose}

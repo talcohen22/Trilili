@@ -32,7 +32,7 @@
     align-items: center;
 
     .board-filter-btn.filter {
-      button {
+       button {
         padding: 6px !important;
       }
       svg{
@@ -58,7 +58,7 @@
 
     /* Styles for .header-title */
     .header-title {
-      padding-inline-start: 12px;
+      // padding-inline-start: 12px;
       line-height: rem(32px);
       font-size: rem(18px);
 
@@ -130,8 +130,8 @@
       font-size: rem(14px);
       border-radius: rem(3px);
       min-width: rem(32px);
-      padding: 6px;
       margin-inline: 2px;
+      &:not(.share-btn){padding: rem(6px);}
 
       &:hover {
         cursor: pointer;
@@ -153,9 +153,11 @@
     .board-filter {
       display: flex;
       justify-content: center;
+      align-items: center;
       padding: rem(6px) 0 rem(6px) 0;
       
       .share-btn{
+        padding: rem(6px) rem(12px) rem(6px) rem(8px);
         span{
           margin: 0 0 0 4px;
 
@@ -186,11 +188,16 @@
         border-radius: 50%;
         left: rem(40px);
       }
+
+     
     }
 
     > * {
       font-weight: 700;
       color: white;
+    }
+    .members{
+      margin: 0 rem(2px) 0 0;
     }
   }
 }

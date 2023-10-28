@@ -15,6 +15,7 @@ export function TaskList({
     onIsExpandedLabels,
     openQuickEdit,
     isOnAddTask,
+    isOnGroupAddTask,
     onCloseAddTaskModal,
     onAddTask,
     handleClose,
@@ -22,12 +23,22 @@ export function TaskList({
     groupTitle }) {
     const { tasks } = group
 
-  
+
     return (
         <section className="task-list-container">
             <Droppable droppableId={group.id} type='task'>
                 {(provided) => (
                     <ul className="task-list flex column" {...provided.droppableProps} ref={provided.innerRef} style={{ 'overflow:': 'hidden' }}>
+                       
+                        {isOnGroupAddTask &&
+                            <AddTaskModal
+                                updateGroup={updateGroup}
+                                isOnAddTask={isOnAddTask}
+                                group={group}
+                                onAddTask={onAddTask}
+                                onCloseAddTaskModal={onCloseAddTaskModal}
+                            />}
+
                         {tasks.map((task, index) => (
                             <Draggable key={task.id} draggableId={task.id} index={index}>
                                 {(provided) => (
@@ -52,7 +63,7 @@ export function TaskList({
                             </Draggable>
                         ))}
                         {provided.placeholder}
-                        
+
                         {isOnAddTask &&
                             <AddTaskModal
                                 isOnAddTask={isOnAddTask}

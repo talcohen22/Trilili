@@ -31,19 +31,20 @@ export function AppHeader() {
                         </button>
                     </Link>
 
+                    <Link to="/workspace">
                     <button className="btn-ops btn-workspaces">
                         Workspaces
-                        <ArrowDown />
+                        {/* <ArrowDown /> */}
                     </button>
-
+                     </Link>   
                     <button className="btn-ops btn-recent ">
                         Recent
-                        <ArrowDown />
+                        {/* <ArrowDown /> */}
                     </button>
 
                     <button className="btn-ops btn-more">
                         More
-                        <ArrowDown />
+                        {/* <ArrowDown /> */}
                     </button>
                 </div>
 

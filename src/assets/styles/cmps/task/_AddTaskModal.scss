@@ -9,4 +9,8 @@
     padding: 8px 10px;
     outline: none;
     overflow-y: hidden;
+    &.quick-edit-textarea{
+        width:16rem;
+        margin: rem(8px) rem(4px) 0 rem(4px);
+    }
 }
