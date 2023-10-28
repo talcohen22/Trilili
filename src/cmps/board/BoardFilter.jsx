@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg, WorkspaceSvg } from "../svg/ImgSvg"
 import { boardService } from "../../services/board.service.local";
 
-export function BoardFilter({ board, onSetBoard }) {
+export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
     const boardTitleLength = board.title.length
     const [inputWidth, SetInputWidth] = useState(boardTitleLength * 9.5)
     const [boardTitle, setBoardTitle] = useState(board.title)
@@ -47,7 +47,7 @@ export function BoardFilter({ board, onSetBoard }) {
                             <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" />
                         </div>
                         <button className="board-filter-btn share-btn full-btn"><ShareSvg /><span>Share</span></button>
-                        <button className="board-filter-btn dots"><DotsSvg /></button>
+                        <button className="board-filter-btn dots" onClick={() => onOpenMenuCmp('Menu')}><DotsSvg /></button>
                     </section>
                 </section>
             </header>

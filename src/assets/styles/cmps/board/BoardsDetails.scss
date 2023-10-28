@@ -2,4 +2,5 @@
     height: calc(100vh - 48px);
     @include fixed-img-url;
     overflow-x: auto;
+    position: relative;
 }

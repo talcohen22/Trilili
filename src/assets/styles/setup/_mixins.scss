@@ -213,6 +213,22 @@
   }
 }
 
+@mixin board-menu-back-btn {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+  padding: 0px;
+  top: -57px;
+  left: 0px;
+  margin-top: 2px;
+
+  &:hover {
+    background-color: $taskItemsBgc;
+  }
+}
+
 @mixin groupFeatureBtn {
   background-color: #091e4224;
   border-radius: 8px;

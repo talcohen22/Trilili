@@ -1,0 +1,26 @@
+.change-photo-background{
+    
+
+    .photos-bgc{
+        flex-wrap: wrap;
+        gap: 8px;
+
+        img{
+            @include fixed-img-url;
+            height: 96px;
+            width: 148px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        img:hover{
+            opacity: 0.8;
+        }
+    }
+
+    .back-btn{
+        @include board-menu-back-btn;
+        top: 11px;
+        left: 12px;
+    }
+}
