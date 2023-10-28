@@ -62,7 +62,10 @@ export function GroupPreview({
 
 
     function handleKeyDown(ev) {
-        if (ev.key === 'Enter') handleAddTask(ev)
+        if (ev.key === 'Enter') {
+            ev.target.blur()
+            handleAddTask(ev)
+        }
     }
 
     function onCloseAddTaskModal() {
@@ -117,6 +120,7 @@ export function GroupPreview({
                     className="group-title"
                     value={groupTitle}
                     onChange={handleInputChange}
+                    onBlur={handleAddTask}
                     // onFocus={(ev) => ev.target.classList.add("focused")}
                     // onBlur={(ev) => ev.target.classList.remove("focused")}
                     onKeyDown={handleKeyDown}
