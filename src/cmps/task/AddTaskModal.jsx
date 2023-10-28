@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { boardService } from '../../services/board.service.local'
 import { ExitBtnSvg } from '../svg/ImgSvg'
+import { utilService } from '../../services/util.service'
 
 export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTask }) {
     const [newTaskText, setNewTaskText] = useState('')
@@ -10,6 +11,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
     const isComponentMounted = useRef(false)
 
     useEffect(() => {
+        utilService.handleTextInputFocus(textareaRef)
         adjustTextareaRows()
 
         const handleClickOutside = (event) => {

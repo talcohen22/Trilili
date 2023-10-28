@@ -30,23 +30,6 @@ export function GroupPreview({
     const [isDynamicCmpOpen, setIsDynamicCmpOpen] = useState(false)
     const [dynamicParams, setDynamicParams] = useState({})
 
- 
-    // const [inputActive, setInputActive] = useState(false);
-    // const inputRef = useRef(null);
-
-    // const handleClickOutside = (event) => {
-    //     if (inputRef.current && !inputRef.current.contains(event.target)) {
-    //       setInputActive(false);
-    //     }
-    //   };
-
-    //   useEffect(() => {
-    //     document.addEventListener('click', handleClickOutside);
-
-    //     return () => {
-    //       document.removeEventListener('click', handleClickOutside);
-    //     };
-    //   }, []);
 
     function handleInputChange({ target }) {
 
@@ -144,6 +127,7 @@ export function GroupPreview({
             </div>
             {isOnGroupAddTask &&
                 <AddTaskModal
+                    updateGroup={updateGroup}
                     isOnAddTask={isOnAddTask}
                     group={group}
                     onAddTask={onAddTask}
@@ -158,7 +142,14 @@ export function GroupPreview({
                     onIsCheckDate={onIsCheckDate}
                     onIsExpandedLabels={onIsExpandedLabels}
                     isExpandedLabels={isExpandedLabels}
-                    openQuickEdit={openQuickEdit} />
+                    openQuickEdit={openQuickEdit}
+                    isOnAddTask={isOnAddTask}
+                    onCloseAddTaskModal={onCloseAddTaskModal}
+                    onAddTask={onAddTask}
+                    handleClose={handleClose}
+                    updateGroup={updateGroup}
+                    groupTitle={groupTitle}
+                     />
             </div>
 
             {!isOnAddTask &&
@@ -175,13 +166,13 @@ export function GroupPreview({
                     </button>
                 </div>
             }
-            {isOnAddTask &&
+            {/* {isOnAddTask &&
                 <AddTaskModal
                     isOnAddTask={isOnAddTask}
                     group={group}
                     onAddTask={onAddTask}
                     onCloseAddTaskModal={onCloseAddTaskModal}
-                />}
+                />} */}
 
         </section>
     )

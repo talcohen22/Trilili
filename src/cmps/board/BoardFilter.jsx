@@ -12,7 +12,7 @@ export function BoardFilter({ board, onSetBoard }) {
         const updateBoard = board
         updateBoard.title = value
         onSetBoard(updateBoard)
-        SetInputWidth(`${value.length * 10}px`)
+        SetInputWidth(`${value.length * 8}px`)
         setBoardTitle(value)
     }
     function handleIsStarred() {

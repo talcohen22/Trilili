@@ -31,12 +31,12 @@ export function GroupList({
         const updateBoard = dragAndDropService.handleDragEnd(result, board)
         onSetBoard(updateBoard)
     }
-
+   
     return (
 
         <React.Fragment>
             <section className='groups-list-container'>
-                <DragDropContext onDragEnd={onHandleDragEnd}>
+                <DragDropContext onDragStart={(ev)=>console.log(ev.target)} onDragEnd={onHandleDragEnd}>
                     <Droppable
                         droppableId='board'
                         direction='horizontal'

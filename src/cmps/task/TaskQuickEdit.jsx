@@ -12,54 +12,53 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     const boardId = board._id
 
     const navigate = useNavigate()
-    const modalRef= useRef(null)
-    const inputRef= useRef(null)
-    
+    const modalRef = useRef(null)
+    const inputRef = useRef(null)
+
     useEffect(() => {
         handleBlur()
-        function handleClickOutside(event){
-            console.log(event.target.id);
-            if (modalRef.current && !modalRef.current.contains(event.target ) 
-                && !event.relatedTarget instanceof HTMLDivElement 
+        function handleClickOutside(event) {
+            if (modalRef.current && !modalRef.current.contains(event.target)
+                && !event.relatedTarget instanceof HTMLDivElement
                 && !Array.from(event.relatedTarget.classList).includes('dynamic-feature-container')
-               ) {
-                    handleCloseQuickEdit();
+            ) {
+                handleCloseQuickEdit();
             }
         }
 
 
-document.addEventListener("click", handleClickOutside);
+        document.addEventListener("click", handleClickOutside);
 
-return () => {
-    document.removeEventListener("click", handleClickOutside);
-};
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
 
     }, [handleCloseQuickEdit])
 
-function onGetTaskDetails(ev) {
-    navigate(`/board/${boardId}/${groupId}/${task.id}`)
-    handleCloseQuickEdit()
-}
+    function onGetTaskDetails(ev) {
+        navigate(`/board/${boardId}/${groupId}/${task.id}`)
+        handleCloseQuickEdit()
+    }
 
-function handleCloseQuickEdit() {
-    closeQuickEdit()
-}
-    function handleBlur(){
+    function handleCloseQuickEdit() {
+        closeQuickEdit()
+    }
+    function handleBlur() {
         if (inputRef.current && inputRef.current.value) {
-          inputRef.current.focus();
+            inputRef.current.focus();
         }
-      }
+    }
 
     function onUpdateTask(ev) {
         ev.preventDefault()
-        if(!title ||!title.trim()){
+        if (!title || !title.trim()) {
             handleBlur()
             return
-        } 
+        }
         const groupIdx = boardService.getGroupIdx(board, groupId)
         const group = board.groups[groupIdx]
-        const taskIdx = boardService.getTaskIdx(group,task.id)
-        board.groups[groupIdx].tasks[taskIdx].title=title
+        const taskIdx = boardService.getTaskIdx(group, task.id)
+        board.groups[groupIdx].tasks[taskIdx].title = title
         onSetBoard(board)
         handleCloseQuickEdit()
     }
@@ -67,25 +66,25 @@ function handleCloseQuickEdit() {
         ev.preventDefault()
         const groupIdx = boardService.getGroupIdx(board, groupId)
         const group = board.groups[groupIdx]
-        const taskIdx = boardService.getTaskIdx(group,task.id)
-        board.groups[groupIdx].tasks.splice(taskIdx,1)
+        const taskIdx = boardService.getTaskIdx(group, task.id)
+        board.groups[groupIdx].tasks.splice(taskIdx, 1)
         onSetBoard(board)
         handleCloseQuickEdit()
     }
-       
-function handleChange({ target }) {
-    setTitle(target.value)
-}
 
-function getDynamicCmp(ev, cpmType) {
-    const parentElement = ev.currentTarget;
-    const data = parentElement.getBoundingClientRect()
-    const location = { top: data.top, left: data.left }
-    updateBoardGroupTaskType(board._id, groupId, task.id, cpmType, location)
-}
+    function handleChange({ target }) {
+        setTitle(target.value)
+    }
 
-return (
-    <div className="overlay" id="overlay">
+    function getDynamicCmp(ev, cpmType) {
+        const parentElement = ev.currentTarget;
+        const data = parentElement.getBoundingClientRect()
+        const location = { top: data.top, left: data.left }
+        updateBoardGroupTaskType(board._id, groupId, task.id, cpmType, location)
+    }
+
+    return (
+        <section className="overlay" id="overlay">
             <div className="quickedit-modal" ref={modalRef}>
                 <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
                     <textarea ref={inputRef}
@@ -100,45 +99,45 @@ return (
                         </button>
                     </div>
 
-            </form>
-            <div style={{ position: 'absolute', top: position.top - 8, left: position.left + 10, }}>
-                <section className="task-quickedit-features">
-                    <div onClick={onGetTaskDetails}>
-                        <CardIconSvg />
-                        <p>Open card</p>
-                    </div>
-                    <div onClick={((ev) => getDynamicCmp(ev, 'Labels'))}>
-                        <LabelsSvg />
-                        <p>Edit labels</p>
-                    </div>
-                    <div onClick={((ev) => getDynamicCmp(ev, 'Members'))}>
-                        <MembersSvg />
-                        <p>Change members</p>
-                    </div>
-                    <div onClick={((ev) => getDynamicCmp(ev, 'Cover'))}>
-                        <CoverSvg />
-                        <p>Change cover</p>
-                    </div>
-                    <div onClick={((ev) => getDynamicCmp(ev, 'Move'))}>
-                        <MoveSvg />
-                        <p>Move</p>
-                    </div>
-                    <div onClick={((ev) => getDynamicCmp(ev, 'Copy'))}>
-                        <CopySvg />
-                        <p>Copy</p>
-                    </div>
+                </form>
+                <div style={{ position: 'absolute', top: position.top - 8, left: position.left + 10, }}>
+                    <section className="task-quickedit-features">
+                        <div onClick={onGetTaskDetails}>
+                            <CardIconSvg />
+                            <p>Open card</p>
+                        </div>
+                        <div onClick={((ev) => getDynamicCmp(ev, 'Labels'))}>
+                            <LabelsSvg />
+                            <p>Edit labels</p>
+                        </div>
+                        <div onClick={((ev) => getDynamicCmp(ev, 'Members'))}>
+                            <MembersSvg />
+                            <p>Change members</p>
+                        </div>
+                        <div onClick={((ev) => getDynamicCmp(ev, 'Cover'))}>
+                            <CoverSvg />
+                            <p>Change cover</p>
+                        </div>
+                        <div onClick={((ev) => getDynamicCmp(ev, 'Move'))}>
+                            <MoveSvg />
+                            <p>Move</p>
+                        </div>
+                        <div onClick={((ev) => getDynamicCmp(ev, 'Copy'))}>
+                            <CopySvg />
+                            <p>Copy</p>
+                        </div>
 
-                    <div onClick={((ev) => getDynamicCmp(ev, 'Dates'))}>
-                        <DatesSvg />
-                        <p>Edit dates</p>
-                    </div>
-                    <div onClick={onRemoveTask}>
-                        <ArchiveSvg />
-                        <p>Remove</p>
-                    </div>
-                </section>
+                        <div onClick={((ev) => getDynamicCmp(ev, 'Dates'))}>
+                            <DatesSvg />
+                            <p>Edit dates</p>
+                        </div>
+                        <div onClick={onRemoveTask}>
+                            <ArchiveSvg />
+                            <p>Remove</p>
+                        </div>
+                    </section>
+                </div>
             </div>
-        </div>
-    </div>
-)
+        </section>
+    )
 }

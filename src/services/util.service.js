@@ -8,7 +8,8 @@ export const utilService = {
     loadFromStorage,
     getAssetSrc,
     getDate,
-    getTime
+    getTime,
+    handleTextInputFocus
 }
 
 function makeId(length = 6) {
@@ -89,4 +90,10 @@ function getTime(timestamp) {
     const formattedHours = hours % 12 || 12;
     const formattedTime = `${formattedHours}:${minutes < 10 ? '0' : ''}${minutes} ${amPm}`;
     return formattedTime
+}
+
+function handleTextInputFocus(Ref){
+    if (Ref.current) {
+        Ref.current.scrollIntoView({ behavior: 'smooth' })
+      }
 }

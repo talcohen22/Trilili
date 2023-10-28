@@ -1,8 +1,10 @@
 import { TaskPreview } from "./TaskPreview"
 
-import { Component } from 'react'
+import { useState } from 'react'
 import { ReactDOM } from "react"
 import { Droppable, Draggable } from "react-beautiful-dnd"
+import { GenerateTemplateBtnSvg, PlusBtnAddListSvg } from "../svg/ImgSvg"
+import { AddTaskModal } from "./AddTaskModal"
 export function TaskList({
     board,
     group,
@@ -11,8 +13,16 @@ export function TaskList({
     onIsCheckDate,
     isExpandedLabels,
     onIsExpandedLabels,
-    openQuickEdit }) {
+    openQuickEdit,
+    isOnAddTask,
+    onCloseAddTaskModal,
+    onAddTask,
+    handleClose,
+    updateGroup,
+    groupTitle }) {
     const { tasks } = group
+
+  
     return (
         <section className="task-list-container">
             <Droppable droppableId={group.id} type='task'>
@@ -42,6 +52,14 @@ export function TaskList({
                             </Draggable>
                         ))}
                         {provided.placeholder}
+                        
+                        {isOnAddTask &&
+                            <AddTaskModal
+                                isOnAddTask={isOnAddTask}
+                                group={group}
+                                onAddTask={onAddTask}
+                                onCloseAddTaskModal={onCloseAddTaskModal}
+                            />}
                     </ul>
                 )}
             </Droppable>

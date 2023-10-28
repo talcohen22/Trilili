@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { AddGroupList } from "./AddGroupList";
 import { boardService } from "../../services/board.service.local";
@@ -7,7 +7,7 @@ import { utilService } from "../../services/util.service";
 export function AddGroupBtn({ onAddNewGroup }) {
     const [addListToggle, setAddListToggle] = useState(false)
     const [groupTitle, setGroupTitle] = useState("")
-
+ 
     function onOpenFormTitle() {
         setAddListToggle(true)
     }

@@ -1,8 +1,11 @@
 .group-card {
+    max-height: 100%;
+    overflow: hidden;
+    display: flex;
+
     width: 272px;
     background-color: $groupBgc;
     border-radius: 12px;
-    display: flex;
     flex-direction: column;
     box-shadow: $boxShadowGroup, $boxShadowGroup;
     padding: 4px;

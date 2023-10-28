@@ -1,5 +1,8 @@
 .board-details{
-    height: calc(100vh - 48px);
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
     @include fixed-img-url;
     overflow-x: auto;
 }

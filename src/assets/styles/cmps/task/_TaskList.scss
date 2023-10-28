@@ -3,8 +3,8 @@
 }
 
 .group-tasks{
-  max-height: 73vh;
   overflow-y: auto;
+  flex:1;
 
     .task-list{
       gap: 7px;
