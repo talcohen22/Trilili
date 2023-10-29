@@ -1,6 +1,9 @@
 import React from 'react'
 import { HomePageHero } from './home-page-cmps/HomePageHero.jsx'
 import { HomePageProductivity } from './home-page-cmps/HomePageProductivity.jsx'
+import { HomePageCards } from './home-page-cmps/HompageCards.jsx'
+import { HomePageSignUp } from './home-page-cmps/HomPageSignUp.jsx'
+import { HomePageFooter } from './home-page-cmps/HomePageFooter.jsx'
 
 export function HomePage() {
 
@@ -16,6 +19,15 @@ export function HomePage() {
             
             <section className="homepage-productivity">
                 <HomePageProductivity/>
+                <HomePageCards/>
+            </section>
+
+            <section className='homepage-signup'>
+                <HomePageSignUp/>
+            </section>
+
+            <section className=''>
+                <HomePageFooter />
             </section>
 
         </section>

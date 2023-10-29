@@ -1,9 +1,66 @@
 .productivity-slider-container {
+    margin: 36px 0 0 0 ;
     margin-left: auto;
     margin-right: auto;
     padding: 0px 1rem 0px 1rem;
     width: 100%;
     display: flex;
+
+    .slider-layout{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .cards {      
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+
+       
+        
+        h4 {
+            text-align: left;
+        }
+        .card {
+            padding: 1rem 1rem 1rem 1.5rem;
+            width: 347px;
+            position: relative;
+            text-align: start;
+            line-height: 1.5;
+        }
+
+        .card.active {
+            background-color: rgb(255, 255, 255);
+            box-shadow: $productivityText;
+            border-radius: .3rem;
+            border: 0;
+            padding: 1rem 1rem 1rem 1.5rem;
+            color: rgb(9, 30, 66);
+            position: relative;
+            box-shadow: rgba(9, 30, 66, 0.15) 0px 0.5rem 1rem 0px;
+        }
+        
+        .card.active::after {
+            background-color: $ActiveCard;
+            border-radius: 0.3rem 0px 0px 0.3rem;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            position: absolute;
+            top: 0px;
+            width: 0.5rem;
+        }
+        
+    }
+
+    .images-slider {
+        width: 50%;
+        img {
+            margin-left: 35px;
+            
+        }
+    }
 
     .productivity-card {
         color: $txtClr;

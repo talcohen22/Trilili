@@ -12,17 +12,19 @@
 
     .group-header,
     .group-footer {
-        height: 48px;
+        min-height: rem(48px);  
+        padding:rem(6px);    
     }
 
     .group-header {
-        padding-inline-start: 12px;
-        padding: 0 4px 4px 4px;
+        // padding-inline-start: 12px;
+        // padding: 0 4px 4px 4px;
     }
 
     .group-footer {
         padding-inline-start: 4px;
-        padding: 4px 4px 0 4px;
+        // padding: 4px 4px 0 4px;
+
     }
 
     .group-header {
@@ -51,7 +53,9 @@
     }
 
     .group-btn {
-        width: 32px;
+        padding: rem(8px);
+        // height: 32px;
+        // width: 32px;
         font-size: rem(14px);
         font-weight: 500;
 

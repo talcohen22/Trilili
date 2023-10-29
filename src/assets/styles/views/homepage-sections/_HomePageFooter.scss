@@ -1,0 +1,104 @@
+.homepage-footer {
+    * {
+        font-family: 'roboto', sans-serif;
+        color: #ffffff;
+        font-weight: 400;
+    }
+
+    display: flex;
+    flex-direction: column;
+    background-color:$FoogterBgClr;
+
+    p {
+        font-size: rem(12px);
+    }
+
+    span {
+        font-size: 16px;
+    }
+
+    .upper-section {
+        display: flex;
+
+        .footer-logo {
+            padding: rem(16px) rem(16px) 0;
+            align-items: baseline;
+            line-height: 3;
+
+            .inner-logo {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: rem(16px) (16px) 0 0;
+            }
+            .footer-login-btn{
+                text-align: start;
+            }
+
+            img {
+                width: rem(120px);
+            }
+        }
+
+        .footer-info {
+            padding: rem(16px);
+
+            ul {
+                display: flex;
+
+            }
+
+            li {
+                line-height: 2;
+                padding: rem(16px);
+
+            }
+        }
+    }
+    .footer-seperator{
+        border-top: 1px solid rgb(80, 95, 121);
+        width: 98%;
+    }
+    .lower-section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div{
+            padding: rem(16px);
+        }
+
+        .language{
+            display: flex;
+            gap:10px ;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links{
+            justify-content: end;
+            display: flex;
+            gap: 10px;
+        }
+        svg{
+            width: rem(12px);
+            fill:#ffffff;
+        }
+        .social-btn{
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            border: 2px solid rgb(255, 255, 255);
+            display: flex;
+            height: rem(28px);
+            width: rem(28px);
+        }
+        a{
+            font-size: rem(12px);
+        }
+        .policies{
+            display: flex;
+            gap: rem(24px);
+        }
+    }
+}

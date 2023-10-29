@@ -141,6 +141,7 @@ export function GroupPreview({
                     updateGroup={updateGroup}
                     groupTitle={groupTitle} />
             </div>
+
             {!isOnAddTask &&
                 <div className={(!isOnGroupAddTask) ? "group-footer flex justify-center align-center" : 'hidden'}>
                     <button
