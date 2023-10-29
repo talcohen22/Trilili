@@ -1,17 +1,16 @@
 .board-menu-dynamic {
-    display: none;
     height: 100%;
     width: 340px;
     background-color: white;
-    position: absolute;
-    right: -340px;
-    top: 0;
     padding: 0 12px 8px 12px;
-    transition: right 0.2s;
+    transform: translateX(100%);
+    transition: transform 0.2s;
+    right: 0;
+    top: 0;
+    position: absolute;
 
     &.is-open {
-        display: block;
-        right: 0px;
+        transform: translateX(0);
     }
 
     h1,
@@ -37,8 +36,10 @@
     }
 
     hr {
-        border-color: $exitBtnHover;
         margin-bottom: 12px;
+        background-color: $exitBtnHover;
+        border: 0;
+        height: 1px;
     }
 
     .exit-btn {

@@ -3,6 +3,7 @@
     gap: 8px;
 
     div {
+        @include fixed-img-url;
         cursor: pointer;
 
         img {

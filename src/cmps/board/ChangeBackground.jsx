@@ -6,17 +6,17 @@ export function ChangeBackground({ onOpenMenuCmp }) {
     return (
         <section className="change-background flex justify-center">
 
-            <div onClick={() => onOpenMenuCmp('Photos by Unsplash')}>
+            <div onClick={(ev) => onOpenMenuCmp(ev, 'Photos by Unsplash')}>
                 <img src={utilService.getAssetSrc('photos.jpg')} alt="user" />
                 <p>Photos</p>
             </div>
 
-            <div onClick={() => onOpenMenuCmp('Colors')}>
+            <div onClick={(ev) => onOpenMenuCmp(ev, 'Colors')}>
                 <img src={utilService.getAssetSrc('colors.jpg')} alt="user" />
                 <p>Colors</p>
             </div >
 
-            <div className="back-btn flex align-center justify-center" onClick={() => onOpenMenuCmp('Menu')}>
+            <div className="back-btn flex align-center justify-center" onClick={(ev) => onOpenMenuCmp(ev, 'Menu')}>
                 <BackBtnSvg />
             </div>
 

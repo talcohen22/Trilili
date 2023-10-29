@@ -14,7 +14,20 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     const modalRef = useRef(null)
     const inputRef = useRef(null)
 
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+    const [componentHeight, setComponentHeight] = useState(0);
+
     useEffect(() => {
+
+        if (modalRef.current) {
+            let height = modalRef.current.clientHeight;
+            setComponentHeight(height);
+        }
+
+        const textLength = inputRef.current.value.length
+        inputRef.current.setSelectionRange(textLength, textLength)
+
         handleBlur()
         function handleClickOutside(event) {
             if (modalRef.current && !modalRef.current.contains(event.target) &&
@@ -80,16 +93,33 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
         updateBoardGroupTaskType(board._id, groupId, task.id, cpmType, location)
     }
 
+    function handleKeyDown(ev) {
+        if (ev.key === 'Enter') {
+            ev.target.blur()
+            onUpdateTask(ev)
+        }
+    }
+
+
     return (
         <div className="overlay quick-edit-overlay" id="overlay">
-            <div className="quickedit-modal" ref={modalRef}>
+            <div className="quickedit-modal flex"
+                ref={modalRef}
+                style={{
+                    position: 'absolute',
+                    top: position.top + componentHeight > screenHeight ? screenHeight - componentHeight - 10 : position.top - 8,
+                    left: position.left + 422 - 258 > screenWidth ? position.left - 258 - 158 : position.left - 258,
+                    flexDirection: position.left + 422 - 258 > screenWidth ? 'row-reverse' : ''
+                }}>
 
-                <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
+                <form className='form-add-new-task'
+                    onSubmit={onUpdateTask}>
                     <textarea ref={inputRef}
                         className='custom-textarea quick-edit-textarea'
                         name="text"
                         value={title}
-                        onChange={handleChange} />
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDown} />
                     <div className="button-container">
                         <button className='btn-action modal-btn'>
                             Save
@@ -97,8 +127,9 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                     </div>
                 </form>
 
-                <div style={{ position: 'absolute', top: position.top - 8, left: position.left + 10, }}>
-                    <section className="task-quickedit-features">
+                <div>
+                    <section className="task-quickedit-features flex"
+                        style={{ alignItems: position.left + 422 - 258 > screenWidth ? 'end' : 'start' }}>
                         <div onClick={onGetTaskDetails}>
                             <CardIconSvg />
                             <p>Open card</p>
@@ -134,7 +165,7 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                         </div>
                     </section>
                 </div>
-                
+
             </div>
         </div>
     )

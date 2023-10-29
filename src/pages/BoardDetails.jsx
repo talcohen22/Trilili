@@ -19,6 +19,8 @@ export function BoardDetails() {
     const [quickEdit, setQuickEdit] = useState(null)
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
 
+    const boardMenu = useSelector(storeState => storeState.boardModule.boardMenu);
+
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)
     }
@@ -143,24 +145,25 @@ export function BoardDetails() {
         onAddNewGroup(newGroup)
     }
 
-    function onOpenMenuCmp(cmpType) {
-        updateBoardMenu({ isOpen: true, cmpType: cmpType })
+    function onOpenMenuCmp(ev, cmpType) {
+        if (cmpType) updateBoardMenu({ isOpen: true, cmpType: cmpType })
+        else updateBoardMenu({ isOpen: true, cmpType: boardMenu.cmpType })
     }
 
     function onCloseMenuCmp() {
-        updateBoardMenu({ isOpen: false, cmpType: '' })
+        updateBoardMenu({ isOpen: false, cmpType: boardMenu.cmpType })
     }
 
 
     if (!board) return <div></div>
-    
+
     return (
         <section
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
             <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} />
-            
+
             {board &&
                 <GroupList
                     board={board}
@@ -174,7 +177,7 @@ export function BoardDetails() {
                     saveCopiedGroup={saveCopiedGroup}
                     onMoveBoards={onMoveBoards}
                     openQuickEdit={openQuickEdit}
-                    onSetChecklistIdToEdit={onSetChecklistIdToEdit}/>
+                    onSetChecklistIdToEdit={onSetChecklistIdToEdit} />
             }
 
             <TaskFeatureDynamic checklistIdToEdit={checklistIdToEdit} />

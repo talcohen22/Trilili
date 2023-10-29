@@ -20,7 +20,7 @@ const initialState = {
     task: null,
     cmp: {type: '' , location: null},
     newBoardModal: {isOpen: false, location: null},
-    boardMenu: {isOpen: false, cmpType: ''}
+    boardMenu: {isOpen: false, cmpType: 'Menu'}
 }
 
 export function boardReducer(state = initialState, action) {

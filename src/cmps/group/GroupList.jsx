@@ -35,7 +35,7 @@ export function GroupList({
 
         <React.Fragment>
             <section className='groups-list-container'>
-                <DragDropContext onDragStart={(ev)=>console.log(ev.target)} onDragEnd={onHandleDragEnd}>
+                <DragDropContext onDragEnd={onHandleDragEnd}>
                     <Droppable
                         droppableId='board'
                         direction='horizontal'
@@ -48,15 +48,15 @@ export function GroupList({
                                         <Draggable
                                             key={group.id}
                                             draggableId={group.id}
-                                            index={index}
-                                        >
+                                            index={index}>
+
                                             {(provided) => (
                                                 <li
                                                     key={group.id}
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
-                                                    ref={provided.innerRef}
-                                                >
+                                                    ref={provided.innerRef}>
+
                                                     <GroupPreview style={{ overflow: 'hidden' }}
                                                         provided={provided}
                                                         board={board}
@@ -70,20 +70,20 @@ export function GroupList({
                                                         saveCopiedGroup={saveCopiedGroup}
                                                         onSetBoard={onSetBoard}
                                                         onMoveBoards={onMoveBoards}
-                                                        openQuickEdit={openQuickEdit}
-                                                    />
-                                                </li>
-                                            )}
-                                        </Draggable>
-                                    ))}
+                                                        openQuickEdit={openQuickEdit} />
+                                                </li>)}
+
+                                        </Draggable>))}
                                 {provided.placeholder}
-                            </ul>
-                        )}
+                            </ul>)}
+
                     </Droppable>
                 </DragDropContext>
                 <AddGroupBtn onAddNewGroup={onAddNewGroup} />
             </section>
+
             {taskId && <TaskDetails board={board} onSetChecklistIdToEdit={onSetChecklistIdToEdit} />}
+
         </React.Fragment>
     )
 }
