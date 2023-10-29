@@ -1,4 +1,5 @@
 .quickedit-modal {
+    gap: 4px;
 
     .task-quickedit-features {
         flex-direction: column;
@@ -13,6 +14,8 @@
                 width: 16px;
             }
 
+            color:$wsTxtColor;
+            font-weight: 500;
             width: max-content;
             background-color: $btnQuickEditBg;
             display: flex;
