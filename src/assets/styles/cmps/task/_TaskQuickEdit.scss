@@ -4,6 +4,17 @@
         flex-direction: column;
 
         div {
+
+            &:hover {
+                background-color: $quickEditBtnBgc;
+            }
+
+            svg {
+                width: 16px;
+            }
+
+            width: max-content;
+            background-color: $btnQuickEditBg;
             display: flex;
             gap: rem(6px);
             cursor: pointer;

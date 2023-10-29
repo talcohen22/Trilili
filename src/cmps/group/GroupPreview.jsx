@@ -54,9 +54,7 @@ export function GroupPreview({
 
     function handleUsingAction() {
         const buttonRect = buttonRef.current.getBoundingClientRect()
-        const positionX = buttonRect.x
-        const positionY = buttonRect.bottom + 7
-        setGroupActionPosition({ left: positionX, top: positionY })
+        setGroupActionPosition({ left: buttonRect.left, top: buttonRect.top - 8 })
         setIsOnUsingAction(true)
     }
 
