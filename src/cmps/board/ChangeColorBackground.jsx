@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router";
 import { updateBoardBgc } from "../../store/board.actions";
 import { BackBtnSvg } from "../svg/ImgSvg";
 
 export function ChangeColorBackground({ board, onOpenMenuCmp }) {
+
+    const navigate = useNavigate()
 
     const palette = [
         'https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg',
@@ -18,6 +21,7 @@ export function ChangeColorBackground({ board, onOpenMenuCmp }) {
     async function onUpdateBgc(bgc) {
         try {
             await updateBoardBgc(board, bgc)
+            navigate(`/board/${board._id}`)
         } catch (err) {
             console.log('Cannot update bgc board', err)
         }
