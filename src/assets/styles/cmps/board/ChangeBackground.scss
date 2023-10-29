@@ -1,0 +1,30 @@
+.change-background {
+    position: relative;
+    gap: 8px;
+
+    div {
+        cursor: pointer;
+
+        img {
+            width: 149px;
+            height: 96px;
+            border-radius: 8px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        p {
+            text-align: center;
+            font-size: rem(14px);
+            font-weight: 400;
+            margin-top: 5px;
+        }
+    }
+
+    .back-btn {
+        @include board-menu-back-btn;
+    }
+}

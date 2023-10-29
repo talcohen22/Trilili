@@ -1,7 +1,7 @@
 import { boardService } from "../services/board.service.local.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_CMP, SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_BOARD_MENU, SET_CMP, SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
 import { utilService } from "../services/util.service.js";
 
 // Action Creators:
@@ -34,6 +34,17 @@ export async function loadBoards() {
 
     } catch (err) {
         console.log('Cannot load boards', err)
+        throw err
+    }
+}
+
+export async function updateBoardBgc(board, bgc){
+    try{
+        board.style.backgroundImage = bgc
+        await updateBoard(board)
+
+    }catch (err) {
+        console.log('Cannot update bgc board', err)
         throw err
     }
 }
@@ -284,6 +295,10 @@ export async function updateBoardGroupTaskType(boardId, groupId, taskId, type, l
         store.dispatch({ type: SET_TASK, task: task })
         store.dispatch({ type: SET_CMP, cmp: cmp })
     }
+}
+
+export function updateBoardMenu(boardMenu){
+    store.dispatch({ type: SET_BOARD_MENU, boardMenu: boardMenu })
 }
 
 export async function updateNewBoardModal(newBoardModal) {

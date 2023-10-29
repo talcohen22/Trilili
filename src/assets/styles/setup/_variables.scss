@@ -1,11 +1,23 @@
-// Colors
-$actionBtnClr: #0c66e4; ///svg color
+//Homepage
+$productivityText:#091E42;
+
+//workspace
+$wsTxtColor: #172B4D;
+$wsIconColor: #44546F;
+$wsEmptyBoardBgc: #091e420a;
+$wsEmptyBoardBgcHover: #DCDFE4;
+$wsFadeColor: hsla(0, 0%, 0%, 0.15);
+$wsFadeColorHover: rgba(0, 0, 0, 0.23);
+$editTaskBtnHover: rgb(219, 219, 219);
 
 //header
 $headerBtnClr: rgba(220, 223, 228, 1);
 $headerLogoClr:#227ffa;
 $LogoHoverClr:rgb(7, 71, 166);
 $focusInput: #0C66E4;
+
+//boardFilter
+$buttonHoverClr:#A6C5E229;
 
 //group
 $groupHeader: #172B4D;
@@ -48,29 +60,14 @@ $btnTaskDashNotDoneFont: #ae2a19;
 //taskQuickEdit
 $btnQuickEditBg: #f1f2f4;
 
-//workspace
-$wsTxtColor: #172B4D;
-$wsIconColor: #44546F;
-$wsEmptyBoardBgc: #091e420a;
-$wsEmptyBoardBgcHover: #DCDFE4;
-$wsFadeColor: hsla(0, 0%, 0%, 0.15);
-$wsFadeColorHover: rgba(0, 0, 0, 0.23);
-$editTaskBtnHover: rgb(219, 219, 219);
-
+//general
 $requiredField: #e34935;
 $blue1: #388bff;
-
-//text
 $txtClr:#091e42;
+$card-width: 272px;
+$actionBtnClr: #0c66e4; 
 
 // Breakpoints
 $mobile-breakpoint: 630px;
 $narrow-breakpoint: 770px;
 $normal-breakpoint: 990px;
-
-$card-width: 272px;
-
-//boardFilter
-$buttonHoverClr:#A6C5E229;
-//Homepage
-$productivityText:#091E42;

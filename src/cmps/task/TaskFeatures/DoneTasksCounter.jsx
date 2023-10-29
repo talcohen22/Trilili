@@ -1,4 +1,4 @@
-import { CheckBoxSmallSvg } from "../../svg/ImgSvg";
+import { CheckBoxSmallSvg } from "../../svg/ImgSvg"
 
 export function DoneTasksCounter({ checklists }) {
 
@@ -7,17 +7,15 @@ export function DoneTasksCounter({ checklists }) {
     const { totalTodos, completedTodos } = checklists.reduce(
         (counts, checklist) => {
             checklist.todos.forEach((todo) => {
-                counts.totalTodos++;
-                if (todo.isDone) {
-                    counts.completedTodos++;
-                }
-            });
-            return counts;
+                counts.totalTodos++
+                if (todo.isDone) counts.completedTodos++
+            })
+            return counts
         },
         { totalTodos: 0, completedTodos: 0 }
-    );
+    )
 
-    const totalCalc = `${completedTodos}/${totalTodos || 1}`;
+    const totalCalc = `${completedTodos}/${totalTodos || 1}`
 
     const dynClass = (completedTodos === totalTodos) ? "clicked" : ''
     return (
@@ -25,5 +23,5 @@ export function DoneTasksCounter({ checklists }) {
             <CheckBoxSmallSvg />
             <p className="fs12" >{totalCalc}</p>
         </div>
-    );
+    )
 }

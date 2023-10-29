@@ -12,46 +12,46 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
-// @import "views/AboutUs";
 @import "views/HomePage";
 @import "views/homepage-sections/ProductivitySlider";
 @import "views/ReviewIndex";
 @import "views/TaskDetails.scss";
-// @import "views/UserDetails";
 
-// Components
+// board
+@import "./cmps/BoardIndex";
 @import "./cmps/board/BoardList";
 @import "./cmps/board/BoardPreview.scss";
 @import "./cmps/board/NewBoardModal.scss";
 @import "./cmps/board/BoardsDetails.scss";
-@import "./cmps/group/GroupActionModal";
+@import "./cmps/board/BoardFilter";
 
-//GroupActionModal Features
+//board menu
+@import "./cmps/board/BoardMenuDynamic.scss";
+@import "./cmps/board/BoardMenu.scss";
+@import "./cmps/board/ChangeBackground.scss";
+@import "./cmps/board/ChangeColorBackground.scss";
+@import "./cmps/board/ChangePhotoBackground.scss";
+
+//group
 @import "./cmps/group/GroupFeatureDynamics";
 @import "./cmps/group/CopyList";
 @import "./cmps/group/MoveList";
 @import "./cmps/group/SortList";
-
-
-// @import "./cmps/board/NewBoardModal.scss";
-
-@import "./cmps/board/BoardFilter";
-
+@import "./cmps/group/GroupActionModal";
 @import "./cmps/group/GroupList";
 @import "./cmps/group/GroupPreview";
 @import "./cmps/group/AddGroupBtn";
 @import "./cmps/group/AddGroupList";
 
-
+//task
 @import "./cmps/task/TaskPreview";
 @import "./cmps/task/TaskList";
 @import "./cmps/task/AddTaskModal";
 @import "./cmps/task/TaskLabels";
 @import "./cmps/task/EditLabel.scss";
 
-
+//task details features
 @import "./cmps/task/TaskDetailsFeatures.scss";
 @import "./cmps/task/TaskDetailsData.scss";
 @import "./cmps/task/TaskFeatureDynamic.scss";
@@ -64,6 +64,7 @@
 @import "./cmps/task/FeatureCover.scss";
 @import "./cmps/task/TaskQuickEdit";
 
+//task details data
 @import "./cmps/task/TaskDetailsData/FeaturesData.scss";
 @import "./cmps/task/TaskDetailsData/DescriptionData.scss";
 @import "./cmps/task/TaskDetailsData/CheckListData.scss";
@@ -72,12 +73,6 @@
 @import "./cmps/task/TaskDetailsData/ProgressBar.scss";
 @import "./cmps/task/TaskDetailsData/AttachmentData.scss";
 
-
+//cmps
 @import "./cmps/Menu";
-@import "./cmps/BoardIndex";
 @import "cmps/AppHeader";
-// @import "cmps/UserMsg";
-
-
-
-

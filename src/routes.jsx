@@ -7,13 +7,7 @@ import { AdminApp } from './pages/AdminIndex.jsx'
 import { SurveyIndex } from './pages/SurveyIndex.jsx'
 import { BoardDetails } from './pages/BoardDetails.jsx'
 
-// Routes accesible from the main navigation (in AppHeader)
 const routes = [
-    // {
-    //     path: '/',
-    //     component: < />,
-    //     label: 'Home 🏠',
-    // },
     {
         path: '/',
         component: <HomePage />,
@@ -34,34 +28,6 @@ const routes = [
         component: <BoardDetails />,
         label: 'Board',
     },
-
-
-    // {
-    //     path: 'survey',
-    //     component: <SurveyIndex />,
-    //     label: 'Take our survey'
-    // },
-
-    // {
-    //     path: 'review',
-    //     component: <ReviewIndex />,
-    //     label: 'Reviews'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <ChatApp />,
-    //     label: 'Chat'
-    // },
-    // {
-    //     path: 'about',
-    //     component: <AboutUs />,
-    //     label: 'About us'
-    // },
-    // {
-    //     path: 'admin',
-    //     component: <AdminApp />,
-    //     label: 'Admin Only'
-    // }
 ]
 
 export default routes

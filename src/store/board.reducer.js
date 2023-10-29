@@ -10,6 +10,7 @@ export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
 export const SET_NEW_BOARD_MODAL = 'SET_NEW_BOARD_MODAL'
+export const SET_BOARD_MENU = 'SET_BOARD_MENU'
 
 
 const initialState = {
@@ -18,7 +19,8 @@ const initialState = {
     group: null,
     task: null,
     cmp: {type: '' , location: null},
-    newBoardModal: {isOpen: false, location: null}
+    newBoardModal: {isOpen: false, location: null},
+    boardMenu: {isOpen: false, cmpType: ''}
 }
 
 export function boardReducer(state = initialState, action) {
@@ -43,6 +45,9 @@ export function boardReducer(state = initialState, action) {
             break
         case SET_NEW_BOARD_MODAL:
             newState = { ...state, newBoardModal: action.newBoardModal }
+            break
+        case SET_BOARD_MENU:
+            newState = { ...state, boardMenu: action.boardMenu }
             break
         case REMOVE_BOARD:
             const lastRemovedBoard = state.boards.find(board => board._id === action.boardId)

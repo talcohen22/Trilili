@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
-import { removeLabel, updateCmp } from "../../../store/board.actions";
-import { BackBtnSvg } from "../../svg/ImgSvg";
+import { useSelector } from "react-redux"
+import { removeLabel, updateCmp } from "../../../store/board.actions"
+import { BackBtnSvg } from "../../svg/ImgSvg"
 
 export function DeleteLabel({ labelIdToEdit }) {
 

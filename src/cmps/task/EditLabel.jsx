@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { boardService } from "../../services/board.service.local";
+import { boardService } from "../../services/board.service.local"
 import { editLabel, updateCmp } from "../../store/board.actions"
 import { BackBtnSvg, ExitBtnSvg } from "../svg/ImgSvg"
 import { useEffect, useState } from 'react'
@@ -58,19 +58,21 @@ export function EditLabel({ labelIdToEdit }) {
         updateCmp(cmp)
     }
 
-
     const dynClass = color.color === '#091E420F' ? 'without-color' : ''
 
     return (
         <section className="edit-label scroll">
+
             <div className="display-chosen-label flex justify-center align-center">
                 <div className="chosen-color flex align-center"
                     style={{ backgroundColor: color.color }}>
                     {title}
                 </div>
             </div>
+
             <h3>Title</h3>
             <input className="add-lable" type="text" value={title} onChange={handleChange} />
+            
             <h3>Select a color</h3>
             <ul className="colors-container flex ">
                 {colors.map((color, idx) => (
@@ -81,6 +83,7 @@ export function EditLabel({ labelIdToEdit }) {
                     </li>
                 ))}
             </ul>
+
             <div className={`remove-color-btn flex ${dynClass}`}>
                 <ExitBtnSvg />
                 <p className={`create-new-label ${dynClass}`}
@@ -89,6 +92,7 @@ export function EditLabel({ labelIdToEdit }) {
                 </p>
             </div>
             <hr />
+
             <div className="save-delete-btns flex justify-space-b">
                 <button onClick={onSaveLabel}>Save</button>
                 <button
@@ -96,6 +100,7 @@ export function EditLabel({ labelIdToEdit }) {
                     onClick={() => getCmp('Delete Label')}
                 >Delete</button>
             </div>
+
             <div className="back-btn" onClick={() => getCmp('Labels')}>
                 <BackBtnSvg />
             </div>

@@ -1,8 +1,8 @@
-import { addChecklistTodo, removeTodo, updateBoardGroupTaskType, updateChecklistTitle, updateTodo } from "../../../store/board.actions";
-import { ExitBtnSvg } from "../../svg/ImgSvg";
+import { addChecklistTodo, removeTodo, updateBoardGroupTaskType, updateChecklistTitle, updateTodo } from "../../../store/board.actions"
+import { ExitBtnSvg } from "../../svg/ImgSvg"
 import { useState } from 'react'
-import React from 'react';
-import { ProgressBar } from "./ProgressBar";
+import React from 'react'
+import { ProgressBar } from "./ProgressBar"
 
 export function CheckListData({ board, group, task, checklist, onSetChecklistIdToEdit }) {
 
@@ -130,7 +130,6 @@ export function CheckListData({ board, group, task, checklist, onSetChecklistIdT
     }
 
     return (
-        // <React.Fragment>
             <section className="check-list-container">
 
                 {/* checklist title */}
@@ -196,6 +195,5 @@ export function CheckListData({ board, group, task, checklist, onSetChecklistIdT
                 </div>}
 
             </section>
-        // </React.Fragment>
     )
 }

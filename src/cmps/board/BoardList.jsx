@@ -30,17 +30,18 @@ export function BoardList({ boards, onAddBoard }) {
         }
     }
 
-    function onSetIsNewBoardModalOpen(ev){
+    function onSetIsNewBoardModalOpen(ev) {
         setIsNewBoardModalOpen(!isNewBoardModalOpen)
         const parentElement = ev.currentTarget;
         const data = parentElement.getBoundingClientRect()
         const location = { top: data.top, left: data.left }
-        const newBoardModal = {isOpen: true, location: location}
+        const newBoardModal = { isOpen: true, location: location }
         updateNewBoardModal(newBoardModal)
     }
 
     return (
         <section className="board-list-container">
+
             <div className="starred-boards flex">
                 <StarSvg />
                 <h3>Starred boards</h3>
@@ -61,6 +62,7 @@ export function BoardList({ boards, onAddBoard }) {
                     </li>
                 )}
             </ul>
+
             <div className="boards-header flex align-center">
                 <UserSvg />
                 <h3>Your boards</h3>
@@ -84,7 +86,9 @@ export function BoardList({ boards, onAddBoard }) {
                     Create new board
                 </li>
             </ul>
+
             {isNewBoardModalOpen && <NewBoardModal onAddBoard={onAddBoard} onSetIsOpenModal={onSetIsOpenModal} />}
+       
         </section >
     )
 }

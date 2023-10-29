@@ -3,6 +3,7 @@ import { ExitBtnSvg } from "../svg/ImgSvg";
 import { utilService } from "../../services/util.service";
 
 export function AddGroupList({ onAddTitle, onCancel }) {
+
     const [title, setTitle] = useState('')
     const inputRef = useRef(null)
 
@@ -27,17 +28,18 @@ export function AddGroupList({ onAddTitle, onCancel }) {
     }
 
     return (
-        <div
-            className={`add-group-list group-card`}
-        >
+        <div className={`add-group-list group-card`}>
+
             <input
                 type="text"
                 placeholder="Add list title..."
                 value={title}
                 onChange={handleTitleChange}
                 ref={inputRef}
-            />
+                autoFocus/>
+
             <div className="button-container">
+
                 <button
                     className='btn-action modal-btn'
                     onClick={handleAddClick}>
@@ -49,7 +51,9 @@ export function AddGroupList({ onAddTitle, onCancel }) {
                         <ExitBtnSvg />
                     </div>
                 </button>
+                
             </div>
+
         </div >
     )
 }

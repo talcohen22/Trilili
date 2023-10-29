@@ -1,0 +1,25 @@
+.change-color-background {
+
+    // overflow-y: auto;
+
+    .colors-bgc{
+        flex-wrap: wrap;
+        gap: 8px;
+
+        button{
+            height: 96px;
+            width: 145px;
+            border-radius: 8px;
+        }
+
+        button:hover{
+            opacity: 0.8;
+        }
+    }
+
+    .back-btn {
+        @include board-menu-back-btn;
+        top: 11px;
+        left: 12px;
+    }
+}

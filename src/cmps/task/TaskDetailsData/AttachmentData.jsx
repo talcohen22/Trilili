@@ -1,6 +1,6 @@
-import { removeAttachment, updatePhotoBackground } from "../../../store/board.actions";
-import { ArrowTopRightCorner, CoverSvg } from "../../svg/ImgSvg";
-import React from 'react';
+import { removeAttachment, updatePhotoBackground } from "../../../store/board.actions"
+import { ArrowTopRightCorner, CoverSvg } from "../../svg/ImgSvg"
+import React from 'react'
 
 export function AttachmentData({ board, group, task, attachment, attachIdx }) {
 
@@ -32,6 +32,7 @@ export function AttachmentData({ board, group, task, attachment, attachIdx }) {
 
     return (
         <section className="attachment-container flex">
+
             {fileType &&
                 <div className={`file-type flex ${isImgFormat ? 'img' : ''}`}
                     style={{ backgroundImage: backgroundImage }}>
@@ -41,11 +42,13 @@ export function AttachmentData({ board, group, task, attachment, attachIdx }) {
                         {isImgFormat ? '' : fileType}
                     </a>
                 </div>}
+
             <div className="content flex">
                 <div>
                     <a href={attachment.url} target="_blank">{attachment.fileName}</a>
                     <ArrowTopRightCorner />
                 </div>
+
                 <div className="options flex">
                     <button className="delete-attachment" onClick={onRemoveAttachment}>Delete</button>
                     {isImgFormat &&
@@ -55,6 +58,7 @@ export function AttachmentData({ board, group, task, attachment, attachIdx }) {
                         </div>}
                 </div>
             </div>
+
         </section>
     )
 }

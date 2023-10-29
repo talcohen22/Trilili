@@ -5,7 +5,7 @@ import { TaskDetailsData } from "./TaskDetailsData"
 import { useEffect, useState, useRef } from 'react'
 import { boardService } from "../../services/board.service.local"
 import { useNavigate } from "react-router"
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import { FastAverageColor } from 'fast-average-color'
 
 export function TaskDetails({ onSetChecklistIdToEdit }) {
@@ -26,13 +26,13 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
     const [task, setTask] = useState(null)
     const [group, setGroup] = useState(null)
     const [board, setBoard] = useState(null)
+    const [bgColor, setBgColor] = useState('transparent')
     const { boardId } = useParams()
     const { groupId } = useParams()
     const { taskId } = useParams()
     const navigate = useNavigate()
-    const wrapperRef = useRef(null);
-    useClickOutsideCmp(wrapperRef);
-    const [bgColor, setBgColor] = useState('transparent');
+    const wrapperRef = useRef(null)
+    useClickOutsideCmp(wrapperRef)
 
     useEffect(() => {
         loadTask()
@@ -67,7 +67,6 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
                 setBgColor(color.hex);
             }
         }
-
         if (task && task.style.cover) getBgc();
 
     }, [task]);

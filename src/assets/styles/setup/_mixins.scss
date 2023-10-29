@@ -1,5 +1,4 @@
 /* Breakpoint mixins */
-/* Breakpoint mixins */
 
 @mixin for-mobile-layout {
   @media (max-width: calc($mobile-breakpoint + 40px)) {
@@ -56,7 +55,7 @@
   }
 }
 
-// Mixin for removing hover efects on iphone screen
+// Mixin for removing hover effects on iphone screen
 @mixin hover-supported {
   @media not all and (pointer: coarse) {
     &:hover {
@@ -87,17 +86,6 @@
   margin: 0;
   margin-bottom: $marginBottom;
 }
-
-//   @mixin hover-supported {    
-//     @media not all and (pointer: coarse) {
-//         &:hover {
-//             @content;
-//         }
-//     }
-
-//   }
-
-//   }
 
 @mixin member-img {
   width: rem(28px);
@@ -213,10 +201,25 @@
   }
 }
 
+@mixin board-menu-back-btn {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+  padding: 0px;
+  top: -57px;
+  left: 0px;
+  margin-top: 2px;
+
+  &:hover {
+    background-color: $taskItemsBgc;
+  }
+}
+
 @mixin groupFeatureBtn {
   background-color: #091e4224;
   border-radius: 8px;
-
 }
 
 @mixin custom-checkbox {

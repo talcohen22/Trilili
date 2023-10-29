@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 export function ProgressBar({ checklist }) {
+    
     const [progress, setProgress] = useState(0)
 
     useEffect(() => {

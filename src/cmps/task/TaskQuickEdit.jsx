@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { TaskDetailsFeatures } from "./TaskDetailsFeatures"
-import { ArchiveSvg, AttachmentSvg, CardIconSvg, CheckListSvg, CopySvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg, MoveSvg } from "../svg/ImgSvg"
+import { ArchiveSvg, CardIconSvg, CopySvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg, MoveSvg } from "../svg/ImgSvg"
 import { useNavigate } from "react-router"
 import { boardService } from "../../services/board.service.local"
 import { updateBoardGroupTaskType } from "../../store/board.actions"
@@ -23,12 +22,11 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                 handleCloseQuickEdit();
             }
         }
-
-        document.addEventListener("click", handleClickOutside);
+        document.addEventListener("click", handleClickOutside)
 
         return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
+            document.removeEventListener("click", handleClickOutside)
+        }
 
     }, [handleCloseQuickEdit])
 
@@ -48,6 +46,7 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
 
     function onUpdateTask(ev) {
         ev.preventDefault()
+
         if (!title || !title.trim()) {
             handleBlur()
             return
@@ -59,6 +58,7 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
         onSetBoard(board)
         handleCloseQuickEdit()
     }
+
     function onRemoveTask(ev) {
         ev.preventDefault()
         const groupIdx = boardService.getGroupIdx(board, groupId)
@@ -83,20 +83,20 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     return (
         <div className="overlay quick-edit-overlay" id="overlay">
             <div className="quickedit-modal" ref={modalRef}>
+
                 <form className='form-add-new-task' style={{ position: 'absolute', top: position.top - 8, left: position.left - 258 }} onSubmit={onUpdateTask}>
                     <textarea ref={inputRef}
                         className='custom-textarea quick-edit-textarea'
                         name="text"
                         value={title}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                     <div className="button-container">
                         <button className='btn-action modal-btn'>
                             Save
                         </button>
                     </div>
-
                 </form>
+
                 <div style={{ position: 'absolute', top: position.top - 8, left: position.left + 10, }}>
                     <section className="task-quickedit-features">
                         <div onClick={onGetTaskDetails}>
@@ -134,6 +134,7 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                         </div>
                     </section>
                 </div>
+                
             </div>
         </div>
     )

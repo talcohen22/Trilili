@@ -29,7 +29,6 @@
         margin: 4px 0 12px;
     }
 
-
     .remove-color-btn {
         @include btn-gray-bgc;
         margin: 8px 0;
@@ -46,6 +45,7 @@
     }
 
     .save-delete-btns {
+
         button {
             font-weight: 500;
             @include blue-action-btn;
@@ -62,7 +62,6 @@
             svg {
                 margin: 2px 0 0 0;
             }
-
         }
     }
 
@@ -83,13 +82,6 @@
     }
 
     select {
-        // width: 280px;
-        // display: block;
-        // position: absolute;
-        // left: 12px;
-        // border: none;
-        // opacity: 0;
-        // color: transparent;
         top: -40px;
         height: 50px;
         width: 280px;
@@ -101,7 +93,9 @@
         cursor: pointer;
         z-index: 2;
     }
-    .move-list-btn{
+
+    .move-list-btn {
         margin-block: rem(4px);
     }
+
 }

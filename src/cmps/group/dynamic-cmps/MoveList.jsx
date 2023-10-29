@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { loadBoards } from '../../../store/board.actions';
 
 export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards }) {
+    
     const boards = useSelector(storeState => storeState.boardModule.boards);
     let selectBoardList = [...boards]
     const selectGroupList = [...board.groups]
@@ -18,7 +19,6 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
     function handleSelectChange({ target }) {
         const targetBoard = selectBoardList.find(item => item._id === target.value)
         setSelectedBoard(targetBoard)
-        // selectedBoardRef.current = targetBoard
         if (target.value !== board._id) setSelectedPosition(0)
         else setSelectedPosition(currentGroupPosition)
     }
@@ -46,15 +46,14 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
             const destinationBoard = selectedBoard
             destinationBoard.groups.splice(selectedPosition, 0, group)
             onMoveBoards(sourceBoard, destinationBoard)
-
         }
-
     }
-
 
     return (
         <section className="move-list">
+
             <form>
+
                 <div className='button-link'>
                     <span className='label'>Board</span>
                     <span>{selectedBoard.title}</span>
@@ -88,10 +87,13 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
                         })}
                     </select>
                 </div>
+
                 <div className=" move-list-btn save-delete-btns flex justify-space-b">
                     <button onClick={onMoveList} >Move</button>
                 </div>
+
             </form>
+
         </section>
     )
 }

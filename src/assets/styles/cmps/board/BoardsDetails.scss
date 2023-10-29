@@ -5,4 +5,5 @@
     height: 100%;
     @include fixed-img-url;
     overflow-x: auto;
+    position: relative;
 }

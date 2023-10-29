@@ -1,12 +1,12 @@
-import { boardService } from "../../../services/board.service.local";
-import { utilService } from "../../../services/util.service";
-import { setIsCheckDate, updateBoardGroupTaskType } from "../../../store/board.actions";
+import { boardService } from "../../../services/board.service.local"
+import { utilService } from "../../../services/util.service"
+import { setIsCheckDate, updateBoardGroupTaskType } from "../../../store/board.actions"
 
 export function DatesData({ board, group, task }) {
 
     const { startDate, dueDate } = task
 
-    const dueDatetimestamp = task.dueDate ? task.dueDate.timeStamp : Math.floor(new Date().getTime() / 1000) + 86400 * 2;
+    const dueDatetimestamp = task.dueDate ? task.dueDate.timeStamp : Math.floor(new Date().getTime() / 1000) + 86400 * 2
     const dueTime = utilService.getTime(dueDatetimestamp)
 
     const currentDate = new Date()

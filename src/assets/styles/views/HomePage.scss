@@ -1,9 +1,9 @@
 .homepage {
+    
     .homepage-header {
         height: rem(60px);
         display: flex;
         max-width: 1320px;
-        // font-family: CharlieText-regular;
     }
 
     .btn-call-to-action {
@@ -26,13 +26,6 @@
             width: rem(300px);}
     }
     .homepage-header-btn {
-        // align-self: stretch;
-        // align-items: center;
-        // color: #fff;
-        // display: flex;
-        // height: 100%;
-        // padding: 0.5rem 1.5rem;
-        // text-decoration: none;
         background-color: $headerLogoClr;
         height: max-content;
         min-width: 205px;
@@ -40,7 +33,6 @@
 
         a {
             font-size: 1.2rem;
-            // background-color: $headerLogoClr;
         }
     }
 
@@ -48,10 +40,6 @@
         background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
             linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
-        // margin-block-end: rem(21px);
-        // padding-block-start: rem(68px);
-
-        //hero
         .homepage-hero {
             margin: auto;
             flex-direction: column;
@@ -139,7 +127,6 @@
                 padding-inline: 0;
                 text-align: left;
             }
-
         }
     }
 
@@ -149,13 +136,10 @@
         padding: rem(16px);
 
         .productivity-container {
-            // font-family: charlie-regular;
             color: $txtClr;
             margin-inline: auto;
             padding-inline: rem(9px);
             max-width: rem(1140px);
-
-
 
             .productivity-text {
                 flex-direction: column;
@@ -194,7 +178,6 @@
                     }
                 }
 
-
                 .productivity-text {
                     padding: 0 0 rem(16px);
 
@@ -214,8 +197,4 @@
             }
         }
     }
-
-
-
-
 }

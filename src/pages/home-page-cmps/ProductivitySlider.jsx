@@ -21,10 +21,8 @@ export function ProductivitySlider() {
                             <h3>Cards</h3>
                             <p>Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move cards across lists to show their status.</p>
                         </button>
-
                     </div>
                 </div>
-
 
                 <div>
                     <img src={'src//assets//img//productivity1.webp'} alt="home-image" />

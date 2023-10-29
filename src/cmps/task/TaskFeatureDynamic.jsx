@@ -1,16 +1,16 @@
-import { ExitBtnSvg } from "../svg/ImgSvg";
-import { EditLabel } from "./EditLabel";
-import { FeatureAttachment } from "./FeatureAttachment";
-import { FeatureLabels } from "./FeatureLabels";
+import { ExitBtnSvg } from "../svg/ImgSvg"
+import { EditLabel } from "./EditLabel"
+import { FeatureAttachment } from "./FeatureAttachment"
+import { FeatureLabels } from "./FeatureLabels"
 import { useState, useEffect, useRef } from 'react'
-import { DeleteLabel } from "./TaskFeatures/DeleteLabel";
-import { FeatureMembers } from "./TaskFeatures/FeatureMembers";
-import { FeatureChecklist } from "./FeatureChecklist";
+import { DeleteLabel } from "./TaskFeatures/DeleteLabel"
+import { FeatureMembers } from "./TaskFeatures/FeatureMembers"
+import { FeatureChecklist } from "./FeatureChecklist"
 import { useSelector } from 'react-redux'
-import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions";
-import { FeatureDates } from "./FeatureDates";
-import { DeleteChecklist } from "./TaskDetailsData/deleteCheckList";
-import { FeatureCover } from "./FeatureCover";
+import { updateBoardGroupTaskType, updateCmp } from "../../store/board.actions"
+import { FeatureDates } from "./FeatureDates"
+import { DeleteChecklist } from "./TaskDetailsData/deleteCheckList"
+import { FeatureCover } from "./FeatureCover"
 
 export function TaskFeatureDynamic({ checklistIdToEdit }) {
 
@@ -23,6 +23,10 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
     const [componentHeight, setComponentHeight] = useState(0);
     const [screenDiff, setScreenDiff] = useState(0)
+    const [labelIdToEdit, setLabelIdToEdit] = useState('')
+    
+    const wrapperRef = useRef(null);
+    useClickOutsideCmp(wrapperRef);
 
     useEffect(() => {
 
@@ -31,14 +35,10 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
                 setScreenDiff(prevWidth - window.innerWidth)
                 return window.innerWidth
             })
-
-            if (cmp.location) {
-                updateCmp({ ...cmp, location: { ...cmp.location, left: cmp.location.left - (screenDiff) / 2 } })
-            }
+            if (cmp.location) updateCmp({ ...cmp, location: { ...cmp.location, left: cmp.location.left - (screenDiff) / 2 } })
 
             setScreenHeight(window.innerHeight)
         }
-
         window.addEventListener('resize', handleResize)
 
         return () => {
@@ -55,10 +55,8 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
         }
     }, [cmp.type]);
 
-
     function useClickOutsideCmp(ref) {
         useEffect(() => {
-
             document.addEventListener("mousedown", handleClickOutside)
             return () => {
                 document.removeEventListener("mousedown", handleClickOutside)
@@ -69,10 +67,6 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
     function exitCmp() {
         updateBoardGroupTaskType(null, null, null, '', null)
     }
-
-    const [labelIdToEdit, setLabelIdToEdit] = useState('')
-    const wrapperRef = useRef(null);
-    useClickOutsideCmp(wrapperRef);
 
     function onSetLabelIdToEdit(labelId) {
         setLabelIdToEdit(labelId)
@@ -125,6 +119,7 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
                     <ExitBtnSvg />
                 </div>
             </div>
+            
         </div>
     )
 }
