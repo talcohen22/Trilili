@@ -38,12 +38,12 @@ export async function loadBoards() {
     }
 }
 
-export async function updateBoardBgc(board, bgc){
-    try{
+export async function updateBoardBgc(board, bgc) {
+    try {
         board.style.backgroundImage = bgc
         await updateBoard(board)
 
-    }catch (err) {
+    } catch (err) {
         console.log('Cannot update bgc board', err)
         throw err
     }
@@ -69,7 +69,7 @@ export async function updateColorBackground(board, group, task, color) {
         board.groups[gIdx].tasks[tIdx].style.cover = ''
 
         await updateBoard(board)
-        
+
     } catch (err) {
         console.log('Cannot update background color', err)
         throw err
@@ -297,7 +297,7 @@ export async function updateBoardGroupTaskType(boardId, groupId, taskId, type, l
     }
 }
 
-export function updateBoardMenu(boardMenu){
+export function updateBoardMenu(boardMenu) {
     store.dispatch({ type: SET_BOARD_MENU, boardMenu: boardMenu })
 }
 

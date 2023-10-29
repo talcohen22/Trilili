@@ -6,7 +6,7 @@ export function BoardMenu({ board, onOpenMenuCmp }) {
         <section className="board-menu" >
 
             <div className="change-background option flex align-center"
-                onClick={() => onOpenMenuCmp('Change background')}>
+                onClick={(ev) => onOpenMenuCmp(ev, 'Change background')}>
                 <div style={{ backgroundImage: `url(${board.style.backgroundImage})` }}></div>
                 <p>Change background</p>
             </div>

@@ -26,7 +26,7 @@ export function ChangeColorBackground({ board, onOpenMenuCmp }) {
     return (
         <section className="change-color-background">
 
-            <div className="colors-bgc flex justify-center">
+            <div className="colors-bgc">
                 {palette.map((colorOption, index) => (
                     <button
                         key={index}
@@ -37,10 +37,10 @@ export function ChangeColorBackground({ board, onOpenMenuCmp }) {
                 ))}
             </div>
 
-            <div className="back-btn flex align-center justify-center" onClick={() => onOpenMenuCmp('Change background')}>
+            <div className="back-btn flex align-center justify-center" onClick={(ev) => onOpenMenuCmp(ev, 'Change background')}>
                 <BackBtnSvg />
             </div>
-            
+
         </section>
     )
 }

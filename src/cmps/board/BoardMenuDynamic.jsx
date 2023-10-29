@@ -29,7 +29,7 @@ export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
             {boardMenu.cmpType === 'Colors' && <ChangeColorBackground board={board} onOpenMenuCmp={onOpenMenuCmp} />}
 
             <div className="exit-btn flex justify-center align-center" onClick={onCloseMenuCmp}><ExitBtnSvg /></div>
-        
+
         </section>
     )
 }

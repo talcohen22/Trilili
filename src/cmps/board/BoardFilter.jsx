@@ -53,7 +53,7 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
                             <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" />
                         </div>
                         <button className="board-filter-btn share-btn full-btn"><ShareSvg /><span>Share</span></button>
-                        <button className="board-filter-btn dots" onClick={() => onOpenMenuCmp('Menu')}><DotsSvg /></button>
+                        <button className="board-filter-btn dots" onClick={onOpenMenuCmp}><DotsSvg /></button>
                     </section>
                 </section>
             </header>

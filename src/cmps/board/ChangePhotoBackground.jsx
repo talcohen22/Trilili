@@ -18,7 +18,7 @@ export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
 
         <section className="change-photo-background">
 
-            <div className="photos-bgc flex justify-center">
+            <div className="photos-bgc">
                 {photos.map((photo, index) => (
                     <img
                         key={index}
@@ -28,7 +28,7 @@ export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
                 ))}
             </div>
 
-            <div className="back-btn flex align-center justify-center" onClick={() => onOpenMenuCmp('Change background')}>
+            <div className="back-btn flex align-center justify-center" onClick={(ev) => onOpenMenuCmp(ev, 'Change background')}>
                 <BackBtnSvg />
             </div>
 

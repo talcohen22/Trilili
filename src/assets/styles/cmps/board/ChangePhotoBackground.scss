@@ -2,7 +2,9 @@
     
 
     .photos-bgc{
-        flex-wrap: wrap;
+        display: grid;
+        grid-auto-rows: max-content;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
 
         img{
@@ -15,6 +17,10 @@
 
         img:hover{
             opacity: 0.8;
+        }
+
+        img:nth-child(odd){
+            margin-inline-start: auto
         }
     }
 

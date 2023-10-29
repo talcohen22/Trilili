@@ -1,35 +1,42 @@
-.quickedit-modal{
+.quickedit-modal {
 
-.task-quickedit-features{
-    
-    div{
-        display: flex;
-        gap: 6px;
-        cursor: pointer;
-        align-items: center;
-        padding: 6px 12px;
-        border-radius: 3px;
-        &:first-child{margin-top: 8px;}
-        &:not(:first-child){margin-top: 4px;}
+    .task-quickedit-features {
+        flex-direction: column;
 
-        background-color: $btnQuickEditBg;
-        width: max-content;
+        div {
+            display: flex;
+            gap: 6px;
+            cursor: pointer;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 3px;
 
-        transition: all 0.1s;
+            &:first-child {
+                margin-top: 8px;
+            }
 
-        p{
-            color: $groupHeader;
-            font-weight: 600;
+            &:not(:first-child) {
+                margin-top: 4px;
+            }
+
+            background-color: $btnQuickEditBg;
+            width: max-content;
+
+            transition: all 0.1s;
+
+            p {
+                color: $groupHeader;
+                font-weight: 600;
+            }
+
+            svg {
+                height: 16px;
+            }
+
+            &:hover {
+                background: $scrollbarClrY;
+            }
         }
-        
-        svg{
-            height: 16px;
-        }
 
-        &:hover{
-            background: $scrollbarClrY;
-        }
     }
-
-}
 }

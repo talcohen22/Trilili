@@ -2,18 +2,24 @@
 
     // overflow-y: auto;
 
-    .colors-bgc{
-        flex-wrap: wrap;
+    .colors-bgc {
+        display: grid;
+        grid-auto-rows: max-content;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
 
-        button{
+        button {
             height: 96px;
             width: 145px;
             border-radius: 8px;
         }
 
-        button:hover{
+        button:hover {
             opacity: 0.8;
+        }
+
+        button:nth-child(odd){
+            margin-inline-start: auto
         }
     }
 
