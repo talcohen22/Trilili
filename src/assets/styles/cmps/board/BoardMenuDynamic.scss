@@ -36,8 +36,10 @@
     }
 
     hr {
-        border-color: $exitBtnHover;
         margin-bottom: 12px;
+        background-color: $exitBtnHover;
+        border: 0;
+        height: 1px;
     }
 
     .exit-btn {
