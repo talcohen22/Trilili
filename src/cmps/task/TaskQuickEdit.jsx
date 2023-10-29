@@ -115,14 +115,14 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                             <CoverSvg />
                             <p>Change cover</p>
                         </div>
-                        <div onClick={((ev) => getDynamicCmp(ev, 'Move'))}>
+                        {/* <div onClick={((ev) => getDynamicCmp(ev, 'Move'))}>
                             <MoveSvg />
                             <p>Move</p>
                         </div>
                         <div onClick={((ev) => getDynamicCmp(ev, 'Copy'))}>
                             <CopySvg />
                             <p>Copy</p>
-                        </div>
+                        </div> */}
 
                         <div onClick={((ev) => getDynamicCmp(ev, 'Dates'))}>
                             <DatesSvg />
