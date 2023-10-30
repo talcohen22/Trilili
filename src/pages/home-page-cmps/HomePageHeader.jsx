@@ -9,17 +9,22 @@ export function HomePageHeader() {
 
                 <div className='flex'>
                     <Link to="/">
-                        <button className="">
+                        {/* <button className="">
                             <LogoApp color={"#227ffa"} />
                             Trilili
-                        </button>
+                        </button> */}
+                        <img src={'src//assets//img//trilili_light-removebg.png'} />
                     </Link>
                 </div>
+                <div className="homepage-header-links">
+                    <Link>
+                        <button className="hompage-header-login-btn">Login</button>
+                    </Link>
 
-                <Link>
-                    <button className="homepage-header-btn">Get Trilili for free</button>
-                </Link>
-
+                    <Link>
+                        <button className="homepage-header-btn">Get Trilili for free</button>
+                    </Link>
+                </div>
             </nav>
         </header>
     )

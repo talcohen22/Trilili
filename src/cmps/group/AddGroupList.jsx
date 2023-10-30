@@ -6,11 +6,19 @@ export function AddGroupList({ onAddTitle, onCancel }) {
 
     const [title, setTitle] = useState('')
     const inputRef = useRef(null)
+    const modalRef =useRef(null)
     const [flag, setFlag] = useState(false)
 
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus()
+            console.log(inputRef.current)
+            const inputRight = modalRef.current.getBoundingClientRect().right;
+            console.log(inputRight);
+            window.scrollTo({
+                left: inputRight,
+                behavior: 'smooth',
+            })
         }
     }, [flag])
 
@@ -23,8 +31,8 @@ export function AddGroupList({ onAddTitle, onCancel }) {
             onAddTitle(title)
             setTitle('')
             setFlag(!flag)
-            utilService.handleTextInputFocus(inputRef)
         }
+        utilService.handleTextInputFocus(inputRef)
     }
 
     function handleKeyDown(ev) {
@@ -35,7 +43,7 @@ export function AddGroupList({ onAddTitle, onCancel }) {
     }
 
     return (
-        <div className={`add-group-list group-card`}>
+        <div className={`add-group-list group-card`} ref={modalRef} >
 
             <input className="add-group-input"
                 type="text"

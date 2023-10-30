@@ -183,6 +183,7 @@
       position: relative;
 
       .member-img {
+        margin-inline-start: rem(-4px);
         width: rem(28px);
         height: rem(28px);
         border-radius: 50%;

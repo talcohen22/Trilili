@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Carousel } from "../../cmps/common/Carousel"
 
 export function HomePageCards(){
 
@@ -10,6 +11,7 @@ export function HomePageCards(){
     
     return(
         <div className='productivity-slider-container'>
+            {/* <Carousel/> */}
                 <div className='slider-layout'>
 
                     <div className='cards'>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { PlusBtnAddListSvg } from "../svg/ImgSvg";
 import { AddGroupList } from "./AddGroupList";
 import { boardService } from "../../services/board.service.local";

@@ -14,9 +14,9 @@ export function AppHeader() {
     const [boardId, setBoardId] = useState('')
     const [board, setBoard] = useState(null)
     const [bgColor, setBgColor] = useState('transparent')
-
+    
     useEffect(() => {
-
+        
         setBoardId('')
         setBoard(null)
         setBgColor('transparent')
@@ -39,6 +39,7 @@ export function AppHeader() {
                 }
             }
         }
+        
     }, [location, boardId])
 
     async function getBgc() {
@@ -57,7 +58,7 @@ export function AppHeader() {
     if (board) getBgc()
 
     const dynClass = bgColor !== 'transparent' ? 'bgColor' : ''
-
+    if(location.pathname ==='/') return null
     return (
         <header className="app-header"
             style={{
@@ -80,7 +81,7 @@ export function AppHeader() {
                             {/* <ArrowDown /> */}
                         </button>
                     </Link>
-                    
+
                     <button className={`btn-ops btn-recent ${dynClass}`}>
                         Recent
                         {/* <ArrowDown /> */}

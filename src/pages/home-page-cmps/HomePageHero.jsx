@@ -11,7 +11,7 @@ export function HomePageHero() {
         <p className="homepage-hero-p">Keep everything in the same place-even if your team isn’t.</p>
         <Link to={'/workspace'} >
           <button className="btn-call-to-action">
-            Start now!
+            Start now
           </button>
         </Link>
 

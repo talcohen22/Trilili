@@ -4,6 +4,7 @@ import { HomePageProductivity } from './home-page-cmps/HomePageProductivity.jsx'
 import { HomePageCards } from './home-page-cmps/HompageCards.jsx'
 import { HomePageSignUp } from './home-page-cmps/HomPageSignUp.jsx'
 import { HomePageFooter } from './home-page-cmps/HomePageFooter.jsx'
+import { HomePageHeader } from './home-page-cmps/HomePageHeader.jsx'
 
 export function HomePage() {
 
@@ -12,7 +13,8 @@ export function HomePage() {
     return (
         <section className="homepage">
 
-            {/* <HomePageHeader /> */}
+            <HomePageHeader />
+
             <section className="homepage-container">
                 <HomePageHero />
             </section>

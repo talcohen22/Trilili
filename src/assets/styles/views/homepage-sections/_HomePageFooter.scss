@@ -19,11 +19,15 @@
 
     .upper-section {
         display: flex;
-
+        justify-content: center;
+        align-items: center;
         .footer-logo {
             padding: rem(16px) rem(16px) 0;
             align-items: baseline;
             line-height: 3;
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
 
             .inner-logo {
                 display: flex;
@@ -31,8 +35,10 @@
                 justify-content: space-between;
                 margin: rem(16px) (16px) 0 0;
             }
-            .footer-login-btn{
+
+            .footer-login-btn {
                 text-align: start;
+                margin-bottom: rem(20px);
             }
 
             img {
@@ -55,36 +61,42 @@
             }
         }
     }
-    .footer-seperator{
+
+    .footer-seperator {
         border-top: 1px solid rgb(80, 95, 121);
         width: 98%;
     }
-    .lower-section{
+
+    .lower-section {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0 rem(16px);
+        padding:0 rem(16px) ;
 
-        div{
+        div {
             padding: rem(16px);
         }
 
-        .language{
+        .language {
             display: flex;
-            gap:10px ;
+            gap: 10px;
             align-items: center;
             justify-content: center;
         }
 
-        .social-links{
+        .social-links {
             justify-content: end;
             display: flex;
             gap: 10px;
         }
-        svg{
+
+        svg {
             width: rem(12px);
-            fill:#ffffff;
+            fill: #ffffff;
         }
-        .social-btn{
+
+        .social-btn {
             justify-content: center;
             align-items: center;
             border-radius: 50%;
@@ -93,12 +105,18 @@
             height: rem(28px);
             width: rem(28px);
         }
-        a{
+
+        a {
             font-size: rem(12px);
         }
-        .policies{
+
+        .policies {
+            justify-content: start;
             display: flex;
-            gap: rem(24px);
+            gap: 1.5rem;
+            align-items: center;
+            flex:0.8;
+
         }
     }
 }

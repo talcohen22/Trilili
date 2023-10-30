@@ -1,9 +1,40 @@
 .homepage {
-    
+
     .homepage-header {
         height: rem(60px);
         display: flex;
         max-width: 1320px;
+
+        img {
+            max-width: rem(120px);
+            cursor: pointer;
+        }
+
+        button {
+            font-size: rem(19.2px);
+            padding: rem(8px) rem(24px);
+        }
+        
+        a {
+            font-size: 1.2rem;
+        }
+        .homepage-header-links {
+            display: flex;
+            align-items: center;
+
+            .homepage-header-btn {
+                background-color: $headerLogoClr;
+                height:rem(60px);
+                min-width: 205px;
+                max-width: max-content;
+                color: #ffffff;
+
+            }
+            .hompage-header-login-btn {
+                color: $wsTxtColor;
+            }
+           
+        }
     }
 
     .btn-call-to-action {
@@ -11,30 +42,23 @@
         font-size: rem(14px);
         font-weight: 500;
         @include action-btn;
-        
+
         a {
             text-decoration: none;
             color: #fff
         }
-    
+
         @include for-wide-layout {
             font-size: rem(14px);
             width: 500px;
         }
-        @include for-narrow-layout{
-            font-size: rem(18px);
-            width: rem(300px);}
-    }
-    .homepage-header-btn {
-        background-color: $headerLogoClr;
-        height: max-content;
-        min-width: 205px;
-        max-width: max-content;
 
-        a {
-            font-size: 1.2rem;
+        @include for-narrow-layout {
+            font-size: rem(18px);
+            width: rem(300px);
         }
     }
+
 
     .homepage-container {
         background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
@@ -100,9 +124,11 @@
                 img {
                     max-width: 100%;
                     margin: auto;
-                    @include for-mobile-layout{
+
+                    @include for-mobile-layout {
                         width: 100%;
                     }
+
                     @include for-narrow-layout {
                         max-width: 80%;
                     }
