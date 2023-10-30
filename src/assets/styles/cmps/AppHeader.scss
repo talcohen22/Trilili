@@ -86,9 +86,13 @@
         font-weight: 500;
     }
 
+    .btn-ops.bgColor:hover{
+        background-color: $headerHover;
+    }
+
     .bgColor {
         color: white;
-        border-color: #ffffff29 !important;
+        border-color: $headerHover !important;
 
         svg {
             fill: white;

@@ -5,9 +5,20 @@ import { useNavigate } from "react-router";
 
 export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
 
+    const [imgs, setImgs] = useState([])
+
     const navigate = useNavigate()
 
-    const photos = [0, 50, 100, 150, 200, 250, 300, 350];
+    const API_KEY = 'oDxyc9F7Wxpe9YdZkaiUWZLZ-_ZAPayR7_8Ec4E-3kw'
+    useEffect(() => {
+        async function fetchImgs() {
+            const response = await fetch(`https://api.unsplash.com/photos/random?count=8&client_id=${API_KEY}`)
+            const data = await response.json()
+            let photos = data.map(d => d.urls.small)
+            setImgs(photos)
+        }
+        fetchImgs()
+    }, [])
 
     async function onUpdateBgc(bgc) {
         try {
@@ -18,16 +29,17 @@ export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
         }
     }
 
+    if (!imgs.length) return <div></div>
     return (
 
         <section className="change-photo-background">
 
             <div className="photos-bgc">
-                {photos.map((photo, index) => (
+                {imgs.map((img, index) => (
                     <img
                         key={index}
-                        onClick={() => onUpdateBgc(`https://source.unsplash.com/random/${300 + photo}×${300 + photo}`)}
-                        src={`https://source.unsplash.com/random/${300 + photo}×${300 + photo}`}
+                        onClick={() => onUpdateBgc(img)}
+                        src={img}
                     ></img>
                 ))}
             </div>
