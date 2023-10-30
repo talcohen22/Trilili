@@ -122,181 +122,6 @@ const BOARDS = [
         ],
         "groups": [
             {
-                "id": "g101",
-                "title": "Backlog-Server",
-                "archivedAt": 1589983468400,
-                "status": "in-progress",
-                "priority": "low",
-                "description": "need to check the backlog-Server",
-                "labelIds": ["l101", "l102", "l105", "l106"],
-                "tasks": [
-                    {
-                        "id": "c101",
-                        "title": "Create a server with express",
-                        "createdAt": 1698249461229,
-                        "archivedAt": 1589983468414,
-                        "labelIds": ["l101", "l102", "l103", "l108"],
-                        "description": "install express before start",
-                        "attachment": [
-                            {
-                                "fileName": "wood.jpg",
-                                "url": "http://res.cloudinary.com/dug2dklcy/image/upload/v1698412953/wbdqdkxlzz0q0tfh4wfy.jpg"
-                            },
-                            {
-                                "fileName": "trello 1.1.docx",
-                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
-                            }
-                        ],
-                        "memberIds": ['u101', 'u102', 'u103'],
-                        "checklists": [],
-                        "style": {
-                            "backgroundColor": "",
-                            "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
-                        },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": true
-                        },
-                        "startDate": 1698051014,
-                        "isWatch": true,
-                        "checklists": [
-                            {
-                                "id": "cl103",
-                                "title": "CSS primary checklist",
-                                "todos": [
-                                    {
-                                        "id": "td109",
-                                        "title": "bug in taskDetails cmp",
-                                        "isDone": true
-                                    },
-                                    {
-                                        "id": "td110",
-                                        "title": "bug in groupDetails cmp",
-                                        "isDone": true
-                                    },
-                                    {
-                                        "id": "td111",
-                                        "title": "bug in boardDetails cmp",
-                                        "isDone": true
-                                    },
-                                ]
-                            },
-                            {
-                                "id": "cl104",
-                                "title": "CSS checklist",
-                                "todos": [
-                                    {
-                                        "id": "td112",
-                                        "title": "bug in boardDetails cmp",
-                                        "isDone": true
-                                    },
-                                    {
-                                        "id": "td113",
-                                        "title": "bug in boardDetails cmp",
-                                        "isDone": true
-                                    }
-                                ]
-                            }
-                        ],
-                    },
-                    {
-                        "id": "c102",
-                        "title": "Create backend services",
-                        "createdAt": 1698249461230,
-                        "archivedAt": 1589983468418,
-                        "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
-                        "attachment": [],
-                        "memberIds": ['u103'],
-                        "checklists": [],
-                        "style": {
-                            "backgroundColor": "#26de81",
-                            "cover": ""
-                        },
-                        "dueDate": {
-                            "timeStamp": 1702061014,
-                            "isDone": false
-                        },
-                        "startDate": 1698051014,
-                    },
-                    {
-                        "id": "c103",
-                        "title": "Date modal approval",
-                        "archivedAt": 1589983468413,
-                        "labelIds": [],
-                        "style": {
-                            "backgroundColor": "#26de81",
-                            "cover": ""
-                        },
-                        "dueDate": null,
-                        "startDate": null,
-                        "attachment": [],
-                        "memberIds": [],
-                        "checklists": [],
-                    },
-                    {
-                        "id": "c104",
-                        "title": "DB implementation",
-                        "createdAt": 1698249461231,
-                        "archivedAt": 1589983468412,
-                        "labelIds": [],
-                        "style": {
-                            "backgroundColor": "#6cc3e0",
-                            "cover": ""
-                        },
-                        "dueDate": null,
-                        "startDate": null,
-                        "attachment": [],
-                        "memberIds": [],
-                        "comments": [
-                            {
-                                "id": "cm101",
-                                "txt": "also @yaronb please CR this",
-                                "createdAt": 1590999817436,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullname": "Tal Tarablus",
-                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                }
-                            },
-                            {
-                                "id": "cm102",
-                                "txt": "also @yaronb please CR this",
-                                "createdAt": 1590999817436,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullname": "Tal Tarablus",
-                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                }
-                            }
-                        ],
-                        "checklists": [
-                            {
-                                "id": "cl101",
-                                "title": "check bugs",
-                                "todos": [
-                                    {
-                                        "id": "td101",
-                                        "title": "bug in taskDetails cmp",
-                                        "isDone": false
-                                    },
-                                    {
-                                        "id": "td102",
-                                        "title": "bug in groupDetails cmp",
-                                        "isDone": true
-                                    },
-                                    {
-                                        "id": "td103",
-                                        "title": "bug in boardDetails cmp",
-                                        "isDone": true
-                                    }
-                                ]
-                            }
-                        ],
-                    }
-                ],
-                "style": {}
-            },
-            {
 
                 "id": "g102",
                 "title": "Backlog-client",
@@ -382,6 +207,102 @@ const BOARDS = [
                         "startDate": null,
                     },
                     {
+                        "id": "c103",
+                        "title": "Date modal approval",
+                        "archivedAt": 1589983468413,
+                        "labelIds": [],
+                        "style": {
+                            "backgroundColor": "#26de81",
+                            "cover": ""
+                        },
+                        "dueDate": null,
+                        "startDate": null,
+                        "attachment": [],
+                        "memberIds": [],
+                        "checklists": [],
+                    },
+                ],
+                "style": {}
+            },
+            {
+                "id": "g101",
+                "title": "Backlog-Server",
+                "archivedAt": 1589983468400,
+                "status": "in-progress",
+                "priority": "low",
+                "description": "need to check the backlog-Server",
+                "labelIds": ["l101", "l102", "l105", "l106"],
+                "tasks": [
+                    {
+                        "id": "c101",
+                        "title": "Create a server with express",
+                        "createdAt": 1698249461229,
+                        "archivedAt": 1589983468414,
+                        "labelIds": ["l101", "l102", "l103", "l108"],
+                        "description": "install express before start",
+                        "attachment": [
+                            {
+                                "fileName": "wood.jpg",
+                                "url": "http://res.cloudinary.com/dug2dklcy/image/upload/v1698412953/wbdqdkxlzz0q0tfh4wfy.jpg"
+                            },
+                            {
+                                "fileName": "trello 1.1.docx",
+                                "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
+                            }
+                        ],
+                        "memberIds": ['u101', 'u102', 'u103'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "",
+                            "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": true
+                        },
+                        "startDate": 1698051014,
+                        "isWatch": true,
+                        "checklists": [
+                            {
+                                "id": "cl103",
+                                "title": "CSS primary checklist",
+                                "todos": [
+                                    {
+                                        "id": "td109",
+                                        "title": "bug in taskDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td110",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td111",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                ]
+                            },
+                            {
+                                "id": "cl104",
+                                "title": "CSS checklist",
+                                "todos": [
+                                    {
+                                        "id": "td112",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td113",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                    },
+                    {
                         "id": "d107",
                         "title": "Check user id - 125465",
                         "createdAt": 1698249461239,
@@ -409,7 +330,86 @@ const BOARDS = [
                         "dueDate": null,
                         "startDate": null,
                         "checklists": [],
-                    }
+                    },
+                    {
+                        "id": "c104",
+                        "title": "DB implementation",
+                        "createdAt": 1698249461231,
+                        "archivedAt": 1589983468412,
+                        "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
+                        "style": {
+                            "backgroundColor": "#6cc3e0",
+                            "cover": ""
+                        },
+                        "dueDate": null,
+                        "startDate": null,
+                        "attachment": [],
+                        "memberIds": [],
+                        "comments": [
+                            {
+                                "id": "cm101",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            },
+                            {
+                                "id": "cm102",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                }
+                            }
+                        ],
+                        "checklists": [
+                            {
+                                "id": "cl101",
+                                "title": "check bugs",
+                                "todos": [
+                                    {
+                                        "id": "td101",
+                                        "title": "bug in taskDetails cmp",
+                                        "isDone": false
+                                    },
+                                    {
+                                        "id": "td102",
+                                        "title": "bug in groupDetails cmp",
+                                        "isDone": true
+                                    },
+                                    {
+                                        "id": "td103",
+                                        "title": "bug in boardDetails cmp",
+                                        "isDone": true
+                                    }
+                                ]
+                            }
+                        ],
+                    },
+                    {
+                        "id": "c102",
+                        "title": "Create backend services",
+                        "createdAt": 1698249461230,
+                        "archivedAt": 1589983468418,
+                        "labelIds": [],
+                        "attachment": [],
+                        "memberIds": ['u103'],
+                        "checklists": [],
+                        "style": {
+                            "backgroundColor": "#26de81",
+                            "cover": ""
+                        },
+                        "dueDate": {
+                            "timeStamp": 1702061014,
+                            "isDone": false
+                        },
+                        "startDate": 1698051014,
+                    },
                 ],
                 "style": {}
             },
@@ -561,7 +561,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://i0.wp.com/boingboing.net/wp-content/uploads/2022/08/bug.jpg?fit=1&resize=600%2C4000&ssl=1"
+                            "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEZudQRmdWvQEy3gIcpytKZj_0NIshlwC6gHqBLGEJXjFbNiutDjGnMIiUyLcBNzjPh6s&usqp=CAU"
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -577,7 +577,7 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnHCT_iiFMufTpF4bhFHwRPxQkfxQle_3_Om4ryZE5P2gwaB9-39CV3SdQ_tZCYNBWOwI&usqp=CAU"
+                            "cover": "https://projectriskcoach.com/wp-content/uploads/2019/12/Meeting-Problems.png"
                         },
                         "dueDate": null,
                         "startDate": null,
@@ -825,7 +825,7 @@ const BOARDS = [
                             "timeStamp": 1702061014,
                             "isDone": false
                         },
-                        "startDate": null,
+                        "startDate": null
                     },
                     {
                         "id": "c123",
@@ -841,13 +841,12 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": ""
-                        },
-                    },
+                        }
+                    }
                 ],
                 "style": {}
-            },
+            }
         ],
-
         "activities": [
             {
                 "id": "a101",
@@ -882,7 +881,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg",
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg"
         }
     },
     {
@@ -897,7 +896,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg",
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg"
         }
     },
     {
@@ -912,7 +911,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg",
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg"
         }
     },
     {
@@ -927,7 +926,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg",
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg"
         }
     },
     {
@@ -942,7 +941,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg",
+            "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg"
         }
     },
     {
@@ -957,7 +956,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+            "backgroundImage": "https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
         }
     },
     {
@@ -972,7 +971,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1675889335685-4ac82f1e47ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+            "backgroundImage": "https://images.unsplash.com/photo-1675889335685-4ac82f1e47ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
         }
     },
     {
@@ -987,7 +986,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+            "backgroundImage": "https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
         }
     },
     {
@@ -1002,7 +1001,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1694802491008-a528234a9a2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000",
+            "backgroundImage": "https://images.unsplash.com/photo-1694802491008-a528234a9a2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
         }
     },
     {
@@ -1017,7 +1016,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://images.unsplash.com/photo-1617965215075-b1f768dc8a61?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwdmlld3xlbnwwfHwwfHx8MA%3D%3D",
+            "backgroundImage": "https://images.unsplash.com/photo-1617965215075-b1f768dc8a61?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwdmlld3xlbnwwfHwwfHx8MA%3D%3D"
         }
     },
     {
@@ -1032,7 +1031,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://les.mitsubishielectric.co.uk/assets/Uploads/328a039bfe/Changing-view-from-space.jpg",
+            "backgroundImage": "https://les.mitsubishielectric.co.uk/assets/Uploads/328a039bfe/Changing-view-from-space.jpg"
         }
     },
     {
@@ -1047,7 +1046,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://static.vecteezy.com/system/resources/thumbnails/007/515/187/original/timelapse-of-beautiful-blue-sky-in-pure-daylight-with-puffy-fluffy-white-clouds-background-amazing-flying-through-beautiful-thick-fluffy-clouds-nature-and-cloudscape-concept-free-video.jpg",
+            "backgroundImage": "https://static.vecteezy.com/system/resources/thumbnails/007/515/187/original/timelapse-of-beautiful-blue-sky-in-pure-daylight-with-puffy-fluffy-white-clouds-background-amazing-flying-through-beautiful-thick-fluffy-clouds-nature-and-cloudscape-concept-free-video.jpg"
         }
     },
     {
@@ -1062,7 +1061,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://images.rawpixel.com/image_800/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMi0wNS9mbDUwOTQ5MjU4NjkyLWltYWdlLWtwd2IyN2dmLmpwZw.jpg?s=lD6yhtA_S-iWCgZVDqhOYS4pFBmM6tB6Fsdh3bvBNro",
+            "backgroundImage": "https://images.rawpixel.com/image_800/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMi0wNS9mbDUwOTQ5MjU4NjkyLWltYWdlLWtwd2IyN2dmLmpwZw.jpg?s=lD6yhtA_S-iWCgZVDqhOYS4pFBmM6tB6Fsdh3bvBNro"
         }
     },
     {
@@ -1077,7 +1076,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg",
+            "backgroundImage": "https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg"
         }
     },
     {
@@ -1092,7 +1091,7 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://contents.mediadecathlon.com/s901275/k$8f51d8612b8dc765e3b89173d46a056e/1920x0/2808pt1703/5616xcr2808/Tropical-trek-in-Costa-Rica.jpeg?format=auto",
+            "backgroundImage": "https://contents.mediadecathlon.com/s901275/k$8f51d8612b8dc765e3b89173d46a056e/1920x0/2808pt1703/5616xcr2808/Tropical-trek-in-Costa-Rica.jpeg?format=auto"
         }
     },
     {
@@ -1107,9 +1106,9 @@ const BOARDS = [
         "labels": [],
         "members": [],
         "style": {
-            "backgroundImage": "https://www.pbs.org/wnet/nature/files/2019/07/Super-Hummingbirds-2-1280x675.jpg",
+            "backgroundImage": "https://www.pbs.org/wnet/nature/files/2019/07/Super-Hummingbirds-2-1280x675.jpg"
         }
-    },
+    }
 ]
 
 

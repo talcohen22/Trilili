@@ -38,6 +38,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
     }
 
     function onSubmit(ev) {
+        ev.stopPropagation()
         ev.preventDefault()
         if (newTaskText.trim().length > 0) {
             const groupId = group.id
@@ -46,6 +47,7 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
             if (direction) onAddTask(taskToAdd, groupId, 'END')
             else if (!direction) onAddTask(taskToAdd, groupId, 'START')
             setNewTaskText('')
+            textareaRef.current.focus()
         }
     }
 
@@ -75,7 +77,8 @@ export function AddTaskModal({ group, onAddTask, onCloseAddTaskModal, isOnAddTas
                     value={newTaskText}
                     onChange={handleChange}
                     onKeyDown={handleKeyPress}
-                    ref={textareaRef} />
+                    ref={textareaRef}
+                    autoFocus />
 
                 <div className="button-container">
                     <button onClick={onSubmit} className='btn-action modal-btn'>Add card</button>
