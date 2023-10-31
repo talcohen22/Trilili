@@ -9,7 +9,8 @@ export const utilService = {
     getAssetSrc,
     getDate,
     getTime,
-    handleTextInputFocus
+    handleTextInputFocus,
+    getRandomObjectFromArray
 }
 
 function makeId(length = 6) {
@@ -97,3 +98,8 @@ function handleTextInputFocus(Ref){
         Ref.current.scrollIntoView({ behavior: 'smooth' })
       }
 }
+
+function getRandomObjectFromArray(array) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+}  

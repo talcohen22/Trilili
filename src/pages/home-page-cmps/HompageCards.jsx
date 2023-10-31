@@ -3,7 +3,7 @@ import { Carousel } from "../../cmps/common/Carousel"
 
 export function HomePageCards(){
 
-    const img1 = 'https://images.ctfassets.net/rz1oowkt5gyp/3N2U3C71rApm61cGFxnc2E/970b010002488a09a420282df5e7b43a/Carousel_Image_Boards_2x.png'
+    const img1 = 'src//assets//img//trilili carousel.png'
     const img2 = 'https://images.ctfassets.net/rz1oowkt5gyp/3ZjLCD2fANfXYSN3ar9WpE/dc84a408c6a3ee89bee4a646ff6d5966/Lists_2x.png'
     const img3 = 'https://images.ctfassets.net/rz1oowkt5gyp/26CA6JZeRgoOK4nuRHnIlY/060702a80cf7c3be3651d9297d196267/Carousel_Image_Cards_2x.png'
     
@@ -15,7 +15,7 @@ export function HomePageCards(){
                 <div className='slider-layout'>
 
                     <div className='cards'>
-                        <button autoFocus onClick={() => setImg(img1)} className={(img===img1)?'card active':'card'}>
+                        <button  onClick={() => setImg(img1)} className={(img===img1)?'card active':'card'}>
                             <h4>Boards</h4>
                             <p>Trilili boards keep tasks organized and work moving
                                 forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>

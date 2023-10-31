@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowDown, LogoApp, NotificationsSvg } from './svg/ImgSvg'
 import { useState, useEffect } from 'react'
 import { utilService } from '../services/util.service'
@@ -6,6 +6,9 @@ import { useLocation } from 'react-router-dom';
 import * as React from 'react';
 import { boardService } from '../services/board.service.local';
 import { FastAverageColor } from 'fast-average-color';
+import { useSelector } from 'react-redux';
+import { logout } from '../store/user.actions';
+import { showSuccessMsg } from '../services/event-bus.service';
 // imp
 
 export function AppHeader() {
@@ -14,12 +17,22 @@ export function AppHeader() {
     const [boardId, setBoardId] = useState('')
     const [board, setBoard] = useState(null)
     const [bgColor, setBgColor] = useState('transparent')
-    
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState("")
+    const [loggedUser, setLoggedUser] = useState('Guest')
+    const navigate=useNavigate()
+
+    const user = useSelector(storeState => storeState.userModule.loggedinUser)
+    const initials = getInitials(loggedUser.fullname)
+    console.log(user)
     useEffect(() => {
-        
+        if (user) {
+            setIsUserLoggedIn(true)
+            setLoggedUser(user)
+        }
         setBoardId('')
         setBoard(null)
         setBgColor('transparent')
+        if(location.pathname=== '/workspace')
         if (location.pathname.includes('/board')) {
             const path = location.pathname.substring(7, location.pathname.length)
             const firstSlashIndex = path.indexOf("/");
@@ -39,9 +52,27 @@ export function AppHeader() {
                 }
             }
         }
-        
-    }, [location, boardId])
 
+    }, [location, boardId,user,isUserLoggedIn, loggedUser])
+
+    function getInitials(fullName) {
+        if (typeof fullName !== 'string') {
+            return '';
+        }
+
+        const nameParts = fullName.split(' ').filter(part => part); // Filter out empty parts
+        const initials = nameParts.map(part => part[0]).slice(0, 2).join('').toUpperCase(); // Get the first letter of each part, then join the first two
+
+        return initials;
+    }
+    async function onLogout() {
+        try {
+          await logout()
+          navigate('/')
+        } catch (err) {
+          console.log('err:', err)
+        }
+      }
     async function getBgc() {
         const fac = new FastAverageColor()
         const color = await fac.getColorAsync(board.style.backgroundImage)
@@ -58,7 +89,9 @@ export function AppHeader() {
     if (board) getBgc()
 
     const dynClass = bgColor !== 'transparent' ? 'bgColor' : ''
-    if(location.pathname ==='/') return null
+    if (location.pathname === '/' || location.pathname === '/auth') return null
+
+   
     return (
         <header className="app-header"
             style={{
@@ -110,9 +143,12 @@ export function AppHeader() {
                         </div>
                     </button>
 
-                    <button className="btn-user btn-img-user">
+                    <button className="btn-user btn-img-user" onClick={onLogout}>
                         <div className="center-svg">
-                            <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" />
+                            {(isUserLoggedIn && user) ? <span style={{ 'background': user.imgUrl }}>{initials}</span>
+                                : <span style={{ 'background': '#c76ebe' }}>G</span>
+                            }
+                            {/* <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" /> */}
                         </div>
                     </button>
 

@@ -47,8 +47,28 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100%;
+                height: rem(32px);
+                width:  rem(32px);
                 padding: 4px;
+
+                span{
+                    border-radius: 100%;
+                    width: 32px;
+                    padding-inline: 4px;
+                    color: white;
+                    align-items: center;
+                    display: flex;
+                    justify-content: end;
+                    place-content: center;
+                    font-weight: 500;
+                    font-size: 14px;
+                    height: 23px;
+                }
+            }
+        }
+        .btn-img-user{
+            &:hover{
+                background-color:#b3b3b338 ;
             }
         }
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { FooterSvg } from "../../cmps/svg/ImgSvg" 
 
 export function HomePageFooter() {
@@ -7,7 +8,9 @@ export function HomePageFooter() {
                 <div className='footer-logo'>
                     <div className="inner-logo">
                         <div ><img src={'src//assets//img//trilili_dark-removebg.png'}/></div>
+                        <Link to="/auth">
                         <button className='footer-login-btn'>Log in</button>
+                        </Link>
                     </div>
                 </div>
 
