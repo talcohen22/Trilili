@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg, WorkspaceSvg } from "../svg/ImgSvg"
+import { utilService } from "../../services/util.service";
 
 export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
     
@@ -50,9 +51,16 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
                     <section className="board-filter img">
                         <span className="seperator"></span>
                         <div className="members">
-                            <img className="member-img" src="https://source.unsplash.com/random/300×300" alt="" />
-                            <img className="member-img" src="https://source.unsplash.com/random/350×350" alt="" />
-                            <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" />
+                            {
+                                board.members.map((member,index)=>{
+                                    return(
+                                        <img key={index} className="member-img" src={utilService.getAssetSrc(`${member.imgUrl}.jpg`)} alt="" />
+
+                                    )
+                                })
+                            }
+                            {/* <img className="member-img" src="https://source.unsplash.com/random/350×350" alt="" />
+                            <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" /> */}
                         </div>
                         <button className="board-filter-btn share-btn full-btn"><ShareSvg /><span>Share</span></button>
                         <button className="board-filter-btn dots" onClick={onOpenMenuCmp}><DotsSvg /></button>

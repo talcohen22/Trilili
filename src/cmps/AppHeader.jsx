@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { ArrowDown, LogoApp, NotificationsSvg } from './svg/ImgSvg'
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import { utilService } from '../services/util.service'
 import { useLocation } from 'react-router-dom';
 import * as React from 'react';
@@ -8,8 +8,7 @@ import * as React from 'react';
 import { boardService } from '../services/board.service.local';
 import { FastAverageColor } from 'fast-average-color';
 import { useSelector } from 'react-redux';
-import { logout } from '../store/user.actions';
-import { showSuccessMsg } from '../services/event-bus.service';
+import { UserInfoModal } from './UserInfoModal';
 
 export function AppHeader() {
 
@@ -18,8 +17,11 @@ export function AppHeader() {
     const [board, setBoard] = useState(null)
     const [bgColor, setBgColor] = useState('transparent')
     const [isUserLoggedIn, setIsUserLoggedIn] = useState("")
-    const [loggedUser, setLoggedUser] = useState('Guest')
-    const navigate=useNavigate()
+    const [loggedUser, setLoggedUser] = useState({email:'guest@trilili.com',fullname:'Guest',imgUrl:'#c76ebe'})
+    
+    const [isViewUserInfo, setIsViewUserInfo] = useState(false)
+    const [userInfoPostion, setUserInfoPostion] = useState({ left: null, top: null })
+    const buttonRef=useRef(null)
 
     const user = useSelector(storeState => storeState.userModule.loggedinUser)
     const initials = getInitials(loggedUser.fullname)
@@ -65,14 +67,7 @@ export function AppHeader() {
 
         return initials;
     }
-    async function onLogout() {
-        try {
-          await logout()
-          navigate('/')
-        } catch (err) {
-          console.log('err:', err)
-        }
-      }
+
     async function getBgc() {
         const fac = new FastAverageColor()
         const color = await fac.getColorAsync(board.style.backgroundImage)
@@ -91,7 +86,13 @@ export function AppHeader() {
     const dynClass = bgColor !== 'transparent' ? 'bgColor' : ''
     if (location.pathname === '/' || location.pathname === '/auth') return null
 
-   
+    
+    function handleUserInfo() {
+        const buttonRect = buttonRef.current.getBoundingClientRect()
+        setUserInfoPostion({ left: buttonRect.left-265, top: buttonRect.top+40  })
+        setIsViewUserInfo(!isViewUserInfo)
+    }
+
     return (
         <header className="app-header"
             style={{
@@ -143,10 +144,10 @@ export function AppHeader() {
                         </div>
                     </button>
 
-                    <button className="btn-user btn-img-user" onClick={onLogout}>
+                    <button className="btn-user btn-img-user" onClick={handleUserInfo} ref={buttonRef}>
                         <div className="center-svg">
                             {(isUserLoggedIn && user) ? <span style={{ 'background': user.imgUrl }}>{initials}</span>
-                                : <span style={{ 'background': '#c76ebe' }}>G</span>
+                                : <span style={{ 'background':loggedUser.imgUrl }}>{initials}</span>
                             }
                             {/* <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" /> */}
                         </div>
@@ -154,6 +155,7 @@ export function AppHeader() {
 
                 </div>
             </nav>
+           {isViewUserInfo&&<UserInfoModal loggedUser={loggedUser} position={userInfoPostion} initials={initials}/>} 
         </header >
     )
 }
