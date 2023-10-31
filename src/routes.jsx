@@ -6,12 +6,18 @@ import { ChatApp } from './pages/Chat.jsx'
 import { AdminApp } from './pages/AdminIndex.jsx'
 import { SurveyIndex } from './pages/SurveyIndex.jsx'
 import { BoardDetails } from './pages/BoardDetails.jsx'
+import { LoginSignUp } from './pages/LoginSignUp.jsx'
 
 const routes = [
     {
         path: '/',
         component: <HomePage />,
         label: 'Home 🏠',
+    },
+    {
+        path: '/auth',
+        component: <LoginSignUp />,
+        label: 'auth 🏠',
     },
     {
         path: '/workspace',

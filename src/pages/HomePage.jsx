@@ -7,7 +7,6 @@ import { HomePageFooter } from './home-page-cmps/HomePageFooter.jsx'
 import { HomePageHeader } from './home-page-cmps/HomePageHeader.jsx'
 
 export function HomePage() {
-
     document.title='Trilili'
 
     return (

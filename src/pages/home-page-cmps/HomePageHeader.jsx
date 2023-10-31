@@ -17,7 +17,7 @@ export function HomePageHeader() {
                     </Link>
                 </div>
                 <div className="homepage-header-links">
-                    <Link>
+                    <Link to="/auth">
                         <button className="hompage-header-login-btn">Login</button>
                     </Link>
 
