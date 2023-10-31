@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { utilService } from '../services/util.service'
 import { useLocation } from 'react-router-dom';
 import * as React from 'react';
-// import { boardService } from '../services/board.service';
 import { boardService } from '../services/board.service.local';
 import { FastAverageColor } from 'fast-average-color';
 import { useSelector } from 'react-redux';
@@ -19,11 +18,10 @@ export function AppHeader() {
     const [bgColor, setBgColor] = useState('transparent')
     const [isUserLoggedIn, setIsUserLoggedIn] = useState("")
     const [loggedUser, setLoggedUser] = useState('Guest')
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     const user = useSelector(storeState => storeState.userModule.loggedinUser)
     const initials = getInitials(loggedUser.fullname)
-    console.log(user)
     useEffect(() => {
         if (user) {
             setIsUserLoggedIn(true)
@@ -32,28 +30,27 @@ export function AppHeader() {
         setBoardId('')
         setBoard(null)
         setBgColor('transparent')
-        if(location.pathname=== '/workspace')
-        if (location.pathname.includes('/board')) {
-            const path = location.pathname.substring(7, location.pathname.length)
-            const firstSlashIndex = path.indexOf("/");
+            if (location.pathname.includes('/board')) {
+                const path = location.pathname.substring(7, location.pathname.length)
+                const firstSlashIndex = path.indexOf("/");
 
-            if (firstSlashIndex === -1) setBoardId(path)
-            else setBoardId(path.substring(0, firstSlashIndex))
+                if (firstSlashIndex === -1) setBoardId(path)
+                else setBoardId(path.substring(0, firstSlashIndex))
 
-            if (boardId) loadBoard(boardId)
+                if (boardId) loadBoard(boardId)
 
-            async function loadBoard(boardId) {
-                try {
-                    const boardById = await boardService.getById(boardId)
-                    setBoard(boardById)
-                    document.title = `${boardById.title} | Trilili`
-                } catch (err) {
-                    console.log(err)
+                async function loadBoard(boardId) {
+                    try {
+                        const boardById = await boardService.getById(boardId)
+                        setBoard(boardById)
+                        document.title = `${boardById.title} | Trilili`
+                    } catch (err) {
+                        console.log(err)
+                    }
                 }
             }
-        }
 
-    }, [location, boardId,user,isUserLoggedIn, loggedUser])
+    }, [location, boardId, user, isUserLoggedIn, loggedUser])
 
     function getInitials(fullName) {
         if (typeof fullName !== 'string') {
@@ -67,12 +64,12 @@ export function AppHeader() {
     }
     async function onLogout() {
         try {
-          await logout()
-          navigate('/')
+            await logout()
+            navigate('/')
         } catch (err) {
-          console.log('err:', err)
+            console.log('err:', err)
         }
-      }
+    }
     async function getBgc() {
         const fac = new FastAverageColor()
         const color = await fac.getColorAsync(board.style.backgroundImage)
@@ -89,9 +86,8 @@ export function AppHeader() {
     if (board) getBgc()
 
     const dynClass = bgColor !== 'transparent' ? 'bgColor' : ''
-    if (location.pathname === '/' || location.pathname === '/auth') return null
+    if (location.pathname === '/' || location.pathname === '/auth' || !board) return null
 
-   
     return (
         <header className="app-header"
             style={{

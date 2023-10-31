@@ -1,0 +1,8 @@
+.board-activity {
+
+    .back-btn {
+        @include board-menu-back-btn;
+        top: 11px;
+        left: 12px;
+    }
+}
