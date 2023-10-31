@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import { utilService } from '../services/util.service'
 import { useLocation } from 'react-router-dom';
 import * as React from 'react';
+// import { boardService } from '../services/board.service';
 import { boardService } from '../services/board.service.local';
 import { FastAverageColor } from 'fast-average-color';
-// imp
 
 export function AppHeader() {
 

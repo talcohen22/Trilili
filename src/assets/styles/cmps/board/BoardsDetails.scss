@@ -1,6 +1,7 @@
 .board-details{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 56px 1fr;
 
     height: calc(100vh - rem(48px));
     @include fixed-img-url;

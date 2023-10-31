@@ -1,4 +1,5 @@
 import { CheckBoxSmallSvg } from "../../svg/ImgSvg"
+import React from 'react'
 
 export function DoneTasksCounter({ checklists }) {
 
@@ -19,9 +20,11 @@ export function DoneTasksCounter({ checklists }) {
 
     const dynClass = (completedTodos === totalTodos) ? "clicked" : ''
     return (
-        <div className={`task-checklists-calc flex align-center ${dynClass}`}>
-            <CheckBoxSmallSvg />
-            <p className="fs12" >{totalCalc}</p>
-        </div>
+        <React.Fragment>
+            {totalTodos > 0 && <div className={`task-checklists-calc flex align-center ${dynClass}`}>
+                <CheckBoxSmallSvg />
+                <p className="fs12" >{totalCalc}</p>
+            </div>}
+        </React.Fragment>
     )
 }

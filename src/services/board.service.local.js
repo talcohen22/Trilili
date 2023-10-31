@@ -1,8 +1,10 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
 
-const STORAGE_KEY = 'boardDB'
+const STORAGE_KEY = 'board'
+// const STORAGE_KEY = 'boardDB'
 
 export const boardService = {
     query,
@@ -10,10 +12,10 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    addBoardMsg,
+    // addBoardMsg,
     getEmptyGroup,
     getEmptyTask,
-    setBoardGroups,
+    // setBoardGroups,
     // getEmptyLabelsPalette
     getBoardGroupTask,
     getLabel,
@@ -44,60 +46,60 @@ const BOARDS = [
         },
         "labels": [
             {
-                "id": "l101",
+                "_id": "l101",
                 "title": "Done",
                 "color": "#4bce97",
-                "colorName": 'green',
-                "shade": ''
+                "colorName": "green",
+                "shade": ""
             },
             {
-                "id": "l102",
+                "_id": "l102",
                 "title": "Important",
                 "color": "#e2b203",
-                "colorName": 'yellow',
-                "shade": ''
+                "colorName": "yellow",
+                "shade": ""
             },
             {
                 "id": "l103",
                 "title": "Very important",
                 "color": "#faa53d",
-                "colorName": 'orange',
-                "shade": ''
+                "colorName": "orange",
+                "shade": ""
             },
             {
                 "id": "l104",
                 "title": "Most important",
                 "color": "#f87462",
-                "colorName": 'red',
-                "shade": ''
+                "colorName": "red",
+                "shade": ""
             },
             {
                 "id": "l107",
                 "title": "CR",
                 "color": "#e774bb",
-                "colorName": 'pink',
-                "shade": ''
+                "colorName": "pink",
+                "shade": ""
             },
             {
                 "id": "l105",
                 "title": "Again",
                 "color": "#9f8fef",
-                "colorName": 'purple',
-                "shade": ''
+                "colorName": "purple",
+                "shade": ""
             },
             {
                 "id": "l106",
                 "title": "Help",
                 "color": "#579dff",
-                "colorName": 'blue',
-                "shade": ''
+                "colorName": "blue",
+                "shade": ""
             },
             {
                 "id": "l108",
                 "title": "Refactor",
                 "color": "#60c6d2",
-                "colorName": 'sky',
-                "shade": ''
+                "colorName": "sky",
+                "shade": ""
             }
         ],
         "members": [
@@ -133,7 +135,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l10", "l102", "l103", "l104", "l105", "l106", "l108", "l107"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u102', 'u103'],
+                        "memberIds": ["u101", "u102", "u103"],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1672061014,
@@ -152,7 +154,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": ["l108", "l104"],
                         "attachment": [],
-                        "memberIds": ['u103'],
+                        "memberIds": ["u103"],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1698061014,
@@ -162,7 +164,7 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "",
                             "cover": ""
-                        },
+                        }
                     },
                     {
                         "id": "d105",
@@ -180,10 +182,10 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/800px-Npm-logo.svg.png",
+                            "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/800px-Npm-logo.svg.png"
                         },
                         "dueDate": null,
-                        "startDate": null,
+                        "startDate": null
                     },
                     {
                         "id": "d106",
@@ -201,11 +203,11 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://i0.wp.com/techprimelab.com/wp-content/uploads/2020/06/SCSS-or-CSS.jpg?fit=1024%2C576&ssl=1",
+                            "cover": "https://i0.wp.com/techprimelab.com/wp-content/uploads/2020/06/SCSS-or-CSS.jpg?fit=1024%2C576&ssl=1"
                         },
                         "dueDate": null,
-                        "startDate": null,
-                    },
+                        "startDate": null
+                    },///////////////////////////
                     {
                         "id": "c103",
                         "title": "Date modal approval",
@@ -219,7 +221,7 @@ const BOARDS = [
                         "startDate": null,
                         "attachment": [],
                         "memberIds": [],
-                        "checklists": [],
+                        "checklists": []
                     },
                 ],
                 "style": {}
@@ -250,11 +252,11 @@ const BOARDS = [
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
                             }
                         ],
-                        "memberIds": ['u101', 'u102', 'u103'],
+                        "memberIds": ["u101", "u102", "u103"],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg",
+                            "cover": "https://www.lobstershack.com.au/wp-content/uploads/2023/02/Sea-Lion-1080x675.jpg"
                         },
                         "dueDate": {
                             "timeStamp": 1702061014,
@@ -281,7 +283,7 @@ const BOARDS = [
                                         "id": "td111",
                                         "title": "bug in boardDetails cmp",
                                         "isDone": true
-                                    },
+                                    }
                                 ]
                             },
                             {
@@ -301,7 +303,7 @@ const BOARDS = [
                                 ]
                             }
                         ],
-                    },
+                    },//////////////////////////////////////////////////////////////////
                     {
                         "id": "d107",
                         "title": "Check user id - 125465",
@@ -325,11 +327,11 @@ const BOARDS = [
                         },
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-female-5-512.png",
+                            "cover": "https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-female-5-512.png"
                         },
                         "dueDate": null,
                         "startDate": null,
-                        "checklists": [],
+                        "checklists": []
                     },
                     {
                         "id": "c104",
@@ -389,7 +391,7 @@ const BOARDS = [
                                     }
                                 ]
                             }
-                        ],
+                        ]
                     },
                     {
                         "id": "c102",
@@ -398,7 +400,7 @@ const BOARDS = [
                         "archivedAt": 1589983468418,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u103'],
+                        "memberIds": ["u103"],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#26de81",
@@ -408,8 +410,8 @@ const BOARDS = [
                             "timeStamp": 1702061014,
                             "isDone": false
                         },
-                        "startDate": 1698051014,
-                    },
+                        "startDate": 1698051014
+                    }
                 ],
                 "style": {}
             },
@@ -421,7 +423,7 @@ const BOARDS = [
                 "priority": "low",
                 "description": "",
                 "labelIds": ["l101", "l102", "l105", "l106"],
-                "tasks": [
+                "tasks": [//////////////////////////////////////////////////////
                     {
                         "id": "d108",
                         "title": "Sanity test for new component",
@@ -432,7 +434,7 @@ const BOARDS = [
                             {
                                 "fileName": "wood.jpg",
                                 "url": "http://res.cloudinary.com/dug2dklcy/image/upload/v1698412953/wbdqdkxlzz0q0tfh4wfy.jpg"
-                            },
+                            }
                         ],
                         "memberIds": [],
                         "checklists": [],
@@ -465,7 +467,7 @@ const BOARDS = [
                                     "fullname": "Tal Tarablus",
                                     "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                                 }
-                            },
+                            }
                         ]
                     },
                     {
@@ -479,13 +481,13 @@ const BOARDS = [
                         },
                         "labelIds": ["l108", "l104"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": ["u101"],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1699961014,
                             "isDone": false
                         },
-                        "startDate": null,
+                        "startDate": null
                     },
                     {
                         "id": "c110",
@@ -498,11 +500,11 @@ const BOARDS = [
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
-                            "cover": "https://ionic.io/blog/wp-content/uploads/2016/05/what-is-pwa-img.png",
+                            "cover": "https://ionic.io/blog/wp-content/uploads/2016/05/what-is-pwa-img.png"
                         },
                         "dueDate": null,
-                        "startDate": null,
-                    },
+                        "startDate": null
+                    }
                 ],
                 "style": {}
             },
@@ -522,15 +524,15 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u103'],
+                        "memberIds": ["u101", "u103"],
                         "checklists": [],
                         "dueDate": null,
                         "startDate": 1698051014,
                         "style": {
                             "backgroundColor": "",
                             "cover": ""
-                        },
-                    },
+                        }
+                    },//////////////////////////////////////////////////////
                     {
                         "id": "c112",
                         "title": "End day code review with all members",
@@ -538,7 +540,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
-                        "memberIds": ['u103'],
+                        "memberIds": ["u103"],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#579dff",
@@ -548,7 +550,7 @@ const BOARDS = [
                             "timeStamp": 1702061014,
                             "isDone": false
                         },
-                        "startDate": null,
+                        "startDate": null
                     },
                     {
                         "id": "c113",
@@ -564,7 +566,7 @@ const BOARDS = [
                             "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEZudQRmdWvQEy3gIcpytKZj_0NIshlwC6gHqBLGEJXjFbNiutDjGnMIiUyLcBNzjPh6s&usqp=CAU"
                         },
                         "dueDate": null,
-                        "startDate": null,
+                        "startDate": null
                     },
                     {
                         "id": "c114",
@@ -580,9 +582,8 @@ const BOARDS = [
                             "cover": "https://projectriskcoach.com/wp-content/uploads/2019/12/Meeting-Problems.png"
                         },
                         "dueDate": null,
-                        "startDate": null,
-                    },
-
+                        "startDate": null
+                    }
                 ],
                 "style": {}
             },
@@ -602,14 +603,14 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u103'],
+                        "memberIds": ["u101", "u103"],
                         "checklists": [],
                         "dueDate": null,
                         "startDate": 1698051014,
                         "style": {
                             "backgroundColor": "",
                             "cover": ""
-                        },
+                        }
                     },
                     {
                         "id": "c120",
@@ -618,7 +619,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l104", "l105", "l106", "l107"],
                         "attachment": [],
-                        "memberIds": ['u103'],
+                        "memberIds": ["u103"],
                         "checklists": [],
                         "isWatch": true,
                         "style": {
@@ -649,10 +650,10 @@ const BOARDS = [
                                         "id": "td117",
                                         "title": "bug in boardDetails cmp",
                                         "isDone": true
-                                    },
+                                    }
                                 ]
-                            },
-                        ],
+                            }
+                        ]
                     },
                     {
                         "id": "c121",
@@ -661,7 +662,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u103'],
+                        "memberIds": ["u101", "u103"],
                         "checklists": [],
                         "dueDate": {
                             "timeStamp": 1672061014,
@@ -671,8 +672,8 @@ const BOARDS = [
                         "style": {
                             "backgroundColor": "#e774bb",
                             "cover": ""
-                        },
-                    },
+                        }
+                    }
                 ],
                 "style": {}
             },
@@ -692,14 +693,14 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": [],
                         "attachment": [],
-                        "memberIds": ['u101', 'u102'],
+                        "memberIds": ["u101", "u102"],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
                             "cover": "https://kinsta.com/wp-content/uploads/2022/06/what-is-npm.png"
                         },
                         "dueDate": null,
-                        "startDate": null,
+                        "startDate": null
                     },
                     {
                         "id": "c116",
@@ -708,14 +709,14 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101", "l102"],
                         "attachment": [],
-                        "memberIds": ['u101'],
+                        "memberIds": ["u101"],
                         "checklists": [],
                         "dueDate": null,
                         "startDate": null,
                         "style": {
                             "backgroundColor": "",
                             "cover": ""
-                        },
+                        }
                     },
                     {
                         "id": "c117",
@@ -724,7 +725,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l101"],
                         "attachment": [],
-                        "memberIds": ['u10'],
+                        "memberIds": ["u10"],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "",
@@ -754,7 +755,7 @@ const BOARDS = [
                                         "id": "td106",
                                         "title": "bug in boardDetails cmp",
                                         "isDone": true
-                                    },
+                                    }
                                 ]
                             },
                             {
@@ -773,7 +774,7 @@ const BOARDS = [
                                     }
                                 ]
                             }
-                        ],
+                        ]
                     },
                     {
                         "id": "c118",
@@ -787,15 +788,15 @@ const BOARDS = [
                                 "url": "http://res.cloudinary.com/dug2dklcy/raw/upload/v1697983282/uhtxbewhqysvcrdudbm3.docx"
                             }
                         ],
-                        "memberIds": ['u101', 'u102', 'u103'],
+                        "memberIds": ["u101", "u102", "u103"],
                         "checklists": [],
                         "dueDate": null,
                         "startDate": null,
                         "style": {
                             "backgroundColor": "",
                             "cover": ""
-                        },
-                    },
+                        }
+                    }
                 ],
                 "style": {}
             },
@@ -815,7 +816,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l103", "l105"],
                         "attachment": [],
-                        "memberIds": ['u103'],
+                        "memberIds": ["u103"],
                         "checklists": [],
                         "style": {
                             "backgroundColor": "#60c6d2",
@@ -834,7 +835,7 @@ const BOARDS = [
                         "archivedAt": 1589983468414,
                         "labelIds": ["l102", "l105"],
                         "attachment": [],
-                        "memberIds": ['u101', 'u103'],
+                        "memberIds": ["u101", "u103"],
                         "checklists": [],
                         "dueDate": null,
                         "startDate": 1698051014,
@@ -878,7 +879,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg"
@@ -893,7 +944,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384735/d106776cb297f000b1f4_aixvzg.svg"
@@ -908,7 +1009,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384777/8ab3b35f3a786bb6cdac_f6yj4u.svg"
@@ -923,7 +1074,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384798/aec98becb6d15a5fc95e_monues.svg"
@@ -938,7 +1139,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686389855/92e67a71aaaa98dea5ad_ogsw1y.svg"
@@ -953,7 +1204,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1695056721201-078a656ef90b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
@@ -968,7 +1269,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1675889335685-4ac82f1e47ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
@@ -983,7 +1334,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1695983953103-17bce53a8138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
@@ -998,7 +1399,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1694802491008-a528234a9a2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjk2NDA3OTE2fA&ixlib=rb-4.0.3&q=80&w=1000"
@@ -1013,7 +1464,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://images.unsplash.com/photo-1617965215075-b1f768dc8a61?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwdmlld3xlbnwwfHwwfHx8MA%3D%3D"
@@ -1028,7 +1529,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": true,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://les.mitsubishielectric.co.uk/assets/Uploads/328a039bfe/Changing-view-from-space.jpg"
@@ -1043,7 +1594,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://static.vecteezy.com/system/resources/thumbnails/007/515/187/original/timelapse-of-beautiful-blue-sky-in-pure-daylight-with-puffy-fluffy-white-clouds-background-amazing-flying-through-beautiful-thick-fluffy-clouds-nature-and-cloudscape-concept-free-video.jpg"
@@ -1058,7 +1659,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://images.rawpixel.com/image_800/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMi0wNS9mbDUwOTQ5MjU4NjkyLWltYWdlLWtwd2IyN2dmLmpwZw.jpg?s=lD6yhtA_S-iWCgZVDqhOYS4pFBmM6tB6Fsdh3bvBNro"
@@ -1073,7 +1724,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg"
@@ -1088,7 +1789,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://contents.mediadecathlon.com/s901275/k$8f51d8612b8dc765e3b89173d46a056e/1920x0/2808pt1703/5616xcr2808/Tropical-trek-in-Costa-Rica.jpeg?format=auto"
@@ -1103,7 +1854,57 @@ const BOARDS = [
         "createdBy": null,
         "groups": [],
         "isStarred": false,
-        "labels": [],
+        "labels": [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ],
         "members": [],
         "style": {
             "backgroundImage": "https://www.pbs.org/wnet/nature/files/2019/07/Super-Hummingbirds-2-1280x675.jpg"
@@ -1115,49 +1916,55 @@ const BOARDS = [
 
 
 
-_createBoards()
+// _createBoards()
 
 async function query(filterBy = {}) {
-    var boards = await storageService.query(STORAGE_KEY)
-    return boards
+    return await httpService.get(STORAGE_KEY, filterBy)
+    // var boards = await storageService.query(STORAGE_KEY)
+    // return boards
 }
 
-function getById(boardId) {
-    return storageService.get(STORAGE_KEY, boardId)
+async function getById(boardId) {
+    return await httpService.get(`board/${boardId}`)
+    // return storageService.get(STORAGE_KEY, boardId)
 }
 
 async function remove(boardId) {
+    return await httpService.delete(`board/${boardId}`)
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, boardId)
+    // await storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {
     var savedBoard
     if (board._id) {
-        savedBoard = await storageService.put(STORAGE_KEY, board)
+        savedBoard = await httpService.put(`board/${board._id}`, board)
+        // savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
         // Later, owner is set by the backend
         // board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
+        savedBoard = await httpService.post('board', { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
+
+        // savedBoard = await storageService.post(STORAGE_KEY, { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
     }
     return savedBoard
 }
 
-async function addBoardMsg(boardId, txt) {
-    // Later, this is all done by the backend
-    const board = await getById(boardId)
-    if (!board.msgs) board.msgs = []
+// async function addBoardMsg(boardId, txt) {
+//     // Later, this is all done by the backend
+//     const board = await getById(boardId)
+//     if (!board.msgs) board.msgs = []
 
-    const msg = {
-        id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    board.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, board)
+//     const msg = {
+//         id: utilService.makeId(),
+//         by: userService.getLoggedinUser(),
+//         txt
+//     }
+//     board.msgs.push(msg)
+//     await storageService.put(STORAGE_KEY, board)
 
-    return msg
-}
+//     return msg
+// }
 
 // function getEmptyBoard() {
 //     return {
@@ -1179,18 +1986,18 @@ function _createBoards() {
     }
 }
 
-async function createTask(boardId, groupId, taskToAdd) {
-    try {
-        const board = await getById(boardId)
-        const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-        let task = taskToAdd
-        task[id] = utilService.makeId()
-        board.group[groupIdx].tasks.push(task)
-        return save(board)
-    } catch (err) {
+// async function createTask(boardId, groupId, taskToAdd) {
+//     try {
+//         const board = await getById(boardId)
+//         const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+//         let task = taskToAdd
+//         task[id] = utilService.makeId()
+//         board.group[groupIdx].tasks.push(task)
+//         return save(board)
+//     } catch (err) {
 
-    }
-}
+//     }
+// }
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {title: 'Jira G', price: 980}).then(x => console.log(x))
@@ -1201,11 +2008,61 @@ function getEmptyBoard() {
         archivedAt: null,
         createdBy: null,
         style: { backgroundImage: "" },
-        labels: [],
         members: [],
         groups: [],
         activities: [],
-        cmpsOrder: []
+        cmpsOrder: [],
+        labels: [
+            {
+                "id": "l101",
+                "title": "",
+                "color": "#4bce97",
+                "colorName": "green",
+                "shade": ""
+            },
+            {
+                "id": "l102",
+                "title": "",
+                "color": "#e2b203",
+                "colorName": "yellow",
+                "shade": ""
+            },
+            {
+                "id": "l103",
+                "title": "",
+                "color": "#faa53d",
+                "colorName": "orange",
+                "shade": ""
+            },
+            {
+                "id": "l104",
+                "title": "",
+                "color": "#f87462",
+                "colorName": "red",
+                "shade": ""
+            },
+            {
+                "id": "l107",
+                "title": "",
+                "color": "#e774bb",
+                "colorName": "pink",
+                "shade": ""
+            },
+            {
+                "id": "l105",
+                "title": "",
+                "color": "#9f8fef",
+                "colorName": "purple",
+                "shade": ""
+            },
+            {
+                "id": "l106",
+                "title": "",
+                "color": "#579dff",
+                "colorName": "blue",
+                "shade": ""
+            }
+        ]
     }
 }
 
@@ -1235,7 +2092,6 @@ function getEmptyTask() {
             backgroundColor: '',
             cover: ''
         },
-
         startDate: null,
         dueDate: null,
         attachment: [],
@@ -1243,11 +2099,11 @@ function getEmptyTask() {
     }
 }
 
-function setBoardGroups(board, group, title) {
-    const idx = board.groups.findIndex(g => g.id === group.id)
-    board.groups[idx].title = title
-    return board
-}
+// function setBoardGroups(board, group, title) {
+//     const idx = board.groups.findIndex(g => g.id === group.id)
+//     board.groups[idx].title = title
+//     return board
+// }
 
 // function getEmptyLabelsPalette() {
 //     return [
@@ -1285,7 +2141,8 @@ function setBoardGroups(board, group, title) {
 // }
 
 async function getBoardGroupTask(boardId, groupId, taskId) {
-    const board = await storageService.get(STORAGE_KEY, boardId)
+    const board = await httpService.get(`board/${boardId}`)
+    // const board = await storageService.get(STORAGE_KEY, boardId)
     const group = board.groups.find(group => group.id === groupId)
     const task = group.tasks.find(task => task.id === taskId)
 
@@ -1293,14 +2150,16 @@ async function getBoardGroupTask(boardId, groupId, taskId) {
 }
 
 async function getLabel(boardId, labelId) {
-    const board = await storageService.get(STORAGE_KEY, boardId)
+    const board = await httpService.get(`board/${boardId}`)
+    // const board = await storageService.get(STORAGE_KEY, boardId)
     const label = board.labels.find(label => label.id === labelId)
     return label
 }
 
 async function getLabels(boardId, txt) {
     const newTxt = txt.toLowerCase()
-    const board = await storageService.get(STORAGE_KEY, boardId)
+    const board = await httpService.get(`board/${boardId}`)
+    // const board = await storageService.get(STORAGE_KEY, boardId)
 
     const labels = board.labels.filter(label => {
         return label.shade.toLowerCase().includes(newTxt) ||
@@ -1332,7 +2191,6 @@ function getTaskLabelsColors(board, task) {
 
     return labelsColors
 }
-
 
 export function getGroupIdx(board, groupId) {
     return board.groups.findIndex(g => g.id === groupId)

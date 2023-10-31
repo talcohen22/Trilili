@@ -72,7 +72,7 @@ export function EditLabel({ labelIdToEdit }) {
 
             <h3>Title</h3>
             <input className="add-lable" type="text" value={title} onChange={handleChange} />
-            
+
             <h3>Select a color</h3>
             <ul className="colors-container flex ">
                 {colors.map((color, idx) => (
@@ -84,12 +84,10 @@ export function EditLabel({ labelIdToEdit }) {
                 ))}
             </ul>
 
-            <div className={`remove-color-btn flex ${dynClass}`}>
+            <div className={`remove-color-btn flex ${dynClass}`}
+                onClick={() => onSetColor('#091E420F', '', '')}>
                 <ExitBtnSvg />
-                <p className={`create-new-label ${dynClass}`}
-                    onClick={() => onSetColor('#091E420F', '', '')}>
-                    Remove Color
-                </p>
+                <p className={`create-new-label ${dynClass}`}>Remove Color</p>
             </div>
             <hr />
 
