@@ -10,8 +10,7 @@ export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
 
 const initialState = {
-    count: 10,
-    user: userService.getLoggedinUser(),
+    loggedinUser: userService.getLoggedinUser(),
     users: [],
     watchedUser : null
 }
@@ -29,7 +28,7 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, count: state.count + action.diff }
             break
         case SET_USER:
-            newState = { ...state, user: action.user }
+            newState = { ...state, loggedinUser: action.loggedinUser }
             break
         case SET_WATCHED_USER:
             newState = { ...state, watchedUser: action.user }
