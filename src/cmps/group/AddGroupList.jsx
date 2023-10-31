@@ -12,9 +12,7 @@ export function AddGroupList({ onAddTitle, onCancel }) {
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus()
-            console.log(inputRef.current)
             const inputRight = modalRef.current.getBoundingClientRect().right;
-            console.log(inputRight);
             window.scrollTo({
                 left: inputRight,
                 behavior: 'smooth',

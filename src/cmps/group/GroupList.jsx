@@ -30,7 +30,8 @@ export function GroupList({
         const updateBoard = dragAndDropService.handleDragEnd(result, board)
         onSetBoard(updateBoard)
     }
-   
+
+    
     return (
 
         <React.Fragment>

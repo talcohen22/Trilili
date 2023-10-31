@@ -47,6 +47,7 @@ export function GroupActionsModal({ handleClose, group, removeGroup, removeTasks
     }
 
     function getDynamicCmp(cpmType) {
+        console.log(cpmType);
         setDynamicParams({ type: cpmType })
         onSetIsDynamicCmpOpen(true)
     }

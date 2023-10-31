@@ -42,7 +42,7 @@ export function BoardDetails() {
         try {
             const updatedBoard = board
             updatedBoard.groups.push(newGroup)
-            boardService.save(updatedBoard)
+            // boardService.save(updatedBoard)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
         } catch (err) {

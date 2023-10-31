@@ -10,20 +10,18 @@
   padding: 0 10px 0 16px;
   width: 100%;
 
-  /* Board Filter Container */
   .board-filter-container {
-    height: calc(100vh - 48px); /* Adjust the height as needed */
-    overflow: auto; /* Enable horizontal scrolling */
-    position: relative; /* Position relative to its container */
+    height: calc(100vh - 48px);
+    overflow: auto;
+    position: relative;
   }
 
-  /* Board Filter */
   .BoardFilter {
     position: fixed;
-    top: 0; /* Stick to the top of the container */
-    left: 0; /* Stick to the left side of the container */
-    background-color: #fff; /* Set a background color if needed */
-    z-index: 1; /* Ensure it's above other content */
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 1;
   }
 
   .board-filter {
@@ -32,43 +30,40 @@
     align-items: center;
 
     .board-filter-btn.filter {
-       button {
+      button {
         padding: 6px !important;
       }
-      svg{
+
+      svg {
         margin-right: 8px;
       }
-
     }
-    .board-filter-btn.dots{
+
+    .board-filter-btn.dots {
       padding: 4px;
     }
-    /* Shared styles for all elements within .board-filter */
+
     * {
       font-family: system-ui;
       font-weight: 500;
       font-size: 14px;
     }
 
-    /* Styles for .board-visibility */
     .board-visibility {
       display: flex;
       align-items: center;
     }
 
-    /* Styles for .header-title */
     .header-title {
-      // padding-inline-start: 12px;
       line-height: rem(32px);
       font-size: rem(18px);
 
       &:hover {
         cursor: pointer;
-        background-color: $buttonHoverClr; /* Make sure $buttonHoverClr is defined */
+        background-color: $buttonHoverClr;
       }
     }
 
-    /* Styles for input elements */
     input {
       font-size: rem(18px);
       border: none;
@@ -87,7 +82,6 @@
       }
     }
 
-    /* Styles for .board-btn */
     &-btn {
       display: flex;
       align-items: center;
@@ -95,7 +89,7 @@
 
     .dashboard-btn {
       background-color: #DFE1E6;
-      color: $groupHeader; /* Make sure $groupHeader is defined */
+      color: $groupHeader;
       padding: 6px;
 
       span {
@@ -103,24 +97,25 @@
       }
     }
 
-    /* Styles for SVGs */
     svg {
       width: rem(15px);
       height: rem(15px);
-      &:hover{
-          @keyframes scaleAnimation {
-            0% {
-              transform: scale(1);
-            }
-            100% {
-              transform: scale(1.2);
-            }
+
+      &:hover {
+        @keyframes scaleAnimation {
+          0% {
+            transform: scale(1);
           }
-          animation: scaleAnimation 1s ease-in-out;
+
+          100% {
+            transform: scale(1.2);
+          }
+        }
+
+        animation: scaleAnimation 1s ease-in-out;
       }
     }
 
-    /* Styles for buttons */
     button {
       display: flex;
       justify-content: center;
@@ -131,15 +126,17 @@
       border-radius: rem(3px);
       min-width: rem(32px);
       margin-inline: 2px;
-      &:not(.share-btn){padding: rem(6px);}
+
+      &:not(.share-btn) {
+        padding: rem(6px);
+      }
 
       &:hover {
         cursor: pointer;
-        background-color: $buttonHoverClr; /* Make sure $buttonHoverClr is defined */
+        background-color: $buttonHoverClr;
       }
     }
 
-    /* Styles for .group-editing */
     .group-editing {
       .seperator {
         border-left: 1px solid hsl(0deg 0% 100% / 16%);
@@ -149,24 +146,25 @@
       }
     }
 
-    /* Styles for .board-filter */
     .board-filter {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: rem(6px) 0 rem(6px) 0;
-      
-      .share-btn{
-        padding: rem(6px) rem(12px) rem(6px) rem(8px);
-        span{
-          margin: 0 0 0 4px;
 
+      .share-btn {
+        padding: rem(6px) rem(12px) rem(6px) rem(8px);
+
+        span {
+          margin: 0 0 0 4px;
         }
+
         width: rem(75px);
       }
+
       .full-btn {
         background-color: #DFE1E6;
-        color: $wsTxtColor; /* Make sure $wsTxtColor is defined */
+        color: $wsTxtColor;
         font-weight: 400;
         height: rem(32px);
         justify-content: center;
@@ -177,7 +175,6 @@
       }
     }
 
-    /* Styles for .img */
     .img {
       gap: rem(4px);
       position: relative;
@@ -189,15 +186,14 @@
         border-radius: 50%;
         left: rem(40px);
       }
-
-     
     }
 
-    > * {
+    >* {
       font-weight: 700;
       color: white;
     }
-    .members{
+
+    .members {
       margin: 0 rem(2px) 0 0;
     }
   }

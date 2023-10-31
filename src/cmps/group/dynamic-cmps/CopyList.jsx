@@ -2,9 +2,8 @@ import { useEffect, useState, useRef } from 'react'
 
 export function CopyList({ group, saveCopiedGroup,onHandleClose }) {
 
-    const [title, setTitle] = useState(copiedTitle)
+    const [title, setTitle] = useState(group.title)
     const inputRef = useRef(null)
-    const copiedTitle = group.title
     
     useEffect(() => {
         if (inputRef.current) {

@@ -1,7 +1,10 @@
 import { useSelector } from 'react-redux'
 import { removeCover, updateColorBackground, updatePhotoBackground } from '../../store/board.actions'
+import { useEffect, useState } from 'react'
 
 export function FeatureCover() {
+
+    const [photos, setImgs] = useState([])
 
     const board = useSelector(storeState => storeState.boardModule.board)
     const group = useSelector(storeState => storeState.boardModule.group)
@@ -9,14 +12,17 @@ export function FeatureCover() {
     const storeCmp = useSelector(storeState => storeState.boardModule.cmp)
 
     const colors = ["#4bce97", "#f5cd47", "#fea362", "#f87168", "#9f8fef", "#579dff", "#6cc3e0", "#94c748", "#e774bb", "#8590a2"]
-    const photos = [
-        "https://images.unsplash.com/photo-1694989025300-9e1c2cfc7a2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400",
-        "https://images.unsplash.com/photo-1694536379581-3003331c1e2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400",
-        "https://images.unsplash.com/photo-1691413436108-b4ef24809a1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400",
-        "https://images.unsplash.com/photo-1696312870500-96b8f86faee2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400",
-        "https://images.unsplash.com/photo-1695755594813-14e57fab9a56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400",
-        "https://images.unsplash.com/photo-1695808403805-ff03eec7de03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTMxOTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg0MDg1ODd8&ixlib=rb-4.0.3&q=80&w=400"
-    ]
+
+    const API_KEY = 'oDxyc9F7Wxpe9YdZkaiUWZLZ-_ZAPayR7_8Ec4E-3kw'
+    useEffect(() => {
+        async function fetchImgs() {
+            const response = await fetch(`https://api.unsplash.com/photos/random?count=6&client_id=${API_KEY}`)
+            const data = await response.json()
+            let photos = data.map(d => d.urls.small)
+            setImgs(photos)
+        }
+        fetchImgs()
+    }, [])
 
     async function onSetColorBackground(color) {
         try {

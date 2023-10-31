@@ -77,7 +77,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
     const isCover = task.style.backgroundColor || task.style.cover
 
     return (
-        <div className="overlay" onClick={handleClickOutside} >
+        <div className="overlay flex justify-center" onClick={handleClickOutside} >
 
             <section className="task-details-container" ref={wrapperRef}>
 
