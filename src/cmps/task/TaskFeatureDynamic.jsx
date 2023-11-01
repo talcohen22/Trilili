@@ -24,9 +24,8 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
     const [componentHeight, setComponentHeight] = useState(0);
     const [screenDiff, setScreenDiff] = useState(0)
     const [labelIdToEdit, setLabelIdToEdit] = useState('')
-    
+
     const wrapperRef = useRef(null);
-    useClickOutsideCmp(wrapperRef);
 
     useEffect(() => {
 
@@ -55,15 +54,6 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
         }
     }, [cmp.type]);
 
-    function useClickOutsideCmp(ref) {
-        useEffect(() => {
-            document.addEventListener("mousedown", handleClickOutside)
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside)
-            }
-        }, [cmp])
-    }
-
     function exitCmp() {
         updateBoardGroupTaskType(null, null, null, '', null)
     }
@@ -72,54 +62,48 @@ export function TaskFeatureDynamic({ checklistIdToEdit }) {
         setLabelIdToEdit(labelId)
     }
 
-    function handleClickOutside(event) {
-        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-            exitCmp()
-        }
-    }
-
     if (!board || !group || !task || !cmp.type || !cmp.location || !cmp.location.top || !cmp.location.left) return <div></div>
+    const addHeightToCover = cmp.type === 'Cover' ? 110 : 0
 
     const style = {
-        top: cmp.location.top + componentHeight > screenHeight ? screenHeight - componentHeight - 10 : cmp.location.top + 37,
+        top: cmp.location.top + componentHeight + addHeightToCover > screenHeight ? screenHeight - componentHeight - 50 - addHeightToCover : cmp.location.top - 15,
         left: cmp.location.left + 304 > screenWidth ? screenWidth - 304 - 5 : cmp.location.left
     }
 
     return (
-        <div className="dynamic-overlay" onClick={handleClickOutside} >
 
-            <div className={`dynamic-feature-container ${cmp.type}`}
-                ref={wrapperRef}
-                style={style} >
+        <div className={`dynamic-feature-container ${cmp.type}`}
+            ref={wrapperRef}
+            style={style} >
 
-                <p className="dyn-cmp-header">{cmp.type}</p>
+            <p className="dyn-cmp-header">{cmp.type}</p>
 
-                {cmp.type === 'Labels' &&
-                    <FeatureLabels onSetLabelIdToEdit={onSetLabelIdToEdit} />}
+            {cmp.type === 'Labels' &&
+                <FeatureLabels onSetLabelIdToEdit={onSetLabelIdToEdit} />}
 
-                {(cmp.type === 'Edit label' || cmp.type === 'Add label') &&
-                    <EditLabel labelIdToEdit={labelIdToEdit} />}
+            {(cmp.type === 'Edit label' || cmp.type === 'Add label') &&
+                <EditLabel labelIdToEdit={labelIdToEdit} />}
 
-                {cmp.type === 'Delete Label' &&
-                    <DeleteLabel labelIdToEdit={labelIdToEdit} />}
+            {cmp.type === 'Delete Label' &&
+                <DeleteLabel labelIdToEdit={labelIdToEdit} />}
 
-                {cmp.type === 'Members' && <FeatureMembers />}
+            {cmp.type === 'Members' && <FeatureMembers />}
 
-                {cmp.type === 'Add checklist' && <FeatureChecklist />}
+            {cmp.type === 'Add checklist' && <FeatureChecklist />}
 
-                {cmp.type === 'Dates' && <FeatureDates />}
+            {cmp.type === 'Dates' && <FeatureDates />}
 
-                {cmp.type === 'Attach' && <FeatureAttachment />}
+            {cmp.type === 'Attach' && <FeatureAttachment />}
 
-                {cmp.type === 'Cover' && <FeatureCover />}
+            {cmp.type === 'Cover' && <FeatureCover />}
 
-                {cmp.type === 'Delete checklist' && <DeleteChecklist checklistIdToEdit={checklistIdToEdit} />}
+            {cmp.type === 'Delete checklist' && <DeleteChecklist checklistIdToEdit={checklistIdToEdit} />}
 
-                <div className="exit-btn" onClick={() => exitCmp()}>
-                    <ExitBtnSvg />
-                </div>
+            <div className="exit-btn" onClick={() => exitCmp()}>
+                <ExitBtnSvg />
             </div>
-            
+
         </div>
+
     )
 }

@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react"
 import { ArchiveSvg, CardIconSvg, CopySvg, CoverSvg, DatesSvg, LabelsSvg, MembersSvg, MoveSvg } from "../svg/ImgSvg"
 import { useNavigate } from "react-router"
 import { boardService } from "../../services/board.service.local"
-import { updateBoardGroupTaskType } from "../../store/board.actions"
+import { addActivity, updateBoardGroupTaskType } from "../../store/board.actions"
+import { useSelector } from "react-redux"
 
 export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) {
 
@@ -18,6 +19,8 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
     const [componentHeight, setComponentHeight] = useState(0);
 
+    const cmp = useSelector(storeState => storeState.boardModule.cmp)
+
     useEffect(() => {
 
         if (modalRef.current) {
@@ -32,7 +35,15 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
         function handleClickOutside(event) {
             if (modalRef.current && !modalRef.current.contains(event.target) &&
                 event.target.className === 'overlay quick-edit-overlay') {
+                const isPopoverOpen = !!cmp.type
+                if (isPopoverOpen) {
+                    updateBoardGroupTaskType(null, null, null, '', null)
+                    return
+                }
                 handleCloseQuickEdit();
+            }
+            else {
+                updateBoardGroupTaskType(null, null, null, '', null)
             }
         }
         document.addEventListener("click", handleClickOutside)
@@ -72,14 +83,20 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
         handleCloseQuickEdit()
     }
 
-    function onRemoveTask(ev) {
-        ev.preventDefault()
-        const groupIdx = boardService.getGroupIdx(board, groupId)
-        const group = board.groups[groupIdx]
-        const taskIdx = boardService.getTaskIdx(group, task.id)
-        board.groups[groupIdx].tasks.splice(taskIdx, 1)
-        onSetBoard(board)
-        handleCloseQuickEdit()
+    async function onRemoveTask(ev) {
+        try {
+            ev.preventDefault()
+            const groupIdx = boardService.getGroupIdx(board, groupId)
+            const group = board.groups[groupIdx]
+            const taskIdx = boardService.getTaskIdx(group, task.id)
+            board.groups[groupIdx].tasks.splice(taskIdx, 1)
+            onSetBoard(board)
+            handleCloseQuickEdit()
+            await addActivity(board, board.groups[groupIdx], task, 'deleted')
+        } catch (err) {
+            console.log('cannot delete task: ', err)
+        }
+
     }
 
     function handleChange({ target }) {
