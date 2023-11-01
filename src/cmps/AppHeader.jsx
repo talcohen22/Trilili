@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowDown, LogoApp, NotificationsSvg } from './svg/ImgSvg'
+import { ArrowDown, LogoApp, NotificationsSvg, SearchSvg } from './svg/ImgSvg'
 import { useState, useEffect, useRef } from 'react'
 import { utilService } from '../services/util.service'
 import { useLocation } from 'react-router-dom';
@@ -133,12 +133,7 @@ export function AppHeader() {
                     <div className={`search ${dynClass}`}>
                         <div>
                             <button className={`search-icon ${dynClass}`} title="Search">
-                                <svg  width="20" height="20" viewBox="0 0 24 24" role="presentation">
-                                    <path
-                                        d="M16.436 15.085l3.94 4.01a1 1 0 01-1.425 1.402l-3.938-4.006a7.5 7.5 0 111.423-1.406zM10.5 16a5.5 5.5 0 100-11 5.5 5.5 0 000 11z"
-                                        fillRule="evenodd"
-                                    ></path>
-                                </svg>
+                            <SearchSvg/>
                             </button>
                         </div>
                         <div>  <input
