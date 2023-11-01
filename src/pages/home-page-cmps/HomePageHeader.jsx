@@ -21,7 +21,7 @@ export function HomePageHeader() {
                         <button className="hompage-header-login-btn">Login</button>
                     </Link>
 
-                    <Link>
+                    <Link to={'/workspace'}>
                         <button className="homepage-header-btn">Get Trilili for free</button>
                     </Link>
                 </div>

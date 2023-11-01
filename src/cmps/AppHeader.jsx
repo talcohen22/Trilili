@@ -8,6 +8,7 @@ import { boardService } from '../services/board.service.local';
 import { FastAverageColor } from 'fast-average-color';
 import { useSelector } from 'react-redux';
 import { UserInfoModal } from './UserInfoModal';
+import { style, width } from '@mui/system';
 
 export function AppHeader() {
 
@@ -15,7 +16,7 @@ export function AppHeader() {
     const [boardId, setBoardId] = useState('')
     const [board, setBoard] = useState(null)
     const [bgColor, setBgColor] = useState('transparent')
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState("")
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
     const [loggedUser, setLoggedUser] = useState({ email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' })
     const [isViewUserInfo, setIsViewUserInfo] = useState(false)
     const [userInfoPostion, setUserInfoPostion] = useState({ left: null, top: null })
@@ -31,27 +32,27 @@ export function AppHeader() {
         setBoardId('')
         setBoard(null)
         setBgColor('transparent')
-            if (location.pathname.includes('/board')) {
-                const path = location.pathname.substring(7, location.pathname.length)
-                const firstSlashIndex = path.indexOf("/");
+        if (location.pathname.includes('/board')) {
+            const path = location.pathname.substring(7, location.pathname.length)
+            const firstSlashIndex = path.indexOf("/");
 
-                if (firstSlashIndex === -1) setBoardId(path)
-                else setBoardId(path.substring(0, firstSlashIndex))
+            if (firstSlashIndex === -1) setBoardId(path)
+            else setBoardId(path.substring(0, firstSlashIndex))
 
-                if (boardId) loadBoard(boardId)
+            if (boardId) loadBoard(boardId)
 
-                async function loadBoard(boardId) {
-                    try {
-                        const boardById = await boardService.getById(boardId)
-                        setBoard(boardById)
-                        document.title = `${boardById.title} | Trilili`
-                    } catch (err) {
-                        console.log(err)
-                    }
+            async function loadBoard(boardId) {
+                try {
+                    const boardById = await boardService.getById(boardId)
+                    setBoard(boardById)
+                    document.title = `${boardById.title} | Trilili`
+                } catch (err) {
+                    console.log(err)
                 }
             }
+        }
 
-    }, [location, boardId, user, isUserLoggedIn, loggedUser])
+    }, [location, boardId, user, isUserLoggedIn, loggedUser, isViewUserInfo])
 
     function getInitials(fullName) {
         if (typeof fullName !== 'string') {
@@ -86,6 +87,11 @@ export function AppHeader() {
         const buttonRect = buttonRef.current.getBoundingClientRect()
         setUserInfoPostion({ left: buttonRect.left - 265, top: buttonRect.top + 40 })
         setIsViewUserInfo(!isViewUserInfo)
+    }
+    function handleLogOut() {
+        setIsViewUserInfo(!isViewUserInfo)
+        setIsUserLoggedIn(false)
+        setLoggedUser({ email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' })
     }
 
     return (
@@ -124,13 +130,27 @@ export function AppHeader() {
 
                 <div className='btns-header-user flex justify-space-b align-center'>
 
-                    <input
-                        className={`search-bar ${dynClass}`}
-                        value={inputValue}
-                        placeholder='Search'
-                        onChange={handleInputChange}
-                        onFocus={(ev) => ev.target.classList.add("focused")}
-                        onBlur={(ev) => ev.target.classList.remove("focused")} />
+                    <div className={`search ${dynClass}`}>
+                        <div>
+                            <button className={`search-icon ${dynClass}`} title="Search">
+                                <svg  width="20" height="20" viewBox="0 0 24 24" role="presentation">
+                                    <path
+                                        d="M16.436 15.085l3.94 4.01a1 1 0 01-1.425 1.402l-3.938-4.006a7.5 7.5 0 111.423-1.406zM10.5 16a5.5 5.5 0 100-11 5.5 5.5 0 000 11z"
+                                        fillRule="evenodd"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div>  <input
+                            className={`search-bar ${dynClass}`}
+                            value={inputValue}
+                            placeholder='Search'
+                            onChange={handleInputChange}
+                            onFocus={(ev) => ev.target.classList.add("focused")}
+                            onBlur={(ev) => ev.target.classList.remove("focused")} />
+
+                        </div>
+                    </div>
 
                     {/* <SearchSvg /> */}
                     <button className="btn-user btn-notifications">
@@ -150,7 +170,15 @@ export function AppHeader() {
 
                 </div>
             </nav>
-            {isViewUserInfo && <UserInfoModal loggedUser={loggedUser} position={userInfoPostion} initials={initials} />}
+            {
+                isViewUserInfo && <UserInfoModal
+                    loggedUser={loggedUser}
+                    position={userInfoPostion}
+                    initials={initials}
+                    handleUserInfo={handleUserInfo}
+                    handleLogOut={handleLogOut}
+                />
+            }
         </header >
     )
 }
