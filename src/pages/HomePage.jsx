@@ -27,7 +27,7 @@ export function HomePage() {
                 <HomePageSignUp/>
             </section>
 
-            <section className=''>
+            <section className='hp-footer'>
                 <HomePageFooter />
             </section>
 

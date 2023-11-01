@@ -1,10 +1,24 @@
 .homepage {
+    display: grid;
+    grid-template-columns: 1fr 1100px 1fr;
+
+    .homepage-signup {
+        grid-column: 1/-1;
+    }
+
+    .hp-footer {
+        grid-column: 1/-1;
+    }
+
+    header {
+        grid-column: 2/3;
+    }
 
     .homepage-header {
+
         height: rem(60px);
         display: flex;
         max-width: 1320px;
-        margin-inline: 10%;
 
         img {
             max-width: rem(120px);
@@ -15,26 +29,28 @@
             font-size: rem(19.2px);
             padding: rem(8px) rem(24px);
         }
-        
+
         a {
             font-size: 1.2rem;
         }
+
         .homepage-header-links {
             display: flex;
             align-items: center;
 
             .homepage-header-btn {
                 background-color: $headerLogoClr;
-                height:rem(60px);
+                height: rem(60px);
                 min-width: 205px;
                 max-width: max-content;
                 color: #ffffff;
 
             }
+
             .hompage-header-login-btn {
                 color: $wsTxtColor;
             }
-           
+
         }
     }
 
@@ -62,6 +78,10 @@
 
 
     .homepage-container {
+        grid-column: 1/-1;
+        display: grid;
+        grid-template-columns: 1fr 1100px 1fr;
+
         background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
             linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
@@ -71,15 +91,15 @@
             align-items: center;
             text-align: center;
 
-            @include for-narrow-layout {
-                max-width: rem(1137px);
+            grid-column: 2/3;
+            justify-content: space-between;
+            width: 100%;
 
-            }
+            @include for-narrow-layout {}
 
             .homepage-hero-txt {
                 flex: 0 0 auto;
                 color: #fff;
-                padding: rem(60px) rem(19px);
 
                 .homepage-hero-header {
                     line-height: 1.25;
@@ -108,12 +128,12 @@
                 }
 
                 @include for-narrow-layout {
-                    padding: rem(60px) rem(15px);
+                    // padding: rem(60px) rem(15px);
                     max-width: rem(720px);
                 }
 
                 @include for-wide-layout {
-                    padding: rem(128px) rem(16px);
+                    // padding: rem(128px) rem(16px);
                     max-width: rem(500px);
                 }
             }
@@ -143,7 +163,7 @@
                 }
 
                 @include for-wide-layout {
-                    padding: rem(128px) rem(16px) 0;
+                    padding: rem(128px) 0 0;
                     margin: 0 0 0 rem(-190px);
                 }
             }
@@ -158,15 +178,19 @@
     }
 
     .homepage-productivity {
+        grid-column: 1/-1;
+
+        display: grid;
+        grid-template-columns: 1fr 1100px 1fr;
+
         background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
         background-blend-mode: normal;
-        padding: rem(16px);
+        padding-block: rem(16px);
 
         .productivity-container {
+            grid-column: 2/3;
+            width: 100%;
             color: $txtClr;
-            margin-inline: auto;
-            padding-inline: rem(9px);
-            max-width: rem(1140px);
 
             .productivity-text {
                 flex-direction: column;
