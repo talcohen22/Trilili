@@ -38,7 +38,7 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
                         <input type="text" onChange={handleIputLength} onKeyDown={handleKeyDown} value={boardTitle} style={{ width: inputWidth }} />
                     </div>
                     <div className=" board-filter">
-                        <button onClick={handleIsStarred} className="board-filter-btn ">{isStarred ? <FullStarSvg /> : <StarSvg />}</button>
+                        <button onClick={handleIsStarred} className="board-filter-btn star ">{isStarred ? <FullStarSvg /> : <StarSvg />}</button>
                     </div>
                     <div className=" board-filter">
                         <button className="board-filter-btn dashboard-btn full-btn "><DashboardSvg /><span>Dashboard</span></button>

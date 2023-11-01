@@ -1,31 +1,37 @@
 import { useEffect, useState } from "react"
 import { loadUsers, login, signup } from "../store/user.actions"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 
 export function LoginSignUp() {
     const [credentials, setCredentials] = useState({ email: '', password: '' })
-    const [isSignup, setIsSignup] = useState(sessionStorage.getItem(''))
+    const [isSignup, setIsSignup] = useState(false)
+    const location = useLocation()
     const navigate = useNavigate()
 
     useEffect(() => {
+        if (location.state) {
+            console.log(location.state)
+            setIsSignup(true)
+            setCredentials({ ...credentials, email: location.state })
+        }
         loadUsers()
         sessionStorage.removeItem('')
     }, [])
 
     async function onLogin(ev) {
-        if (ev) ev.preventDefault()
+        ev.preventDefault()
         try {
-            console.log('login: ', credentials);
             await login(credentials)
             navigate(`/workspace`)
         } catch (err) {
             console.log('cannot login')
+            throw err
         }
     }
 
     async function onSignup(ev) {
-        if (ev) ev.preventDefault()
+        ev.preventDefault()
         try {
             await signup(credentials)
             navigate(`/workspace`)

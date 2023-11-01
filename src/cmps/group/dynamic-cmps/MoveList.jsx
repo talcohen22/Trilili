@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { loadBoards } from '../../../store/board.actions';
 
 export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards }) {
-    
+
     const boards = useSelector(storeState => storeState.boardModule.boards);
     let selectBoardList = [...boards]
     const selectGroupList = [...board.groups]
@@ -12,9 +12,9 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
     const [selectedBoard, setSelectedBoard] = useState(board);
     const [selectedPosition, setSelectedPosition] = useState(currentGroupPosition);
 
-    useEffect(()=>{
+    useEffect(() => {
         loadBoards()
-    },[])
+    }, [])
 
     function handleSelectChange({ target }) {
         const targetBoard = selectBoardList.find(item => item._id === target.value)
@@ -57,7 +57,7 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
                 <div className='button-link'>
                     <span className='label'>Board</span>
                     <span>{selectedBoard.title}</span>
-                    <select  onChange={handleSelectChange} value={selectedBoard._id}>
+                    <select onChange={handleSelectChange} value={selectedBoard._id}>
                         <optgroup label='WorkSpace name'>
                             {selectBoardList
                                 .filter((b) => b._id !== board._id)
@@ -77,14 +77,20 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
                     <span className='label'>Position</span>
                     <span>{(+selectedPosition + 1)}</span>
                     <select onChange={handleChangePosition} value={selectedPosition}>
-                        {(selectedBoard._id===board._id)&&selectGroupList.map((g, index) => {
+                        {(selectedBoard._id === board._id) && selectGroupList.map((g, index) => {
                             if (g.id === group.id) return (<option value={index} key={g.id} >{(index + 1) + " (current)"}</option>)
                             else return (<option value={index} key={g.id}>{index + 1}</option>)
                         })}
-                        {(selectedBoard._id!==board._id)&&selectedBoard.groups.map((g, index) => {
-                            if (g.id === group.id) return (<option value={index} key={g.id} >{(index + 1) + " (current)"}</option>)
-                            else return (<option value={index} key={index}>{index + 1}</option>)
-                        })}
+                        {(selectedBoard._id !== board._id) &&
+                            selectedBoard.groups.map((g, index) => {
+                                if (g.id === group.id) return (<option value={index} key={g.id} >{(index + 1) + " (current)"}</option>)
+                                else return (<option value={index} key={index}>{index + 1}</option>)
+                            })}
+                        {(selectedBoard._id !== board._id) && (
+                            <option value={selectedBoard.groups.length} key="extra-option">
+                                {selectedBoard.groups.length + 1}
+                            </option>
+                        )}
                     </select>
                 </div>
 

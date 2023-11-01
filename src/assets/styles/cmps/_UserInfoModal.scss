@@ -31,17 +31,19 @@
 
 
         .user-info-modal-text {
-            isplay: flex;
+            display: flex;
             padding: 4px 6px;
             max-width: 100%;
             flex-direction: column;
 
             h5 {
+                color:$FullNameClr;
                 font-size: 14px;
                 font-weight: 400;
             }
 
             p {
+                color:$EmailClr;
                 font-size: 12px;
             }
         }
@@ -79,6 +81,7 @@
         justify-content: center;
         gap: 8px;
         place-content: baseline;
+        font-weight: 400;
         &:hover {
             background-color: $exitBtnHover;
         }

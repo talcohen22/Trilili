@@ -19,7 +19,7 @@
     }
 
     .btn-logo {
-        font-family: 'charlie-semibold';
+        font-family: 'charlie-semiBold';
         font-size: rem(20px);
         display: flex;
         align-items: center;
@@ -53,16 +53,16 @@
 
                 span{
                     border-radius: 100%;
-                    width: 32px;
-                    padding-inline: 4px;
+                    width: rem(32px);
+                    padding-inline: rem(4px);
                     color: white;
                     align-items: center;
                     display: flex;
                     justify-content: end;
                     place-content: center;
                     font-weight: 500;
-                    font-size: 14px;
-                    height: 23px;
+                    font-size: rem(11px);
+                    height: rem(23px);
                 }
             }
         }
@@ -77,28 +77,46 @@
             height: 24px;
             border-radius: 50%;
         }
-
-        .search-bar {
-            height: 32px;
-            width: 200px;
-            border: 1px solid #172b4d29;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.311);
-
-            &:hover {
-                background-color: #172b4d09
+        .search{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .search-icon{
+                position: relative;
+                left: rem(26px);
+                top: rem(3.2px);
+                background-color: transparent;
+                color: #626f86;
+                outline: none;
+                button,svg{
+                    width: rem(16px);
+                }
+    
             }
-
-            &:focus {
-                border: none;
-                background-color: white;
+            .search-bar {
+                height: 32px;
+                width: 200px;
+                border: 1px solid #172b4d29;
+                border-radius: 5px;
+                background-color: rgba(255, 255, 255, 0.311);
+                padding-inline: rem(28px);
+                &:hover {
+                    background-color: #172b4d09
+                }
+    
+                &:focus {
+                    border: none;
+                    background-color: white;
+                }
+    
+                &:focus-visible {
+                    outline: 2px solid $focusInput;
+                }
+    
             }
-
-            &:focus-visible {
-                outline: 2px solid $focusInput;
-            }
-
         }
+        
     }
 
     * {

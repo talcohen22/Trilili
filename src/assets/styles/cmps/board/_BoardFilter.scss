@@ -36,11 +36,17 @@
 
       svg {
         margin-right: 8px;
+        fill:#ffffff;
       }
     }
 
     .board-filter-btn.dots {
       padding: 4px;
+    }
+    .board-filter-btn.star {
+      svg{
+        fill: #ffffff;
+      }
     }
 
     * {
@@ -178,8 +184,10 @@
     .img {
       gap: rem(4px);
       position: relative;
+      line-height: 0.3;
 
       .member-img {
+        cursor: pointer;
         margin-inline-start: rem(-4px);
         width: rem(28px);
         height: rem(28px);

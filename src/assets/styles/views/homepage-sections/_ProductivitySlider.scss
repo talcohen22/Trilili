@@ -58,8 +58,8 @@
     .images-slider {
         width: 50%;
         img {
-            margin-left: 35px;
-            
+            margin-left: rem(35px);
+            border-radius: rem(8px);
         }
     }
 

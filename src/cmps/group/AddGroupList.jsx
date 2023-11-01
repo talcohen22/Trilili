@@ -6,20 +6,23 @@ export function AddGroupList({ onAddTitle, onCancel }) {
 
     const [title, setTitle] = useState('')
     const inputRef = useRef(null)
-    const modalRef =useRef(null)
+    const modalRef = useRef(null)
     const [flag, setFlag] = useState(false)
 
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus()
             const inputRight = modalRef.current.getBoundingClientRect().right;
-            window.scrollTo({
-                left: inputRight,
-                behavior: 'smooth',
-            })
-        }
-    }, [flag])
 
+        }
+    }, [flag, title])
+
+    useEffect(() => {
+        if (modalRef.current) {
+            modalRef.current.scrollIntoView({behavior: 'smooth'})
+        }
+    }, [modalRef.current?.offsetLeft])
+    
     function handleTitleChange(ev) {
         setTitle(ev.target.value)
     }
@@ -30,7 +33,6 @@ export function AddGroupList({ onAddTitle, onCancel }) {
             setTitle('')
             setFlag(!flag)
         }
-        utilService.handleTextInputFocus(inputRef)
     }
 
     function handleKeyDown(ev) {
