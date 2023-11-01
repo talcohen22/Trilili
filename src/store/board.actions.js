@@ -3,6 +3,7 @@ import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_BOARD_MENU, SET_CMP, SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
 import { utilService } from "../services/util.service.js";
+import { userService } from "../services/user.service.js";
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -34,6 +35,31 @@ export async function loadBoards() {
 
     } catch (err) {
         console.log('Cannot load boards', err)
+        throw err
+    }
+}
+
+export async function addActivity(board, group, task, txt) {
+    try {
+        const groupToAdd = { id: group.id, title: group.title }
+        const taskToAdd = { id: task.id, title: task.title }
+        const user = userService.getLoggedinUser()
+        if (user) delete user.password
+
+        const activity = {
+            id: utilService.makeId(),
+            txt,
+            createdAt: Date.now(),
+            byMember: user,
+            group: groupToAdd,
+            task: taskToAdd
+        }
+        board.activities.push(activity)
+
+        await updateBoard(board)
+
+    } catch (err) {
+        console.log('Cannot add activity', err)
         throw err
     }
 }

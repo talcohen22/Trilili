@@ -7,10 +7,12 @@ import { boardService } from "../../services/board.service.local"
 import { useNavigate } from "react-router"
 import { useSelector } from 'react-redux'
 import { FastAverageColor } from 'fast-average-color'
+import { updateBoardGroupTaskType } from "../../store/board.actions"
 
 export function TaskDetails({ onSetChecklistIdToEdit }) {
 
     const boards = useSelector(storeState => storeState.boardModule.boards);
+    const cmp = useSelector(storeState => storeState.boardModule.cmp)
 
     function useClickOutsideCmp(ref) {
         useEffect(() => {
@@ -55,7 +57,15 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
 
     function handleClickOutside(event) {
         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            const isPopoverOpen = !!cmp.type
+            if (isPopoverOpen) {
+                updateBoardGroupTaskType(null, null, null, '', null)
+                return
+            }
             onGetBoardDetails()
+        }
+        else {
+            updateBoardGroupTaskType(null, null, null, '', null)
         }
     }
 
@@ -75,7 +85,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
     if (!task) return <div></div>
 
     const isCover = task.style.backgroundColor || task.style.cover
-    const isSvg = task.style.cover.substring(task.style.cover.length - 3 , task.style.cover.length) === 'svg' ? true : false
+    const isSvg = task.style.cover.substring(task.style.cover.length - 3, task.style.cover.length) === 'svg' ? true : false
 
     return (
         <div className="overlay flex justify-center" onClick={handleClickOutside} >

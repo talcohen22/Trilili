@@ -3,7 +3,7 @@ import { GroupList } from "../cmps/group/GroupList"
 import { boardService } from "../services/board.service.local"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import { setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu } from "../store/board.actions"
+import { addActivity, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu } from "../store/board.actions"
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
@@ -57,6 +57,7 @@ export function BoardDetails() {
             if (direction === 'START') updatedBoard.groups[groupIdx].tasks.unshift(newTask)
             else updatedBoard.groups[groupIdx].tasks.push(newTask)
             boardService.save(updatedBoard)
+            await addActivity(updatedBoard, updatedBoard.groups[groupIdx], newTask, 'added')
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
         } catch (err) {
