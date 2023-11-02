@@ -5,12 +5,13 @@
         flex-wrap: wrap;
         .task-label {
             min-width: 40px;
-            min-height: 8px;
+            height: 8px;
             max-height: 16px;
             border-radius: 4px;
             margin-inline-end: 4px;
             margin-top: 4px;
             padding: 0 2px;
+            transition: height 0.2s;
 
             &:hover{
                 opacity: 0.8;
