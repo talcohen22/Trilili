@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { logout } from '../store/user.actions';
 import { useNavigate } from 'react-router-dom'
+import { utilService } from '../services/util.service';
 
 export function UserInfoModal({ position, loggedUser, initials, handleUserInfo, handleLogOut }) {
     const { top, left } = position
@@ -39,7 +40,9 @@ export function UserInfoModal({ position, loggedUser, initials, handleUserInfo, 
             <h2>Account</h2>
             <div className="user-info-modal-content">
                 <div>
-                    <span className='user-info-modal-img' style={{ 'background': imgUrl }}>{initials}</span>
+                    {(imgUrl[0] === '#') ? <span className='user-info-modal-img' style={{ 'background': imgUrl }}>{initials}</span>
+                        :
+                        <img className='user-info-modal-img' src={utilService.getAssetSrc('tamir.jpg')} />}
                 </div>
                 <div className="user-info-modal-text">
                     <h5>{fullname.toLowerCase()}</h5>

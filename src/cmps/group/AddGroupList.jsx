@@ -6,15 +6,27 @@ export function AddGroupList({ onAddTitle, onCancel }) {
 
     const [title, setTitle] = useState('')
     const inputRef = useRef(null)
+    const isComponentMounted = useRef(null)
     const modalRef = useRef(null)
     const [flag, setFlag] = useState(false)
+
 
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus()
-            const inputRight = modalRef.current.getBoundingClientRect().right;
-
         }
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                if (isComponentMounted.current) onCancel()
+            }
+            isComponentMounted.current = true
+        }
+        document.addEventListener("click", handleClickOutside)
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside)
+        }
+
     }, [flag, title])
 
     useEffect(() => {

@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react"
 import { loadUsers, login, signup } from "../store/user.actions"
 import { useNavigate, useLocation } from 'react-router-dom'
+import { AlertSvg, WarningSvg } from "../cmps/svg/ImgSvg"
 
 
 export function LoginSignUp() {
-    const [credentials, setCredentials] = useState({ email: '', password: '' })
+    const [credentials, setCredentials] = useState({ email: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
+    const [isLoginCredentialsWrong, setIsLoginCredentialsWrong] = useState(false)
+    const [isSignUpCredentialsWrong, setIsSignUpCredentialsWrong] = useState(false)
+    const [isPasswordEmpty, setIsPasswordEmpty] = useState(false)
+    const [isEmailEmpty, setIsEmailEmpty] = useState(false)
+    const [isFullNameEmpty, setIsFullNameEmpty] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -26,6 +32,9 @@ export function LoginSignUp() {
             navigate(`/workspace`)
         } catch (err) {
             console.log('cannot login')
+            setIsLoginCredentialsWrong(true)
+            if (!credentials.email)setIsEmailEmpty(true)
+            if (!credentials.password) setIsPasswordEmpty(true)
             throw err
         }
     }
@@ -37,6 +46,10 @@ export function LoginSignUp() {
             navigate(`/workspace`)
             clearState()
         } catch (err) {
+            setIsSignUpCredentialsWrong(true)
+            if (!credentials.email) setIsEmailEmpty(true)
+            if (!credentials.password) setIsPasswordEmpty(true)
+            if (!credentials.fullname) setIsFullNameEmpty(true)
             console.log('cannot sign up')
         }
     }
@@ -61,11 +74,19 @@ export function LoginSignUp() {
 
                 <div className="login-container">
                     <div className="login-container-layout flex column">
-                        <img src={"src//assets//img//trilili_light-removebg.png"} />
+                        <img src={"src//assets//img//Trilili light logo.svg"} />
                         {!isSignup && (
                             <div>
-
                                 <h1 className="login-signup-title">Log in to continue</h1>
+
+                                {isLoginCredentialsWrong &&
+                                    <div className="credentials-warning">
+                                        <div className="warning-icon"><WarningSvg /></div>
+                                        <div><p>Incorrect email address and / or password.</p></div>
+
+                                    </div>
+                                }
+
                                 <div className="login-password-container">
                                     <form className="login-form" onSubmit={(e) => onLogin(e)}>
                                         <input
@@ -76,6 +97,15 @@ export function LoginSignUp() {
                                             value={credentials.email}
                                             onChange={handleChange}
                                         />
+
+                                    {(isEmailEmpty && isLoginCredentialsWrong) &&
+                                            <div className="empty-input">
+                                                <span className="alert-icon">
+                                                    <AlertSvg />
+                                                </span>
+                                                <span>Enter your email</span>
+                                            </div>}
+
                                         <input
                                             className="email-input login-input"
                                             type="password"
@@ -84,9 +114,16 @@ export function LoginSignUp() {
                                             value={credentials.password}
                                             onChange={handleChange}
                                         />
+                                        {(isPasswordEmpty && isLoginCredentialsWrong) &&
+                                            <div className="empty-input">
+                                                <span className="alert-icon">
+                                                    <AlertSvg />
+                                                </span>
+                                                <span>Enter your password</span>
+                                            </div>}
+
                                         <button className="btn-action login-btn flex center">Log in</button>
                                     </form>
-
                                     <p className="gray-text">OR</p>
                                 </div>
 
@@ -105,7 +142,13 @@ export function LoginSignUp() {
                                             value={credentials.email}
                                             onChange={handleChange}
                                         />
-
+                                        {(isEmailEmpty && isSignUpCredentialsWrong) &&
+                                            <div className="empty-input">
+                                                <span className="alert-icon">
+                                                    <AlertSvg />
+                                                </span>
+                                                <span>Please enter an email address</span>
+                                            </div>}
 
                                         <input
                                             className="email-input login-input"
@@ -116,6 +159,14 @@ export function LoginSignUp() {
                                             onChange={handleChange}
                                         />
 
+                                        {(isFullNameEmpty && isSignUpCredentialsWrong) &&
+                                            <div className="empty-input">
+                                                <span className="alert-icon">
+                                                    <AlertSvg />
+                                                </span>
+                                                <span>Please enter full name</span>
+                                            </div>}
+
                                         <input
                                             className="email-input login-input"
                                             type="password"
@@ -124,6 +175,15 @@ export function LoginSignUp() {
                                             value={credentials.password}
                                             onChange={handleChange}
                                         />
+                                        
+                                        {(isPasswordEmpty && isSignUpCredentialsWrong) &&
+                                            <div className="empty-input">
+                                                <span className="alert-icon">
+                                                    <AlertSvg />
+                                                </span>
+                                                <span>Please enter password</span>
+                                            </div>}
+
                                         <p className="legal-message">
                                             By signing up, I accept the Atlassian <span className="policy-btn">Cloud Terms of Service</span> and acknowledge <span className="policy-btn">the Privacy Policy</span>.
                                         </p>

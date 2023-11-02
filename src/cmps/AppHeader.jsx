@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowDown, LogoApp, NotificationsSvg, SearchSvg } from './svg/ImgSvg'
 import { useState, useEffect, useRef } from 'react'
 import { utilService } from '../services/util.service'
@@ -13,11 +13,12 @@ import { style, width } from '@mui/system';
 export function AppHeader() {
 
     let location = useLocation()
+    const navigate = useNavigate()
     const [boardId, setBoardId] = useState('')
     const [board, setBoard] = useState(null)
     const [bgColor, setBgColor] = useState('transparent')
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
-    const [loggedUser, setLoggedUser] = useState({ email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' })
+    const [loggedUser, setLoggedUser] = useState({ fullname: 'Guest', imgUrl: '#c76ebe' })
     const [isViewUserInfo, setIsViewUserInfo] = useState(false)
     const [userInfoPostion, setUserInfoPostion] = useState({ left: null, top: null })
     const buttonRef = useRef(null)
@@ -84,6 +85,7 @@ export function AppHeader() {
     if (location.pathname === '/' || location.pathname === '/auth') return null
 
     function handleUserInfo() {
+        if (loggedUser.fullname === 'Guest') return
         const buttonRect = buttonRef.current.getBoundingClientRect()
         setUserInfoPostion({ left: buttonRect.left - 265, top: buttonRect.top + 40 })
         setIsViewUserInfo(!isViewUserInfo)
@@ -91,7 +93,7 @@ export function AppHeader() {
     function handleLogOut() {
         setIsViewUserInfo(!isViewUserInfo)
         setIsUserLoggedIn(false)
-        setLoggedUser({ email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' })
+        setLoggedUser({ fullname: 'Guest', imgUrl: '#c76ebe' })
     }
 
     return (
@@ -133,7 +135,7 @@ export function AppHeader() {
                     <div className={`search ${dynClass}`}>
                         <div>
                             <button className={`search-icon ${dynClass}`} title="Search">
-                            <SearchSvg/>
+                                <SearchSvg />
                             </button>
                         </div>
                         <div>  <input
@@ -147,21 +149,36 @@ export function AppHeader() {
                         </div>
                     </div>
 
-                    {/* <SearchSvg /> */}
                     <button className="btn-user btn-notifications">
                         <div className={`center-svg ${dynClass}`} onClick={handleWatchNotifications}>
                             <NotificationsSvg />
                         </div>
                     </button>
+                    {(isUserLoggedIn && user) ?
+                        <button className="btn-user btn-img-user" onClick={handleUserInfo} ref={buttonRef}>
+                            <div className="center-svg">
+                                {(user.imgUrl[0] === '#') ? <span style={{ 'background': user.imgUrl }}>{initials}</span>
+                                    :
+                                    <img src={utilService.getAssetSrc('tamir.jpg')} />}
 
-                    <button className="btn-user btn-img-user" onClick={handleUserInfo} ref={buttonRef}>
+                                {/* <span style={{ 'background': user.imgUrl }}>{initials}</span> */}
+                            </div>
+                        </button> :
+
+                        <div>
+                            <button onClick={() => navigate('/auth')} className='btn-action guest'>Login</button>
+                        </div>
+                    }
+                    {/* <button className="btn-user btn-img-user" onClick={handleUserInfo} ref={buttonRef}>
                         <div className="center-svg">
                             {(isUserLoggedIn && user) ? <span style={{ 'background': user.imgUrl }}>{initials}</span>
-                                : <span style={{ 'background': loggedUser.imgUrl }}>{initials}</span>
+                                :
+                                <div>
+                                    <button onClick={() => navigate('/auth')} className='btn-action guest'>Login</button>
+                                </div>
                             }
-                            {/* <img src={utilService.getAssetSrc('stav-black.jpg')} alt="user" /> */}
                         </div>
-                    </button>
+                    </button> */}
 
                 </div>
             </nav>
