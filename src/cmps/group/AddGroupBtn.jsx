@@ -14,9 +14,9 @@ export function AddGroupBtn({ onAddNewGroup }) {
     }
 
     function onAddTitle(newGroupTitle) {
-        const updatedNewGroup = { ...boardService.getEmptyGroup() }
-        updatedNewGroup.title = newGroupTitle
-        onAddNewGroup(updatedNewGroup)
+            const updatedNewGroup = { ...boardService.getEmptyGroup() }
+            updatedNewGroup.title = newGroupTitle
+            onAddNewGroup(updatedNewGroup)
     }
 
     return (

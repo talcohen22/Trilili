@@ -106,6 +106,8 @@
             background-color: $wsEmptyBoardBgc;
             border-radius: 3px;
             min-height: 96px;
+            max-width: 190px;
+            padding: 8px;
         }
 
         .create-board:hover {

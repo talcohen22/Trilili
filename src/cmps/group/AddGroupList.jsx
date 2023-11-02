@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ExitBtnSvg } from "../svg/ImgSvg";
-import { utilService } from "../../services/util.service";
+import { addActivity } from "../../store/board.actions";
 
 export function AddGroupList({ onAddTitle, onCancel }) {
 
@@ -19,20 +19,20 @@ export function AddGroupList({ onAddTitle, onCancel }) {
 
     useEffect(() => {
         if (modalRef.current) {
-            modalRef.current.scrollIntoView({behavior: 'smooth'})
+            modalRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     }, [modalRef.current?.offsetLeft])
-    
+
     function handleTitleChange(ev) {
         setTitle(ev.target.value)
     }
 
     function handleAddClick() {
-        if (title.trim() !== '') {
-            onAddTitle(title)
-            setTitle('')
-            setFlag(!flag)
-        }
+            if (title.trim() !== '') {
+                onAddTitle(title)
+                setTitle('')
+                setFlag(!flag)
+            }
     }
 
     function handleKeyDown(ev) {

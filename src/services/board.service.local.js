@@ -24,7 +24,8 @@ export const boardService = {
     getTaskLabelsColors,
     getGroupIdx,
     getTaskIdx,
-    getFormattedDate
+    getFormattedDate,
+    getChecklistById
 }
 // debug trick
 window.bs = boardService
@@ -2188,10 +2189,6 @@ function getTaskLabelsColors(board, task) {
     return labelsColors
 }
 
-export function getGroupIdx(board, groupId) {
-    return board.groups.findIndex(g => g.id === groupId)
-}
-
 function getFormattedDate(timestamp) {
     const currentDate = new Date()
 
@@ -2209,10 +2206,22 @@ function getFormattedDate(timestamp) {
     return { date, formattedDate }
 }
 
-// function getGroupIdx(board, group) {
-//     return board.groups.findIndex(g => g.id === group.id)
-// }
+function getChecklistById(board, group, task, checklistIdToEdit) {
+    const gIdx = getGroupIdx(board, group.id)
+    const tIdx = getTaskIdx(group, task.id)
+    const clIdx = getChecklistIdx(task, checklistIdToEdit)
+    
+    return board.groups[gIdx].tasks[tIdx].checklists[clIdx]
+}
+
+export function getGroupIdx(board, groupId) {
+    return board.groups.findIndex(g => g.id === groupId)
+}
 
 export function getTaskIdx(group, taskId) {
     return group.tasks.findIndex(t => t.id === taskId)
+}
+
+function getChecklistIdx(task, checklistId) {
+    return task.checklists.findIndex(cl => cl.id === checklistId)
 }

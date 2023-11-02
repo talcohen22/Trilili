@@ -98,7 +98,7 @@ export function AppHeader() {
         <header className="app-header"
             style={{
                 backgroundColor: bgColor,
-                borderBottomColor: bgColor,
+                // borderBottomColor: bgColor,
             }} >
             <nav className='flex justify-space-b align-center'>
 

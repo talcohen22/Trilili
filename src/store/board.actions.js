@@ -39,10 +39,10 @@ export async function loadBoards() {
     }
 }
 
-export async function addActivity(board, group, task, txt) {
+export async function addActivity(board, group, task, txt){
     try {
         const groupToAdd = { id: group.id, title: group.title }
-        const taskToAdd = { id: task.id, title: task.title }
+        const taskToAdd = task ? { id: task.id, title: task.title } : null
         const user = userService.getLoggedinUser()
         if (user) delete user.password
 
@@ -54,9 +54,12 @@ export async function addActivity(board, group, task, txt) {
             group: groupToAdd,
             task: taskToAdd
         }
-        board.activities.push(activity)
 
-        await updateBoard(board)
+        board.activities.unshift(activity)
+
+        return await updateBoard(board)
+        
+
 
     } catch (err) {
         console.log('Cannot add activity', err)
@@ -191,7 +194,7 @@ export async function addChecklistTodo(board, group, task, checklist, title) {
         const todo = { id: utilService.makeId(), title, isDone: false }
         board.groups[gIdx].tasks[tIdx].checklists[clIdx].todos.push(todo)
 
-        await updateBoard(board)
+        return await updateBoard(board)
     }
     catch (err) {
         console.log('Cannot add todo', err)
@@ -286,7 +289,7 @@ export async function removeChecklist(board, group, task, checklistId) {
 
         board.groups[gIdx].tasks[tIdx].checklists.splice(clIdx, 1)
 
-        await updateBoard(board)
+        return await updateBoard(board)
 
     } catch (err) {
         console.log('Cannot remove checklist', err)
@@ -450,7 +453,7 @@ export async function addChecklist(board, group, task, title) {
 
         board.groups[gIdx].tasks[tIdx].checklists.push(checklist)
 
-        await updateBoard(board)
+        return await updateBoard(board)
 
     } catch (err) {
         console.log('Cannot add checklist', err)

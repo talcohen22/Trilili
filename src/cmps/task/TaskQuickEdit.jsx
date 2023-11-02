@@ -89,10 +89,11 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
             const groupIdx = boardService.getGroupIdx(board, groupId)
             const group = board.groups[groupIdx]
             const taskIdx = boardService.getTaskIdx(group, task.id)
-            board.groups[groupIdx].tasks.splice(taskIdx, 1)
+            group.tasks.splice(taskIdx, 1)
             onSetBoard(board)
             handleCloseQuickEdit()
-            await addActivity(board, board.groups[groupIdx], task, 'deleted')
+            const strHtml = `removed ${task.title} from ${group.title}`
+            await addActivity(board, group, task, strHtml)
         } catch (err) {
             console.log('cannot delete task: ', err)
         }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { addChecklist, updateBoardGroupTaskType } from '../../store/board.actions'
+import { addActivity, addChecklist, updateBoardGroupTaskType } from '../../store/board.actions'
 import { useSelector } from 'react-redux'
 
 export function FeatureChecklist() {
@@ -14,14 +14,18 @@ export function FeatureChecklist() {
         setTitleTxt(target.value)
     }
 
-    function onAddChecklist(ev) {
+    async function onAddChecklist(ev) {
         ev.preventDefault()
 
         try {
-            addChecklist(board, group, task, titleTxt)
+            const savedBoard = await addChecklist(board, group, task, titleTxt)
             updateBoardGroupTaskType(null, null, null, '', null)
+
+            const strHtml = `added ${titleTxt} to <span className="task-title">${task.title}</span>`
+            await addActivity(savedBoard, group, task, strHtml)
         } catch (err) {
             console.log('Cannot add checklist', err)
+            throw err
         }
     }
 

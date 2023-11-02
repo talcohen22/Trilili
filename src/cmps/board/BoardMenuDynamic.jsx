@@ -31,7 +31,7 @@ export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
 
             {boardMenu.cmpType === 'Colors' && <ChangeColorBackground board={board} onOpenMenuCmp={onOpenMenuCmp} />}
 
-            {boardMenu.cmpType === 'Activity' && <BoardActivity onOpenMenuCmp={onOpenMenuCmp} />}
+            {boardMenu.cmpType === 'Activity' && <BoardActivity board={board} onOpenMenuCmp={onOpenMenuCmp} />}
 
             {/* {boardMenu.cmpType === 'Labels' && <BoardLabels board={board} onOpenMenuCmp={onOpenMenuCmp} />} */}
 

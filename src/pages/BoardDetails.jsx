@@ -42,8 +42,8 @@ export function BoardDetails() {
         try {
             const updatedBoard = board
             updatedBoard.groups.push(newGroup)
-            // boardService.save(updatedBoard)
-            const savedBoard = await updateBoard(updatedBoard)
+            const strHtml = `added ${newGroup.title} to this board`
+            const savedBoard = await addActivity(updatedBoard, newGroup, null, strHtml) 
             setBoard(savedBoard)
         } catch (err) {
             console.log('err', err)
@@ -54,10 +54,12 @@ export function BoardDetails() {
         try {
             const updatedBoard = board
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-            if (direction === 'START') updatedBoard.groups[groupIdx].tasks.unshift(newTask)
-            else updatedBoard.groups[groupIdx].tasks.push(newTask)
+            const group = updatedBoard.groups[groupIdx]
+            if (direction === 'START') group.tasks.unshift(newTask)
+            else group.tasks.push(newTask)
             boardService.save(updatedBoard)
-            await addActivity(updatedBoard, updatedBoard.groups[groupIdx], newTask, 'added')
+            const strHtml = `added <span className="task-title">${newTask.title}</span> to ${group.title}`
+            await addActivity(updatedBoard, group, newTask, strHtml)
             const savedBoard = await updateBoard(updatedBoard)
             setBoard(savedBoard)
         } catch (err) {
@@ -78,12 +80,14 @@ export function BoardDetails() {
         try {
             const groupIdx = board.groups.findIndex((group) => group.id === groupId)
             const updatedBoard = board
+            const group = updatedBoard.groups[groupIdx]
             updatedBoard.groups.splice(groupIdx, 1)
-            boardService.save(updatedBoard)
-            const savedBoard = await updateBoard(updatedBoard)
+            const strHtml = `removed list ${group.title}`
+            const savedBoard = await addActivity(updatedBoard, group, null, strHtml) 
             setBoard(savedBoard)
         } catch (err) {
             console.log('err on RemoveGroup', err)
+            throw err
         }
     }
     async function removeTasks(groupId) {

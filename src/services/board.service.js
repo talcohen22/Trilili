@@ -13,7 +13,7 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    addBoardMsg
+    addBoardMsg,
 }
 window.cs = boardService
 
@@ -41,7 +41,7 @@ async function save(board) {
 }
 
 async function addBoardMsg(boardId, txt) {
-    const savedMsg = await httpService.post(`board/${boardId}/msg`, {txt})
+    const savedMsg = await httpService.post(`board/${boardId}/msg`, { txt })
     return savedMsg
 }
 
@@ -52,8 +52,4 @@ function getEmptyBoard() {
         price: utilService.getRandomIntInclusive(1000, 9000),
     }
 }
-
-
-
-
 

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { removeCover, updateColorBackground, updatePhotoBackground } from '../../store/board.actions'
 import { useEffect, useState } from 'react'
+import { UNSPLASH_KEY } from '../../services/apiKeys'
 
 export function FeatureCover() {
 
@@ -13,10 +14,9 @@ export function FeatureCover() {
 
     const colors = ["#4bce97", "#f5cd47", "#fea362", "#f87168", "#9f8fef", "#579dff", "#6cc3e0", "#94c748", "#e774bb", "#8590a2"]
 
-    const API_KEY = 'oDxyc9F7Wxpe9YdZkaiUWZLZ-_ZAPayR7_8Ec4E-3kw'
     useEffect(() => {
         async function fetchImgs() {
-            const response = await fetch(`https://api.unsplash.com/photos/random?count=6&client_id=${API_KEY}`)
+            const response = await fetch(`https://api.unsplash.com/photos/random?count=6&client_id=${UNSPLASH_KEY}`)
             const data = await response.json()
             let photos = data.map(d => d.urls.small)
             setImgs(photos)

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
-import { removeChecklist, updateBoardGroupTaskType } from "../../../store/board.actions"
+import { addActivity, removeChecklist, updateBoardGroupTaskType } from "../../../store/board.actions"
+import { boardService } from "../../../services/board.service.local"
 
 export function DeleteChecklist({ checklistIdToEdit }) {
 
@@ -9,10 +10,17 @@ export function DeleteChecklist({ checklistIdToEdit }) {
 
     async function onRemoveChecklist() {
         try {
-            await removeChecklist(board, group, task, checklistIdToEdit)
+            const checklist = boardService.getChecklistById(board, group, task, checklistIdToEdit)
+
+            const savedBoard = await removeChecklist(board, group, task, checklistIdToEdit)
             updateBoardGroupTaskType(null, null, null, '', null)
+
+            const strHtml = `removed ${checklist.title} from <span className="task-title">${task.title}</span>`
+            await addActivity(savedBoard, group, task, strHtml)
+
         } catch (err) {
-            console.log('cannot remove label, error: ', err);
+            console.log('cannot remove checklist, error: ', err);
+            throw err
         }
     }
 

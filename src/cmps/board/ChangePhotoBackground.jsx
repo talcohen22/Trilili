@@ -1,3 +1,4 @@
+import { UNSPLASH_KEY } from "../../services/apiKeys";
 import { updateBoardBgc } from "../../store/board.actions";
 import { BackBtnSvg } from "../svg/ImgSvg";
 import React, { useEffect, useState } from 'react'
@@ -9,10 +10,9 @@ export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
 
     const navigate = useNavigate()
 
-    const API_KEY = 'oDxyc9F7Wxpe9YdZkaiUWZLZ-_ZAPayR7_8Ec4E-3kw'
     useEffect(() => {
         async function fetchImgs() {
-            const response = await fetch(`https://api.unsplash.com/photos/random?count=30&client_id=${API_KEY}`)
+            const response = await fetch(`https://api.unsplash.com/photos/random?count=30&client_id=${UNSPLASH_KEY}`)
             const data = await response.json()
             let photos = data.map(d => d.urls.small)
             setImgs(photos)

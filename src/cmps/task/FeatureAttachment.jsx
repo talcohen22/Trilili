@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { addTaskAttach, updateBoardGroupTaskType } from '../../store/board.actions'
+import { CLOUD_NAME, UPLOAD_PRESET , UPLOAD_URL} from '../../services/apiKeys'
 
 export function FeatureAttachment() {
 
@@ -9,9 +10,6 @@ export function FeatureAttachment() {
 
     async function onSaveFile(ev) {
 
-        const CLOUD_NAME = 'dug2dklcy'
-        const UPLOAD_PRESET = 'sjgxmqre'
-        const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`
         const FORM_DATA = new FormData()
 
         FORM_DATA.append('file', ev.target.files[0], ev.target.files[0].name)
@@ -39,7 +37,6 @@ export function FeatureAttachment() {
             <p className="attach-file">Attach a file from your computer</p>
             <label className='upload-btn' htmlFor="files">Choose a file</label>
             <input type="file" id="files" name="files" onChange={onSaveFile} />
-            <hr />
         </section>
     )
 }
