@@ -38,7 +38,7 @@
     }
 
     .btns-header-user {
-
+        max-height:rem(32px);
         .btn-user {
             margin-inline-start: 4px;
             @include btns-header-user;
@@ -65,6 +65,12 @@
                     height: rem(23px);
                 }
             }
+            
+        }
+        button.btn-action.guest{
+            width: rem(75px);
+            max-height: rem(32px);
+            margin-inline: rem(4px);
         }
         .btn-img-user{
             &:hover{

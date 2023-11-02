@@ -13,7 +13,7 @@ export function HomePageHeader() {
                             <LogoApp color={"#227ffa"} />
                             Trilili
                         </button> */}
-                        <img src={'src//assets//img//trilili_light-removebg.png'} />
+                        <img src={'src//assets//img//Trilili light logo.svg'} />
                     </Link>
                 </div>
                 <div className="homepage-header-links">

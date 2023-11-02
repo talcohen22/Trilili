@@ -42,6 +42,10 @@
 
     .board-filter-btn.dots {
       padding: 4px;
+      svg{
+        width: rem(20px);
+        height: rem(20px);
+      }
     }
     .board-filter-btn.star {
       svg{
@@ -72,13 +76,14 @@
 
     input {
       font-size: rem(18px);
+      font-size: rem(18px);
       border: none;
       background-color: transparent;
       outline: none;
-      color: white;
+      color: white;      
       border-radius: 3px;
       cursor: pointer;
-
+     
       &:focus {
         background-color: white;
         height: rem(32px);
@@ -160,6 +165,7 @@
 
       .share-btn {
         padding: rem(6px) rem(12px) rem(6px) rem(8px);
+        margin-bottom: rem(2px);
 
         span {
           margin: 0 0 0 4px;

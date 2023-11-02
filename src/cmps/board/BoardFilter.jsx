@@ -3,7 +3,7 @@ import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, St
 import { utilService } from "../../services/util.service";
 
 export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
-    
+
     const boardTitleLength = board.title.length
     const [inputWidth, SetInputWidth] = useState(boardTitleLength * 8)
     const [boardTitle, setBoardTitle] = useState(board.title)
@@ -35,7 +35,7 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
             <header className="board-filter">
                 <div className="board-visibility">
                     <div className="header-title" style={{ width: inputWidth }} >
-                        <input type="text" onChange={handleIputLength} onKeyDown={handleKeyDown} value={boardTitle} style={{ width: inputWidth }} />
+                        <input type="text" onChange={handleIputLength} onKeyDown={handleKeyDown} value={boardTitle} style={{textAlign:"center", width: inputWidth }} />
                     </div>
                     <div className=" board-filter">
                         <button onClick={handleIsStarred} className="board-filter-btn star ">{isStarred ? <FullStarSvg /> : <StarSvg />}</button>
@@ -52,15 +52,13 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
                         <span className="seperator"></span>
                         <div className="members">
                             {
-                                board.members.map((member,index)=>{
-                                    return(
+                                board.members.map((member, index) => {
+                                    return (
                                         <img key={index} className="member-img" src={utilService.getAssetSrc(`${member.imgUrl}.jpg`)} alt="" />
-
                                     )
                                 })
                             }
-                            {/* <img className="member-img" src="https://source.unsplash.com/random/350×350" alt="" />
-                            <img className="member-img" src="https://source.unsplash.com/random/400×400" alt="" /> */}
+
                         </div>
                         <button className="board-filter-btn share-btn full-btn"><ShareSvg /><span>Share</span></button>
                         <button className="board-filter-btn dots" onClick={onOpenMenuCmp}><DotsSvg /></button>
