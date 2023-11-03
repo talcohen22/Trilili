@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
 import { BackBtnSvg } from "../svg/ImgSvg";
 import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
 import ru from 'javascript-time-ago/locale/ru.json'
 import LastSeen from "./LastSeen";
 import { MemberImg } from "../common/MemberImg";
 
-
 export function BoardActivity({ board, onOpenMenuCmp }) {
 
-    TimeAgo.addDefaultLocale(en)
+    const boards = useSelector(storeState => storeState.boardModule.boards)
+    console.log(boards);
     TimeAgo.addLocale(ru)
+
     const guest = { email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' }
 
     function StringToReactElement({ htmlString }) {

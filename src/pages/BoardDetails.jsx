@@ -3,12 +3,14 @@ import { GroupList } from "../cmps/group/GroupList"
 import { boardService } from "../services/board.service.local"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import { addActivity, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu, updateUserCmp } from "../store/board.actions"
+import { addActivity, getActionUpdateBoard, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu, updateUserCmp } from "../store/board.actions"
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
 import { TaskQuickEdit } from "../cmps/task/TaskQuickEdit";
 import { BoardMenuDynamic } from "../cmps/board/BoardMenuDynamic";
+import { useDispatch } from "react-redux";
+import { SOCKET_EVENT_BOARD_UPDATED, socketService } from "../services/socket.service";
 import { AvatarModal } from "../cmps/common/AvatarModal";
 
 export function BoardDetails() {
@@ -25,6 +27,18 @@ export function BoardDetails() {
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)
     }
+
+    const dispatch = useDispatch() 
+
+    useEffect(() => { 
+        socketService.on(SOCKET_EVENT_BOARD_UPDATED, board => {
+            dispatch(getActionUpdateBoard(board))
+        })
+
+        return () => {
+            socketService.off(SOCKET_EVENT_BOARD_UPDATED)
+        }
+    }, [])
 
     useEffect(() => {
         if (boardId) loadBoard(boardId)
