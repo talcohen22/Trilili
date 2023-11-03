@@ -1,6 +1,6 @@
 .homepage {
     display: grid;
-    grid-template-columns: 1fr 1100px 1fr;
+    grid-template-columns: 1fr minmax(430px, 1100px) 1fr;
 
     .homepage-signup {
         grid-column: 1/-1;
@@ -44,13 +44,11 @@
                 min-width: 205px;
                 max-width: max-content;
                 color: #ffffff;
-
             }
 
             .hompage-header-login-btn {
                 color: $wsTxtColor;
             }
-
         }
     }
 
@@ -60,34 +58,26 @@
         font-weight: 500;
         @include action-btn;
 
+        width: 250px;
+        height: 45px;
+
         a {
             text-decoration: none;
             color: #fff
         }
-
-        @include for-wide-layout {
-            font-size: rem(14px);
-            width: 500px;
-        }
-
-        @include for-narrow-layout {
-            font-size: rem(18px);
-            width: rem(300px);
-        }
     }
-
 
     .homepage-container {
         grid-column: 1/-1;
         display: grid;
-        grid-template-columns: 1fr 1100px 1fr;
+        grid-template-columns: 1fr minmax(430px, 1100px) 1fr;
+        height: 600px;
 
         background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
             linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
 
         .homepage-hero {
             margin: auto;
-            flex-direction: column;
             align-items: center;
             text-align: center;
 
@@ -95,21 +85,17 @@
             justify-content: space-between;
             width: 100%;
 
-            @include for-narrow-layout {}
-
             .homepage-hero-txt {
                 flex: 0 0 auto;
                 color: #fff;
+                width: 500px;
+                text-align: start;
 
                 .homepage-hero-header {
                     line-height: 1.25;
-                    font-size: rem(38px);
+                    font-size: rem(44px);
                     margin-block-end: rem(8px);
                     font-family: 'charlie-semibold';
-
-                    @include for-normal-layout {
-                        font-size: rem(48px);
-                    }
                 }
 
                 .homepage-hero-p {
@@ -119,60 +105,16 @@
                     letter-spacing: normal;
                     margin-block-end: rem(24px);
                     font-weight: 400;
-
-                    @include for-normal-layout {
-                        font-size: rem(20px);
-                        line-height: 1.5;
-                        letter-spacing: rem(1.05px);
-                    }
-                }
-
-                @include for-narrow-layout {
-                    // padding: rem(60px) rem(15px);
-                    max-width: rem(720px);
-                }
-
-                @include for-wide-layout {
-                    // padding: rem(128px) rem(16px);
-                    max-width: rem(500px);
                 }
             }
 
             .homepage-img {
                 display: flex;
-                padding-inline: rem(40px);
 
                 img {
                     max-width: 100%;
                     margin: auto;
-
-                    @include for-mobile-layout {
-                        width: 100%;
-                    }
-
-                    @include for-narrow-layout {
-                        max-width: 80%;
-                    }
-
-                    @include for-wide-layout {
-                        height: auto;
-                        scale: 1.2;
-                        height: 80%;
-                        max-width: rem(528px);
-                    }
                 }
-
-                @include for-wide-layout {
-                    padding: rem(128px) 0 0;
-                    margin: 0 0 0 rem(-190px);
-                }
-            }
-
-            @include for-wide-layout {
-                flex-direction: row;
-                justify-content: space-between;
-                padding-inline: 0;
-                text-align: left;
             }
         }
     }
@@ -181,7 +123,7 @@
         grid-column: 1/-1;
 
         display: grid;
-        grid-template-columns: 1fr 1100px 1fr;
+        grid-template-columns: 1fr minmax(430px, 1100px) 1fr;
 
         background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
         background-blend-mode: normal;
@@ -195,25 +137,17 @@
             .productivity-text {
                 flex-direction: column;
                 color: $productivityText;
+                width: 600px;
 
                 .trilili-101 {
                     font-family: charlie-semibold, sans-serif;
                     margin-block-end: rem(8px);
                     font-size: rem(16px);
-
-                    @include for-normal-layout {
-                        font-size: rem(16px);
-                    }
                 }
 
                 .productivity-p {
                     font-size: rem(20px);
                     line-height: 1.5;
-
-                    @include for-wide-layout {
-                        padding-inline: 0;
-                        max-width: rem(664px);
-                    }
                 }
 
                 h2 {
@@ -222,11 +156,6 @@
                     margin: 0 0 rem(8px);
 
                     line-height: rem(35px);
-
-                    @include for-normal-layout {
-                        font-size: rem(36px);
-                        line-height: normal;
-                    }
                 }
 
                 .productivity-text {
@@ -236,13 +165,6 @@
                         font-family: 'charlie-regular', sans-serif;
                         font-size: rem(16px);
                         color: #091E42;
-
-                        @include for-narrow-layout {
-                            max-width: rem(700px);
-                            font-size: rem(20px);
-                            letter-spacing: rem(.95px);
-                            line-height: rem(30px);
-                        }
                     }
                 }
             }
