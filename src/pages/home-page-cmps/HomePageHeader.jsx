@@ -8,7 +8,7 @@ export function HomePageHeader() {
         <header>
             <nav className='homepage-header flex justify-space-b align-center'>
 
-                <div className='flex'>
+                <div className='logo flex'>
                     <Link to="/">
                         {/* <button className="">
                             <LogoApp color={"#227ffa"} />

@@ -25,7 +25,7 @@ export function AvatarModal({ member, position, onCloseAvatarModal }) {
 
     return (
 
-        <div className="avatar-modal" ref={modalRef} style={{ left: position.left, top: position.top }}>
+        <div className="avatar-modal" ref={modalRef} style={{ left: position.left , top: position.top - 10}}>
             <div className="upper-modal-section">
                 <div className="avatar-content flex">
                     {!(member.imgUrl[0] === "#") ?

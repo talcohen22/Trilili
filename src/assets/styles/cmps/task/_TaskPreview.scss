@@ -90,13 +90,12 @@
     }
 
 }
-
 .task-footer-dashboard {
     flex-wrap: wrap;
 
     >* {
         padding-bottom: 4px;
-        margin-inline-end: 10px;
+        margin: 0 10px 4px 0;
     }
 
     .watch {

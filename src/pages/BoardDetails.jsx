@@ -30,9 +30,9 @@ export function BoardDetails() {
         setChecklistIdToEdit(checklistId)
     }
 
-    const dispatch = useDispatch() 
+    const dispatch = useDispatch()
 
-    useEffect(() => { 
+    useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_UPDATED, board => {
             dispatch(getActionUpdateBoard(board))
         })
@@ -168,7 +168,7 @@ export function BoardDetails() {
     }
 
     function onOpenMenuCmp(ev, cmpType) {
-        if (cmpType){ updateBoardMenu({ isOpen: true, cmpType: cmpType })}
+        if (cmpType) { updateBoardMenu({ isOpen: true, cmpType: cmpType }) }
 
         else updateBoardMenu({ isOpen: true, cmpType: boardMenu.cmpType })
     }
@@ -177,12 +177,12 @@ export function BoardDetails() {
         updateBoardMenu({ isOpen: false, cmpType: boardMenu.cmpType })
     }
 
-    function onCloseAvatarModal(){
-        updateUserCmp({isOpen:false ,user:null, position: null})
+    function onCloseAvatarModal() {
+        updateUserCmp({ isOpen: false, user: null, position: null })
     }
 
-    function onToggleDashboard(){
-       setIsViewDashboard(!isViewDashboard)
+    function onToggleDashboard() {
+        setIsViewDashboard(!isViewDashboard)
     }
 
     if (!board) return <div></div>
@@ -191,7 +191,7 @@ export function BoardDetails() {
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
-            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard}/>
+            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard} />
 
             {board &&
                 <GroupList
@@ -215,7 +215,7 @@ export function BoardDetails() {
 
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
             {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
-            {(isViewDashboard)&&<Dashboard/>}
+            {(isViewDashboard) && <Dashboard />}
         </section>
     )
 }
