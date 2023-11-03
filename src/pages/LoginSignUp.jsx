@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { loadUsers, login, signup } from "../store/user.actions"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { AlertSvg, WarningSvg } from "../cmps/svg/ImgSvg"
+import { utilService } from "../services/util.service"
 
 
 export function LoginSignUp() {
@@ -74,7 +75,7 @@ export function LoginSignUp() {
 
                 <div className="login-container">
                     <div className="login-container-layout flex column">
-                        <img src={"src//assets//img//Trilili light logo.svg"} />
+                        <img src={utilService.getAssetSrc('TrililiLogo.svg')} />
                         {!isSignup && (
                             <div>
                                 <h1 className="login-signup-title">Log in to continue</h1>

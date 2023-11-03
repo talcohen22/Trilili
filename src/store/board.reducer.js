@@ -5,6 +5,7 @@ export const SET_BOARD = 'SET_BOARD'
 export const SET_GROUP = 'SET_GROUP'
 export const SET_TASK = 'SET_TASK'
 export const SET_CMP = 'SET_CMP'
+export const SET_USER_CMP = 'SET_USER_CMP'
 export const REMOVE_BOARD = 'REMOVE_BOARD'
 export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
@@ -19,6 +20,7 @@ const initialState = {
     group: null,
     task: null,
     cmp: {type: '' , location: null},
+    userCmp: {isOpen:false ,user:null, position: null},
     newBoardModal: {isOpen: false, location: null},
     boardMenu: {isOpen: false, cmpType: 'Menu'}
 }
@@ -42,6 +44,9 @@ export function boardReducer(state = initialState, action) {
             break
         case SET_CMP:
             newState = { ...state, cmp: action.cmp }
+            break
+        case SET_USER_CMP:
+            newState = { ...state, userCmp: action.userCmp }
             break
         case SET_NEW_BOARD_MODAL:
             newState = { ...state, newBoardModal: action.newBoardModal }

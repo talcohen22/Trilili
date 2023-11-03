@@ -32,7 +32,18 @@ export function FeatureMembers() {
                 {board.members.map(member => (
                     member.fullname.toLowerCase().includes(searchTxt.toLowerCase()) &&
                     <div className="member flex align-center" onClick={() => onEditTaskMember(member._id)} key={member._id}>
-                        <img className="member-img" src={utilService.getAssetSrc(member.imgUrl + '.jpg')} alt="user" />
+                        {/* <img className="member-img" 
+                        style={{
+                            backgroundImage:`url(${member.imgUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center',
+                            backgroundRepeat: 'no-repeat'
+                        }} /> */}
+                         <img className="member-img" style={{ backgroundImage: `url(${member.imgUrl})`,
+                                     backgroundSize: 'cover',
+                                     backgroundPosition: 'center center',
+                                     backgroundRepeat:'no-repeat',                                  
+                                    }}/> 
                         <p className="member-name">{member.fullname + ' (' + member.username + ')'}</p>
                         {task.memberIds.includes(member._id) && <VSvg />}
                     </div>
