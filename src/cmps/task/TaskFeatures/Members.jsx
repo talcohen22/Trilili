@@ -10,8 +10,8 @@ export function Members({ board, group, task }) {
     return (
         <section className="task-members flex">
             {taskMembers.map(member =>
-                <li className="" key={member._id} style={{width:'24px',height:'24px'}}>
-                    <MemberImg  member={member}/>
+                <li className="" key={member._id}>
+                    <MemberImg member={member} size={24}/>
                 </li>
             )}
         </section>
