@@ -78,6 +78,10 @@ $quickEditBtnBgc: #dcdfe4;
 //UserInfoModal
 $FullNameClr:#172b4d;
 $EmailClr:#44546F;
+//AvatarModal
+$ModalUpperBgClr:#0c66e4;
+$AvatarexitBtnHover: #758195;
+
 //general
 $requiredField: #e34935;
 $blue1: #388bff;
@@ -88,4 +92,6 @@ $actionBtnClr: #0c66e4;
 // Breakpoints
 $mobile-breakpoint: 630px;
 $narrow-breakpoint: 770px;
-$normal-breakpoint: 990px;
+// $narrow-breakpoint: 770px;
+$normal-breakpoint: 1100px;
+// $normal-breakpoint: 990px;

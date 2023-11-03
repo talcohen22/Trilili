@@ -10,7 +10,9 @@ export const utilService = {
     getDate,
     getTime,
     handleTextInputFocus,
-    getRandomObjectFromArray
+    getRandomObjectFromArray,
+    getInitials,
+    generateUsername
 }
 
 function makeId(length = 6) {
@@ -104,3 +106,22 @@ function getRandomObjectFromArray(array) {
     return array[randomIndex];
 }  
 
+
+function getInitials(fullName) {
+    if (typeof fullName !== 'string') {
+        return '';
+    }
+
+    const nameParts = fullName.split(' ').filter(part => part); // Filter out empty parts
+    const initials = nameParts.map(part => part[0]).slice(0, 2).join('').toUpperCase(); // Get the first letter of each part, then join the first two
+
+    return initials;
+}
+
+function generateUsername(fullName) {
+    // Split the full name by spaces and join the parts without spaces
+    const nameParts = fullName.split(' ')
+    const username = nameParts.join('') + getRandomIntInclusive(100, 1000);
+  
+    return username
+}

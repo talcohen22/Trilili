@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg, WorkspaceSvg } from "../svg/ImgSvg"
 import { utilService } from "../../services/util.service";
+import { MemberImg } from "../common/MemberImg";
 
-export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
+export function BoardFilter({ board, onSetBoard, onOpenMenuCmp,onToggleDashboard }) {
 
     const boardTitleLength = board.title.length
     const [inputWidth, SetInputWidth] = useState(boardTitleLength * 8)
@@ -30,18 +31,22 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
         }
     }
 
+    function handleDashboard(){
+        onToggleDashboard()
+    }
+
     return (
         <div className="header-color">
             <header className="board-filter">
                 <div className="board-visibility">
                     <div className="header-title" style={{ width: inputWidth }} >
-                        <input type="text" onChange={handleIputLength} onKeyDown={handleKeyDown} value={boardTitle} style={{textAlign:"center", width: inputWidth }} />
+                        <input type="text" onChange={handleIputLength} onKeyDown={handleKeyDown} value={boardTitle} style={{ textAlign: "center", width: inputWidth }} />
                     </div>
                     <div className=" board-filter">
                         <button onClick={handleIsStarred} className="board-filter-btn star ">{isStarred ? <FullStarSvg /> : <StarSvg />}</button>
                     </div>
                     <div className=" board-filter">
-                        <button className="board-filter-btn dashboard-btn full-btn "><DashboardSvg /><span>Dashboard</span></button>
+                        <button onClick={handleDashboard} className="board-filter-btn dashboard-btn full-btn "><DashboardSvg /><span>Dashboard</span></button>
                     </div>
                 </div>
 
@@ -50,11 +55,12 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp }) {
                     <button className="board-filter-btn filter"><FilterSvg /><span>Filters</span></button>
                     <section className="board-filter img">
                         <span className="seperator"></span>
-                        <div className="members">
+                        <div className="members flex">
                             {
                                 board.members.map((member, index) => {
                                     return (
-                                        <img key={index} className="member-img" src={utilService.getAssetSrc(`${member.imgUrl}.jpg`)} alt="" />
+                                        // <img key={index} className="member-img" src={utilService.getAssetSrc(`${member.imgUrl}.jpg`)} alt="" />
+                                        <MemberImg key={index} member={member} />
                                     )
                                 })
                             }

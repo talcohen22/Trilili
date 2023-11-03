@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { LogoApp } from "../../cmps/svg/ImgSvg"
+import { utilService } from "../../services/util.service"
 
 export function HomePageHeader() {
 
@@ -13,7 +14,7 @@ export function HomePageHeader() {
                             <LogoApp color={"#227ffa"} />
                             Trilili
                         </button> */}
-                        <img src={'src//assets//img//Trilili light logo.svg'} />
+                        <img src={utilService.getAssetSrc('TrililiLogo.svg')} />
                     </Link>
                 </div>
                 <div className="homepage-header-links">

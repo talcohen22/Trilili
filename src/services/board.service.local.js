@@ -20,7 +20,7 @@ export const boardService = {
     getBoardGroupTask,
     getLabel,
     getLabels,
-    getMembersTaskImgs,
+    getTaskMembers,
     getTaskLabelsColors,
     getGroupIdx,
     getTaskIdx,
@@ -2167,11 +2167,11 @@ async function getLabels(boardId, txt) {
 }
 
 
-function getMembersTaskImgs(board, group, task) {
+function getTaskMembers(board, group, task) {
     var membersImg = []
     task.memberIds.forEach(memberId => {
         board.members.forEach(member => {
-            if (member._id === memberId) membersImg.push(member.imgUrl)
+            if (member._id === memberId) membersImg.push(member)
         })
     })
 

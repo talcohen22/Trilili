@@ -26,7 +26,7 @@ export function GroupList({
     const { groups } = board
     const { taskId } = useParams()
 
-    function onHandleDragEnd(result) {
+   async function onHandleDragEnd(result) {
         const updateBoard = dragAndDropService.handleDragEnd(result, board)
         onSetBoard(updateBoard)
     }
