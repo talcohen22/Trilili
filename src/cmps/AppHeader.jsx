@@ -24,7 +24,7 @@ export function AppHeader() {
     const buttonRef = useRef(null)
 
     const user = useSelector(storeState => storeState.userModule.loggedinUser)
-    const initials = getInitials(loggedUser.fullname)
+    const initials = utilService.getInitials(loggedUser.fullname)
     useEffect(() => {
         if (user) {
             setIsUserLoggedIn(true)
@@ -54,17 +54,6 @@ export function AppHeader() {
         }
 
     }, [location, boardId, user, isUserLoggedIn, loggedUser, isViewUserInfo])
-
-    function getInitials(fullName) {
-        if (typeof fullName !== 'string') {
-            return '';
-        }
-
-        const nameParts = fullName.split(' ').filter(part => part); // Filter out empty parts
-        const initials = nameParts.map(part => part[0]).slice(0, 2).join('').toUpperCase(); // Get the first letter of each part, then join the first two
-
-        return initials;
-    }
 
     async function getBgc() {
         const fac = new FastAverageColor()
@@ -159,9 +148,13 @@ export function AppHeader() {
                             <div className="center-svg">
                                 {(user.imgUrl[0] === '#') ? <span style={{ 'background': user.imgUrl }}>{initials}</span>
                                     :
-                                    <img src={utilService.getAssetSrc('tamir.jpg')} />}
-
-                                {/* <span style={{ 'background': user.imgUrl }}>{initials}</span> */}
+                                     <img style={{ backgroundImage: `url(${loggedUser.imgUrl})`,
+                                     backgroundSize: 'cover',
+                                     backgroundPosition: 'center center',
+                                     backgroundRepeat: 'no-repeat',
+                                     padding: '12px'
+                                    }}/>  
+                                    }
                             </div>
                         </button> :
 
@@ -169,16 +162,6 @@ export function AppHeader() {
                             <button onClick={() => navigate('/auth')} className='btn-action guest'>Login</button>
                         </div>
                     }
-                    {/* <button className="btn-user btn-img-user" onClick={handleUserInfo} ref={buttonRef}>
-                        <div className="center-svg">
-                            {(isUserLoggedIn && user) ? <span style={{ 'background': user.imgUrl }}>{initials}</span>
-                                :
-                                <div>
-                                    <button onClick={() => navigate('/auth')} className='btn-action guest'>Login</button>
-                                </div>
-                            }
-                        </div>
-                    </button> */}
 
                 </div>
             </nav>

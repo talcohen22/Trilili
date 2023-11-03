@@ -42,7 +42,15 @@ export function UserInfoModal({ position, loggedUser, initials, handleUserInfo, 
                 <div>
                     {(imgUrl[0] === '#') ? <span className='user-info-modal-img' style={{ 'background': imgUrl }}>{initials}</span>
                         :
-                        <img className='user-info-modal-img' src={utilService.getAssetSrc('tamir.jpg')} />}
+                        <img className='user-info-modal-img'
+                            style={{
+                                backgroundImage: `url(${imgUrl})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center center',
+                                backgroundRepeat: 'no-repeat',
+                            }} />
+
+                    }
                 </div>
                 <div className="user-info-modal-text">
                     <h5>{fullname.toLowerCase()}</h5>

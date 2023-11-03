@@ -3,12 +3,13 @@ import { GroupList } from "../cmps/group/GroupList"
 import { boardService } from "../services/board.service.local"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import { addActivity, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu } from "../store/board.actions"
+import { addActivity, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu, updateUserCmp } from "../store/board.actions"
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
 import { TaskQuickEdit } from "../cmps/task/TaskQuickEdit";
 import { BoardMenuDynamic } from "../cmps/board/BoardMenuDynamic";
+import { AvatarModal } from "../cmps/common/AvatarModal";
 
 export function BoardDetails() {
 
@@ -20,7 +21,7 @@ export function BoardDetails() {
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
 
     const boardMenu = useSelector(storeState => storeState.boardModule.boardMenu);
-
+    const userCmp = useSelector(storeState => storeState.boardModule.userCmp)
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)
     }
@@ -43,7 +44,7 @@ export function BoardDetails() {
             const updatedBoard = board
             updatedBoard.groups.push(newGroup)
             const strHtml = `added ${newGroup.title} to this board`
-            const savedBoard = await addActivity(updatedBoard, newGroup, null, strHtml) 
+            const savedBoard = await addActivity(updatedBoard, newGroup, null, strHtml)
             setBoard(savedBoard)
         } catch (err) {
             console.log('err', err)
@@ -83,7 +84,7 @@ export function BoardDetails() {
             const group = updatedBoard.groups[groupIdx]
             updatedBoard.groups.splice(groupIdx, 1)
             const strHtml = `removed list ${group.title}`
-            const savedBoard = await addActivity(updatedBoard, group, null, strHtml) 
+            const savedBoard = await addActivity(updatedBoard, group, null, strHtml)
             setBoard(savedBoard)
         } catch (err) {
             console.log('err on RemoveGroup', err)
@@ -151,7 +152,8 @@ export function BoardDetails() {
     }
 
     function onOpenMenuCmp(ev, cmpType) {
-        if (cmpType) updateBoardMenu({ isOpen: true, cmpType: cmpType })
+        if (cmpType){ updateBoardMenu({ isOpen: true, cmpType: cmpType })}
+
         else updateBoardMenu({ isOpen: true, cmpType: boardMenu.cmpType })
     }
 
@@ -159,15 +161,21 @@ export function BoardDetails() {
         updateBoardMenu({ isOpen: false, cmpType: boardMenu.cmpType })
     }
 
+    function onCloseAvatarModal(){
+        updateUserCmp({isOpen:false ,user:null, position: null})
+    }
+
+    function onToggleDashboard(){
+        console.log('daboarod')
+    }
 
     if (!board) return <div></div>
-
     return (
         <section
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
-            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} />
+            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard}/>
 
             {board &&
                 <GroupList
@@ -190,7 +198,7 @@ export function BoardDetails() {
             {isQuickEditOpen && <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit} onSetBoard={onSetBoard} />}
 
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
-
+            {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
         </section>
     )
 }

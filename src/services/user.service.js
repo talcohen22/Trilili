@@ -56,7 +56,7 @@ async function login(userCred) {
             return saveLocalUser(user)
         }
     }catch(err){
-        console.log('shambalulu')
+        console.log(err)
         throw err
     }
     
@@ -65,8 +65,10 @@ async function login(userCred) {
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = utilService.getRandomObjectFromArray(colors).color
     // const user = await storageService.post('user', userCred)
-    const user = await httpService.post('auth/signup', userCred)
-    return saveLocalUser(user)
+    let userToSave={...userCred}
+    userToSave.username= (utilService.generateUsername(userCred.fullname))
+    const savedUser = await httpService.post('auth/signup', userToSave)
+    return saveLocalUser(savedUser)
 }
 
 async function logout() {
@@ -83,7 +85,7 @@ async function logout() {
 // }
 
 function saveLocalUser(user) {
-    user = {_id: user._id,email:user.email,fullname: user.fullname, imgUrl: user.imgUrl}
+    user = {_id: user._id,email:user.email,fullname: user.fullname, imgUrl: user.imgUrl,username:user.username}
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }

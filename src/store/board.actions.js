@@ -1,7 +1,7 @@
 import { boardService } from "../services/board.service.local.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_BOARD_MENU, SET_CMP, SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_BOARD_MENU, SET_CMP, SET_USER_CMP,SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
 import { utilService } from "../services/util.service.js";
 import { userService } from "../services/user.service.js";
 
@@ -336,6 +336,10 @@ export async function updateNewBoardModal(newBoardModal) {
 
 export async function updateCmp(cmp) {
     store.dispatch({ type: SET_CMP, cmp: cmp })
+}
+
+export async function updateUserCmp(userCmp) {
+    store.dispatch({ type: SET_USER_CMP, userCmp: userCmp })
 }
 
 export async function updateGroup(board, group, field, value) {
