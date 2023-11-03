@@ -12,6 +12,7 @@ import { BoardMenuDynamic } from "../cmps/board/BoardMenuDynamic";
 import { useDispatch } from "react-redux";
 import { SOCKET_EVENT_BOARD_UPDATED, socketService } from "../services/socket.service";
 import { AvatarModal } from "../cmps/common/AvatarModal";
+import { Dashboard } from "../cmps/common/Dashboard";
 
 export function BoardDetails() {
 
@@ -19,6 +20,7 @@ export function BoardDetails() {
     const [board, setBoard] = useState(null)
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const [isQuickEditOpen, setIsQuickEditOpen] = useState(false)
+    const [isViewDashboard, setIsViewDashboard] = useState(false)
     const [quickEdit, setQuickEdit] = useState(null)
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
 
@@ -180,7 +182,7 @@ export function BoardDetails() {
     }
 
     function onToggleDashboard(){
-        console.log('daboarod')
+       setIsViewDashboard(!isViewDashboard)
     }
 
     if (!board) return <div></div>
@@ -213,6 +215,7 @@ export function BoardDetails() {
 
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
             {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
+            {(isViewDashboard)&&<Dashboard/>}
         </section>
     )
 }

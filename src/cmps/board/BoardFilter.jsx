@@ -60,7 +60,7 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp,onToggleDashboard
                                 board.members.map((member, index) => {
                                     return (
                                         // <img key={index} className="member-img" src={utilService.getAssetSrc(`${member.imgUrl}.jpg`)} alt="" />
-                                        <MemberImg key={index} member={member} />
+                                        <MemberImg key={index} member={member} size={28} />
                                     )
                                 })
                             }

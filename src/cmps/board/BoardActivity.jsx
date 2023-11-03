@@ -6,6 +6,10 @@ import { MemberImg } from "../common/MemberImg";
 
 export function BoardActivity({ board, onOpenMenuCmp }) {
 
+<<<<<<< HEAD
+=======
+    const boards = useSelector(storeState => storeState.boardModule.boards)
+>>>>>>> b85e0e4e4bf1eda3a86edfe08b210d2ab854cb10
     TimeAgo.addLocale(ru)
 
     const guest = { email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' }
@@ -20,19 +24,26 @@ export function BoardActivity({ board, onOpenMenuCmp }) {
 
             {board.activities.map(
                 activity => (
-                    
-                <div className="activity-container flex" key={activity.id}>
-                  {(activity)&&<div className="user-igm"><MemberImg member={activity.byMember}/></div>}
-                    <div>
-                        <div className="activity-content align-center">
-                            <span className="user-name">{activity.byMember ? activity.byMember.fullname : guest.fullname}</span>
-                            <StringToReactElement htmlString={activity.txt} />
-                        </div>
-                        <LastSeen date={activity.createdAt} />
-                    </div>
 
-                </div>
-            ))
+                    <div className="activity-container flex" key={activity.id}>
+                        {(activity.byMember)
+                            ? <div className="user-igm">
+                                <MemberImg member={activity.byMember} size={32} />
+                            </div> :
+                            <div className="user-igm initials"style={{ 'background': guest.imgUrl }}>
+                                <span >G</span>
+                            </div>
+                        }
+                        <div>
+                            <div className="activity-content align-center">
+                                <span className="user-name">{activity.byMember ? activity.byMember.fullname : guest.fullname}</span>
+                                <StringToReactElement htmlString={activity.txt} />
+                            </div>
+                            <LastSeen date={activity.createdAt} />
+                        </div>
+
+                    </div >
+                ))
             }
 
             <div className="back-btn flex align-center justify-center" onClick={(ev) => onOpenMenuCmp(ev, 'Menu')}>
