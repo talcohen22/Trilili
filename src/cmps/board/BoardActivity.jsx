@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { BackBtnSvg } from "../svg/ImgSvg";
 import TimeAgo from 'javascript-time-ago'
 import ru from 'javascript-time-ago/locale/ru.json'
@@ -7,8 +6,6 @@ import { MemberImg } from "../common/MemberImg";
 
 export function BoardActivity({ board, onOpenMenuCmp }) {
 
-    const boards = useSelector(storeState => storeState.boardModule.boards)
-    console.log(boards);
     TimeAgo.addLocale(ru)
 
     const guest = { email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' }

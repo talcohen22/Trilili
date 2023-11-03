@@ -32,13 +32,6 @@ export function FeatureMembers() {
                 {board.members.map(member => (
                     member.fullname.toLowerCase().includes(searchTxt.toLowerCase()) &&
                     <div className="member flex align-center" onClick={() => onEditTaskMember(member._id)} key={member._id}>
-                        {/* <img className="member-img" 
-                        style={{
-                            backgroundImage:`url(${member.imgUrl})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center center',
-                            backgroundRepeat: 'no-repeat'
-                        }} /> */}
                          <img className="member-img" style={{ backgroundImage: `url(${member.imgUrl})`,
                                      backgroundSize: 'cover',
                                      backgroundPosition: 'center center',

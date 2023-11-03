@@ -5,13 +5,17 @@
     width: 100%;
     height: 100%;
     background-color: $overlayBgc;
-    // z-index: 10;
     overflow-y: auto;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
         width: 15px;
     }
+
     .task-details-container {
+        display: grid;
+        grid-template-columns: 43px 512px 1fr;
+        align-content: baseline;
+
         width: 768px;
         background-color: $groupBgc;
         padding: 21px 16px 26px 16px;
@@ -22,8 +26,9 @@
         min-height: 795px;
 
         .cover {
+            grid-column: 1/-1;
             height: 116px;
-            width: 768px;
+            width: calc(100% + 32px);
             margin: -21px -16px 21px -16px;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
@@ -41,6 +46,7 @@
         }
 
         .task-details-content {
+            grid-column: 1/-1;
             gap: 15px;
         }
     }
@@ -67,8 +73,8 @@
 
     .exit-taxt-details-btn {
         position: absolute;
-        top: 21px;
-        right: 17px;
+        top: 60px;
+        right: 20px;
         padding: 5px 8.5px 5px 8.5px;
         cursor: pointer;
 
@@ -89,6 +95,7 @@
 .task-header {
     font-size: .875rem;
     gap: 12px;
+    grid-column: 1/3;
 
     .task-title {
         h1 {
@@ -96,8 +103,7 @@
             font-size: rem(20px);
             color: $groupHeader;
             font-weight: 600;
-            max-width: 512px;
-            word-wrap: break-word;
+            word-break: break-word;
         }
 
         p {
