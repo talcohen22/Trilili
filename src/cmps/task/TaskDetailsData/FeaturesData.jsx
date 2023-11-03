@@ -39,7 +39,7 @@ export function FeaturesData({ board, group, task }) {
                     <div className="members-img flex align-center">
                         {members.map((member,index) =>
                             <li className="" key={index}>
-                                {task.memberIds.includes(member._id)&&<MemberImg member={member}/>}
+                                {task.memberIds.includes(member._id)&&<MemberImg member={member} size={32}/>}
                             </li>
                         )}
                         <button className="plus-ptn" onClick={((ev) => getDynamicCmp(ev, 'Members'))}>
