@@ -30,10 +30,10 @@ export async function removeUser(userId) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
-        if(user){
+        if (user) {
             store.dispatch({
                 type: SET_USER,
-                loggedinUser:user
+                loggedinUser: user
             })
             socketService.login(user)
             return user
@@ -50,7 +50,7 @@ export async function signup(credentials) {
         const user = await userService.signup(credentials)
         store.dispatch({
             type: SET_USER,
-            loggedinUser:user
+            loggedinUser: user
         })
         // socketService.login(user)
         return user
