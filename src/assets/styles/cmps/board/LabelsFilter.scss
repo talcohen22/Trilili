@@ -1,0 +1,32 @@
+.labels-filter{
+
+    .label-options {
+
+        .checkbox-item{
+            flex-grow: 1;
+            height: 36px;
+            width: 248px;
+        }
+
+        .color-display{
+            height: 32px;
+            border-radius: 3px;
+            padding: 6px 12px 7px 12px;
+            font-size: rem(14px);
+            color: $labelTextColor;
+            font-weight: 500;
+        }
+
+        .color-display:hover{
+            opacity: 0.8;
+        }
+
+        li:last-child{
+            margin-bottom: 10px;
+        }
+    }
+
+    .css-14yo6jy-MuiFormControlLabel-root .MuiFormControlLabel-label{
+        flex-grow: 1;
+    }
+}

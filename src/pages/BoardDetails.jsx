@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { SOCKET_EVENT_BOARD_UPDATED, socketService } from "../services/socket.service";
 import { AvatarModal } from "../cmps/common/AvatarModal";
 import { Dashboard } from "../cmps/common/Dashboard";
+import { Filter } from "../cmps/board/Filter.jsx";
 
 export function BoardDetails() {
 
@@ -26,6 +27,9 @@ export function BoardDetails() {
 
     const boardMenu = useSelector(storeState => storeState.boardModule.boardMenu);
     const userCmp = useSelector(storeState => storeState.boardModule.userCmp)
+    const filterCmpIsOpen = useSelector(storeState => storeState.boardModule.filterCmpIsOpen)
+    const filterBy = useSelector(storeState => storeState.boardModule.filterBy)
+
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)
     }
@@ -53,7 +57,7 @@ export function BoardDetails() {
                 console.log(err)
             }
         }
-    }, [boards])
+    }, [boards, filterBy])
 
     async function onAddNewGroup(newGroup) {
         try {
@@ -216,6 +220,8 @@ export function BoardDetails() {
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
             {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
             {(isViewDashboard) && <Dashboard />}
+
+            {filterCmpIsOpen && <Filter board={board} />}
         </section>
     )
 }

@@ -36,12 +36,6 @@ export function BoardMenu({ board, onOpenMenuCmp }) {
                 <p>Change background</p>
             </div>
 
-            {/* <div className="option flex align-center"
-                onClick={(ev) => onOpenMenuCmp(ev, 'Labels')}>
-                <LabelsSvg />
-                <p>Labels</p>
-            </div> */}
-
             {!isDeleteCmpOpen && <button className="delete-board" onClick={() => onOpenRemoveQuestion(true)}>Delete board</button>}
 
             {isDeleteCmpOpen &&

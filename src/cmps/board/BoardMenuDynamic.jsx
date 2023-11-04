@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { ChangeBackground } from "./ChangeBackground"
 import { ChangeColorBackground } from "./ChangeColorBackground"
 import { ChangePhotoBackground } from "./ChangePhotoBackground"
-import { BoardActivity } from "./BoardActivity"
 
 export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
 
@@ -32,8 +31,6 @@ export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
             {boardMenu.cmpType === 'Colors' && <ChangeColorBackground board={board} onOpenMenuCmp={onOpenMenuCmp} />}
 
             {boardMenu.cmpType === 'Activity' && <BoardActivity board={board} onOpenMenuCmp={onOpenMenuCmp} />}
-
-            {/* {boardMenu.cmpType === 'Labels' && <BoardLabels board={board} onOpenMenuCmp={onOpenMenuCmp} />} */}
 
             <div className="exit-btn flex justify-center align-center" onClick={onCloseMenuCmp}><ExitBtnSvg /></div>
 

@@ -12,6 +12,8 @@ export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
 export const SET_NEW_BOARD_MODAL = 'SET_NEW_BOARD_MODAL'
 export const SET_BOARD_MENU = 'SET_BOARD_MENU'
+export const SET_FILTER_CMP_IS_OPEN = 'SET_FILTER_CMP_IS_OPEN'
+export const SET_FILTER_BY = 'SET_FILTER_BY'
 
 
 const initialState = {
@@ -19,10 +21,12 @@ const initialState = {
     board: null,
     group: null,
     task: null,
-    cmp: {type: '' , location: null},
-    userCmp: {isOpen:false ,user:null, position: null},
-    newBoardModal: {isOpen: false, location: null},
-    boardMenu: {isOpen: false, cmpType: 'Menu'}
+    cmp: { type: '', location: null },
+    userCmp: { isOpen: false, user: null, position: null },
+    newBoardModal: { isOpen: false, location: null },
+    boardMenu: { isOpen: false, cmpType: 'Menu' },
+    filterCmpIsOpen: false,
+    filterBy: { members: [], labels: [] }
 }
 
 export function boardReducer(state = initialState, action) {
@@ -66,6 +70,11 @@ export function boardReducer(state = initialState, action) {
             boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, boards }
             break
+        case SET_FILTER_CMP_IS_OPEN:
+            newState = { ...state, filterCmpIsOpen: action.filterCmpIsOpen }
+            break
+        case SET_FILTER_BY:
+            return { ...state, filterBy: action.filterBy }
         // case UPDATE_BOARD:
         //     boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
         //     newState = { ...state, boards }

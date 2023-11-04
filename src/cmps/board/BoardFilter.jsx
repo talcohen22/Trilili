@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg, WorkspaceSvg } from "../svg/ImgSvg"
-import { utilService } from "../../services/util.service";
+import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg } from "../svg/ImgSvg"
 import { MemberImg } from "../common/MemberImg";
+import { setFilterCmpIsOpen } from "../../store/board.actions";
 
-export function BoardFilter({ board, onSetBoard, onOpenMenuCmp,onToggleDashboard }) {
+export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboard }) {
 
     const boardTitleLength = board.title.length
     const [inputWidth, SetInputWidth] = useState(boardTitleLength * 8)
@@ -31,8 +31,12 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp,onToggleDashboard
         }
     }
 
-    function handleDashboard(){
+    function handleDashboard() {
         onToggleDashboard()
+    }
+
+    function onSetIsFilterCmpOpen(value) {
+        setFilterCmpIsOpen(value)
     }
 
     return (
@@ -52,24 +56,26 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp,onToggleDashboard
 
                 <section className="board-filter group-editing">
                     <button className="board-filter-btn"><PowerUpSvg /></button>
-                    <button className="board-filter-btn filter"><FilterSvg /><span>Filters</span></button>
+                    <button className="board-filter-btn filter" onClick={() => onSetIsFilterCmpOpen(true)}>
+                        <FilterSvg />
+                        <span>Filters</span>
+                    </button>
                     <section className="board-filter img">
                         <span className="seperator"></span>
                         <div className="members flex">
                             {
                                 board.members.map((member, index) => {
                                     return (
-                                        // <img key={index} className="member-img" src={utilService.getAssetSrc(`${member.imgUrl}.jpg`)} alt="" />
                                         <MemberImg key={index} member={member} size={28} />
                                     )
                                 })
                             }
-
                         </div>
                         <button className="board-filter-btn share-btn full-btn"><ShareSvg /><span>Share</span></button>
                         <button className="board-filter-btn dots" onClick={onOpenMenuCmp}><DotsSvg /></button>
                     </section>
                 </section>
+
             </header>
         </div>
     )
