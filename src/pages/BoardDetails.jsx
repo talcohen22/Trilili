@@ -219,8 +219,8 @@ export function BoardDetails() {
 
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
             {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
-            {(isViewDashboard) && <Dashboard />}
 
+            {(isViewDashboard)&&<Dashboard board={board} handleCloseDashboard={onToggleDashboard}/>}
             {filterCmpIsOpen && <Filter board={board} />}
         </section>
     )
