@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { ChangeBackground } from "./ChangeBackground"
 import { ChangeColorBackground } from "./ChangeColorBackground"
 import { ChangePhotoBackground } from "./ChangePhotoBackground"
+import { BoardActivity } from "./BoardActivity"
 
 export function BoardMenuDynamic({ board, onOpenMenuCmp, onCloseMenuCmp }) {
 

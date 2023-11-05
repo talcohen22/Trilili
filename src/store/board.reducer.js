@@ -26,7 +26,7 @@ const initialState = {
     newBoardModal: { isOpen: false, location: null },
     boardMenu: { isOpen: false, cmpType: 'Menu' },
     filterCmpIsOpen: false,
-    filterBy: { members: [], labels: [] }
+    filterBy: { members: [], labels: [], dueDate: [], keywords: '' }
 }
 
 export function boardReducer(state = initialState, action) {
@@ -74,7 +74,9 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, filterCmpIsOpen: action.filterCmpIsOpen }
             break
         case SET_FILTER_BY:
-            return { ...state, filterBy: action.filterBy }
+            const filterBy = { ...action.filterBy }
+            newState = { ...state, filterBy: filterBy }
+            break
         // case UPDATE_BOARD:
         //     boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
         //     newState = { ...state, boards }

@@ -22,7 +22,7 @@ export function BoardMenu({ board, onOpenMenuCmp }) {
     }
 
     return (
-        <section className="board-menu" >
+        <section className="board-menu scroll" >
 
             <div className="activity option flex align-center"
                 onClick={(ev) => onOpenMenuCmp(ev, 'Activity')}>

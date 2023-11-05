@@ -29,9 +29,12 @@
 @import "./cmps/board/NewBoardModal.scss";
 @import "./cmps/board/BoardsDetails.scss";
 @import "./cmps/board/BoardFilter";
+
+//board filter
 @import "./cmps/board/Filter.scss";
 @import "./cmps/board/MembersFilter.scss";
 @import "./cmps/board/LabelsFilter.scss";
+@import "./cmps/board/DateFilter.scss";
 
 //board menu
 @import "./cmps/board/BoardMenuDynamic.scss";

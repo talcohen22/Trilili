@@ -1,0 +1,43 @@
+.date-filter {
+
+    .date {
+        gap: 5px;
+        padding: 3px;
+        cursor: pointer;
+        margin-top: 9px;
+
+        input[type=checkbox] {
+            @include custom-checkbox;
+            margin-inline-end: 5px;
+        }
+
+        .date-img {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            margin-inline-start: -3px;
+        }
+
+        .date-img.gray {
+            background-color: $taskItemsBgc;
+        }
+
+        .date-img.red {
+            background-color: $overdueBgc;
+            
+            svg{
+                color: white;
+                fill: white;
+            }
+        }
+
+        .txt {
+            margin-inline-start: 5px;
+        }
+    }
+
+    svg{
+        height: 16px;
+        width: 16px;
+    }
+}

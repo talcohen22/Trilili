@@ -6,7 +6,6 @@ import { PencilSvg } from "../svg/ImgSvg";
 export function LabelsFilter({ board, filterBy, onSetFilterBy }) {
 
     const inUseLabels = boardService.getInUseLabels(board)
-    // console.log(filterBy);
 
     return (
         <section className="labels-filter">
@@ -19,7 +18,7 @@ export function LabelsFilter({ board, filterBy, onSetFilterBy }) {
                         <FormGroup className="checkbox-item">
                             <FormControlLabel control={<Checkbox
                                 className="mui-check-box"
-                                // checked={task.labelIds ? task.labelIds.includes(label.id) : false}
+                                checked={filterBy.labels.includes(label.id)}
                                 onChange={(ev) => onSetFilterBy(ev, 'labels', label.id)}
                             />}
                                 label={<div className="color-display"

@@ -32,7 +32,7 @@ export function ChangePhotoBackground({ board, onOpenMenuCmp }) {
     if (!imgs.length) return <div></div>
     return (
 
-        <section className="change-photo-background">
+        <section className="change-photo-background scroll">
 
             <div className="photos-bgc">
                 {imgs.map((img, index) => (

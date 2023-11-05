@@ -50,7 +50,7 @@ export function BoardDetails() {
         if (boardId) loadBoard(boardId)
         async function loadBoard(boardId) {
             try {
-                const boardById = await boardService.getById(boardId)
+                const boardById = await boardService.getById(boardId, filterBy)
                 setBoard(boardById)
                 document.title = `${boardById.title} | Trilili`
             } catch (err) {
