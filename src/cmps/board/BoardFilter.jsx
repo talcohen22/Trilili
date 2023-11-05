@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg } from "../svg/ImgSvg"
+import { ChatGptSvg, DashboardSvg, DotsSvg, FilterSvg, FullStarSvg, PowerUpSvg, ShareSvg, StarSvg } from "../svg/ImgSvg"
 import { MemberImg } from "../common/MemberImg";
 import { setFilterCmpIsOpen } from "../../store/board.actions";
 
-export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboard }) {
+export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboard, onSetIsChatGptIsOpen }) {
 
     const boardTitleLength = board.title.length
     const [inputWidth, SetInputWidth] = useState(boardTitleLength * 8)
@@ -51,6 +51,9 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboar
                     </div>
                     <div className=" board-filter">
                         <button onClick={handleDashboard} className="board-filter-btn dashboard-btn full-btn "><DashboardSvg /><span>Dashboard</span></button>
+                    </div>
+                    <div className=" board-filter" onClick={() => onSetIsChatGptIsOpen(true)}>
+                        <button className="board-filter-btn chatGpt-btn full-btn "><ChatGptSvg /><span>chatGPT</span></button>
                     </div>
                 </div>
 

@@ -14,6 +14,7 @@ import { SOCKET_EVENT_BOARD_UPDATED, socketService } from "../services/socket.se
 import { AvatarModal } from "../cmps/common/AvatarModal";
 import { Dashboard } from "../cmps/common/Dashboard";
 import { Filter } from "../cmps/board/Filter.jsx";
+import { ChatGpt } from "../cmps/board/ChatGpt.jsx";
 
 export function BoardDetails() {
 
@@ -24,6 +25,7 @@ export function BoardDetails() {
     const [isViewDashboard, setIsViewDashboard] = useState(false)
     const [quickEdit, setQuickEdit] = useState(null)
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
+    const [isChatGptCmpOpen, setIsChatGptIsOpen] = useState(false)
 
     const boardMenu = useSelector(storeState => storeState.boardModule.boardMenu);
     const userCmp = useSelector(storeState => storeState.boardModule.userCmp)
@@ -58,6 +60,10 @@ export function BoardDetails() {
             }
         }
     }, [boards, filterBy])
+
+    function onSetIsChatGptIsOpen(value) {
+        setIsChatGptIsOpen(value)
+    }
 
     async function onAddNewGroup(newGroup) {
         try {
@@ -195,7 +201,7 @@ export function BoardDetails() {
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
-            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard} />
+            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard} onSetIsChatGptIsOpen={onSetIsChatGptIsOpen} />
 
             {board &&
                 <GroupList
@@ -220,8 +226,11 @@ export function BoardDetails() {
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
             {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
 
-            {(isViewDashboard)&&<Dashboard board={board} handleCloseDashboard={onToggleDashboard}/>}
+            {(isViewDashboard) && <Dashboard board={board} handleCloseDashboard={onToggleDashboard} />}
+            
             {filterCmpIsOpen && <Filter board={board} />}
+
+            {isChatGptCmpOpen && <ChatGpt />}
         </section>
     )
 }
