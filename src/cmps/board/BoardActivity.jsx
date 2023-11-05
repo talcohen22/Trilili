@@ -6,10 +6,6 @@ import { MemberImg } from "../common/MemberImg";
 
 export function BoardActivity({ board, onOpenMenuCmp }) {
 
-<<<<<<< HEAD
-=======
-    const boards = useSelector(storeState => storeState.boardModule.boards)
->>>>>>> b85e0e4e4bf1eda3a86edfe08b210d2ab854cb10
     TimeAgo.addLocale(ru)
 
     const guest = { email: 'guest@trilili.com', fullname: 'Guest', imgUrl: '#c76ebe' }
