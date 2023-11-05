@@ -1,18 +1,137 @@
-.chat-gpt-overlay{
+.chat-gpt-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $overlayBgc;
+    background-color: rgba(0, 0, 0, 0.889);
     overflow-y: auto;
 
-    .chat-gpt-cmp{
+    .chat-gpt-cmp {
         position: absolute;
-        // top: 0;
-        // right: 0;
-        height: 500px;
-        width: 500px;
         background-color: #fff;
+        margin: auto;
+
+        height: 350px;
+        width: 450px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+
+        p {
+            font-size: rem(18px);
+            line-height: 27px;
+        }
+
+
+        .chat-container {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            max-height: 400px;
+            padding: 10px;
+            height: 100%;
+
+            form {
+                margin-top: 120px;
+            }
+
+            svg{
+                height: 55px;
+                height: 55px;
+            }
+        }
+
+        .message {
+            padding: 10px;
+            margin: 15px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .received {
+            background-color: #f2f2f2;
+            align-self: flex-start;
+            margin-top: 15px;
+        }
+
+        .sent {
+            background-color: #007bff;
+            color: #fff;
+            align-self: flex-end;
+            margin-inline-start: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        form {
+            margin: 15px;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .loader-container {
+            margin-top: 35px;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-block;
+            border-top: 4px solid #007bff;
+            border-right: 4px solid transparent;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        .loader::after {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border-bottom: 4px solid #ee602a;
+            border-left: 4px solid transparent;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     }
 }

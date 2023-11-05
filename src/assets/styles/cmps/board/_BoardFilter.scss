@@ -36,19 +36,21 @@
 
       svg {
         margin-right: 8px;
-        fill:#ffffff;
+        fill: #ffffff;
       }
     }
 
     .board-filter-btn.dots {
       padding: 4px;
-      svg{
+
+      svg {
         width: rem(20px);
         height: rem(20px);
       }
     }
+
     .board-filter-btn.star {
-      svg{
+      svg {
         fill: #ffffff;
       }
     }
@@ -80,10 +82,10 @@
       border: none;
       background-color: transparent;
       outline: none;
-      color: white;      
+      color: white;
       border-radius: 3px;
       cursor: pointer;
-     
+
       &:focus {
         background-color: white;
         height: rem(32px);
@@ -104,7 +106,7 @@
       padding: 6px;
 
       span {
-        margin-left: 8px;
+        margin-left: 5px;
       }
     }
 
@@ -209,11 +211,30 @@
 
     .members {
       margin: 0 rem(2px) 0 0;
-      img{
-        &:hover{
+
+      img {
+        &:hover {
           opacity: 0.8;
         }
       }
+    }
+  }
+
+  .chatGpt-btn {
+    padding-inline-end: 10px !important;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin: 2px 2px 0 0;
+    }
+  }
+
+  .dashboard-btn {
+    padding-inline-start: 8px !important;
+
+    svg {
+      margin-top: 2px;
     }
   }
 }

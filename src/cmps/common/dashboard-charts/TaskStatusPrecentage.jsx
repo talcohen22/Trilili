@@ -4,7 +4,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 export function TaskStatusPrecentage({ taskStatus }) {
     const statusLabels = ["Done, Undone"]
-    const StatusPrecentage= [taskStatus.done.percentage,taskStatus.undone.percentage]
+    const StatusPrecentage = [taskStatus.done.percentage, taskStatus.undone.percentage]
+    
     const options = {
         responsive: true,
         plugins: {
@@ -18,19 +19,20 @@ export function TaskStatusPrecentage({ taskStatus }) {
         },
     }
 
+
     const data = {
         labels: statusLabels,
         datasets: [
             {
                 label: '%',
-                data:StatusPrecentage,
+                data: StatusPrecentage,
                 backgroundColor: [
-                    '#4bce97',
-                    '#f87462'
+                    '#a6d2a7',
+                    '#fcecc7'
                 ],
                 borderColor: [
-                   '#4bce97',
-                    '#f87462',
+                    '#a6d2a7',
+                    '#fcecc7'
                 ],
                 borderWidth: 1,
             },
@@ -38,6 +40,6 @@ export function TaskStatusPrecentage({ taskStatus }) {
     }
 
     return (
-        <Doughnut data={data} options={options}/>
+        <Doughnut data={data} options={options} />
     )
 }

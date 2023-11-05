@@ -224,13 +224,13 @@ export function BoardDetails() {
             {isQuickEditOpen && <TaskQuickEdit board={board} quickEdit={quickEdit} closeQuickEdit={closeQuickEdit} onSetBoard={onSetBoard} />}
 
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
-            {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
+            {(userCmp.isOpen === true) && !isViewDashboard && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
 
             {(isViewDashboard) && <Dashboard board={board} handleCloseDashboard={onToggleDashboard} />}
             
             {filterCmpIsOpen && <Filter board={board} />}
 
-            {isChatGptCmpOpen && <ChatGpt />}
+            {isChatGptCmpOpen && <ChatGpt onSetIsChatGptIsOpen={onSetIsChatGptIsOpen} />}
         </section>
     )
 }

@@ -8,6 +8,7 @@ import { DateTaskBtn } from "./TaskFeatures/DateTaskBtn"
 import { TaskHeaderBgc } from "./TaskFeatures/TaskHeaderBgc "
 import { Members } from "./TaskFeatures/Members"
 import { useRef } from "react"
+import { boardService } from "../../services/board.service.local"
 
 export function TaskPreview({
     board,
@@ -23,6 +24,7 @@ export function TaskPreview({
     const { boardId } = useParams()
     const buttonRef = useRef(null)
     const navigate = useNavigate()
+    const idxs = boardService.getVideoAttachmentIdx(task)
 
     function onGetTaskDetails(ev) {
         navigate(`/board/${boardId}/${group.id}/${task.id}`)
@@ -102,6 +104,15 @@ export function TaskPreview({
                 </div>
             </div>
 
+            {idxs.length > 0 &&
+                idxs.map(idx => (
+                    <div key={idx} className="video-container">
+                        <video width='100%' height="100" controls style={{ padding: '4px 8px 4px 12px' }} >
+                            <source src={task.attachment[idx].url} type="video/mp4" />
+                        </video>
+                    </div>
+                ))}
+
             <button
                 ref={buttonRef}
                 className="task-preview-btn flex justify-center align-center"
@@ -112,3 +123,4 @@ export function TaskPreview({
         </article>
     )
 }
+
