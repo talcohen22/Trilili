@@ -1,5 +1,5 @@
 .change-background {
-    position: relative;
+    // position: relative;
     gap: 8px;
 
     div {
@@ -27,5 +27,7 @@
 
     .back-btn {
         @include board-menu-back-btn;
+        top: 11px;
+        left: 12px;
     }
 }

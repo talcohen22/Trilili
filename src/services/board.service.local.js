@@ -25,7 +25,8 @@ export const boardService = {
     getGroupIdx,
     getTaskIdx,
     getFormattedDate,
-    getChecklistById
+    getChecklistById,
+    getInUseLabels
 }
 // debug trick
 window.bs = boardService
@@ -1921,8 +1922,8 @@ async function query(filterBy = {}) {
     // return boards
 }
 
-async function getById(boardId) {
-    return await httpService.get(`board/${boardId}`)
+async function getById(boardId, filterBy) {
+    return await httpService.get(`board/${boardId}`, filterBy)
     // return storageService.get(STORAGE_KEY, boardId)
 }
 
@@ -2210,7 +2211,7 @@ function getChecklistById(board, group, task, checklistIdToEdit) {
     const gIdx = getGroupIdx(board, group.id)
     const tIdx = getTaskIdx(group, task.id)
     const clIdx = getChecklistIdx(task, checklistIdToEdit)
-    
+
     return board.groups[gIdx].tasks[tIdx].checklists[clIdx]
 }
 
@@ -2224,4 +2225,25 @@ export function getTaskIdx(group, taskId) {
 
 function getChecklistIdx(task, checklistId) {
     return task.checklists.findIndex(cl => cl.id === checklistId)
+}
+
+function getInUseLabels(board) {
+    
+    let inUseLabelIds = []
+        board.groups.forEach(group => {
+            group.tasks.forEach(task => {
+                task.labelIds.forEach(labelId => {
+                    if(!inUseLabelIds.includes(labelId))
+                    inUseLabelIds.push(labelId)
+                })
+
+            })
+        })
+    
+    let inUseLabels = []
+    board.labels.forEach(label => {
+        if (inUseLabelIds.includes(label.id)) inUseLabels.push(label )
+    } )
+
+    return inUseLabels
 }

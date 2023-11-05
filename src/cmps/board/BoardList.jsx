@@ -5,6 +5,7 @@ import { useState } from "react";
 import { NewBoardModal } from "./NewBoardModal";
 import { boardService } from "../../services/board.service.local";
 import { updateBoardUsStarred, updateNewBoardModal } from "../../store/board.actions";
+import { useSelector } from "react-redux";
 
 export function BoardList({ boards, onAddBoard }) {
 

@@ -1,0 +1,22 @@
+.members-filter{
+
+    .member{
+        gap: 5px;
+        padding: 3px;
+        cursor: pointer;
+
+        input[type=checkbox] {
+            @include custom-checkbox;
+            margin-inline-end: 5px;
+        }
+
+        .member-img-container{
+            margin-top: 5px;
+        }
+
+        p{
+          margin-inline-start: 5px;
+        }
+    }
+    
+}

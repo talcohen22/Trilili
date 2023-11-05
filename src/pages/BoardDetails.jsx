@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { SOCKET_EVENT_BOARD_UPDATED, socketService } from "../services/socket.service";
 import { AvatarModal } from "../cmps/common/AvatarModal";
 import { Dashboard } from "../cmps/common/Dashboard";
+import { Filter } from "../cmps/board/Filter.jsx";
 
 export function BoardDetails() {
 
@@ -26,13 +27,16 @@ export function BoardDetails() {
 
     const boardMenu = useSelector(storeState => storeState.boardModule.boardMenu);
     const userCmp = useSelector(storeState => storeState.boardModule.userCmp)
+    const filterCmpIsOpen = useSelector(storeState => storeState.boardModule.filterCmpIsOpen)
+    const filterBy = useSelector(storeState => storeState.boardModule.filterBy)
+
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)
     }
 
-    const dispatch = useDispatch() 
+    const dispatch = useDispatch()
 
-    useEffect(() => { 
+    useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_UPDATED, board => {
             dispatch(getActionUpdateBoard(board))
         })
@@ -46,14 +50,14 @@ export function BoardDetails() {
         if (boardId) loadBoard(boardId)
         async function loadBoard(boardId) {
             try {
-                const boardById = await boardService.getById(boardId)
+                const boardById = await boardService.getById(boardId, filterBy)
                 setBoard(boardById)
                 document.title = `${boardById.title} | Trilili`
             } catch (err) {
                 console.log(err)
             }
         }
-    }, [boards])
+    }, [boards, filterBy])
 
     async function onAddNewGroup(newGroup) {
         try {
@@ -168,7 +172,7 @@ export function BoardDetails() {
     }
 
     function onOpenMenuCmp(ev, cmpType) {
-        if (cmpType){ updateBoardMenu({ isOpen: true, cmpType: cmpType })}
+        if (cmpType) { updateBoardMenu({ isOpen: true, cmpType: cmpType }) }
 
         else updateBoardMenu({ isOpen: true, cmpType: boardMenu.cmpType })
     }
@@ -177,12 +181,12 @@ export function BoardDetails() {
         updateBoardMenu({ isOpen: false, cmpType: boardMenu.cmpType })
     }
 
-    function onCloseAvatarModal(){
-        updateUserCmp({isOpen:false ,user:null, position: null})
+    function onCloseAvatarModal() {
+        updateUserCmp({ isOpen: false, user: null, position: null })
     }
 
-    function onToggleDashboard(){
-       setIsViewDashboard(!isViewDashboard)
+    function onToggleDashboard() {
+        setIsViewDashboard(!isViewDashboard)
     }
 
     if (!board) return <div></div>
@@ -191,7 +195,7 @@ export function BoardDetails() {
             className="board-details"
             style={{ backgroundImage: `url(${board.style.backgroundImage})` }}>
 
-            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard}/>
+            <BoardFilter board={board} onSetBoard={onSetBoard} onOpenMenuCmp={onOpenMenuCmp} onToggleDashboard={onToggleDashboard} />
 
             {board &&
                 <GroupList
@@ -215,7 +219,9 @@ export function BoardDetails() {
 
             <BoardMenuDynamic board={board} onOpenMenuCmp={onOpenMenuCmp} onCloseMenuCmp={onCloseMenuCmp} />
             {(userCmp.isOpen === true) && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
+
             {(isViewDashboard)&&<Dashboard board={board} handleCloseDashboard={onToggleDashboard}/>}
+            {filterCmpIsOpen && <Filter board={board} />}
         </section>
     )
 }

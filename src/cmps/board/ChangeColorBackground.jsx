@@ -28,7 +28,7 @@ export function ChangeColorBackground({ board, onOpenMenuCmp }) {
     }
 
     return (
-        <section className="change-color-background">
+        <section className="change-color-background scroll">
 
             <div className="colors-bgc">
                 {palette.map((colorOption, index) => (

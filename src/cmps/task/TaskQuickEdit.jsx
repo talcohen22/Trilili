@@ -42,9 +42,6 @@ export function TaskQuickEdit({ board, quickEdit, closeQuickEdit, onSetBoard }) 
                 }
                 handleCloseQuickEdit();
             }
-            else {
-                updateBoardGroupTaskType(null, null, null, '', null)
-            }
         }
         document.addEventListener("click", handleClickOutside)
 

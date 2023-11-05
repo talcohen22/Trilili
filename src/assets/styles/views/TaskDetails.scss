@@ -12,6 +12,7 @@
     }
 
     .task-details-container {
+        position: relative;
         display: grid;
         grid-template-columns: 43px 512px 1fr;
         align-content: baseline;
@@ -73,8 +74,8 @@
 
     .exit-taxt-details-btn {
         position: absolute;
-        top: 60px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
         padding: 5px 8.5px 5px 8.5px;
         cursor: pointer;
 

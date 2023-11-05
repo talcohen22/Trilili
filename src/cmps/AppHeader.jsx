@@ -24,6 +24,7 @@ export function AppHeader() {
     const buttonRef = useRef(null)
 
     const user = useSelector(storeState => storeState.userModule.loggedinUser)
+    
     const initials = utilService.getInitials(loggedUser.fullname)
     useEffect(() => {
         if (user) {

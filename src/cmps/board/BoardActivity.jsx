@@ -16,7 +16,7 @@ export function BoardActivity({ board, onOpenMenuCmp }) {
         )
     }
     return (
-        <section className="board-activity">
+        <section className="board-activity scroll">
 
             {board.activities.map(
                 activity => (

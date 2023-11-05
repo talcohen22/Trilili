@@ -1,7 +1,7 @@
 import { boardService } from "../services/board.service.local.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_BOARD_MENU, SET_CMP, SET_USER_CMP,SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARD, SET_BOARDS, SET_BOARD_MENU, SET_CMP, SET_USER_CMP, SET_GROUP, SET_NEW_BOARD_MODAL, SET_TASK, UNDO_REMOVE_BOARD, UPDATE_BOARD, SET_FILTER_CMP_IS_OPEN, SET_FILTER_BY } from "./board.reducer.js";
 import { utilService } from "../services/util.service.js";
 import { userService } from "../services/user.service.js";
 
@@ -25,9 +25,18 @@ export function getActionUpdateBoard(board) {
     }
 }
 
+export function setFilterByAction(filterBy) {
+    store.dispatch({ type: SET_FILTER_BY, filterBy })
+}
+
+export function setFilterCmpIsOpen(value) {
+    store.dispatch({ type: SET_FILTER_CMP_IS_OPEN, filterCmpIsOpen: value })
+}
+
 export async function loadBoards() {
     try {
-        const boards = await boardService.query()
+        const { filterBy } = store.getState().boardModule
+        const boards = await boardService.query(filterBy)
         store.dispatch({
             type: SET_BOARDS,
             boards
@@ -39,7 +48,7 @@ export async function loadBoards() {
     }
 }
 
-export async function addActivity(board, group, task, txt){
+export async function addActivity(board, group, task, txt) {
     try {
         const groupToAdd = { id: group.id, title: group.title }
         const taskToAdd = task ? { id: task.id, title: task.title } : null
@@ -58,7 +67,7 @@ export async function addActivity(board, group, task, txt){
         board.activities.unshift(activity)
 
         return await updateBoard(board)
-        
+
 
 
     } catch (err) {

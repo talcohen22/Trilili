@@ -5,6 +5,8 @@ import { loadBoards } from '../../../store/board.actions';
 export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards }) {
 
     const boards = useSelector(storeState => storeState.boardModule.boards);
+    const filterBy = useSelector(storeState => storeState.boardModule.filterBy)
+
     let selectBoardList = [...boards]
     const selectGroupList = [...board.groups]
 
@@ -14,7 +16,7 @@ export function MoveList({ group, board, onSetBoard, onHandleClose, onMoveBoards
 
     useEffect(() => {
         loadBoards()
-    }, [])
+    }, [filterBy])
 
     function handleSelectChange({ target }) {
         const targetBoard = selectBoardList.find(item => item._id === target.value)

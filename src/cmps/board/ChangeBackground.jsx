@@ -4,7 +4,7 @@ import { BackBtnSvg } from "../svg/ImgSvg";
 export function ChangeBackground({ onOpenMenuCmp }) {
 
     return (
-        <section className="change-background flex justify-center">
+        <section className="change-background flex justify-center scroll">
 
             <div onClick={(ev) => onOpenMenuCmp(ev, 'Photos by Unsplash')}>
                 <img src={utilService.getAssetSrc('photos.jpg')} alt="user" />

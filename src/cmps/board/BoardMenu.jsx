@@ -22,7 +22,7 @@ export function BoardMenu({ board, onOpenMenuCmp }) {
     }
 
     return (
-        <section className="board-menu" >
+        <section className="board-menu scroll" >
 
             <div className="activity option flex align-center"
                 onClick={(ev) => onOpenMenuCmp(ev, 'Activity')}>
@@ -35,12 +35,6 @@ export function BoardMenu({ board, onOpenMenuCmp }) {
                 <div style={{ backgroundImage: `url(${board.style.backgroundImage})` }}></div>
                 <p>Change background</p>
             </div>
-
-            {/* <div className="option flex align-center"
-                onClick={(ev) => onOpenMenuCmp(ev, 'Labels')}>
-                <LabelsSvg />
-                <p>Labels</p>
-            </div> */}
 
             {!isDeleteCmpOpen && <button className="delete-board" onClick={() => onOpenRemoveQuestion(true)}>Delete board</button>}
 

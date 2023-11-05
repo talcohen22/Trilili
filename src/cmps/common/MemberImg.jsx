@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { updateBoardGroupTaskType, updateUserCmp } from "../../store/board.actions";
 import { utilService } from "../../services/util.service";
+
 export function MemberImg({ member, size }) {
+
     const [isAvatarClicked, setIsAvatarClicked] = useState(false)
     const [imgSize, setImgSize] = useState(null)
     const imgRef = useRef(null)
@@ -9,6 +11,7 @@ export function MemberImg({ member, size }) {
     const small = 24
     const medium = 28
     const large = 32
+
     useEffect(() => {
       setSize(size)
      }, [])
@@ -17,6 +20,7 @@ export function MemberImg({ member, size }) {
         else if(size===medium)setImgSize(medium)
         else setImgSize(large)
      }
+
     function handleAvtarClick(ev) {
         ev.stopPropagation()
         setIsAvatarClicked(!isAvatarClicked)

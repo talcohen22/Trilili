@@ -1,6 +1,6 @@
 .homepage {
     display: grid;
-    grid-template-columns: 1fr minmax(430px, 1100px) 1fr;
+    grid-template-columns: 1fr minmax(370px, 1100px) 1fr;
 
     .homepage-signup {
         grid-column: 1/-1;
@@ -19,6 +19,11 @@
         height: rem(60px);
         display: flex;
         max-width: 1320px;
+
+        .logo {
+            align-self: end;
+            padding-bottom: 3px;
+        }
 
         img {
             max-width: rem(120px);
@@ -70,7 +75,7 @@
     .homepage-container {
         grid-column: 1/-1;
         display: grid;
-        grid-template-columns: 1fr minmax(430px, 1100px) 1fr;
+        grid-template-columns: 1fr minmax(370px, 1100px) 1fr;
         height: 600px;
 
         background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center bottom -0.5px / 100% 14.6% no-repeat scroll padding-box border-box,
@@ -123,7 +128,7 @@
         grid-column: 1/-1;
 
         display: grid;
-        grid-template-columns: 1fr minmax(430px, 1100px) 1fr;
+        grid-template-columns: 1fr minmax(370px, 1100px) 1fr;
 
         background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
         background-blend-mode: normal;
