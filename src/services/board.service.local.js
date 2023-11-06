@@ -1940,15 +1940,10 @@ async function save(board) {
         savedBoard = await httpService.put(`board/${board._id}`, board)
         // savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
-        // Later, owner is set by the backend
-        // board.owner = userService.getLoggedinUser()
-        if (board.groups) {
-            savedBoard = await httpService.post('board', { ...getEmptyBoard(), ...board })
-            board.style.backgroundImage = "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg"
-            return savedBoard
-        }
-        savedBoard = await httpService.post('board', { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
+        savedBoard = await httpService.post('board', { ...getEmptyBoard(), ...board })
+        console.log(savedBoard);
 
+        // savedBoard = await httpService.post('board', { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
         // savedBoard = await storageService.post(STORAGE_KEY, { ...getEmptyBoard(), title: board.title, style: { backgroundImage: board.style.backgroundImage } })
     }
     return savedBoard

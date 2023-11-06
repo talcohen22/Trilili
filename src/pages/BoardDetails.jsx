@@ -32,6 +32,9 @@ export function BoardDetails() {
     const filterCmpIsOpen = useSelector(storeState => storeState.boardModule.filterCmpIsOpen)
     const filterBy = useSelector(storeState => storeState.boardModule.filterBy)
 
+    console.log(boardId);
+    console.log(board);
+
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)
     }
@@ -60,7 +63,7 @@ export function BoardDetails() {
                 console.log(err)
             }
         }
-    }, [boards, filterBy,location])
+    }, [boards, filterBy, location])
 
     function onSetIsChatGptIsOpen(value) {
         setIsChatGptIsOpen(value)
@@ -197,19 +200,14 @@ export function BoardDetails() {
     }
     async function addGeneratedBoard(generatedBoard) {
         try {
-            console.log('my generated board')
             const savedBoard = await addBoard(generatedBoard)
             setIsChatGptIsOpen(false)
             navigate(`/board/${savedBoard._id}`)
-
-
         } catch (err) {
             console.log(err)
         }
-
-
-
     }
+    
     if (!board) return <div></div>
     return (
         <section

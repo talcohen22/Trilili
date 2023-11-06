@@ -517,7 +517,6 @@ function getTodoIdx(checklist, todoId) {
 export function addBoard(board) {
     return boardService.save(board)
         .then(savedBoard => {
-            // store.dispatch({type: SET_CURR_BOARD, board: savedBoard})
             store.dispatch({ type: ADD_BOARD, board: savedBoard })
             return savedBoard
         })
