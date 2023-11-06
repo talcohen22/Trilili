@@ -209,3 +209,12 @@
         height: 24px;
     }
 }
+
+// .ovc-shadow-root .one-control-wrapper.minimized{
+//     display: none !important;
+// }
+
+#root .one-control-wrapper {
+    display: none !important;
+    opacity: 0.1;
+}

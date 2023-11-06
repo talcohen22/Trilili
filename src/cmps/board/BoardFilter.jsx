@@ -53,7 +53,7 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboar
                         <button onClick={handleDashboard} className="board-filter-btn dashboard-btn full-btn "><DashboardSvg /><span>Dashboard</span></button>
                     </div>
                     <div className=" board-filter" onClick={() => onSetIsChatGptIsOpen(true)}>
-                        <button className="board-filter-btn chatGpt-btn full-btn "><ChatGptSvg /><span>chatGPT</span></button>
+                        <button className="board-filter-btn chatGpt-btn full-btn "><ChatGptSvg /><span>chatTrilili</span></button>
                     </div>
                 </div>
 
