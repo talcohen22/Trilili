@@ -3797,3 +3797,5 @@ const market= {
             "backgroundImage": "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384751/707f35bc691220846678_pjgxni.svg"
         }
         }
+
+        /////
