@@ -6,7 +6,7 @@ import { setFilterCmpIsOpen } from "../../store/board.actions";
 export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboard, onSetIsChatGptIsOpen }) {
 
     const boardTitleLength = board.title.length
-    const [inputWidth, SetInputWidth] = useState(boardTitleLength * 8)
+    const [inputWidth, SetInputWidth] = useState(boardTitleLength * 10)
     const [boardTitle, setBoardTitle] = useState(board.title)
     const [isStarred, setIsStarred] = useState(board.isStarred)
 
@@ -15,7 +15,7 @@ export function BoardFilter({ board, onSetBoard, onOpenMenuCmp, onToggleDashboar
         const updateBoard = board
         updateBoard.title = value
         onSetBoard(updateBoard)
-        SetInputWidth(`${value.length * 8}px`)
+        SetInputWidth(`${value.length * 9}px`)
         setBoardTitle(value)
     }
     function handleIsStarred() {

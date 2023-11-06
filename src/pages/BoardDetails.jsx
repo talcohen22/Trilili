@@ -1,9 +1,9 @@
-import { useParams } from "react-router"
+import { useLocation, useNavigate, useParams } from "react-router"
 import { GroupList } from "../cmps/group/GroupList"
 import { boardService } from "../services/board.service.local"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import { addActivity, getActionUpdateBoard, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu, updateUserCmp } from "../store/board.actions"
+import { addActivity, addBoard, getActionUpdateBoard, setIsCheckDate, setIsExpandedLabels, updateBoard, updateBoardMenu, updateUserCmp } from "../store/board.actions"
 import { BoardFilter } from "../cmps/board/BoardFilter.jsx";
 import { utilService } from "../services/util.service";
 import { TaskFeatureDynamic } from "../cmps/task/TaskFeatureDynamic";
@@ -17,7 +17,7 @@ import { Filter } from "../cmps/board/Filter.jsx";
 import { ChatGpt } from "../cmps/board/ChatGpt.jsx";
 
 export function BoardDetails() {
-
+    let location = useLocation()
     const { boardId } = useParams()
     const [board, setBoard] = useState(null)
     const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -26,7 +26,7 @@ export function BoardDetails() {
     const [quickEdit, setQuickEdit] = useState(null)
     const [checklistIdToEdit, setChecklistIdToEdit] = useState('')
     const [isChatGptCmpOpen, setIsChatGptIsOpen] = useState(false)
-
+    const navigate = useNavigate()
     const boardMenu = useSelector(storeState => storeState.boardModule.boardMenu);
     const userCmp = useSelector(storeState => storeState.boardModule.userCmp)
     const filterCmpIsOpen = useSelector(storeState => storeState.boardModule.filterCmpIsOpen)
@@ -55,11 +55,12 @@ export function BoardDetails() {
                 const boardById = await boardService.getById(boardId, filterBy)
                 setBoard(boardById)
                 document.title = `${boardById.title} | Trilili`
+
             } catch (err) {
                 console.log(err)
             }
         }
-    }, [boards, filterBy])
+    }, [boards, filterBy,location])
 
     function onSetIsChatGptIsOpen(value) {
         setIsChatGptIsOpen(value)
@@ -194,7 +195,21 @@ export function BoardDetails() {
     function onToggleDashboard() {
         setIsViewDashboard(!isViewDashboard)
     }
+    async function addGeneratedBoard(generatedBoard) {
+        try {
+            console.log('my generated board')
+            const savedBoard = await addBoard(generatedBoard)
+            setIsChatGptIsOpen(false)
+            navigate(`/board/${savedBoard._id}`)
 
+
+        } catch (err) {
+            console.log(err)
+        }
+
+
+
+    }
     if (!board) return <div></div>
     return (
         <section
@@ -227,10 +242,10 @@ export function BoardDetails() {
             {(userCmp.isOpen === true) && !isViewDashboard && <AvatarModal member={userCmp.user} position={userCmp.position} onCloseAvatarModal={onCloseAvatarModal} />}
 
             {(isViewDashboard) && <Dashboard board={board} handleCloseDashboard={onToggleDashboard} />}
-            
+
             {filterCmpIsOpen && <Filter board={board} />}
 
-            {isChatGptCmpOpen && <ChatGpt onSetIsChatGptIsOpen={onSetIsChatGptIsOpen} />}
+            {isChatGptCmpOpen && <ChatGpt onSetIsChatGptIsOpen={onSetIsChatGptIsOpen} addGeneratedBoard={addGeneratedBoard} />}
         </section>
     )
 }
