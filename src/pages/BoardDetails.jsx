@@ -32,8 +32,8 @@ export function BoardDetails() {
     const filterCmpIsOpen = useSelector(storeState => storeState.boardModule.filterCmpIsOpen)
     const filterBy = useSelector(storeState => storeState.boardModule.filterBy)
 
-    console.log(boardId);
-    console.log(board);
+    // console.log(boardId);
+    // console.log(board);
 
     function onSetChecklistIdToEdit(checklistId) {
         setChecklistIdToEdit(checklistId)

@@ -45,7 +45,7 @@ export function TaskPreview({
     }
 
     const { title, id, labelIds, style: bgHeaderClr, comments, checklists, dueDate, startDate } = task
-
+    
     return (
         <article className="task-card" onClick={onGetTaskDetails}>
 
