@@ -7,7 +7,6 @@ import { AttachmentData } from "./TaskDetailsData/AttachmentData";
 
 
 export function TaskDetailsData({ board, group, task, onSetChecklistIdToEdit }) {
-
     return (
         <section className="task-details-data">
             <FeaturesData
