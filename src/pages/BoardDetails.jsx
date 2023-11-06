@@ -55,6 +55,8 @@ export function BoardDetails() {
                 const boardById = await boardService.getById(boardId, filterBy)
                 setBoard(boardById)
                 document.title = `${boardById.title} | Trilili`
+                console.log(boardById)
+
             } catch (err) {
                 console.log(err)
             }
@@ -194,7 +196,6 @@ export function BoardDetails() {
     function onToggleDashboard() {
         setIsViewDashboard(!isViewDashboard)
     }
-
     if (!board) return <div></div>
     return (
         <section

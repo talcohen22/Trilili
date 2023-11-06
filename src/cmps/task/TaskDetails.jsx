@@ -86,7 +86,7 @@ export function TaskDetails({ onSetChecklistIdToEdit }) {
 
     const isCover = task.style.backgroundColor || task.style.cover
     const isSvg = task.style.cover.substring(task.style.cover.length - 3, task.style.cover.length) === 'svg' ? true : false
-
+    
     return (
         <div className="overlay flex justify-center" onClick={handleClickOutside} >
 

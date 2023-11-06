@@ -11,7 +11,6 @@ export function Dashboard({ board, handleCloseDashboard }) {
     const tasksByLabels = dashboardService.countTasksByLabels(board);
     const taskStatus = dashboardService.calculateTaskStatus(board)
     const tasksWithDueDate = dashboardService.getTasksWithDueDate(board);
-
     const modalRef = useRef(null)
 
     useEffect(() => {

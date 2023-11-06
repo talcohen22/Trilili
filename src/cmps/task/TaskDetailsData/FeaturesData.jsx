@@ -7,7 +7,7 @@ import { DatesData } from "./DatesData"
 import { MemberImg } from "../../common/MemberImg"
 
 export function FeaturesData({ board, group, task }) {
-
+    console.log('haush',board,group,task)
     const { boardId } = useParams()
     const { groupId } = useParams()
     const { taskId } = useParams()
