@@ -11,16 +11,20 @@ export function FeatureAttachment() {
     async function onSaveFile(ev) {
 
         const FORM_DATA = new FormData()
+        console.log("Aaaa");
+        console.log(ev.target.files[0]);
 
         FORM_DATA.append('file', ev.target.files[0], ev.target.files[0].name)
         FORM_DATA.append('upload_preset', UPLOAD_PRESET)
+
+        console.log("bbbbbbbbb");
 
         try {
             const res = await fetch(UPLOAD_URL, {
                 method: 'POST',
                 body: FORM_DATA,
             })
-
+            console.log("cccccccccc");
             const { url } = await res.json()
             const fileName = ev.target.files[0].name
             const attach = { fileName, url }

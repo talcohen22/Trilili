@@ -26,7 +26,8 @@ export const boardService = {
     getTaskIdx,
     getFormattedDate,
     getChecklistById,
-    getInUseLabels
+    getInUseLabels,
+    getVideoAttachmentIdx
 }
 // debug trick
 window.bs = boardService
@@ -2228,22 +2229,31 @@ function getChecklistIdx(task, checklistId) {
 }
 
 function getInUseLabels(board) {
-    
-    let inUseLabelIds = []
-        board.groups.forEach(group => {
-            group.tasks.forEach(task => {
-                task.labelIds.forEach(labelId => {
-                    if(!inUseLabelIds.includes(labelId))
-                    inUseLabelIds.push(labelId)
-                })
 
+    let inUseLabelIds = []
+    board.groups.forEach(group => {
+        group.tasks.forEach(task => {
+            task.labelIds.forEach(labelId => {
+                if (!inUseLabelIds.includes(labelId))
+                    inUseLabelIds.push(labelId)
             })
+
         })
-    
+    })
+
     let inUseLabels = []
     board.labels.forEach(label => {
-        if (inUseLabelIds.includes(label.id)) inUseLabels.push(label )
-    } )
+        if (inUseLabelIds.includes(label.id)) inUseLabels.push(label)
+    })
 
     return inUseLabels
+}
+
+function getVideoAttachmentIdx(task) {
+    let videoIdx = []
+    task.attachment.forEach((attach, idx) => {
+        const end = attach.url.substring(attach.url.length - 3, attach.url.length)
+        if (end === 'mp4') videoIdx.push(idx)
+    })
+    return videoIdx
 }
