@@ -7,7 +7,7 @@ export function HomePageFooter() {
             <section className='upper-section'>
                 <div className='footer-logo'>
                     <div className="inner-logo">
-                        <div ><img src={'src//assets//img//trilili_dark-removebg.png'}/></div>
+                        <div ><img src={'https://res.cloudinary.com/dug2dklcy/image/upload/v1699373593/pe57ojkubqlqrqxijlmt.png'}/></div>
                         <Link to="/auth">
                         <button className='footer-login-btn'>Log in</button>
                         </Link>
