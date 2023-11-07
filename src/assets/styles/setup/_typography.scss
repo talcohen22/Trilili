@@ -1,36 +1,36 @@
 @font-face {
     font-family: roboto;
-    src: url('src//assets//fonts//roboto//Roboto-Regular.ttf');
+    src: url(src/assets/fonts/roboto/Roboto-Regular.ttf);
 }
 
 @font-face {
-    font-family: 'charlieBold';
-    src: url('.//fonts//charilie//charlie-display-bold.ttf');
+    font-family: charlieBold;
+    src: url(src/assets/fonts/charilie/charlie-display-bold.ttf);
 }
 
 @font-face {
-    font-family: 'charlie-regular';
-    src: url('.//assets//fonts//Charlie//CharlieText-Regular.ttf');
+    font-family: charlie-regular;
+    src: url(src/assets/fonts/Charlie/CharlieText-Regular.ttf);
 }
 
 @font-face {
-    font-family: 'charlie-Display-regular';
-    src: url('src//assets//fonts//Charlie//CharlieDisplay-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'charlie-semibold';
-    src: url('.//fonts//charilie//charlie-text-semibold.ttf');
+    font-family: charlie-Display-regular;
+    src: url(src/assets/fonts/Charlie/CharlieDisplay-Regular.ttf);
 }
 
 @font-face {
     font-family: SegoeUI Regular;
     font-style: normal;
     font-weight: normal;
-    src: local('Segoe UI Regular'), url('../../fonts/Segoe-UI-Font/SegoeUI.woff') format('woff');
+    src: local(Segoe UI Regular), url(src/assets/fonts/Segoe-UI-Font/SegoeUI.woff) format('woff');
 }
 
 @font-face {
-    font-family: 'charlie-semibold'; // Replace with your desired font name
-    src: url('src//assets//fonts//Charlie//CharlieDisplay-Semibold.woff2')format('woff2'),
+    font-family: charlie-semibold; // Replace with your desired font name
+    src: url(src/assets/fonts/Charlie/CharlieDisplay-Semibold.woff2)format('woff2'),
 }
+
+// @font-face {
+//     font-family: 'charlie-semibold';
+//     src: url('src/assets/fonts/charilie/charlie-text-semibold.ttf');
+// }

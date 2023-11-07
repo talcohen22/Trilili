@@ -220,16 +220,6 @@
     }
   }
 
-  .chatGpt-btn {
-    padding-inline-end: 10px !important;
-
-    svg {
-      width: 20px;
-      height: 20px;
-      margin: 2px 2px 0 0;
-    }
-  }
-
   .dashboard-btn {
     padding-inline-start: 8px !important;
 
@@ -237,4 +227,19 @@
       margin-top: 2px;
     }
   }
+
+
+  .board-filter .full-btn.chatGpt-btn {
+    padding-inline-end: 10px;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    color: white;
+    
+    svg {
+      width: 26px;
+      height: 26px;
+      margin: 2px 2px 0 0;
+      fill: white;
+    }
+  }
 }
+

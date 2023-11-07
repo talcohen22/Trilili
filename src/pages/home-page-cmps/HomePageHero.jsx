@@ -18,7 +18,7 @@ export function HomePageHero() {
       </div>
 
       <div className="homepage-img">
-        <img src={'src//assets//img//home-img.webp'} alt="home-image" />
+        <img src={'http://res.cloudinary.com/dug2dklcy/image/upload/v1699313624/wutd1rrfsjkoyewkdyjc.webp'} alt="home-image" />
       </div>
 
     </section>

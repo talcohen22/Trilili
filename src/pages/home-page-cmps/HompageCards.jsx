@@ -3,8 +3,8 @@ import { Carousel } from "../../cmps/common/Carousel"
 
 export function HomePageCards(){
 
-    const img1 = 'src//assets//img//trilili carousel.png'
-    const img2 = 'src//assets//img//trilili carousel 2.png'
+    const img1 = 'http://res.cloudinary.com/dug2dklcy/image/upload/v1699313884/ssrp3jvoycygquhrashd.png'
+    const img2 = 'http://res.cloudinary.com/dug2dklcy/image/upload/v1699313861/ufkk1ktu5242utbewd7g.png'
     const img3 = 'https://images.ctfassets.net/rz1oowkt5gyp/26CA6JZeRgoOK4nuRHnIlY/060702a80cf7c3be3651d9297d196267/Carousel_Image_Cards_2x.png'
     
     const [img, setImg] = useState(img1)

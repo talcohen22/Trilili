@@ -60,6 +60,9 @@
     &.align-top {
         align-items: start;
     }
+    &.align-bottom{
+        align-items: end;
+    }
 }
 
 .clean-list {

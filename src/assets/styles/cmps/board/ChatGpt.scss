@@ -9,13 +9,11 @@
 
     .chat-gpt-cmp {
         position: absolute;
-        background-color: #fff;
+        background-color: transparent;
         margin: auto;
+        height: 100%;
+        width: 550px;
 
-        height: 350px;
-        width: 450px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         overflow: hidden;
 
@@ -23,7 +21,6 @@
             font-size: rem(18px);
             line-height: 27px;
         }
-
 
         .chat-container {
             width: 300px;
@@ -37,14 +34,42 @@
             max-height: 400px;
             padding: 10px;
             height: 100%;
+            margin-top: 20%;
 
-            form {
-                margin-top: 120px;
+            .title {
+                color: white;
+                margin-bottom: 30px;
+
+                svg {
+                    margin-bottom: 7px;
+                    height: 60px;
+                    height: 60px;
+                    fill: white;
+                }
             }
 
-            svg{
-                height: 55px;
-                height: 55px;
+            form {
+                position: relative;
+                margin: 15px;
+                margin-top: 120px;
+
+                button {
+                    position: absolute;
+                    top: 2.67px;
+                    right: 2.67px;
+
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 8px 16px;
+                    margin-left: 10px;
+                    cursor: pointer;
+                }
+
+                button:hover{
+                    background-color: #0069da;
+                }
             }
         }
 
@@ -74,10 +99,6 @@
             background-color: #fff;
         }
 
-        form {
-            margin: 15px;
-        }
-
         input {
             flex: 1;
             padding: 8px;
@@ -85,53 +106,70 @@
             border-radius: 5px;
             outline: none;
         }
+    }
 
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 8px 16px;
-            margin-left: 10px;
-            cursor: pointer;
+
+
+    //animation for the chat trilili title
+    .classic-10,
+    .loader {
+        font-weight: bold;
+        font-family: monospace;
+        font-size: 30px;
+        display: grid;
+    }
+
+    .classic-10:before,
+    .classic-10:after {
+        content: "Chat Trilili";
+        grid-area: 1/1;
+        line-height: 1em;
+        -webkit-mask: linear-gradient(90deg, #000 50%, #0000 0) 0 50%/2ch 100%;
+        -webkit-mask-position: calc(var(--s, 0)*1ch) 50%;
+        animation: c10 2s 1 0.1s;
+    }
+
+    .classic-10:after {
+        --s: -1;
+    }
+
+    //loader animation
+    .loader:before,
+    .loader:after {
+        content: "Loading...";
+        color: white;
+        font-size: rem(20px);
+        font-weight: 100;
+        grid-area: 1/1;
+        line-height: 1em;
+        -webkit-mask: linear-gradient(90deg, #fff 50%, #0000 0) 0 50%/2ch 100%;
+        -webkit-mask-position: calc(var(--s, 0)*1ch) 50%;
+        animation: c10 2s infinite;
+    }
+
+    .loader:after {
+        --s: -1;
+    }
+
+    .loader {
+        margin-top: 50px;
+    }
+
+
+    @keyframes c10 {
+        33% {
+            transform: translateY(calc(var(--s, 1)*50%));
+            -webkit-mask-position: calc(var(--s, 0)*1ch) 50%
         }
 
-        .loader-container {
-            margin-top: 35px;
+        66% {
+            transform: translateY(calc(var(--s, 1)*50%));
+            -webkit-mask-position: calc(var(--s, 0)*1ch + 1ch) 50%
         }
 
-        .loader {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: inline-block;
-            border-top: 4px solid #007bff;
-            border-right: 4px solid transparent;
-            box-sizing: border-box;
-            animation: rotation 1s linear infinite;
-        }
-
-        .loader::after {
-            content: '';
-            box-sizing: border-box;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border-bottom: 4px solid #ee602a;
-            border-left: 4px solid transparent;
-        }
-
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        100% {
+            transform: translateY(calc(var(--s, 1)*0%));
+            -webkit-mask-position: calc(var(--s, 0)*1ch + 1ch) 50%
         }
     }
 }
