@@ -228,11 +228,15 @@
     }
   }
 
+  .chatGpt-btn-div{
+    margin-inline-start: 5px;
+  }
 
   .board-filter .full-btn.chatGpt-btn {
     padding-inline-end: 10px;
     background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
     color: white;
+  
     
     svg {
       width: 26px;

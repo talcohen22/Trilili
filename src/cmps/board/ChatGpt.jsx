@@ -10,7 +10,6 @@ import { utilService } from "../../services/util.service"
 
 export function ChatGpt({ onSetIsChatGptIsOpen, addGeneratedBoard }) {
     const [prompt, setPrompt] = useState('')
-    const [response, setResponse] = useState('')
     const [isSubmit, setIsSubmit] = useState(false)
     const wrapperRef = useRef(null)
     useClickOutsideCmp(wrapperRef)
@@ -515,9 +514,8 @@ export function ChatGpt({ onSetIsChatGptIsOpen, addGeneratedBoard }) {
         if (prompt) {
             setIsSubmit(true)
             // const boardPrompt = createBoardPrompt(prompt)
-            // axios.post("http://localhost:3030/chat", { prompt: boardPrompt })
+            // axios.post("/chat", { prompt: boardPrompt })
             //     .then(res => {
-            //         // setResponse(res.data)
             //         console.log(res.data)
             //         const result = res.data
             //         addGeneratedBoard(result)
