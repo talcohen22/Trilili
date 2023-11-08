@@ -12,17 +12,27 @@
         margin: rem(4px) rem(0px) rem(0px);
         justify-content: space-between;
         align-items: center;
+        color: $wsTxtColor;
         
         p{
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             flex-grow: 0.9;
             font-size: rem(14px);
+            
         }
         
-        &:hover{
+        &:hover:not(.active){
             cursor: pointer;
             background-color:$exitBtnHover ;
             border-radius: rem(8px);
         }
+    }
+    .active{
+        cursor: pointer;
+        background-color:#e9f2ff ;
+        color:#0c66e4 ;
+        border-radius: 8px;
+        path{fill:#0c66e4;} 
+
     }
 }
