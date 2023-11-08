@@ -38,8 +38,8 @@ export function TaskList({
 
                         {tasks.map((task, index) => (
                             <Draggable key={task.id} draggableId={task.id} index={index}>
-                                {(provided) => (
-                                    <li key={task.id} className="list-item"
+                                {(provided,snapshot) => (
+                                    <li key={task.id} className={snapshot.isDragging?"list-item dragged":'list-item'}                                  
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         ref={provided.innerRef}>

@@ -51,8 +51,9 @@ export function GroupList({
                                             draggableId={group.id}
                                             index={index}>
 
-                                            {(provided) => (
+                                            {(provided,snapshot) => (
                                                 <li
+                                                    className={snapshot.isDragging?'dragged':''}
                                                     key={group.id}
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
