@@ -5,7 +5,7 @@ export function Menu() {
     return (
         <div className="menu-container">
 
-            <div className="flex">
+            <div className="flex active">
                 <LogoSvg />
                 <p>Boards</p>
             </div>
