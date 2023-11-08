@@ -9,6 +9,7 @@
         }
 
         .color-display{
+            flex:1;
             height: 32px;
             border-radius: 3px;
             padding: 6px 12px 7px 12px;
@@ -32,5 +33,9 @@
 
     .MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd.css-14yo6jy-MuiFormControlLabel-root{
         margin-right: 0;
+    }
+    .css-nphq40{margin-right: 0;}
+    .css-9l3uo3{
+        flex-grow: 1;
     }
 }
