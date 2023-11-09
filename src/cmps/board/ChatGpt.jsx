@@ -513,20 +513,20 @@ export function ChatGpt({ onSetIsChatGptIsOpen, addGeneratedBoard }) {
 
         if (prompt) {
             setIsSubmit(true)
-            // const boardPrompt = createBoardPrompt(prompt)
-            // axios.post("/chat", { prompt: boardPrompt })
-            //     .then(res => {
-            //         console.log(res.data)
-            //         const result = res.data
-            //         addGeneratedBoard(result)
-            //     })
-            //     .catch(err => {
-            //         console.log(err);
-            //     })
-            const savedBoard = await addBoard(moveApartmentBoard)
-            setTimeout(() => {
-                addGeneratedBoard(savedBoard)
-            }, 7000);
+            const boardPrompt = createBoardPrompt(prompt)
+            axios.post("/chat", { prompt: boardPrompt })
+                .then(res => {
+                    console.log(res.data)
+                    const result = res.data
+                    addGeneratedBoard(result)
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            // const savedBoard = await addBoard(moveApartmentBoard)
+            // setTimeout(() => {
+            //     addGeneratedBoard(savedBoard)
+            // }, 7000);
         }
     }
 
